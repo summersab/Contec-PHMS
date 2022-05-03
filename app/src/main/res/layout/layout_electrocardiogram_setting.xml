@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:user="http://schemas.android.com/apk/res-auto" xmlns:app="http://schemas.android.com/apk/res/com.contec" android:id="@+id/rl_electrocardiogram_main" android:background="@color/white" android:layout_width="match_parent" android:layout_height="match_parent">
+    <RelativeLayout android:id="@+id/linearlayout_title" android:background="@drawable/drawable_login_button" style="@style/style_set_title_layout">
+        <Button style="@style/style_set_title_back"/>
+        <TextView android:textColor="@color/white" android:id="@+id/title_text" android:text="" style="@style/style_set_title_text"/>
+    </RelativeLayout>
+    <ListView android:id="@+id/lv_electrocardiogram" android:scrollbars="none" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="10dp" android:listSelector="#00000000" android:cacheColorHint="@color/transparent" android:divider="@null" android:dividerHeight="0dp" android:choiceMode="singleChoice" android:layout_below="@+id/linearlayout_title"/>
+</RelativeLayout>

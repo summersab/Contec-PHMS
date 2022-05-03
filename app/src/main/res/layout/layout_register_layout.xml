@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:my="http://schemas.android.com/apk/res/com.contec.phms" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:user="http://schemas.android.com/apk/res-auto" xmlns:app="http://schemas.android.com/apk/res/com.contec" android:orientation="vertical" android:background="@color/white" android:layout_width="match_parent" android:layout_height="match_parent">
+    <RelativeLayout style="@style/style_set_title_layout">
+        <Button style="@style/style_set_title_back"/>
+        <TextView android:text="@string/register_input_phone" style="@style/style_set_title_text"/>
+    </RelativeLayout>
+    <ScrollView android:layout_width="match_parent" android:layout_height="match_parent">
+        <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
+            <TextView android:textColor="@color/red" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10dp" android:layout_marginTop="15dp" android:text="请允许程序发送短信\10否则无法注册"/>
+            <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="40dp" android:layout_marginTop="20dp">
+                <ImageView android:layout_gravity="center_vertical" android:background="@drawable/img_rigister_redstar" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5dp"/>
+                <LinearLayout android:gravity="center_vertical" android:layout_gravity="center" android:orientation="horizontal" android:background="@drawable/drawable_pedometer_btn_3" android:layout_width="match_parent" android:layout_marginLeft="3dp" android:layout_marginRight="10dp" style="@style/style_regist_set_layout_text">
+                    <TextView android:text="@string/user_country" style="@style/style_set_regist_layout"/>
+                    <Spinner android:entries="@array/phone_code_list" android:layout_gravity="center_vertical" android:id="@+id/spinner_country" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="1dp" android:layout_marginRight="1dp" android:dropDownSelector="@android:drawable/spinner_dropdown_background" android:prompt="@string/user_country" style="@android:style/Theme.Holo"/>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="20dp">
+                <ImageView android:background="@drawable/img_rigister_redstar" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5dp"/>
+                <LinearLayout android:layout_gravity="center_vertical" android:orientation="horizontal" android:id="@+id/login_psw_layout" android:background="@drawable/drawable_pedometer_btn_3" android:layout_width="0dp" android:layout_marginLeft="3dp" android:layout_weight="1" style="@style/style_regist_set_layout_text">
+                    <TextView android:id="@+id/psw_lock" android:text="@string/input_phone_register" style="@style/style_set_regist_layout"/>
+                    <EditText android:textSize="15sp" android:id="@+id/regist_inputphonenum_edit" android:saveEnabled="true" android:layout_width="0dp" android:hint="@string/input_phone_hint" android:maxLength="12" android:layout_weight="1" android:inputType="number" style="@style/style_set_regist_edittext_layout"/>
+                    <ProgressBar android:layout_gravity="center_vertical" android:id="@+id/isCheckPhoneNumRegistProBar" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:indeterminate="false" style="?android:attr/progressBarStyleSmall"/>
+                    <ImageButton android:id="@+id/registphonenumdelbtn" android:background="@drawable/drawable_input_del_new" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:layout_marginRight="-2dp"/>
+                </LinearLayout>
+                <Button android:textSize="14sp" android:textColor="@color/white" android:id="@+id/registSendMsgVerificationCodeCodeBtn" android:background="@drawable/drawable_loginpage_button_register_new" android:clickable="true" android:layout_width="80dp" android:layout_marginLeft="10dp" android:layout_marginRight="10dp" android:text="@string/send_identify" style="@style/style_regist_set_layout_button_text"/>
+            </LinearLayout>
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@+id/regist_phonenumber_isusely" android:visibility="invisible" android:layout_width="match_parent" android:layout_height="20dp">
+                <ImageButton android:layout_gravity="center_vertical" android:background="@drawable/img_phonemumisregist" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5dp"/>
+                <ImageButton android:layout_gravity="center_vertical" android:id="@+id/regist_phonenumber_isuseImageB" android:background="@drawable/img_phonemumisregist" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="3dp"/>
+                <TextView android:textColor="@color/black" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@+id/regist_phonenumber_isuseTextV" android:layout_width="wrap_content" android:layout_height="20dp" android:layout_marginLeft="3dp" android:layout_marginRight="10dp" android:text="@string/str_phonenumcannotregist"/>
+            </LinearLayout>
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <ImageView android:background="@drawable/img_rigister_redstar" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5dp"/>
+                <LinearLayout android:layout_gravity="center_vertical" android:orientation="horizontal" android:id="@+id/login_psw_layout" android:background="@drawable/drawable_pedometer_btn_3" android:layout_width="0dp" android:layout_marginLeft="3dp" android:layout_weight="1" style="@style/style_regist_set_layout_text">
+                    <TextView android:id="@+id/psw_lock" android:text="@string/register_input_code" style="@style/style_set_regist_layout"/>
+                    <EditText android:textSize="15sp" android:id="@+id/registInputSmsVerifyedit" android:saveEnabled="true" android:hint="@string/register_input_code_hint" android:maxLength="6" android:inputType="number" style="@style/style_set_regist_edittext_layout"/>
+                </LinearLayout>
+                <Button android:textSize="14sp" android:textColor="@color/white" android:id="@+id/registcountdownbtn" android:background="@drawable/drawable_login_btn_orange" android:layout_width="80dp" android:layout_marginLeft="10dp" android:layout_marginRight="10dp" android:text="120秒" style="@style/style_regist_set_layout_button_text"/>
+            </LinearLayout>
+            <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="40dp" android:layout_marginTop="20dp">
+                <ImageView android:layout_gravity="center_vertical" android:background="@drawable/img_rigister_redstar" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5dp"/>
+                <LinearLayout android:gravity="center_vertical" android:layout_gravity="center" android:orientation="horizontal" android:background="@drawable/drawable_pedometer_btn_3" android:layout_width="match_parent" android:layout_marginLeft="3dp" android:layout_marginRight="10dp" style="@style/style_regist_set_layout_text">
+                    <TextView android:text="@string/user_sex_mm" style="@style/style_set_regist_layout"/>
+                    <Spinner android:layout_gravity="center_vertical" android:id="@+id/spinner_sex" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="1dp" android:layout_marginRight="1dp" android:dropDownSelector="@android:drawable/spinner_dropdown_background" android:prompt="@string/user_sex_mm" style="@android:style/Theme.Holo"/>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="40dp" android:layout_marginTop="20dp">
+                <ImageView android:layout_gravity="center_vertical" android:background="@drawable/img_rigister_redstar" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5dp"/>
+                <LinearLayout android:gravity="center_vertical" android:layout_gravity="center" android:orientation="horizontal" android:background="@drawable/drawable_pedometer_btn_3" android:layout_width="match_parent" android:layout_marginLeft="3dp" android:layout_marginRight="10dp" style="@style/style_regist_set_layout_text">
+                    <TextView android:text="@string/user_brithday_ed" style="@style/style_set_regist_layout"/>
+                    <EditText android:textSize="15sp" android:id="@+id/registbrithdayedit" android:background="@null" android:focusableInTouchMode="false" android:saveEnabled="true" android:layout_width="0dp" android:hint="@string/user_brithday_hint" android:layout_weight="1" style="@style/style_set_regist_edittext_layout"/>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="40dp" android:layout_marginTop="20dp">
+                <ImageView android:layout_gravity="center_vertical" android:background="@drawable/img_rigister_redstar" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5dp"/>
+                <LinearLayout android:gravity="center_vertical" android:layout_gravity="center" android:orientation="horizontal" android:background="@drawable/drawable_pedometer_btn_3" android:layout_width="match_parent" android:layout_marginLeft="3dp" android:layout_marginRight="10dp" style="@style/style_regist_set_layout_text">
+                    <TextView android:text="@string/registheight" style="@style/style_set_regist_layout"/>
+                    <EditText android:textSize="15sp" android:id="@+id/registHeightedit" android:background="@null" android:saveEnabled="true" android:layout_width="0dp" android:hint="@string/registheighthint" android:maxLength="3" android:layout_weight="1" android:inputType="number" style="@style/style_set_regist_edittext_layout"/>
+                    <TextView android:layout_marginRight="10dp" android:text="@string/str_pedometer_step_length_mm" style="@style/style_set_regist_layout"/>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="40dp" android:layout_marginTop="20dp">
+                <ImageView android:layout_gravity="center_vertical" android:background="@drawable/img_rigister_redstar" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5dp"/>
+                <LinearLayout android:gravity="center_vertical" android:layout_gravity="center" android:orientation="horizontal" android:background="@drawable/drawable_pedometer_btn_3" android:layout_width="match_parent" android:layout_marginLeft="3dp" android:layout_marginRight="10dp" style="@style/style_regist_set_layout_text">
+                    <TextView android:text="@string/registweight" style="@style/style_set_regist_layout"/>
+                    <EditText android:textSize="15sp" android:id="@+id/registWeightedit" android:saveEnabled="true" android:layout_width="0dp" android:hint="@string/user_weighthinttip" android:singleLine="true" android:maxLength="18" android:layout_weight="1" android:inputType="numberDecimal" style="@style/style_set_regist_edittext_layout"/>
+                    <TextView android:layout_marginRight="10dp" android:text="@string/user_weight_unit_mm" style="@style/style_set_regist_layout"/>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="40dp" android:layout_marginTop="20dp">
+                <ImageView android:layout_gravity="center_vertical" android:background="@drawable/img_rigister_redstar" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5dp"/>
+                <LinearLayout android:gravity="center_vertical" android:layout_gravity="center" android:orientation="horizontal" android:background="@drawable/drawable_pedometer_btn_3" android:layout_width="match_parent" android:layout_marginLeft="3dp" android:layout_marginRight="10dp" style="@style/style_regist_set_layout_text">
+                    <TextView android:text="@string/user_idcard" style="@style/style_set_regist_layout"/>
+                    <EditText android:textSize="15sp" android:id="@+id/registidentitycardedit" android:saveEnabled="true" android:layout_width="0dp" android:hint="@string/user_idcardhinttip" android:maxLength="18" android:layout_weight="1" style="@style/style_set_regist_edittext_layout"/>
+                    <ImageButton android:id="@+id/registidentitycardnumdelbtn" android:background="@drawable/drawable_input_del_new" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout android:layout_gravity="center" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginLeft="7dp" android:layout_marginTop="15dp" android:layout_marginRight="10dp">
+                <ImageView android:textSize="23sp" android:background="@drawable/img_rigister_redwarning" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp"/>
+                <TextView android:textSize="16sp" android:textColor="@color/black" android:gravity="top|left|center_vertical|center_horizontal|center" android:layout_gravity="center_vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginLeft="3dp" android:text="@string/str_phonenumregistpasswordtip"/>
+            </LinearLayout>
+            <Button android:textSize="16sp" android:textColor="@color/white" android:id="@+id/zhuce_btn" android:background="@drawable/drawable_login_button" android:layout_width="match_parent" android:layout_height="45dp" android:layout_marginLeft="10dp" android:layout_marginTop="15dp" android:layout_marginRight="10dp" android:layout_marginBottom="20dp" android:text="@string/str_phonenumregist"/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

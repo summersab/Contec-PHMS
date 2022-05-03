@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="regist_textview_size">15sp</dimen>
+    <dimen name="regist_edittext_size">13sp</dimen>
+    <dimen name="regist_login_inputtextsize">15sp</dimen>
+    <dimen name="regist_login_textviewsize">21sp</dimen>
+    <dimen name="userinfo_left_textview">20sp</dimen>
+    <dimen name="userinfo_right_textview">20sp</dimen>
+    <dimen name="input_phone_hint_size">16sp</dimen>
+    <dimen name="str_pedometer_size">19sp</dimen>
+    <dimen name="str_pedometer_text_size">19sp</dimen>
+    <dimen name="str_pedometer_uint_size">17sp</dimen>
+    <dimen name="cur_step_size">55sp</dimen>
+    <dimen name="cur_step_step_size">22sp</dimen>
+    <dimen name="pedometer_handle_text_size">15sp</dimen>
+    <dimen name="product_name_size">13sp</dimen>
+    <dimen name="deviceslistitemnodeltiptext">17sp</dimen>
+    <dimen name="health_report_id_size">17sp</dimen>
+    <dimen name="health_report_date_size">14sp</dimen>
+    <dimen name="health_advice_title_size">18sp</dimen>
+    <dimen name="health_top_text_size">18sp</dimen>
+    <dimen name="data_list_device_name">18sp</dimen>
+    <dimen name="data_list_device_state">13sp</dimen>
+    <dimen name="main_activty_bottom_ly">60dp</dimen>
+    <dimen name="gl_title_height">35dp</dimen>
+</resources>

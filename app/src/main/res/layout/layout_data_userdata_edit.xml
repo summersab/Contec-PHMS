@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:user="http://schemas.android.com/apk/res-auto" xmlns:app="http://schemas.android.com/apk/res/com.contec" android:gravity="center_horizontal" android:orientation="vertical" android:id="@+id/register_linearlayout" android:background="@color/white" android:layout_width="match_parent" android:layout_height="match_parent">
+    <RelativeLayout style="@style/style_set_title_layout">
+        <Button style="@style/style_set_title_back"/>
+        <TextView android:text="@string/user_info_title" style="@style/style_set_title_text"/>
+        <Button android:gravity="center" android:id="@+id/edit_ok_btn" android:background="@drawable/drawable_edit_ok_bg" android:layout_width="35dp" android:layout_height="35dp" android:layout_marginRight="17dp" android:layout_alignParentRight="true" android:layout_centerVertical="true"/>
+    </RelativeLayout>
+    <RelativeLayout android:gravity="center_vertical" android:id="@+id/linearlayout_title" android:background="@drawable/drawable_account_top_bg" android:layout_width="match_parent" android:layout_height="48dp">
+        <TextView android:textSize="23sp" android:textColor="#444444" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/user_info_inter_title" android:layout_centerInParent="true" android:layout_centerVertical="true"/>
+    </RelativeLayout>
+    <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="0dp" android:layout_marginLeft="10dp" android:layout_marginTop="15dp" android:layout_marginRight="15dp" android:layout_weight="1">
+        <ScrollView android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:id="@+id/scrollView" android:scrollbars="none" android:fadingEdge="none" android:layout_width="match_parent" android:layout_height="match_parent" android:cacheColorHint="@color/transparent" android:overScrollMode="never">
+            <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
+                <LinearLayout android:id="@+id/id_layout" style="@style/style_user_data_layout">
+                    <TextView android:id="@+id/id_text" android:text="@string/user_username" style="@style/style_user_data_text"/>
+                    <EditText android:id="@+id/id_username_edit" style="@style/style_user_data_edit"/>
+                </LinearLayout>
+                <LinearLayout android:id="@+id/sex_layout" style="@style/style_user_data_layout">
+                    <TextView android:id="@+id/sex_text" android:text="@string/user_sex" style="@style/style_user_data_text"/>
+                    <Spinner android:id="@+id/sex_spinner" style="@style/style_user_data_spinner"/>
+                </LinearLayout>
+                <LinearLayout android:id="@+id/idcard_layout" style="@style/style_user_data_layout">
+                    <TextView android:id="@+id/idcard_text" android:text="@string/user_identcard" style="@style/style_user_data_text"/>
+                    <EditText android:id="@+id/idcard_edit" style="@style/style_user_data_edit"/>
+                </LinearLayout>
+                <LinearLayout android:id="@+id/phone_layout" style="@style/style_user_data_layout">
+                    <TextView android:id="@+id/phone_text" android:text="@string/user_phone" style="@style/style_user_data_text"/>
+                    <EditText android:id="@+id/phone_edit" style="@style/style_user_data_edit"/>
+                </LinearLayout>
+                <LinearLayout android:id="@+id/birth_layout" style="@style/style_user_data_layout">
+                    <TextView android:id="@+id/birth_text" android:text="@string/user_birth" style="@style/style_user_data_text"/>
+                    <EditText android:id="@+id/birth_edit" style="@style/style_user_data_edit"/>
+                </LinearLayout>
+                <LinearLayout android:id="@+id/birth_area_layout" style="@style/style_user_data_layout">
+                    <TextView android:id="@+id/birth_area_text" android:text="@string/user_birth_area" style="@style/style_user_data_text"/>
+                    <EditText android:id="@+id/birth_area_edit" style="@style/style_user_data_edit"/>
+                </LinearLayout>
+                <LinearLayout android:id="@+id/address_layout" style="@style/style_user_data_layout">
+                    <TextView android:id="@+id/address_text" android:text="@string/user_add" style="@style/style_user_data_text"/>
+                    <EditText android:id="@+id/address_edit" style="@style/style_user_data_edit"/>
+                </LinearLayout>
+                <LinearLayout android:id="@+id/cardtype_layout" style="@style/style_user_data_layout">
+                    <TextView android:id="@+id/cardtype_text" android:text="@string/user_cardt" style="@style/style_user_data_text"/>
+                    <TextView android:id="@+id/cardtype_content" style="@style/style_user_data_right_text"/>
+                </LinearLayout>
+                <LinearLayout android:id="@+id/diskspace_layout" style="@style/style_user_data_layout">
+                    <TextView android:id="@+id/diskspace_text" android:text="@string/user_disk" style="@style/style_user_data_text"/>
+                    <TextView android:id="@+id/diskspace_edit" style="@style/style_user_data_right_text"/>
+                </LinearLayout>
+                <LinearLayout android:id="@+id/total_layout" style="@style/style_user_data_layout">
+                    <TextView android:id="@+id/total_text" android:text="@string/user_usetotal" style="@style/style_user_data_text"/>
+                    <TextView android:id="@+id/total_edit" style="@style/style_user_data_right_text"/>
+                </LinearLayout>
+                <LinearLayout android:id="@+id/hospitalname_layout" style="@style/style_user_data_layout">
+                    <TextView android:id="@+id/hospitalname_text" android:text="@string/user_hospital" style="@style/style_user_data_text"/>
+                    <EditText android:id="@+id/hospitalname_edit" style="@style/style_user_data_edit"/>
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:background="@drawable/img_userinfo_account_bottom_btn" android:layout_width="wrap_content" android:layout_height="45dp">
+        <TextView android:textSize="19sp" android:textColor="@color/white" android:gravity="center" android:layout_gravity="center_vertical" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginLeft="15dp" android:text="切换账号" android:layout_weight="1"/>
+        <ImageButton android:layout_gravity="center_vertical" android:background="@drawable/img_userinfor_acctount_arrow_down" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8dp" android:layout_marginTop="2dp" android:layout_marginRight="21dp"/>
+    </LinearLayout>
+    <HorizontalScrollView android:background="@drawable/img_userinfo_account_bottom_bg" android:paddingBottom="5dp" android:scrollbars="none" android:layout_width="match_parent" android:layout_height="110dp">
+        <com.gridlayout.GridLayout android:layout_gravity="center_vertical" android:id="@+id/hand_changeuser_gridlayout" android:background="#ffff" android:layout_width="wrap_content" android:layout_height="match_parent" xmlns:ns1="http://schemas.android.com/apk/res/com.contec.phms" ns1:alignmentMode="alignMargins">
+            <LinearLayout android:orientation="vertical" android:id="@+id/changeuserlayout" android:descendantFocusability="blocksDescendants" android:layout_width="wrap_content" android:layout_height="match_parent" android:layout_marginLeft="25dp" android:layout_marginRight="20dp">
+                <ImageButton android:layout_gravity="center" android:background="@drawable/drawable_addcount_bg" android:clickable="false" android:layout_width="63dp" android:layout_height="63dp" android:layout_marginTop="10dp"/>
+                <TextView android:textColor="@color/black" android:layout_gravity="bottom|center_vertical|center_horizontal|center" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="7dp" android:layout_marginBottom="3dp" android:text="添加账号"/>
+            </LinearLayout>
+        </com.gridlayout.GridLayout>
+    </HorizontalScrollView>
+</LinearLayout>

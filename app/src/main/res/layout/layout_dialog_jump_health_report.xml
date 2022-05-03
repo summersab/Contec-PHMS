@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:user="http://schemas.android.com/apk/res-auto" xmlns:app="http://schemas.android.com/apk/res/com.contec" android:gravity="center" android:orientation="vertical" android:background="@drawable/sharp_layout" android:layout_width="match_parent" android:layout_height="wrap_content">
+    <TextView android:textSize="18sp" android:textColor="@color/blue" android:gravity="center_horizontal" android:id="@+id/tv_jumpOrRefresh" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginLeft="10dp" android:layout_marginTop="10dp" android:layout_marginRight="10dp" android:layout_marginBottom="10dp" android:text="@string/str_jump_health_report"/>
+    <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="50dp">
+        <ImageView android:background="@color/gray1" android:layout_width="match_parent" android:layout_height="1dp"/>
+        <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="50dp">
+            <Button android:textSize="18sp" android:textColor="@color/blue" android:gravity="center" android:id="@+id/btn_sure" android:background="@null" android:layout_width="0dp" android:layout_height="match_parent" android:text="@string/str_sure" android:layout_weight="220"/>
+            <ImageView android:background="@color/gray1" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1"/>
+            <Button android:textSize="18sp" android:textColor="@color/blue" android:gravity="center" android:id="@+id/btn_cancle" android:background="@null" android:layout_width="0dp" android:layout_height="match_parent" android:text="@string/str_cancle" android:layout_weight="220"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:my="http://schemas.android.com/apk/res/com.contec.phms" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:user="http://schemas.android.com/apk/res-auto" xmlns:app="http://schemas.android.com/apk/res/com.contec" android:gravity="center_vertical" android:orientation="vertical" android:id="@+id/over_all" android:background="@drawable/local_data_list_item_shape" android:layout_width="match_parent" android:layout_height="wrap_content">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:paddingTop="5dp" android:paddingBottom="5dp" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:paddingLeft="7dp" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1">
+            <ImageView android:id="@+id/iv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4dp" android:layout_marginRight="4dp"/>
+            <TextView android:textSize="17sp" android:textColor="@color/black" android:gravity="center" android:id="@+id/type" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+        </LinearLayout>
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1">
+            <TextView android:textSize="18sp" android:textColor="@color/green_pro_normal" android:gravity="center" android:id="@+id/data" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+            <TextView android:textColor="@color/black" android:gravity="center" android:id="@+id/unit" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+        </LinearLayout>
+        <TextView android:textColor="@color/black" android:gravity="center" android:id="@+id/time" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"/>
+        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="3dp" user:srcCompat="@drawable/img_devicelist_list_arrow_right"/>
+    </LinearLayout>
+    <TextView android:background="@color/gray_bg" android:layout_width="match_parent" android:layout_height="2dp"/>
+</LinearLayout>

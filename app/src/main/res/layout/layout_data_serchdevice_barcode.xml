@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:user="http://schemas.android.com/apk/res-auto" xmlns:app="http://schemas.android.com/apk/res/com.contec" android:gravity="center_horizontal" android:orientation="vertical" android:id="@+id/register_linearlayout" android:background="@color/white" android:layout_width="match_parent" android:layout_height="match_parent">
+    <RelativeLayout android:id="@+id/userinforrelatively" android:background="@drawable/drawable_nav_bar" android:layout_width="match_parent" android:layout_height="48dp" style="@style/style_set_title_layout">
+        <RelativeLayout android:id="@+id/userlayout" android:background="@drawable/img_headicon_rect" android:layout_width="55dp" android:layout_height="match_parent" android:layout_alignParentLeft="true">
+            <ImageView android:clickable="false" android:layout_width="34dp" android:layout_height="34dp" user:srcCompat="@drawable/img_headwhite_bg" android:layout_centerInParent="true" android:layout_centerHorizontal="true" android:layout_centerVertical="true" android:contentDescription="@null"/>
+            <com.contec.circleimage.widget.CircularImage android:id="@+id/devicelist_change_user" android:background="@drawable/img_firstgrandpa" android:layout_width="34dp" android:layout_height="34dp" android:layout_centerHorizontal="true" android:layout_centerVertical="true"/>
+        </RelativeLayout>
+        <TextView android:textSize="18sp" android:textColor="@color/white" android:gravity="center" android:id="@+id/user_name_text" android:layout_width="wrap_content" android:layout_height="36dp" android:layout_marginLeft="2dp" android:text="老太太" android:layout_toRightOf="@+id/userlayout" android:layout_centerVertical="true"/>
+        <TextView android:textSize="22sp" android:textColor="@color/white" android:id="@+id/devicelist_data_collection" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15dp" android:text="@string/str_put_index" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/style_set_title_text"/>
+    </RelativeLayout>
+    <RelativeLayout android:id="@+id/serch_promt_layout" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@+id/device_image" android:layout_width="130dp" android:layout_height="130dp" android:layout_marginTop="50dp" user:srcCompat="@drawable/drawable_data_device_cms50ew" android:layout_alignParentTop="true" android:layout_centerHorizontal="true"/>
+        <RelativeLayout android:gravity="center" android:id="@+id/put_serial" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="20dp" android:layout_below="@+id/device_image" android:layout_centerHorizontal="true">
+            <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@+id/serial_linearlayout" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <LinearLayout android:gravity="left|center_vertical|center_horizontal|center" android:orientation="vertical" android:id="@+id/serial_linearlayout" android:layout_width="match_parent" android:layout_height="wrap_content">
+                    <TextView android:textSize="21sp" android:textColor="@color/black" android:paddingBottom="5dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/str_put_index_str"/>
+                    <RelativeLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@+id/handput_linearlayout" android:layout_width="match_parent" android:layout_height="40dp">
+                        <EditText android:id="@+id/baredittext" android:layout_width="170dp" android:layout_height="match_parent" android:layout_marginBottom="-5dp" android:text="sss"/>
+                        <Button android:textSize="21sp" android:textColor="@color/white" android:gravity="center" android:id="@+id/inout_entrue" android:background="@drawable/drawable_login_button" android:layout_width="80dp" android:layout_height="match_parent" android:text="@string/ok" android:layout_alignParentRight="true"/>
+                    </RelativeLayout>
+                    <Button android:textSize="23sp" android:textColor="@android:color/white" android:gravity="center" android:id="@+id/hand_barcode_btn" android:background="@drawable/drawable_next_bg" android:layout_width="match_parent" android:layout_height="40dp" android:layout_marginTop="20dp" android:layout_marginBottom="20dp" android:text="@string/str_barcode"/>
+                </LinearLayout>
+            </LinearLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+</LinearLayout>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:user="http://schemas.android.com/apk/res-auto" android:orientation="vertical" android:id="@+id/layout_pedometerset_main" android:background="@color/white" android:layout_width="match_parent" android:layout_height="match_parent">
+    <RelativeLayout android:id="@+id/linearlayout_title" style="@style/style_set_title_layout">
+        <Button android:id="@+id/set_back_btn" style="@style/style_set_title_back"/>
+        <TextView android:id="@+id/title_text" android:text="@string/pedometer_set" style="@style/style_set_title_text"/>
+    </RelativeLayout>
+    <LinearLayout android:orientation="vertical" android:id="@+id/set_linearlayout" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_margin="15dp" android:layout_below="@+id/linearlayout_title">
+        <TextView android:textSize="21sp" android:textColor="#444444" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/str_pedometer_sensitivity"/>
+        <RelativeLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="19sp" android:textColor="#3dc448" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:text="@string/str_pedometer_sensitivity_low" android:layout_alignParentLeft="true"/>
+            <TextView android:textSize="19sp" android:textColor="#3dc448" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:text="@string/str_pedometer_sensitivity_mid" android:layout_centerHorizontal="true"/>
+            <TextView android:textSize="19sp" android:textColor="#3dc448" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:text="@string/str_pedometer_sensitivity_high" android:layout_alignParentRight="true"/>
+        </RelativeLayout>
+        <SeekBar android:layout_gravity="center" android:id="@+id/pedometer_set_sensitivity_progressbar" android:paddingLeft="3dp" android:paddingRight="3dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="7dp" android:maxHeight="3dp" android:max="100" android:progressDrawable="@drawable/seekbar_style" android:minHeight="3dp" android:thumb="@drawable/drawable_handle" android:thumbOffset="2dp"/>
+        <TextView android:textSize="18sp" android:textColor="#444444" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/str_pedometer_sensitivity_promtp"/>
+    </LinearLayout>
+</RelativeLayout>

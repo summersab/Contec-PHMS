@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:user="http://schemas.android.com/apk/res-auto" xmlns:app="http://schemas.android.com/apk/res/com.contec" android:orientation="vertical" android:background="@color/white" android:layout_width="match_parent" android:layout_height="wrap_content">
+    <LinearLayout android:orientation="vertical" android:background="@color/white" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <RelativeLayout android:layout_width="match_parent" android:layout_height="80dp" android:layout_marginLeft="15dp" android:layout_marginTop="10dp" android:layout_marginRight="15dp">
+            <RelativeLayout android:background="@drawable/img_managerdevie_listitembg" android:layout_width="match_parent" android:layout_height="60dp" android:layout_marginLeft="60dp" android:layout_centerVertical="true">
+                <TextView android:textSize="19sp" android:textColor="#444444" android:id="@+id/serch_device_name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="30dp" android:layout_marginRight="5dp" android:text="黑山老妖的血氧仪" android:layout_centerVertical="true"/>
+                <Button android:textSize="21sp" android:textColor="@color/white" android:gravity="center" android:id="@+id/device_sel_btn" android:background="@drawable/drawable_login_button" android:layout_width="80dp" android:layout_height="match_parent" android:text="@string/serch_device_btn" android:layout_alignParentRight="true"/>
+            </RelativeLayout>
+            <ImageView android:id="@+id/serch_device_image" android:clickable="false" android:layout_width="80dp" android:layout_height="80dp" user:srcCompat="@drawable/drawable_data_device_cms50ew" android:layout_centerVertical="true"/>
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

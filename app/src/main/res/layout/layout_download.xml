@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:user="http://schemas.android.com/apk/res-auto" xmlns:app="http://schemas.android.com/apk/res/com.contec" android:gravity="center" android:orientation="vertical" android:background="#ff33cc60" android:layout_width="match_parent" android:layout_height="match_parent">
+    <TextView android:textSize="22sp" android:textColor="#ffff" android:gravity="center" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:layout_marginBottom="3dp" android:text="@string/downloading"/>
+    <LinearLayout android:orientation="vertical" android:background="#ffff" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_margin="2dp">
+        <RelativeLayout android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1">
+            <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_centerInParent="true">
+                <ProgressBar android:id="@+id/download_progress" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginLeft="10dp" android:progress="0" android:layout_weight="1" style="?android:attr/progressBarStyleHorizontal"/>
+                <TextView android:textColor="@color/black" android:id="@+id/progresstext" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="3dp" android:layout_marginRight="3dp" android:text="0%" android:layout_toRightOf="@+id/download_progress"/>
+            </LinearLayout>
+        </RelativeLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@+id/tempbuttonly" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="5dp" android:layout_alignParentBottom="true">
+            <Button android:textSize="18sp" android:textColor="@drawable/drawable_versionupdata_tvselect" android:gravity="center" android:id="@+id/cancle" android:background="@drawable/drawable_loginpage_button_right_angle_register_new" android:layout_width="0dp" android:layout_height="40dp" android:layout_marginLeft="10dp" android:layout_marginRight="3dp" android:layout_marginBottom="8dp" android:text="@string/str_cancle" android:layout_weight="1"/>
+            <Button android:textSize="18sp" android:textColor="@drawable/drawable_versionupdata_tvselect" android:gravity="center" android:id="@+id/sure" android:background="@drawable/drawable_login_right_angle_button" android:visibility="gone" android:layout_width="0dp" android:layout_height="40dp" android:layout_marginLeft="8dp" android:layout_marginRight="16dp" android:layout_marginBottom="8dp" android:text="@string/str_sure" android:layout_weight="1"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

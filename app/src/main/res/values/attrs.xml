@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="alignmentMode">
+        <enum name="alignBounds" value="0" />
+        <enum name="alignMargins" value="1" />
+    </attr>
+    <attr name="rowCount" format="integer">
+    </attr>
+    <attr name="columnCount" format="integer">
+    </attr>
+    <attr name="useDefaultMargins" format="boolean">
+    </attr>
+    <attr name="rowOrderPreserved" format="boolean">
+    </attr>
+    <attr name="columnOrderPreserved" format="boolean">
+    </attr>
+    <attr name="layout_row" format="integer">
+    </attr>
+    <attr name="layout_rowSpan" format="integer">
+        <enum name="qwer" value="1" />
+    </attr>
+    <attr name="layout_columnSpan" format="integer">
+        <enum name="asdf" value="1" />
+    </attr>
+    <attr name="arcWidth" format="dimension">
+    </attr>
+    <attr name="rectWidth" format="dimension">
+    </attr>
+    <attr name="arcColor" format="color">
+    </attr>
+    <attr name="rectColor" format="color">
+    </attr>
+    <attr name="rimColor" format="color">
+    </attr>
+    <attr name="direction">
+        <enum name="rightToLeft" value="0" />
+        <enum name="bottomToTop" value="1" />
+        <enum name="leftToRight" value="2" />
+        <enum name="topToBottom" value="3" />
+    </attr>
+    <attr name="handle" format="reference">
+    </attr>
+    <attr name="content" format="reference">
+    </attr>
+    <attr name="bottomOffset" format="dimension">
+    </attr>
+    <attr name="topOffset" format="dimension">
+    </attr>
+    <attr name="allowSingleTap" format="boolean">
+    </attr>
+    <attr name="animateOnClick" format="boolean">
+    </attr>
+    <declare-styleable name="MultiDirectionSlidingDrawer"></declare-styleable>
+</resources>

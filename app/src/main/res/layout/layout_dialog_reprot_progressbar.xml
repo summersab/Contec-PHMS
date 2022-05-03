@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:user="http://schemas.android.com/apk/res-auto" xmlns:app="http://schemas.android.com/apk/res/com.contec" android:gravity="center" android:orientation="vertical" android:background="@drawable/drawable_touming_bg" android:layout_width="wrap_content" android:layout_height="wrap_content">
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@+id/bg_dialog" android:background="@drawable/drawable_dialog_bg_green" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <TextView android:textSize="21sp" android:textColor="#ffff" android:gravity="center" android:id="@+id/show_msg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10dp"/>
+        <TextView android:textSize="21sp" android:textColor="#ffff" android:gravity="center" android:id="@+id/show_msg_pedometer" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:user="http://schemas.android.com/apk/res-auto" xmlns:app="http://schemas.android.com/apk/res/com.contec" android:orientation="vertical" android:id="@+id/layout_historyrecord_main" android:background="@color/white" android:layout_width="match_parent" android:layout_height="match_parent">
+    <RelativeLayout style="@style/style_set_title_layout">
+        <Button style="@style/style_set_title_back"/>
+        <TextView android:text="@string/datarecord_text" style="@style/style_set_title_text"/>
+    </RelativeLayout>
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@drawable/drawable_history_bg" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_margin="10dp">
+        <include android:layout_width="match_parent" android:layout_height="48dp" android:layout_marginBottom="10dp" layout="@layout/layout_listview_history_headerview"/>
+        <TextView android:textSize="20sp" android:textColor="#7a7a7a" android:gravity="center" android:id="@+id/textviewnodatahis" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="20dp" android:text="@string/no_flow_record"/>
+        <ListView android:gravity="center_horizontal" android:id="@+id/list_history" android:scrollbars="none" android:fadingEdge="none" android:clickable="false" android:layout_width="match_parent" android:layout_height="match_parent" android:listSelector="@color/transparent" android:cacheColorHint="@color/transparent" android:divider="@null" android:headerDividersEnabled="false"/>
+    </LinearLayout>
+</LinearLayout>

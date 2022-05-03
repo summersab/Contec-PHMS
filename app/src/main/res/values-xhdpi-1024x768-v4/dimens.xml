@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="regist_textview_size">15sp</dimen>
+    <dimen name="regist_edittext_size">13sp</dimen>
+    <dimen name="userinfo_left_textview">21sp</dimen>
+    <dimen name="userinfo_right_textview">21sp</dimen>
+    <dimen name="input_phone_hint_size">16sp</dimen>
+    <dimen name="str_pedometer_size">20sp</dimen>
+    <dimen name="str_pedometer_text_size">20sp</dimen>
+    <dimen name="str_pedometer_uint_size">18sp</dimen>
+    <dimen name="cur_step_size">56sp</dimen>
+    <dimen name="cur_step_step_size">23sp</dimen>
+    <dimen name="pedometer_handle_text_size">18sp</dimen>
+    <dimen name="product_name_size">16sp</dimen>
+    <dimen name="deviceslistitemnodeltiptext">20sp</dimen>
+</resources>

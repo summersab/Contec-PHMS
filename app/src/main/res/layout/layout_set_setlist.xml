@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:my="http://schemas.android.com/apk/res/com.contec.phms" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:user="http://schemas.android.com/apk/res-auto" xmlns:app="http://schemas.android.com/apk/res/com.contec" android:orientation="vertical" android:id="@+id/layout_menuactivity_main" android:background="@color/white" android:layout_width="match_parent" android:layout_height="match_parent">
+    <RelativeLayout style="@style/style_set_title_layout">
+        <TextView android:id="@+id/set_title_text" android:text="@string/setting_text" style="@style/style_set_title_text"/>
+    </RelativeLayout>
+    <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginLeft="14dp" android:layout_marginTop="8dp" android:layout_marginRight="14dp" android:layout_marginBottom="8dp">
+        <ScrollView android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:id="@+id/scrollView" android:scrollbars="none" android:fadingEdge="none" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_weight="1" android:overScrollMode="never">
+            <LinearLayout android:orientation="vertical" android:id="@+id/all_layout" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="17sp" android:textColor="#444444" android:id="@+id/app_set_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20dp" android:layout_marginBottom="5dp" android:text="@string/app_set_text" android:layout_centerVertical="true"/>
+                <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_weight="3">
+                    <RelativeLayout android:id="@+id/intervaltime_layout" android:background="@drawable/drawable_inputbox_top" android:visibility="gone" style="@style/style_set_layout">
+                        <TextView android:id="@+id/intervaltime_text" android:text="@string/intervaltime_text" style="@style/style_set_text"/>
+                        <TextView android:id="@+id/time_interval_on" android:layout_toLeftOf="@+id/time_image" style="@style/style_set_image_text"/>
+                        <ImageView android:id="@+id/time_image" style="@style/style_set_image"/>
+                    </RelativeLayout>
+                    <RelativeLayout android:id="@+id/datarecord_layout" android:background="@drawable/drawable_inputbox_top" android:visibility="gone" style="@style/style_set_layout">
+                        <TextView android:id="@+id/datarecord_text" android:text="@string/datarecord_text" style="@style/style_set_text"/>
+                        <ImageView android:id="@+id/data_record_on" style="@style/style_set_image"/>
+                    </RelativeLayout>
+                    <RelativeLayout android:id="@+id/set_50d_layout" android:background="@drawable/drawable_inputbox_top" style="@style/style_set_layout">
+                        <TextView android:id="@+id/set_50d_text" android:text="@string/set_50d_text" style="@style/style_set_text"/>
+                        <ImageView android:id="@+id/set_50d_on" style="@style/style_set_image"/>
+                    </RelativeLayout>
+                    <RelativeLayout android:id="@+id/rl_electrocardiogram" android:background="@drawable/drawable_inputbox_mid" style="@style/style_set_layout">
+                        <TextView android:id="@+id/tv_electrocardiogram" android:text="@string/electrocardiogram_analyse" style="@style/style_set_text"/>
+                        <TextView android:id="@+id/tv_electrocardiogram_on" android:layout_toLeftOf="@+id/language_image2" style="@style/style_set_image_text"/>
+                        <ImageView android:id="@+id/language_image2" style="@style/style_set_image"/>
+                    </RelativeLayout>
+                    <RelativeLayout android:id="@+id/set_screen_layout" android:background="@drawable/drawable_inputbox_mid" style="@style/style_set_layout">
+                        <TextView android:id="@+id/set_screen_text" android:text="@string/set_screen_text" style="@style/style_set_text"/>
+                        <ImageView android:id="@+id/set_screen_on" style="@style/style_set_image"/>
+                    </RelativeLayout>
+                    <RelativeLayout android:id="@+id/rl_bluetooth_search_mode" android:background="@drawable/drawable_inputbox_mid" style="@style/style_set_layout">
+                        <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true">
+                            <TextView android:ellipsize="marquee" android:id="@+id/tv_bluetooth_search_mode" android:focusable="true" android:focusableInTouchMode="true" android:text="@string/bluetooth_search_mode" android:singleLine="true" android:marqueeRepeatLimit="marquee_forever" style="@style/style_set_text"/>
+                        </RelativeLayout>
+                        <RelativeLayout android:layout_width="wrap_content" android:layout_height="42dp" android:layout_marginRight="10dp" android:layout_alignParentRight="true" android:layout_centerVertical="true">
+                            <com.contec.phms.widget.SwitchView android:id="@+id/custom_switchview" android:layout_width="wrap_content" android:layout_height="30dp" android:layout_centerVertical="true"/>
+                            <TextView android:textSize="16sp" android:textColor="#fff" android:id="@+id/tv_set_new_BLE" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10dp" android:text="@string/new_BLE" android:layout_alignLeft="@+id/custom_switchview" android:layout_centerVertical="true"/>
+                            <TextView android:textSize="16sp" android:textColor="#fff" android:id="@+id/tv_set_old_BLE" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="9dp" android:text="@string/old_BLE" android:layout_alignRight="@+id/custom_switchview" android:layout_centerVertical="true"/>
+                            <TextView android:id="@+id/tv_set_old_BLE_temp" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="旧版(非BLE)"/>
+                            <TextView android:id="@+id/tv_set_old_BLE_en_temp" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="BLE4.0"/>
+                        </RelativeLayout>
+                    </RelativeLayout>
+                    <RelativeLayout android:id="@+id/bluetooth_layout" android:background="@drawable/drawable_inputbox_bottom" style="@style/style_set_layout">
+                        <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true">
+                            <TextView android:id="@+id/bluetooth_text" android:text="@string/bluetooth_text" style="@style/style_set_text"/>
+                            <TextView android:textSize="13sp" android:textColor="@color/gray1" android:gravity="bottom" android:id="@+id/bluetooth_promt" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5dp" android:layout_toRightOf="@+id/bluetooth_text" android:layout_alignBottom="@+id/bluetooth_text"/>
+                        </RelativeLayout>
+                        <ImageView android:id="@+id/bluetooth_on" android:layout_width="60dp" android:layout_height="42dp" android:layout_marginRight="20dp" android:scaleType="fitXY" android:layout_alignParentRight="true" android:layout_centerVertical="true"/>
+                    </RelativeLayout>
+                </LinearLayout>
+                <TextView android:textSize="17sp" android:textColor="#444444" android:id="@+id/system_set_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20dp" android:layout_marginTop="5dp" android:layout_marginBottom="5dp" android:text="@string/system_set_text" android:layout_centerVertical="true"/>
+                <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_weight="1">
+                    <RelativeLayout android:id="@+id/language_layout" android:background="@drawable/drawable_inputbox_all" style="@style/style_set_layout">
+                        <TextView android:id="@+id/language_text" android:text="@string/language_text" style="@style/style_set_text"/>
+                        <TextView android:id="@+id/language_on" android:layout_toLeftOf="@+id/language_image" style="@style/style_set_image_text"/>
+                        <ImageView android:id="@+id/language_image" style="@style/style_set_image"/>
+                    </RelativeLayout>
+                </LinearLayout>
+                <TextView android:layout_width="wrap_content" android:layout_height="15dp"/>
+                <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_weight="4">
+                    <RelativeLayout android:id="@+id/aboutus_layout" android:background="@drawable/drawable_inputbox_top" style="@style/style_set_layout">
+                        <TextView android:id="@+id/aboutus_text" android:text="@string/aboutus_text" style="@style/style_set_text"/>
+                        <ImageView android:id="@+id/aboutus_on" style="@style/style_set_image"/>
+                    </RelativeLayout>
+                    <RelativeLayout android:id="@+id/scan_layout" android:background="@drawable/drawable_inputbox_mid" style="@style/style_set_layout">
+                        <TextView android:id="@+id/scan_text" android:text="@string/register_saoyisao" style="@style/style_set_text"/>
+                        <ImageView android:id="@+id/scan_on" style="@style/style_set_image"/>
+                    </RelativeLayout>
+                    <RelativeLayout android:id="@+id/modify_hosipital" android:background="@drawable/drawable_inputbox_mid" style="@style/style_set_layout">
+                        <TextView android:id="@+id/set_select_hospital" android:text="@string/change_hopital_title" style="@style/style_set_text"/>
+                        <ImageView android:id="@+id/set_screen_on" style="@style/style_set_image"/>
+                    </RelativeLayout>
+                    <RelativeLayout android:id="@+id/new_user_lead_layout" android:background="@drawable/drawable_inputbox_mid" style="@style/style_set_layout">
+                        <TextView android:id="@+id/new_user_lead_text" android:text="@string/new_user_lead_text" style="@style/style_set_text"/>
+                        <ImageView android:id="@+id/new_user_lead_on" style="@style/style_set_image"/>
+                    </RelativeLayout>
+                    <RelativeLayout android:id="@+id/advice_layout" android:background="@drawable/drawable_inputbox_mid" style="@style/style_set_layout">
+                        <TextView android:id="@+id/advice_text" android:text="@string/advice_text" style="@style/style_set_text"/>
+                        <ImageView android:id="@+id/advice_on" style="@style/style_set_image"/>
+                    </RelativeLayout>
+                    <RelativeLayout android:id="@+id/checkupdate_layout" android:background="@drawable/drawable_inputbox_mid" android:layout_width="match_parent" style="@style/style_set_layout">
+                        <TextView android:id="@+id/checkupdate_text" android:text="@string/checkupdate_text" style="@style/style_set_text"/>
+                        <TextView android:textSize="18sp" android:textColor="#444444" android:id="@+id/checkupdate_current" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="20dp" android:scaleType="fitXY" android:layout_alignParentRight="true" android:layout_centerVertical="true"/>
+                    </RelativeLayout>
+                    <RelativeLayout android:id="@+id/log_out_layout" android:background="@drawable/drawable_inputbox_mid" android:layout_width="match_parent" style="@style/style_set_layout">
+                        <TextView android:id="@+id/logout_text" android:text="@string/str_logout" style="@style/style_set_text"/>
+                        <TextView android:textSize="18sp" android:textColor="#444444" android:id="@+id/logout_current" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="20dp" android:scaleType="fitXY" android:layout_alignParentRight="true" android:layout_centerVertical="true"/>
+                    </RelativeLayout>
+                    <RelativeLayout android:id="@+id/autologin_layout" android:background="@drawable/drawable_inputbox_bottom" style="@style/style_set_layout">
+                        <TextView android:id="@+id/autologin_text" android:text="@string/opt_cancle_autologin" style="@style/style_set_text"/>
+                    </RelativeLayout>
+                </LinearLayout>
+                <TextView android:layout_width="wrap_content" android:layout_height="20dp"/>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</LinearLayout>

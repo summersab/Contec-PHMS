@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:user="http://schemas.android.com/apk/res-auto" xmlns:app="http://schemas.android.com/apk/res/com.contec" android:gravity="center_horizontal" android:orientation="vertical" android:id="@+id/register_linearlayout" android:background="@color/white" android:layout_width="match_parent" android:layout_height="match_parent">
+    <RelativeLayout style="@style/style_set_title_layout">
+        <Button style="@style/style_set_title_back"/>
+        <TextView android:text="@string/user_info_title" style="@style/style_set_title_text"/>
+        <Button android:gravity="center" android:id="@+id/edit_btn" android:layout_width="35dp" android:layout_height="35dp" android:layout_marginRight="17dp" android:layout_alignParentRight="true" android:layout_centerVertical="true"/>
+    </RelativeLayout>
+    <RelativeLayout android:gravity="center_vertical" android:id="@+id/linearlayout_title" android:background="@drawable/drawable_account_top_bg" android:layout_width="match_parent" android:layout_height="48dp">
+        <TextView android:textSize="23sp" android:textColor="#444444" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/user_info_inter_title" android:layout_centerInParent="true" android:layout_centerVertical="true"/>
+    </RelativeLayout>
+    <ListView android:id="@+id/userinfolist" android:scrollbars="none" android:fadingEdge="none" android:clickable="false" android:layout_width="match_parent" android:layout_height="0dp" android:layout_marginLeft="10dp" android:layout_marginTop="15dp" android:layout_marginRight="15dp" android:listSelector="#0000" android:cacheColorHint="@color/transparent" android:divider="@null" android:layout_weight="1" android:overScrollMode="never"/>
+    <LinearLayout android:orientation="horizontal" android:background="@drawable/img_userinfo_account_bottom_btn" android:layout_width="wrap_content" android:layout_height="45dp">
+        <TextView android:textSize="19sp" android:textColor="@color/white" android:gravity="center" android:layout_gravity="center_vertical" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginLeft="15dp" android:text="切换账号" android:layout_weight="1"/>
+        <ImageButton android:layout_gravity="center_vertical" android:background="@drawable/img_userinfor_acctount_arrow_down" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8dp" android:layout_marginTop="2dp" android:layout_marginRight="21dp"/>
+    </LinearLayout>
+    <HorizontalScrollView android:background="@drawable/img_userinfo_account_bottom_bg" android:paddingBottom="5dp" android:scrollbars="none" android:layout_width="match_parent" android:layout_height="110dp">
+        <com.gridlayout.GridLayout android:layout_gravity="center_vertical" android:id="@+id/hand_changeuser_gridlayout" android:background="#ffff" android:layout_width="wrap_content" android:layout_height="match_parent" xmlns:ns1="http://schemas.android.com/apk/res/com.contec.phms" ns1:alignmentMode="alignMargins">
+            <LinearLayout android:orientation="vertical" android:id="@+id/changeuserlayout" android:descendantFocusability="blocksDescendants" android:layout_width="wrap_content" android:layout_height="match_parent" android:layout_marginLeft="25dp" android:layout_marginRight="20dp">
+                <ImageButton android:layout_gravity="center" android:background="@drawable/drawable_addcount_bg" android:clickable="false" android:layout_width="63dp" android:layout_height="63dp" android:layout_marginTop="10dp"/>
+                <TextView android:textColor="@color/black" android:layout_gravity="bottom|center_vertical|center_horizontal|center" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="7dp" android:layout_marginBottom="3dp" android:text="添加账号"/>
+            </LinearLayout>
+        </com.gridlayout.GridLayout>
+    </HorizontalScrollView>
+</LinearLayout>

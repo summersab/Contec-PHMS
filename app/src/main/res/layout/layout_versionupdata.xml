@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:my="http://schemas.android.com/apk/res/com.contec.phms" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:user="http://schemas.android.com/apk/res-auto" xmlns:app="http://schemas.android.com/apk/res/com.contec" android:gravity="center" android:orientation="vertical" android:id="@+id/layout_updatecontent_main" android:background="#ffffff" android:layout_width="match_parent" android:layout_height="match_parent">
+    <TextView android:textSize="22sp" android:textColor="#ffffff" android:gravity="center" android:id="@+id/versionupdatatiptv" android:background="@drawable/drawable_nav_bar" android:layout_width="match_parent" android:layout_height="45dp" android:text="@string/versionupdatatip" android:layout_weight="0"/>
+    <ScrollView android:id="@+id/versionupdatatv" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_weight="1">
+        <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:paddingTop="10dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20dp" android:layout_marginRight="20dp">
+            <TextView android:textSize="16sp" android:textColor="@color/black" android:id="@+id/updata_versioncode" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/update_versioncode"/>
+            <TextView android:textSize="20sp" android:textColor="@color/black" android:id="@+id/updata_versioncontenttitile" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/update_versioncontent"/>
+            <TextView android:textSize="14sp" android:textColor="@color/black" android:id="@+id/updata_versioncontent" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/update_versioncontent"/>
+        </LinearLayout>
+    </ScrollView>
+    <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="60dp">
+        <LinearLayout android:gravity="center" android:id="@+id/updata_cancelbtn" android:background="@drawable/drawable_loginpage_button_right_angle_register_new" android:layout_width="0dp" android:layout_height="40dp" android:layout_marginLeft="16dp" android:layout_marginTop="8dp" android:layout_marginRight="8dp" android:layout_marginBottom="12dp" android:layout_weight="1">
+            <TextView android:textSize="18sp" android:textColor="@drawable/drawable_versionupdata_tvselect" android:layout_gravity="center" android:paddingLeft="10dp" android:paddingTop="8dp" android:paddingRight="10dp" android:paddingBottom="8dp" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cancel"/>
+        </LinearLayout>
+        <LinearLayout android:gravity="center" android:id="@+id/update_ensurebtn" android:background="@drawable/drawable_login_right_angle_button" android:layout_width="0dp" android:layout_height="40dp" android:layout_marginLeft="8dp" android:layout_marginTop="8dp" android:layout_marginRight="16dp" android:layout_marginBottom="12dp" android:layout_weight="1">
+            <TextView android:textSize="18sp" android:textColor="@drawable/drawable_versionupdata_tvselect" android:layout_gravity="center" android:paddingLeft="10dp" android:paddingTop="8dp" android:paddingRight="10dp" android:paddingBottom="8dp" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ok"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

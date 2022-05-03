@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:user="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res/com.contec"
+    xmlns:my="http://schemas.android.com/tools"
+    android:id="@+id/layout_Fragmentdevicelist_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout android:orientation="vertical" android:id="@+id/devicelist_layout" android:background="@color/white" android:layout_width="match_parent" android:layout_height="match_parent">
+        <RelativeLayout android:gravity="center_vertical" android:id="@+id/linearlayout_title" android:background="@drawable/drawable_nav_bar" android:layout_width="match_parent" android:layout_height="48dp">
+            <RelativeLayout android:id="@+id/userlayout" android:layout_width="55dp" android:layout_height="match_parent" android:layout_alignParentLeft="true">
+                <ImageView android:clickable="false" android:layout_width="44dp" android:layout_height="44dp" user:srcCompat="@drawable/img_headwhite_bg" android:layout_centerInParent="true" android:layout_centerHorizontal="true" android:layout_centerVertical="true" android:contentDescription="@null"/>
+                <com.contec.circleimage.widget.CircularImage android:id="@+id/devicelist_change_user" android:background="@drawable/img_firstgrandpa" android:clickable="false" android:layout_width="44dp" android:layout_height="44dp" android:layout_centerHorizontal="true" android:layout_centerVertical="true"/>
+            </RelativeLayout>
+            <TextView android:textSize="18sp" android:textColor="@color/white" android:id="@+id/user_name_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5dp" android:text="老太太" android:singleLine="true" android:layout_toRightOf="@+id/userlayout" android:layout_centerVertical="true"/>
+            <TextView android:id="@+id/devicelist_data_collection" android:layout_width="wrap_content" android:text="@string/data_transfer_text" android:layout_centerInParent="true" style="@style/style_set_title_text"/>
+            <Button android:textSize="18sp" android:textColor="@drawable/drawable_blackwhite_bg" android:id="@+id/devicelist_add_devices" android:background="@color/transparent" android:layout_width="wrap_content" android:layout_height="36dp" android:layout_marginRight="10dp" android:text="@string/theme_text" android:layout_alignParentRight="true" android:layout_centerVertical="true"/>
+        </RelativeLayout>
+        <TextView android:textSize="14sp" android:textColor="@color/black" android:gravity="center_horizontal" android:id="@+id/tv_pull" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="3dp" android:text="@string/str_pull_to_search"/>
+        <RelativeLayout android:id="@+id/drawer_layout" android:visibility="gone" style="@style/style_set_title_layout">
+            <TextView android:id="@+id/pedo_text" android:text="@string/pedo_text" style="@style/style_set_title_text"/>
+            <Button android:id="@+id/pedo_set" android:background="@drawable/drawable_pedometer_set_bg" android:layout_width="36dp" android:layout_height="36dp" android:layout_marginRight="15dp" android:layout_alignParentRight="true" android:layout_centerVertical="true"/>
+        </RelativeLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@+id/listdevice_starrun_layout" android:layout_width="match_parent" android:layout_height="match_parent">
+            <FrameLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
+                <RelativeLayout android:id="@+id/first_search_new_devices_layout" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginTop="5dp">
+                    <ImageButton android:id="@+id/search_new_devices_bt" android:background="@drawable/drawable_search_new_devices" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true"/>
+                    <LinearLayout android:gravity="top" android:orientation="horizontal" android:paddingLeft="15dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="10dp" android:layout_marginBottom="25dp" android:layout_above="@+id/usetofulcrum">
+                        <ImageButton android:background="@drawable/img_devices_warning" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3dp"/>
+                        <TextView android:textSize="17sp" android:textColor="#919191" android:gravity="left" android:id="@+id/exit_to_BT_status_te" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15dp" android:text="@string/exit_to_BT_status"/>
+                    </LinearLayout>
+                    <TextView android:gravity="left" android:id="@+id/usetofulcrum" android:layout_width="wrap_content" android:layout_height="5dp" android:layout_marginLeft="15dp" android:layout_alignParentBottom="true"/>
+                </RelativeLayout>
+                <com.contec.phms.widget.XListView android:id="@+id/list_view_device" android:paddingLeft="8dp" android:paddingRight="8dp" android:visibility="gone" android:scrollbars="none" android:animationCache="true" android:alwaysDrawnWithCache="true" android:layout_width="match_parent" android:layout_height="match_parent" android:cacheColorHint="#0000" android:divider="#00000000" android:dividerHeight="5dp"/>
+                <com.contec.phms.activity.MultiDirectionSlidingDrawer android:id="@+id/rundrawer" android:visibility="gone" android:layout_width="match_parent" android:layout_height="match_parent" my:direction="top_to_bottom|right_to_left|bottom_to_top" my:handle="@+id/handle" my:content="@+id/content">
+                    <include android:id="@+id/content" layout="@layout/pen_content_ball"/>
+                    <include android:id="@+id/handle" layout="@layout/pen_origin"/>
+                </com.contec.phms.activity.MultiDirectionSlidingDrawer>
+            </FrameLayout>
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

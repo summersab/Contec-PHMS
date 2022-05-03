@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:user="http://schemas.android.com/apk/res-auto" android:background="@color/white" android:layout_width="match_parent" android:layout_height="match_parent">
+    <RelativeLayout android:id="@+id/userinforrelatively" android:background="@drawable/drawable_nav_bar" android:layout_width="match_parent" android:layout_height="48dp" style="@style/style_set_title_layout">
+        <RelativeLayout android:id="@+id/userlayout" android:background="@drawable/img_headicon_rect" android:layout_width="55dp" android:layout_height="match_parent" android:layout_alignParentLeft="true">
+            <ImageView android:clickable="false" android:layout_width="34dp" android:layout_height="34dp" user:srcCompat="@drawable/img_headwhite_bg" android:layout_centerInParent="true" android:layout_centerHorizontal="true" android:layout_centerVertical="true" android:contentDescription="@null"/>
+            <com.contec.circleimage.widget.CircularImage android:id="@+id/devicelist_change_user" android:background="@drawable/img_firstgrandpa" android:layout_width="34dp" android:layout_height="34dp" android:layout_centerHorizontal="true" android:layout_centerVertical="true"/>
+        </RelativeLayout>
+        <TextView android:textSize="18sp" android:textColor="@color/white" android:gravity="center" android:id="@+id/user_name_text" android:layout_width="wrap_content" android:layout_height="36dp" android:layout_marginLeft="2dp" android:text="老太太" android:layout_toRightOf="@+id/userlayout" android:layout_centerVertical="true"/>
+        <TextView android:id="@+id/devicelist_data_collection" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15dp" android:text="@string/data_transfer_text" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/style_set_title_text"/>
+    </RelativeLayout>
+    <RelativeLayout android:id="@+id/first_search_new_devices_layout" android:visibility="gone" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginTop="5dp" android:layout_below="@+id/userinforrelatively">
+        <ImageButton android:id="@+id/search_new_devices_bt" android:background="@drawable/drawable_search_new_devices" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true"/>
+        <LinearLayout android:gravity="top" android:orientation="horizontal" android:paddingLeft="15dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="10dp" android:layout_marginBottom="25dp" android:layout_above="@+id/usetofulcrum">
+            <ImageButton android:background="@drawable/img_devices_warning" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3dp"/>
+            <TextView android:textSize="17sp" android:gravity="left" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15dp" android:text="退出软件后会自动恢复您的蓝牙状态"/>
+        </LinearLayout>
+        <TextView android:gravity="left" android:id="@+id/usetofulcrum" android:layout_width="wrap_content" android:layout_height="5dp" android:layout_marginLeft="15dp" android:layout_alignParentBottom="true"/>
+    </RelativeLayout>
+    <RelativeLayout android:id="@+id/havedevicesLiealy" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginLeft="40dp" android:layout_marginRight="40dp" android:layout_centerInParent="true">
+        <LinearLayout android:orientation="vertical" android:id="@+id/devicebean" android:background="@drawable/img_fragmentdevicesnew_center_bg" android:paddingTop="40dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/devicenew_device_icon_marginbotton_size">
+            <TextView android:textSize="@dimen/devicelist_item_name_tyep_size" android:textColor="@color/black" android:layout_gravity="center" android:id="@+id/textView_name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20dp" android:text="血糖仪"/>
+            <LinearLayout android:gravity="center_horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="20dp">
+                <TextView android:textSize="@dimen/devicelist_item_detail_size" android:textColor="@color/black" android:gravity="right" android:id="@+id/TextView01" android:layout_width="0dp" android:layout_height="wrap_content" android:text="设备" android:layout_weight="2"/>
+                <TextView android:textSize="@dimen/devicelist_item_detail_size" android:textColor="@color/black" android:id="@+id/TextView_number" android:paddingLeft="10dp" android:layout_width="0dp" android:layout_height="wrap_content" android:text="老太太的血糖仪" android:layout_weight="4"/>
+            </LinearLayout>
+            <LinearLayout android:gravity="center_vertical" android:layout_width="match_parent" android:layout_height="37dp" android:layout_marginTop="@dimen/devicenew_device_detail_marginbotton_size" android:layout_marginBottom="5dp">
+                <TextView android:textSize="@dimen/devicelist_item_detail_size" android:textColor="@color/black" android:gravity="right" android:id="@+id/TextView02" android:layout_width="0dp" android:layout_height="wrap_content" android:text="状态" android:layout_weight="2"/>
+                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:paddingLeft="10dp" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="4">
+                    <TextView android:textSize="@dimen/devicelist_item_detail_size" android:textColor="@color/black" android:id="@+id/TextView_device_state" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="正在上传"/>
+                    <TextView android:textSize="@dimen/devicelist_itemprocess_detail_size" android:textStyle="italic" android:textColor="#0000ff" android:layout_gravity="center_vertical" android:id="@+id/TextView_device_progress" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10dp" android:layout_marginTop="-3dp" android:text="0%"/>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout android:gravity="center_horizontal" android:id="@+id/linear_data_time" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/devicenew_device_detail_marginbotton_size" android:layout_marginBottom="5dp">
+                <TextView android:textSize="@dimen/devicelist_item_detail_size" android:textColor="@color/black" android:gravity="right" android:layout_width="0dp" android:layout_height="wrap_content" android:text="最后" android:layout_weight="2"/>
+                <LinearLayout android:orientation="horizontal" android:paddingLeft="10dp" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="4">
+                    <TextView android:textSize="@dimen/devicelist_item_detail_size" android:textColor="@color/black" android:id="@+id/TextView_device_lastdata" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="2014/05/06"/>
+                    <TextView android:textSize="@dimen/devicelist_item_detail_size" android:textColor="@color/black" android:layout_gravity="center_vertical" android:id="@+id/TextView_device_lasttime" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10dp" android:text="12:49:10"/>
+                </LinearLayout>
+            </LinearLayout>
+            <RelativeLayout android:id="@+id/device_allvalue_framelayout" android:layout_width="match_parent" android:layout_height="@dimen/devicenew_device_bottom_framelayout_height">
+                <ImageView android:background="#c5c5c5" android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginLeft="15dp" android:layout_marginTop="@dimen/devicenew_device_bottom_framelayout_horline_margin" android:layout_marginRight="15dp"/>
+                <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@+id/onlyONEValueDeviceLy" android:paddingTop="10dp" android:visibility="gone" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginBottom="20dp">
+                    <TextView android:textSize="25dp" android:textColor="@color/black" android:gravity="right" android:id="@+id/onlyonevaleunittv" android:paddingRight="12dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="FEV:"/>
+                    <TextView android:textSize="29dp" android:textColor="@color/red" android:id="@+id/onlyonevaletv" android:paddingLeft="12dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="4.1"/>
+                    <TextView android:textSize="@dimen/devicenew_device_framelayout_children_valuesize_size" android:textColor="@color/black" android:id="@+id/onlyonevalesecondunit" android:paddingLeft="5dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="L"/>
+                </LinearLayout>
+                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@+id/onlyTWOValueDeviceLy" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginTop="@dimen/devicenew_device_bottom_framelayout_children_margintop" android:layout_marginBottom="20dp">
+                    <LinearLayout android:gravity="top" android:orientation="vertical" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1">
+                        <TextView android:textSize="@dimen/devicenew_device_framelayout_children_name_size" android:textColor="@color/black" android:gravity="center_horizontal" android:id="@+id/onlyTWOvaleFirstVauleName" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="高压"/>
+                        <LinearLayout android:gravity="top|center_vertical|center_horizontal|center" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+                            <TextView android:textSize="@dimen/devicenew_device_framelayout_children_value_size" android:textColor="@color/red" android:gravity="right" android:layout_gravity="top" android:id="@+id/onlyTWOvaleFirstVaule" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="120"/>
+                            <TextView android:textSize="@dimen/devicenew_device_framelayout_children_valuesize_size" android:textColor="@color/black" android:gravity="left" android:id="@+id/onlyTWOvaleFirstVauleunit" android:paddingLeft="5dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="mmHg"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                    <ImageView android:background="#c5c5c5" android:layout_width="1dp" android:layout_height="match_parent" android:layout_marginTop="@dimen/devicenew_device_framelayout_children_linemargintop_size" android:layout_marginBottom="@dimen/devicenew_device_framelayout_children_linemarginbotom_size"/>
+                    <LinearLayout android:gravity="top" android:orientation="vertical" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1">
+                        <TextView android:textSize="@dimen/devicenew_device_framelayout_children_name_size" android:textColor="@color/black" android:gravity="center_horizontal" android:id="@+id/onlyTWOvaleSecondVauleName" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="低压"/>
+                        <LinearLayout android:gravity="top|center_vertical|center_horizontal|center" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+                            <TextView android:textSize="@dimen/devicenew_device_framelayout_children_value_size" android:textColor="@color/red" android:gravity="right" android:id="@+id/onlyTWOvaleSecondVaule" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="70"/>
+                            <TextView android:textSize="@dimen/devicenew_device_framelayout_children_valuesize_size" android:textColor="@color/black" android:gravity="left" android:id="@+id/onlyTWOvaleSecondVauleunit" android:paddingLeft="5dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="mmHg"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@+id/onlyTHREEValueDeviceLy" android:visibility="gone" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginBottom="20dp">
+                    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:paddingTop="5dp" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1">
+                        <TextView android:textSize="25dp" android:textColor="@color/black" android:gravity="center_horizontal" android:id="@+id/onlyThreevalueFirstVauleName" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="高压"/>
+                        <LinearLayout android:gravity="bottom|center_vertical|center_horizontal|center" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="15dp">
+                            <TextView android:textSize="23dp" android:textColor="@color/red" android:gravity="center_horizontal" android:id="@+id/onlyThreevalueFirstVaule" android:paddingTop="7dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="120"/>
+                            <TextView android:textSize="23dp" android:textColor="@color/red" android:gravity="left" android:id="@+id/onlyThreevalueFirstVauleUnit" android:paddingLeft="5dp" android:paddingTop="7dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="L"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                    <ImageView android:background="#c5c5c5" android:layout_width="1dp" android:layout_height="match_parent" android:layout_marginTop="7dp" android:layout_marginBottom="7dp"/>
+                    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:paddingTop="5dp" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1">
+                        <TextView android:textSize="25dp" android:textColor="@color/black" android:gravity="center_horizontal" android:id="@+id/onlyThreevalueSecondVauleName" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="低压2"/>
+                        <LinearLayout android:gravity="bottom|center_vertical|center_horizontal|center" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="15dp">
+                            <TextView android:textSize="23dp" android:textColor="@color/red" android:gravity="right" android:id="@+id/onlyThreevalueSecondVaule" android:paddingTop="7dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="70"/>
+                            <TextView android:textSize="20dp" android:textColor="@color/red" android:gravity="left" android:id="@+id/onlyThreevalueSecondVauleUnit" android:paddingLeft="5dp" android:paddingTop="7dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="mmHg"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                    <ImageView android:background="#c5c5c5" android:layout_width="1dp" android:layout_height="match_parent" android:layout_marginTop="7dp" android:layout_marginBottom="7dp"/>
+                    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:paddingTop="5dp" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1">
+                        <TextView android:textSize="25dp" android:textColor="@color/black" android:gravity="center_horizontal" android:id="@+id/onlyThreevalueThirdVauleName" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="低压3"/>
+                        <LinearLayout android:gravity="bottom|center_vertical|center_horizontal|center" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="15dp">
+                            <TextView android:textSize="23dp" android:textColor="@color/red" android:gravity="right" android:id="@+id/onlyThreevalueThirdVaule" android:paddingTop="7dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="70"/>
+                            <TextView android:textSize="20dp" android:textColor="@color/red" android:gravity="left" android:id="@+id/onlyThreevalueThirdVauleUnit" android:paddingLeft="5dp" android:paddingTop="7dp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="mmHg"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+                <TextView android:textSize="@dimen/devicelist_item_lasttime_size" android:textColor="@color/setgray" android:gravity="top|center_vertical|center_horizontal|center" android:id="@+id/lastvaluetimetv" android:paddingTop="4dp" android:layout_width="match_parent" android:layout_height="30dp" android:text="2014-05-10 09:37:17" android:layout_alignParentBottom="true"/>
+            </RelativeLayout>
+        </LinearLayout>
+        <ImageView android:id="@+id/imageView_device" android:background="@drawable/drawable_device_a08" android:layout_width="@dimen/devicenew_device_icon_size" android:layout_height="@dimen/devicenew_device_icon_size" android:layout_centerHorizontal="true"/>
+    </RelativeLayout>
+    <ImageButton android:id="@+id/imagebtn_startmanagerdevice" android:background="@drawable/drawable_gotodevicemanger_settings" android:layout_width="40dp" android:layout_height="40dp" android:layout_marginLeft="15dp" android:layout_marginBottom="15dp" android:layout_alignParentBottom="true"/>
+</RelativeLayout>

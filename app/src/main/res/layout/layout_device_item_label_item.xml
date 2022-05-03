@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:user="http://schemas.android.com/apk/res-auto" xmlns:app="http://schemas.android.com/apk/res/com.contec" android:id="@+id/alldeviceitemchangesmalllayout" android:layout_width="109dp" android:layout_height="wrap_content">
+    <RelativeLayout android:id="@+id/deviceitemchangesmalllayout" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:layout_marginRight="4dp">
+        <ProgressBar android:id="@+id/adddevicessmallitemprogressbar" android:background="@color/gray_bg" android:layout_width="100dp" android:layout_height="32dp" android:max="100" android:progressDrawable="@drawable/drawable_deviceslist_item_bg_gray" style="?android:attr/progressBarStyleHorizontal"/>
+        <ImageButton android:id="@+id/managerDeviceRefreshBtn" android:background="@drawable/drawable_managerdevice_refresh" android:layout_width="30dp" android:layout_height="30dp" android:layout_marginLeft="8dp" android:layout_alignParentLeft="true" android:layout_centerVertical="true"/>
+        <RelativeLayout android:layout_width="66dp" android:layout_height="wrap_content" android:layout_toRightOf="@+id/managerDeviceRefreshBtn" android:layout_centerVertical="true">
+            <TextView android:textSize="19sp" android:textColor="@color/white" android:id="@+id/adddevicessmallitemnametext" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0103" android:layout_centerInParent="true"/>
+            <ImageView android:id="@+id/adddevicessmallerrorpoint" android:visibility="invisible" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" user:srcCompat="@drawable/img_adddevicesitemerrorredpoint" android:layout_alignParentTop="true" android:layout_alignParentRight="true"/>
+            <ImageView android:id="@+id/priorityDeviceFlag" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="1dp" android:layout_marginRight="1dp" user:srcCompat="@drawable/img_prioritydeviceflag" android:layout_alignParentTop="true" android:layout_alignParentRight="true"/>
+        </RelativeLayout>
+    </RelativeLayout>
+    <ImageButton android:id="@+id/adddevicessmallitemdelbtn" android:background="@drawable/drawable_deviceslistitem_del_bg" android:visibility="invisible" android:clickable="false" android:layout_width="13dp" android:layout_height="13dp" android:layout_alignParentTop="true" android:layout_alignParentRight="true"/>
+</RelativeLayout>

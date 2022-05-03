@@ -1,0 +1,29 @@
+﻿ 2013-3-9 Updates
+1.Replace the login screen, increase the 'Register' button to cancel the menu to call up the way, remove the 'Remember Password' checkbox;
+2.Optimize the data exchange process equipment list prompt manner;
+3.Click a device to increase the function initiates the connection immediately;
+4.Delete 'manually connect'' automatic connection' button, instead every 5 (10/15 seconds the menu adjustable) seconds automatically start the search;
+5.Through the built-in browser control 'View report';
+6 Home Add 'Exit' button;
+7 Home to increase the 'open medical equipment for uploading! 'Tips;
+8 Exit the application, by its own need to turn off Bluetooth;
+9.CONTEC08A upload data successfully, do not delete the data;
+10.Interactive process, a way to cancel the dialog box, cancel some professional tips;
+11.Tips for interaction term standardized.
+
+2013-4-4 Updates
+1.Increase in 'Swipe left to delete the device' feature;
+2.Optimize the code to improve program stability;
+3.Click 'Open Home' to automatically log on to the m version of health website;
+
+2013-4-22 Updates
+1.New device Bluetooth Auto pairing;
+2.Optimize the code to improve program stability;
+
+2013-6-17 Updates
+1.Redesigning application architecture, optimized code;
+2.Optimization of registration functions, more humane;
+3.Intelligent recognition display size, aspect ratio adjustment interface, more humane;
+4.Adjust and improve the menu items and functions;
+5 Change the device icon;
+6 Chinese characters perfect.

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:user="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent" android:layout_height="match_parent">
+    <LinearLayout android:orientation="vertical" android:id="@+id/progress_linearlayout" android:background="#0000" android:visibility="gone" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_alignParentTop="true">
+        <ProgressBar android:id="@+id/progress_bar" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginLeft="10dp" android:layout_marginTop="@dimen/gl_title_height" android:layout_marginRight="10dp" android:max="100" android:minHeight="5dp" style="?android:attr/progressBarStyleHorizontal"/>
+    </LinearLayout>
+    <RelativeLayout android:id="@+id/titlebar" android:layout_width="match_parent" android:layout_height="@dimen/gl_title_height">
+        <ImageView android:id="@+id/image1" android:layout_width="wrap_content" android:layout_height="match_parent" user:srcCompat="@drawable/titlebar_1" android:layout_alignParentLeft="true"/>
+        <ImageView android:id="@+id/image2" android:layout_width="wrap_content" android:layout_height="match_parent" user:srcCompat="@drawable/titlebar_2" android:layout_alignParentRight="true"/>
+        <TextView android:textSize="25sp" android:textColor="#00ff00" android:gravity="center" android:id="@+id/textHR" android:layout_width="wrap_content" android:layout_height="match_parent" android:text="HR" android:layout_alignLeft="@+id/image1" android:layout_alignTop="@+id/image1" android:layout_alignRight="@+id/image1" android:layout_alignBottom="@+id/image1"/>
+        <ImageView android:id="@+id/image3" android:layout_width="wrap_content" android:layout_height="match_parent" user:srcCompat="@drawable/titlebar_3" android:layout_toLeftOf="@+id/image2" android:layout_toRightOf="@+id/image1" android:layout_centerHorizontal="true"/>
+        <TextView android:textSize="16sp" android:textColor="#0000ff" android:gravity="center" android:id="@+id/textLeadOff" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="match_parent" android:text="HR" android:layout_alignLeft="@+id/image3" android:layout_alignTop="@+id/image3" android:layout_alignRight="@+id/image3" android:layout_alignBottom="@+id/image3"/>
+        <Button android:textSize="20sp" android:textColor="#fffffc42" android:gravity="center" android:id="@+id/save_btn" android:background="#0000" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="match_parent" android:text="@string/str_save_8000g" android:layout_alignLeft="@+id/image2" android:layout_alignTop="@+id/image2" android:layout_alignRight="@+id/image2" android:layout_alignBottom="@+id/image2"/>
+    </RelativeLayout>
+    <serial.jni.GLView android:id="@+id/GLWave" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_below="@+id/titlebar"/>
+</RelativeLayout>

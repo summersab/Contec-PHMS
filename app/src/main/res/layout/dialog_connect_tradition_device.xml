@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:user="http://schemas.android.com/apk/res-auto" android:orientation="vertical" android:background="@drawable/sharp_layout" android:layout_width="match_parent" android:layout_height="match_parent">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="20dp" android:layout_marginBottom="20dp">
+        <ImageView android:id="@+id/iv_device_icon" android:background="@drawable/drawable_data_device_a08" android:layout_width="80dp" android:layout_height="80dp" android:layout_marginLeft="10dp"/>
+        <LinearLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="28dp" android:layout_marginRight="20dp">
+            <TextView android:textSize="16sp" android:textColor="@color/blue" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/str_old_device"/>
+            <TextView android:textSize="16sp" android:textColor="@color/blue" android:id="@+id/tv_device_info" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:text="PM101234"/>
+            <TextView android:textSize="16sp" android:textColor="@color/blue" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5dp" android:text="@string/str_is_collect_data"/>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="50dp">
+        <ImageView android:background="@color/gray1" android:layout_width="match_parent" android:layout_height="1dp"/>
+        <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="50dp">
+            <Button android:textColor="@color/blue" android:id="@+id/btn_sure_connect" android:background="@null" android:layout_width="0dp" android:layout_height="match_parent" android:text="@string/str_sure" android:layout_weight="220"/>
+            <ImageView android:background="@color/gray1" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1"/>
+            <Button android:textColor="@color/blue" android:id="@+id/btn_cancel_connect" android:background="@null" android:layout_width="0dp" android:layout_height="match_parent" android:text="@string/str_cancle" android:layout_weight="220"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

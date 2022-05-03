@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:user="http://schemas.android.com/apk/res-auto" xmlns:app="http://schemas.android.com/apk/res/com.contec" android:orientation="vertical" android:background="@color/white" android:layout_width="match_parent" android:layout_height="match_parent">
+    <RelativeLayout style="@style/style_set_title_layout">
+        <Button style="@style/style_set_title_back"/>
+        <TextView android:text="如何查询设备编号" style="@style/style_set_title_text"/>
+    </RelativeLayout>
+    <ImageView android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10dp" user:srcCompat="@drawable/img_devices_numberposition"/>
+    <TextView android:textSize="20sp" android:textColor="@color/black" android:gravity="center" android:layout_gravity="center_horizontal" android:background="@color/white" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15dp" android:text="请查看设备底部4位数设备编号"/>
+</LinearLayout>

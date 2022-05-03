@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:my="http://schemas.android.com/apk/res/com.contec.phms" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:user="http://schemas.android.com/apk/res-auto" xmlns:app="http://schemas.android.com/apk/res/com.contec" android:background="@drawable/drawable_loginpage_bg" android:layout_width="match_parent" android:layout_height="wrap_content">
+    <RelativeLayout android:id="@+id/linearlayout_title" style="@style/style_set_title_layout">
+        <Button style="@style/style_set_title_back"/>
+        <TextView android:text="@string/theme_text" style="@style/style_set_title_text"/>
+    </RelativeLayout>
+    <TextView android:id="@+id/word1" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_below="@+id/linearlayout_title"/>
+    <ListView android:id="@+id/list_theme" android:background="@drawable/drawable_set_them_bg" android:scrollbars="none" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="10dp" android:listSelector="#00000000" android:cacheColorHint="@color/transparent" android:divider="@drawable/drawable_set_divider" android:choiceMode="singleChoice" android:layout_below="@+id/word1"/>
+    <ImageView android:id="@+id/logo_image" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@+id/list_theme" android:layout_centerHorizontal="true"/>
+</RelativeLayout>

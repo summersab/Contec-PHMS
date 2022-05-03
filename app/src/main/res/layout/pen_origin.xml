@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:my="http://schemas.android.com/apk/res/com.contec.phms" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:user="http://schemas.android.com/apk/res-auto" xmlns:app="http://schemas.android.com/apk/res/com.contec" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="110dp">
+    <LinearLayout android:orientation="vertical" android:id="@+id/handle_top_layout" android:background="@drawable/drawable_pedometer_select_bg" android:layout_width="match_parent" android:layout_height="75dp">
+        <LinearLayout android:layout_gravity="center_horizontal" android:orientation="horizontal" android:id="@+id/table_item" android:layout_width="match_parent" android:layout_height="36dp" android:layout_margin="10dp">
+            <LinearLayout android:orientation="horizontal" android:background="@drawable/drawable_pedometer_btn_3" android:paddingRight="4dp" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginRight="3dp" android:layout_weight="1">
+                <TextView android:textSize="18sp" android:textColor="#444444" android:gravity="center" android:background="@drawable/drawable_pedometer_btn_1" android:layout_width="wrap_content" android:layout_height="match_parent" android:layout_marginLeft="1dp" android:layout_marginTop="1dp" android:layout_marginBottom="1dp" android:text="@string/str_pedometer_cal_n"/>
+                <TextView android:textSize="@dimen/pedometer_handle_text_size" android:textColor="#ef7c1f" android:gravity="right|center_vertical|center_horizontal|center" android:id="@+id/pedometer_handler_show_cal_text" android:layout_width="match_parent" android:layout_height="match_parent" android:text="0卡" android:layout_weight="1"/>
+            </LinearLayout>
+            <LinearLayout android:orientation="horizontal" android:background="@drawable/drawable_pedometer_btn_3" android:paddingRight="4dp" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginLeft="3dp" android:layout_weight="1">
+                <TextView android:textSize="18sp" android:textColor="#444444" android:gravity="center" android:id="@+id/text_pedometer_distance_text" android:background="@drawable/drawable_pedometer_btn_1" android:layout_width="wrap_content" android:layout_height="match_parent" android:layout_marginLeft="1dp" android:layout_marginTop="1dp" android:layout_marginBottom="1dp" android:text="@string/str_pedometer_dist_n"/>
+                <TextView android:textSize="@dimen/pedometer_handle_text_size" android:textColor="#ef7c1f" android:gravity="right|center_vertical|center_horizontal|center" android:id="@+id/pedometer_handler_distance_text" android:layout_width="match_parent" android:layout_height="match_parent" android:text="0米" android:layout_weight="1"/>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@+id/step_progressbar_layout" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginLeft="10dp" android:layout_marginRight="10dp">
+            <TextView android:textSize="14sp" android:textColor="#444444" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/today_text"/>
+            <TextView android:textSize="16sp" android:textColor="#ef7c1f" android:id="@+id/pedometer_handler_steps_big_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0"/>
+            <TextView android:textSize="16sp" android:textColor="#ef7c1f" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="6dp" android:text="@string/today_step"/>
+            <ProgressBar android:id="@+id/pedometer_handler_progressBar_setpaverage" android:layout_width="match_parent" android:layout_height="wrap_content" android:maxHeight="5dp" android:max="100" android:progress="0" android:progressDrawable="@drawable/progressbar_style" android:minHeight="5dp" android:layout_weight="1" style="?android:attr/progressBarStyleHorizontal"/>
+            <TextView android:textSize="14sp" android:textColor="#444444" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6dp" android:text="@string/pedometer_aim"/>
+            <TextView android:textColor="#ef7c1f" android:id="@+id/pedometer_handler_steptarget_aim" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0步"/>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:layout_gravity="center_horizontal" android:orientation="horizontal" android:id="@+id/image_handle_layout" android:background="#fff5f5f5" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <ImageView android:layout_gravity="center_horizontal" android:id="@+id/img_handler_drop_btn" android:layout_width="wrap_content" android:layout_height="wrap_content" user:srcCompat="@drawable/drawable_drop_down_btn"/>
+    </LinearLayout>
+</LinearLayout>

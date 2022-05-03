@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:user="http://schemas.android.com/apk/res-auto" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
+    <RelativeLayout style="@style/style_set_title_layout">
+        <Button style="@style/style_set_title_back"/>
+        <TextView android:id="@+id/title_product_details" android:text="@string/product_details" style="@style/style_set_title_text"/>
+    </RelativeLayout>
+    <ImageView android:id="@+id/img_product_nodata" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content" android:scaleType="fitStart"/>
+    <WebView android:id="@+id/wb_product_details" android:layout_width="match_parent" android:layout_height="match_parent"/>
+</LinearLayout>

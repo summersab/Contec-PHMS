@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:my="http://schemas.android.com/apk/res/com.contec.phms" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:user="http://schemas.android.com/apk/res-auto" xmlns:app="http://schemas.android.com/apk/res/com.contec" android:orientation="vertical" android:id="@+id/register_card_layout" android:background="@color/white" android:layout_width="match_parent" android:layout_height="match_parent">
+    <RelativeLayout style="@style/style_set_register_title_layout">
+        <Button android:id="@+id/id_back_btn" style="@style/style_set_register_title_back"/>
+        <TextView android:text="@string/register_input_information" style="@style/style_set_register_title_text"/>
+        <LinearLayout android:gravity="center" android:id="@+id/jump_but" android:layout_width="65dp" android:layout_height="50dp" android:layout_alignParentRight="true">
+            <Button android:textColor="@color/white" android:background="@null" android:layout_width="30dp" android:layout_height="21dp" android:button="@null" android:text="@string/register_jump"/>
+        </LinearLayout>
+    </RelativeLayout>
+    <LinearLayout android:layout_gravity="center_horizontal" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="68dp" android:layout_marginLeft="15dp">
+        <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:contentDescription="@string/desc">
+            <ImageView android:background="@drawable/num_1" android:layout_width="20dp" android:layout_height="20dp" android:layout_marginLeft="20dp" android:layout_marginTop="16dp" android:contentDescription="@string/desc"/>
+            <TextView android:textSize="12sp" android:textColor="#36cd62" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="17dp" android:layout_marginTop="4dp" android:text="@string/str_user_sex"/>
+        </LinearLayout>
+        <ImageView android:background="#36cd62" android:layout_width="45dp" android:layout_height="0.5dp" android:layout_marginLeft="-3dp" android:layout_marginTop="26dp" android:contentDescription="@string/desc"/>
+        <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="-8dp">
+            <ImageView android:background="@drawable/num_2_s" android:layout_width="20dp" android:layout_height="20dp" android:layout_marginLeft="4dp" android:layout_marginTop="16dp" android:contentDescription="@string/desc"/>
+            <TextView android:textSize="12sp" android:textColor="#36cd62" android:layout_width="40dp" android:layout_height="wrap_content" android:layout_marginLeft="-1dp" android:layout_marginTop="4dp" android:text="@string/str_user_height"/>
+        </LinearLayout>
+        <ImageView android:background="#36cd62" android:layout_width="45dp" android:layout_height="0.5dp" android:layout_marginLeft="-16dp" android:layout_marginTop="26dp" android:contentDescription="@string/desc"/>
+        <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="-12dp">
+            <ImageView android:background="@drawable/num_3_s" android:layout_width="20dp" android:layout_height="20dp" android:layout_marginLeft="10dp" android:layout_marginTop="16dp" android:contentDescription="@string/desc"/>
+            <TextView android:textSize="12sp" android:textColor="#36cd62" android:layout_width="40dp" android:layout_height="wrap_content" android:layout_marginLeft="6dp" android:layout_marginTop="4dp" android:text="@string/str_user_weight"/>
+        </LinearLayout>
+        <ImageView android:background="#36cd62" android:layout_width="45dp" android:layout_height="0.5dp" android:layout_marginLeft="-17dp" android:layout_marginTop="26dp" android:contentDescription="@string/desc"/>
+        <LinearLayout android:orientation="vertical" android:layout_width="60dp" android:layout_height="wrap_content" android:layout_marginLeft="-15dp">
+            <ImageView android:background="@drawable/num_4_s" android:layout_width="20dp" android:layout_height="20dp" android:layout_marginLeft="14dp" android:layout_marginTop="16dp" android:contentDescription="@string/desc"/>
+            <TextView android:textSize="12sp" android:textColor="#36cd62" android:gravity="center" android:paddingRight="2dp" android:layout_width="60dp" android:layout_height="wrap_content" android:layout_marginLeft="0dp" android:layout_marginTop="4dp" android:text="@string/str_user_birthday"/>
+        </LinearLayout>
+        <ImageView android:background="#36cd62" android:layout_width="45dp" android:layout_height="0.5dp" android:layout_marginLeft="-27dp" android:layout_marginTop="26dp" android:contentDescription="@string/desc"/>
+        <LinearLayout android:orientation="vertical" android:layout_width="60dp" android:layout_height="wrap_content" android:layout_marginLeft="-15dp">
+            <ImageView android:background="@drawable/num_5_s" android:layout_width="20dp" android:layout_height="20dp" android:layout_marginLeft="14dp" android:layout_marginTop="16dp" android:contentDescription="@string/desc"/>
+            <TextView android:textSize="12sp" android:textColor="#36cd62" android:paddingRight="2dp" android:layout_width="60dp" android:layout_height="wrap_content" android:layout_marginLeft="0dp" android:layout_marginTop="4dp" android:text="@string/str_user_card"/>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:background="#f5f5f5" android:layout_width="match_parent" android:layout_height="match_parent">
+        <TextView android:textColor="@color/red" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10dp" android:layout_marginTop="15dp" android:text="请允许程序发送短信\10否则无法注册"/>
+        <LinearLayout android:layout_gravity="center_horizontal" android:orientation="horizontal" android:id="@+id/register_input_card" android:background="@color/white" android:layout_width="match_parent" android:layout_height="49dp" android:layout_marginTop="30dp">
+            <TextView android:textSize="15sp" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15dp" android:text="@string/user_cards"/>&quot;\10
+            <EditText android:textSize="15sp" android:id="@+id/regist_cardid_edit" android:saveEnabled="true" android:layout_width="0dp" android:layout_marginLeft="10dp" android:hint="@string/input_card_hint" android:maxLength="18" android:layout_weight="1" style="@style/style_set_regist_edittext_layout"/>
+        </LinearLayout>
+        <Button android:textSize="23sp" android:textColor="@color/white" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@+id/register_success_btn" android:background="@drawable/drawable_login_button" android:layout_width="300dp" android:layout_height="48dp" android:layout_marginTop="30dp" android:text="@string/new_register_finish"/>
+    </LinearLayout>
+</LinearLayout>

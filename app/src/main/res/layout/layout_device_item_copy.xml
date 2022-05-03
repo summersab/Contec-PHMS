@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:user="http://schemas.android.com/apk/res-auto" xmlns:app="http://schemas.android.com/apk/res/com.contec" android:id="@+id/layout_bluetoothadapter_main" android:background="@color/white" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="108dp">
+    <RelativeLayout android:background="@drawable/img_devicelist_bg" android:paddingTop="10dp" android:layout_width="match_parent" android:layout_height="98dp" android:layout_marginLeft="7dp" android:layout_marginTop="15dp">
+        <TextView android:textSize="@dimen/data_list_device_name" android:textColor="@color/black" android:id="@+id/device_info" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="60dp" android:layout_marginTop="-3dp"/>
+        <TextView android:textSize="@dimen/data_list_device_state" android:textColor="@color/default_pedometer_textcolor" android:id="@+id/progresstext" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:layout_marginRight="5dp" android:layout_toLeftOf="@+id/waiting_contect"/>
+        <ProgressBar android:id="@+id/waiting_contect" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6dp" android:layout_marginRight="15dp" android:indeterminate="false" android:layout_alignParentRight="true" style="?android:attr/progressBarStyleSmall"/>
+        <ImageView android:background="@color/devicelistsmallitem_image" android:layout_width="match_parent" android:layout_height="1dp" android:layout_marginLeft="60dp" android:layout_marginTop="30dp" android:layout_marginRight="15dp"/>
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="36dp" android:layout_marginLeft="10dp" android:layout_marginRight="10dp" android:layout_marginBottom="8dp" android:layout_alignParentBottom="true">
+            <ImageButton android:background="@drawable/img_devicelist_list_arrow_left" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3dp"/>
+            <HorizontalScrollView android:background="#ffff" android:scrollbars="none" android:layout_width="0dp" android:layout_height="match_parent" android:layout_marginLeft="8dp" android:layout_marginRight="8dp" android:layout_weight="1">
+                <com.gridlayout.GridLayout android:layout_gravity="center_vertical" android:id="@+id/grid_layout" android:background="#ffff" android:layout_width="wrap_content" android:layout_height="match_parent" xmlns:ns1="http://schemas.android.com/apk/res/com.contec.phms" ns1:alignmentMode="alignMargins"/>
+            </HorizontalScrollView>
+            <ImageButton android:background="@drawable/img_devicelist_list_arrow_right" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3dp"/>
+        </LinearLayout>
+    </RelativeLayout>
+    <ImageView android:id="@+id/deviceimags" android:layout_width="61dp" android:layout_height="61dp" user:srcCompat="@drawable/drawable_data_device_a08"/>
+</RelativeLayout>

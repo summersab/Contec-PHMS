@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:my="http://schemas.android.com/apk/res/com.contec.phms" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:user="http://schemas.android.com/apk/res-auto" xmlns:app="http://schemas.android.com/apk/res/com.contec" android:background="@color/white" android:layout_width="match_parent" android:layout_height="match_parent">
+    <LinearLayout android:orientation="vertical" android:background="#f5f5f5" android:layout_width="match_parent" android:layout_height="match_parent">
+        <RelativeLayout style="@style/style_set_register_title_layout">
+            <Button android:id="@+id/back_btn" style="@style/style_set_register_title_back"/>
+            <TextView android:text="@string/register_input_phone" style="@style/style_set_register_title_text"/>
+        </RelativeLayout>
+        <LinearLayout android:layout_gravity="center_horizontal" android:orientation="horizontal" android:background="@color/white" android:layout_width="300dp" android:layout_height="49dp" android:layout_marginTop="12dp">
+            <ImageView android:layout_gravity="center_vertical" android:background="@drawable/icon_country" android:layout_width="14dp" android:layout_height="14dp" android:layout_marginLeft="15dp"/>
+            <LinearLayout android:gravity="center_vertical" android:layout_gravity="center" android:orientation="horizontal" android:layout_width="match_parent" android:layout_marginLeft="10dp" android:layout_marginRight="10dp" style="@style/style_regist_set_layout_text">
+                <Spinner android:entries="@array/phone_code_list" android:layout_gravity="center_vertical" android:id="@+id/spinner_country_zc" android:background="#ffffff" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="1dp" android:layout_marginRight="1dp" android:dropDownSelector="@android:drawable/spinner_dropdown_background" android:prompt="@string/user_country" android:spinnerMode="dropdown"/>
+            </LinearLayout>
+        </LinearLayout>
+        <ImageView android:layout_gravity="center_horizontal" android:background="#e2e2e2" android:layout_width="300dp" android:layout_height="1dp"/>
+        <LinearLayout android:layout_gravity="center_horizontal" android:orientation="horizontal" android:background="@color/white" android:layout_width="300dp" android:layout_height="49dp">
+            <ImageView android:layout_gravity="center_vertical" android:background="@drawable/icon_tel" android:layout_width="14dp" android:layout_height="14dp" android:layout_marginLeft="15dp"/>
+            <LinearLayout android:layout_gravity="center_vertical" android:id="@+id/ly" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginLeft="10dp" android:layout_weight="1">
+                <EditText android:gravity="center" android:id="@+id/regist_inputphoneid_edit" android:background="@null" android:paddingLeft="2dp" android:layout_width="65dp" android:layout_height="match_parent" android:text="+86" android:digits="1234567890+" android:inputType="number"/>
+                <ImageView android:layout_gravity="center_vertical" android:background="#e2e2e2" android:layout_width="1dp" android:layout_height="40dp" android:layout_marginLeft="7dp"/>
+                <RelativeLayout android:layout_gravity="center" android:layout_width="match_parent" android:layout_height="wrap_content">
+                    <EditText android:textSize="16sp" android:textColor="@color/black" android:id="@+id/regist_inputphone_edit" android:saveEnabled="true" android:layout_width="match_parent" android:layout_marginLeft="7dp" android:hint="@string/input_phone_hint" android:maxLength="15" android:layout_centerInParent="true" android:inputType="number" android:textCursorDrawable="@drawable/color_cursor" style="@style/style_set_regist_edittext_layout"/>
+                    <Button android:layout_gravity="center_vertical" android:id="@+id/btn_register_del" android:background="@drawable/drawable_input_del_new" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:layout_alignParentRight="true" android:layout_centerVertical="true"/>
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+        <ImageView android:layout_gravity="center_horizontal" android:background="#e2e2e2" android:layout_width="300dp" android:layout_height="1dp"/>
+        <LinearLayout android:gravity="center" android:layout_gravity="center_horizontal" android:orientation="horizontal" android:background="@color/white" android:layout_width="300dp" android:layout_height="49dp">
+            <ImageView android:layout_gravity="center_vertical" android:background="@drawable/icon_key" android:layout_width="14dp" android:layout_height="14dp" android:layout_marginLeft="15dp"/>
+            <EditText android:textSize="18sp" android:textColor="#1a1a1a" android:id="@+id/registSmsEdit" android:background="@null" android:saveEnabled="true" android:layout_width="0dp" android:layout_height="match_parent" android:layout_marginLeft="10dp" android:hint="@string/register_input_code_hint" android:maxLength="6" android:layout_weight="1" android:inputType="number" android:textCursorDrawable="@drawable/color_cursor"/>
+            <Button android:textSize="14sp" android:textColor="@drawable/drawable_btn_jump_bg" android:id="@+id/get_code" android:background="@drawable/drawable_set_back_s_effect" android:clickable="true" android:layout_width="80dp" android:layout_height="36dp" android:layout_marginLeft="10dp" android:layout_marginRight="10dp" android:button="@null" android:text="@string/send_identify"/>
+        </LinearLayout>
+        <LinearLayout android:gravity="center" android:id="@+id/no_receive_code" android:padding="3dp" android:visibility="gone" android:layout_width="300dp" android:layout_height="wrap_content" android:layout_marginLeft="10dp">
+            <TextView android:textColor="@color/red" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/no_receive_code"/>
+        </LinearLayout>
+        <ImageView android:layout_gravity="center_horizontal" android:background="#e2e2e2" android:layout_width="300dp" android:layout_height="1dp"/>
+        <LinearLayout android:gravity="center" android:layout_gravity="center_horizontal" android:orientation="horizontal" android:id="@+id/ll_linkage" android:background="@color/white" android:visibility="gone" android:layout_width="300dp" android:layout_height="49dp">
+            <TextView android:textSize="16sp" android:layout_gravity="center_vertical" android:id="@+id/scan_hopital" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15dp" android:text="@string/hospital_name"/>
+            <TextView android:textSize="14sp" android:textColor="#1a1a1a" android:gravity="center" android:id="@+id/registHostipalName" android:background="@null" android:saveEnabled="true" android:layout_width="0dp" android:layout_height="match_parent" android:text="@string/register_input_hostipal_name" android:maxLength="17" android:layout_weight="1" android:textCursorDrawable="@drawable/color_cursor"/>
+            <RelativeLayout android:id="@+id/scan_zxing" android:background="@drawable/btnradius" android:visibility="gone" android:layout_width="80dp" android:layout_height="36dp" android:layout_marginLeft="10dp" android:layout_marginRight="10dp">
+                <ImageView android:id="@+id/iv_scan_image" android:layout_width="20dp" android:layout_height="20dp" android:layout_marginLeft="8dp" user:srcCompat="@drawable/scan" android:layout_centerVertical="true"/>
+                <TextView android:textSize="14sp" android:textColor="@color/register_textbox" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4dp" android:text="@string/register_saoyisao" android:layout_toRightOf="@+id/iv_scan_image" android:layout_centerVertical="true"/>
+            </RelativeLayout>
+        </LinearLayout>
+        <LinearLayout android:layout_gravity="center" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginLeft="18dp" android:layout_marginTop="15dp">
+            <ImageView android:textSize="23sp" android:background="@drawable/img_rigister_redwarning" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp"/>
+            <TextView android:textSize="13sp" android:textColor="@color/gray_1" android:gravity="top|left|center_vertical|center_horizontal|center" android:layout_gravity="center_vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginLeft="3dp" android:text="@string/str_phonenumregistpasswordtip"/>
+        </LinearLayout>
+        <Button android:textSize="23sp" android:textColor="@color/white" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@+id/register_btn" android:background="@drawable/drawable_login_button" android:layout_width="300dp" android:layout_height="48dp" android:layout_marginTop="15dp" android:text="@string/new_register_finish"/>
+        <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <LinearLayout android:orientation="horizontal" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <Button android:textSize="18sp" android:gravity="center" android:id="@+id/btn_qqlogin" android:layout_width="wrap_content" android:layout_height="40dp"/>
+                <Button android:textSize="18sp" android:gravity="center" android:id="@+id/btn_facebooklogin" android:layout_width="wrap_content" android:layout_height="40dp"/>
+                <Button android:textSize="18sp" android:gravity="center" android:id="@+id/btn_weibologin" android:layout_width="wrap_content" android:layout_height="40dp"/>
+            </LinearLayout>
+            <LinearLayout android:orientation="horizontal" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <Button android:textSize="18sp" android:gravity="center" android:id="@+id/btn_wechatlogin" android:layout_width="wrap_content" android:layout_height="40dp"/>
+                <Button android:textSize="18sp" android:gravity="center" android:id="@+id/btn_goolepluslogin" android:layout_width="wrap_content" android:layout_height="40dp"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <TextView android:gravity="center" android:id="@+id/tv_nocode" android:padding="10dp" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="20dp" android:text="@string/no_code" android:layout_alignParentBottom="true"/>
+</RelativeLayout>

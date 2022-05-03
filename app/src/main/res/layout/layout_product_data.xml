@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:my="http://schemas.android.com/apk/res/com.contec.phms" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:user="http://schemas.android.com/apk/res-auto" xmlns:app="http://schemas.android.com/apk/res/com.contec" android:orientation="vertical" android:id="@+id/layout_productdata_main" android:background="@color/white" android:layout_width="match_parent" android:layout_height="match_parent">
+    <RelativeLayout style="@style/style_set_title_layout">
+        <TextView android:id="@+id/title_text" android:text="@string/product_descrip_text" style="@style/style_set_title_text"/>
+    </RelativeLayout>
+    <GridView android:gravity="center" android:id="@+id/product_data_grid" android:scrollbars="none" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginLeft="12dp" android:layout_marginTop="5dp" android:layout_marginRight="12dp" android:listSelector="@null" android:horizontalSpacing="25dp" android:verticalSpacing="5dp" android:stretchMode="columnWidth" android:numColumns="3"/>
+</LinearLayout>

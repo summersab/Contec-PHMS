@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:user="http://schemas.android.com/apk/res-auto" xmlns:app="http://schemas.android.com/apk/res/com.contec" android:id="@+id/layout_bluetoothadapter_main" android:background="@drawable/drawable_list_bg" android:paddingTop="@dimen/activity_vertical_margin" android:paddingBottom="@dimen/activity_vertical_margin" android:layout_width="match_parent" android:layout_height="58dp">
+    <ImageView android:id="@+id/deviceimags" android:layout_width="55dp" android:layout_height="55dp" android:layout_marginLeft="5dp" android:layout_marginRight="3dp" user:srcCompat="@drawable/drawable_device_a08" android:layout_centerVertical="true"/>
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@+id/layout_progress" android:paddingLeft="5dp" android:paddingRight="5dp" android:layout_width="70dp" android:layout_height="58dp" android:layout_alignParentRight="true">
+        <com.contec.phms.widget.CustomArc android:id="@+id/waiting_upload" android:visibility="gone" android:layout_width="42dp" android:layout_height="40dp" android:layout_marginLeft="1dp"/>
+        <ProgressBar android:id="@+id/waiting_contect" android:layout_width="20dp" android:layout_height="20dp" android:layout_marginLeft="1dp" android:layout_marginTop="10dp" style="?android:attr/progressBarStyleLargeInverse"/>
+        <TextView android:textSize="12sp" android:gravity="center" android:id="@+id/progresstext" android:layout_width="match_parent" android:layout_height="wrap_content" android:singleLine="true"/>
+    </LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="64dp" android:layout_toLeftOf="@+id/layout_progress" android:layout_toRightOf="@+id/deviceimags" android:layout_alignParentTop="true">
+        <TextView android:textSize="18sp" android:gravity="bottom" android:id="@+id/device_info" android:layout_width="match_parent" android:layout_height="30dp" android:text="TextView"/>
+        <include android:layout_width="match_parent" android:layout_height="40dp" layout="@layout/layout_device_item_label"/>
+    </LinearLayout>
+    <TextView android:id="@+id/warning" android:layout_width="0dp" android:layout_height="0dp"/>
+</RelativeLayout>

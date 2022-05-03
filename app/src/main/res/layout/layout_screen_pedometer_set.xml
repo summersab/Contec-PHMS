@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:my="http://schemas.android.com/apk/res/com.contec.phms" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:user="http://schemas.android.com/apk/res-auto" xmlns:app="http://schemas.android.com/apk/res/com.contec" android:orientation="vertical" android:id="@+id/layout_pedometerset_main" android:background="@color/white" android:layout_width="match_parent" android:layout_height="match_parent">
+    <RelativeLayout android:id="@+id/linearlayout_title" style="@style/style_set_title_layout">
+        <Button android:id="@+id/ll_50k_back" style="@style/style_set_title_back"/>
+        <TextView android:id="@+id/title_text" android:text="@string/set_screen_text" style="@style/style_set_title_text"/>
+    </RelativeLayout>
+    <LinearLayout android:orientation="vertical" android:id="@+id/set_linearlayout" android:background="@color/gray" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_below="@+id/linearlayout_title">
+        <LinearLayout android:orientation="vertical" android:background="@color/white" android:layout_width="match_parent" android:layout_height="110dp" android:layout_marginTop="10dp">
+            <TextView android:textSize="21sp" android:textColor="#444444" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10dp" android:text="@string/str_screen_light"/>
+            <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginLeft="5dp">
+                <TextView android:textSize="21sp" android:textColor="#3dc448" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10dp" android:layout_marginTop="5dp" android:text="@string/str_screen_low" android:layout_alignParentLeft="true"/>
+                <TextView android:textSize="21sp" android:textColor="#3dc448" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10dp" android:text="@string/str_screen_high" android:layout_alignParentRight="true"/>
+            </RelativeLayout>
+            <SeekBar android:layout_gravity="center" android:id="@+id/pedometer_set_sensitivity_progressbar" android:paddingLeft="3dp" android:paddingRight="3dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginLeft="10dp" android:layout_marginTop="7dp" android:layout_marginRight="10dp" android:maxHeight="3dp" android:max="100" android:progressDrawable="@drawable/seekbar_style" android:minHeight="3dp" android:thumb="@drawable/drawable_handle" android:thumbOffset="2dp"/>
+        </LinearLayout>
+        <ImageView android:background="@color/gray1" android:layout_width="match_parent" android:layout_height="1dp"/>
+        <RelativeLayout android:id="@+id/bluetooth_layout" android:background="@drawable/drawable_inputbox_bottom" android:layout_width="match_parent" android:layout_height="55dp">
+            <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true">
+                <TextView android:textSize="21sp" android:textColor="#444444" android:id="@+id/screen_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10dp" android:text="@string/set_50k_auto" android:layout_alignParentLeft="true"/>
+            </RelativeLayout>
+            <ImageView android:id="@+id/screen_on" android:layout_width="60dp" android:layout_height="42dp" android:layout_marginRight="20dp" android:scaleType="fitXY" android:layout_alignParentRight="true" android:layout_centerVertical="true"/>
+        </RelativeLayout>
+        <TextView android:textSize="18sp" android:textColor="#444444" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10dp" android:layout_marginTop="10dp" android:text="@string/str_watch_set_descrption"/>
+    </LinearLayout>
+</LinearLayout>

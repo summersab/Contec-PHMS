@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:user="http://schemas.android.com/apk/res-auto" xmlns:app="http://schemas.android.com/apk/res/com.contec" android:gravity="center_horizontal" android:orientation="vertical" android:id="@+id/register_linearlayout" android:background="#ffffff" android:layout_width="match_parent" android:layout_height="match_parent">
+    <RelativeLayout style="@style/style_set_title_layout">
+        <RelativeLayout android:id="@+id/back_but_ly" style="@style/style_set_toptitle_backlayout"/>
+        <Button android:id="@+id/back_but" android:clickable="false" style="@style/style_set_title_back"/>
+        <TextView android:text="@string/set_head" style="@style/style_set_title_text"/>
+    </RelativeLayout>
+    <GridView android:id="@+id/choosehead_grid" android:scrollbars="none" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginLeft="7dp" android:layout_marginTop="18dp" android:layout_marginRight="2dp" android:listSelector="@null" android:horizontalSpacing="25dp" android:verticalSpacing="20dp" android:stretchMode="columnWidth" android:numColumns="4" android:layout_weight="1"/>
+    <LinearLayout android:orientation="horizontal" android:id="@+id/choosehead_layout" android:layout_width="match_parent" android:layout_height="48dp" android:layout_marginLeft="8dp" android:layout_marginRight="8dp" android:layout_marginBottom="8dp">
+        <Button android:textSize="23sp" android:textColor="#ffffff" android:gravity="center" android:id="@+id/photo_btn" android:background="@drawable/drawable_loginpage_button_register_new" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginRight="5dp" android:text="@string/photo" android:layout_weight="1"/>
+        <Button android:textSize="23sp" android:textColor="#ffffff" android:gravity="center" android:id="@+id/camera_btn" android:background="@drawable/drawable_login_button" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_marginLeft="5dp" android:text="@string/camera" android:layout_weight="1"/>
+    </LinearLayout>
+</LinearLayout>

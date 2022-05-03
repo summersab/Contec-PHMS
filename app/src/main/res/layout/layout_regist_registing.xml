@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:my="http://schemas.android.com/apk/res/com.contec.phms" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:user="http://schemas.android.com/apk/res-auto" xmlns:app="http://schemas.android.com/apk/res/com.contec" android:orientation="vertical" android:id="@+id/register_registing_main" android:background="@color/white" android:layout_width="match_parent" android:layout_height="match_parent">
+    <RelativeLayout style="@style/style_set_title_layout">
+        <Button style="@style/style_set_title_back"/>
+        <TextView android:text="@string/register_input_code_title" style="@style/style_set_title_text"/>
+    </RelativeLayout>
+    <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:orientation="vertical" android:id="@+id/register_commit_linearlayout" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <ImageView android:id="@+id/regis3_blank" android:layout_width="wrap_content" android:layout_height="10dp"/>
+        <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_horizontal" android:orientation="horizontal" android:id="@+id/register_input_phone_securitycode_layout" android:background="@drawable/drawable_login_input_box_1" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <TextView android:textSize="23sp" android:textColor="#444444" android:layout_gravity="center_vertical" android:id="@+id/code" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="13dp" android:layout_marginRight="13dp" android:text="@string/register_input_code"/>
+            <EditText android:textSize="17sp" android:textColor="#7a7a7a" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@+id/register_input_phone_securitycode_edittext" android:background="@null" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="@string/register_input_code_hint" android:layout_weight="1" android:inputType="number"/>
+        </LinearLayout>
+        <ImageView android:id="@+id/regis3_blank2" android:layout_width="wrap_content" android:layout_height="10dp"/>
+        <Button android:textSize="23sp" android:textColor="@android:color/white" android:gravity="center" android:id="@+id/register_regist_btn" android:background="@drawable/drawable_next_bg" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/next"/>
+        <ImageView android:id="@+id/regis3_blank3" android:layout_width="wrap_content" android:layout_height="10dp"/>
+        <RelativeLayout android:id="@+id/retry_layout" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <Button android:textSize="18sp" android:textColor="@color/white" android:gravity="center" android:id="@+id/register_againe_send_phone_securitycode_btn" android:background="@drawable/drawable_loginpage_button_register_new" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/register_retry_code" android:layout_centerInParent="true"/>
+            <TextView android:textSize="18sp" android:textColor="#444444" android:gravity="center_vertical" android:id="@+id/registercountdown" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10dp" android:text="60" android:layout_toRightOf="@+id/register_againe_send_phone_securitycode_btn" android:layout_centerVertical="true"/>
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

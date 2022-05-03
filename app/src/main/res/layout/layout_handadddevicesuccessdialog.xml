@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:user="http://schemas.android.com/apk/res-auto" xmlns:app="http://schemas.android.com/apk/res/com.contec" android:orientation="vertical" android:background="@color/white" android:layout_width="wrap_content" android:layout_height="wrap_content">
+    <LinearLayout android:orientation="vertical" android:id="@+id/bg_dialog" android:background="#01cc00" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_margin="2dp">
+        <TextView android:textSize="23sp" android:textColor="@color/white" android:gravity="center" android:layout_width="match_parent" android:layout_height="40dp" android:text="@string/add_device_success_str"/>
+        <TextView android:textSize="24sp" android:textColor="#01cc00" android:gravity="center" android:id="@+id/handadddevicesuccessinfo" android:background="@color/white" android:padding="15sp" android:layout_width="match_parent" android:layout_height="0dp" android:layout_margin="1dp" android:text="动态血压监护仪 - 0103" android:layout_weight="1"/>
+    </LinearLayout>
+</LinearLayout>

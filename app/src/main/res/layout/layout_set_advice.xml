@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:my="http://schemas.android.com/apk/res/com.contec.phms" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:user="http://schemas.android.com/apk/res-auto" xmlns:app="http://schemas.android.com/apk/res/com.contec" android:gravity="center_horizontal" android:orientation="vertical" android:id="@+id/layout_setadvice_main" android:background="@drawable/drawable_loginpage_bg" android:layout_width="match_parent" android:layout_height="match_parent">
+    <RelativeLayout android:id="@+id/linearlayout_title" style="@style/style_set_title_layout">
+        <Button android:id="@+id/back_but" style="@style/style_set_title_back"/>
+        <TextView android:text="@string/advice_text" style="@style/style_set_title_text"/>
+    </RelativeLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@+id/advice_layout" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="20dp" android:layout_below="@+id/linearlayout_title" android:layout_centerHorizontal="true">
+        <EditText android:textSize="18sp" android:textColor="#7a7a7a" android:gravity="top|left|center_vertical|center_horizontal|center" android:layout_gravity="center_horizontal" android:id="@+id/advice_edit" android:background="@drawable/drawable_set_advie_input_bg" android:padding="15dp" android:layout_width="match_parent" android:layout_height="match_parent" android:hint="@string/advice_hint" android:layout_weight="1"/>
+        <Button android:textSize="20sp" android:textColor="@color/white" android:layout_gravity="center_horizontal" android:id="@+id/commit_but" android:background="@drawable/drawable_next_bg" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="30dp" android:text="@string/commit_but"/>
+    </LinearLayout>
+</RelativeLayout>

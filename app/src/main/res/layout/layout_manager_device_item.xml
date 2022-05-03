@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:user="http://schemas.android.com/apk/res-auto" xmlns:app="http://schemas.android.com/apk/res/com.contec" android:orientation="vertical" android:background="@color/white" android:layout_width="match_parent" android:layout_height="wrap_content">
+    <RelativeLayout android:layout_width="match_parent" android:layout_height="80dp" android:layout_marginLeft="15dp" android:layout_marginTop="10dp" android:layout_marginRight="15dp">
+        <RelativeLayout android:background="@drawable/img_managerdevie_listitembg" android:layout_width="match_parent" android:layout_height="60dp" android:layout_marginLeft="60dp" android:layout_centerVertical="true">
+            <TextView android:textSize="20sp" android:textColor="@color/black" android:id="@+id/managerDevicenametv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="30dp" android:text="黑山老妖的血氧仪" android:layout_centerVertical="true"/>
+            <ImageButton android:id="@+id/managerDeviceDelBtn" android:background="@drawable/drawable_managerdevice_del" android:layout_width="40dp" android:layout_height="40dp" android:layout_marginRight="15dp" android:layout_alignParentRight="true" android:layout_centerVertical="true"/>
+            <ImageButton android:id="@+id/managerDeviceRefreshBtn" android:background="@drawable/drawable_managerdevice_refresh" android:visibility="gone" android:layout_width="40dp" android:layout_height="40dp" android:layout_marginRight="10dp" android:layout_toLeftOf="@+id/managerDeviceDelBtn" android:layout_centerVertical="true"/>
+        </RelativeLayout>
+        <ImageView android:id="@+id/managerDeviceIconBtn" android:layout_width="80dp" android:layout_height="80dp" android:layout_centerVertical="true"/>
+    </RelativeLayout>
+</LinearLayout>

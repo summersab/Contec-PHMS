@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:my="http://schemas.android.com/apk/res/com.contec.phms" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:user="http://schemas.android.com/apk/res-auto" xmlns:app="http://schemas.android.com/apk/res/com.contec" android:orientation="vertical" android:background="@color/gray" android:layout_width="match_parent" android:layout_height="match_parent">
+    <RelativeLayout style="@style/style_set_title_layout">
+        <Button android:id="@+id/cancel_save_infor" style="@style/style_set_title_back"/>
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" android:layout_centerVertical="true">
+            <TextView android:textColor="@color/white" android:id="@+id/text_title" android:text="@string/change_hopital_title" style="@style/style_set_register_title_text"/>
+            <ImageView android:id="@+id/scan_zxing" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="14dp" user:srcCompat="@drawable/scan_icon"/>
+        </LinearLayout>
+    </RelativeLayout>
+    <LinearLayout android:orientation="vertical" android:id="@+id/zn_use" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_horizontal" android:orientation="horizontal" android:id="@+id/ll_register_hospital" android:background="@color/white" android:layout_width="match_parent" android:layout_height="45dp" android:layout_marginTop="20dp">
+            <ImageView android:paddingLeft="5dp" android:paddingTop="10dp" android:paddingRight="5dp" android:paddingBottom="10dp" android:layout_width="wrap_content" android:layout_height="wrap_content" user:srcCompat="@drawable/select_provid"/>
+            <TextView android:textSize="16sp" android:textColor="@color/register_textbox" android:id="@+id/selcet_change_hopital" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/select_modifyarea"/>
+            <TextView android:textSize="16sp" android:textColor="@color/gray_no_click" android:id="@+id/scan_change_hopital_color" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/select_modifyarea"/>
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:id="@+id/ll_all_spinner" android:background="@color/white" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <LinearLayout android:layout_gravity="center_horizontal" android:orientation="horizontal" android:id="@+id/ll_linkage" android:layout_width="match_parent" android:layout_height="50dp" android:layout_marginLeft="10dp" android:layout_marginRight="10dp">
+                <LinearLayout android:orientation="horizontal" android:background="@drawable/popup_marquee" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1">
+                    <Spinner android:gravity="center" android:layout_gravity="center" android:id="@+id/spinner_province_zc" android:background="@color/white" android:layout_width="0dp" android:layout_height="wrap_content" android:dropDownSelector="@android:drawable/spinner_dropdown_background" android:prompt="@string/user_province" android:layout_weight="0.7" android:spinnerMode="dropdown" style="@android:style/Theme.Holo"/>
+                    <ImageView android:paddingRight="5dp" android:layout_width="0dp" android:layout_height="match_parent" user:srcCompat="@drawable/arrow_btn" android:scaleType="centerInside" android:layout_weight="0.3"/>
+                </LinearLayout>
+                <LinearLayout android:orientation="horizontal" android:background="@drawable/popup_marquee" android:paddingLeft="5dp" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginLeft="5dp" android:layout_weight="1">
+                    <Spinner android:gravity="center" android:layout_gravity="center" android:id="@+id/spinner_city_zc" android:background="@color/white" android:layout_width="0dp" android:layout_height="wrap_content" android:dropDownSelector="@android:drawable/spinner_dropdown_background" android:prompt="@string/user_city" android:layout_weight="0.7" android:spinnerMode="dropdown" style="@android:style/Theme.Holo"/>
+                    <ImageView android:paddingRight="5dp" android:layout_width="0dp" android:layout_height="match_parent" user:srcCompat="@drawable/arrow_btn" android:scaleType="centerInside" android:layout_weight="0.3"/>
+                </LinearLayout>
+                <LinearLayout android:orientation="horizontal" android:background="@drawable/popup_marquee" android:paddingLeft="5dp" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginLeft="5dp" android:layout_weight="1">
+                    <Spinner android:gravity="center" android:layout_gravity="center" android:id="@+id/spinner_district_zc" android:background="@color/white" android:layout_width="0dp" android:layout_height="wrap_content" android:dropDownSelector="@android:drawable/spinner_dropdown_background" android:prompt="@string/user_county" android:layout_weight="0.7" android:spinnerMode="dropdown" style="@android:style/Theme.Holo"/>
+                    <ImageView android:paddingRight="5dp" android:layout_width="0dp" android:layout_height="match_parent" user:srcCompat="@drawable/arrow_btn" android:layout_weight="0.3"/>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_horizontal" android:orientation="horizontal" android:background="@color/white" android:layout_width="match_parent" android:layout_height="45dp" android:layout_marginTop="20dp">
+            <ImageView android:id="@+id/select_hopital_icon" android:paddingLeft="5dp" android:paddingTop="10dp" android:paddingRight="5dp" android:layout_width="wrap_content" android:layout_height="wrap_content" user:srcCompat="@drawable/select_hospital"/>
+            <TextView android:textSize="16sp" android:textColor="@color/register_textbox" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@+id/select_hopital" android:background="@color/white" android:layout_width="match_parent" android:layout_height="match_parent" android:text="@string/change_hopital_title"/>
+            <TextView android:textSize="16sp" android:textColor="@color/register_textbox" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@+id/no_select_hopital" android:background="@color/white" android:paddingLeft="15dp" android:visibility="gone" android:layout_width="match_parent" android:layout_height="match_parent" android:text="@string/nochangehosical"/>
+            <TextView android:textSize="16sp" android:textColor="@color/register_textbox" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@+id/scan_select_hopital" android:background="@color/white" android:paddingLeft="15dp" android:visibility="gone" android:layout_width="match_parent" android:layout_height="match_parent" android:text="@string/scanchangehosical"/>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:background="@color/white" android:paddingLeft="15dp" android:paddingTop="10dp" android:paddingRight="15dp" android:paddingBottom="10dp" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="20sp" android:textColor="@color/gray_1" android:gravity="center_vertical" android:id="@+id/tv_value" android:background="@drawable/popup_marquee" android:layout_width="0dp" android:layout_height="wrap_content" android:drawableRight="@drawable/arrow_btn" android:layout_weight="1"/>
+    </LinearLayout>
+    <Button android:textSize="23sp" android:textColor="@color/white" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@+id/modify_hospital_btn" android:background="@drawable/drawable_login_button" android:layout_width="300dp" android:layout_height="48dp" android:layout_marginTop="15dp" android:text="@string/str_sure1"/>
+</LinearLayout>

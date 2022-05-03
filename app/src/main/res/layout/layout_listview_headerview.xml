@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:user="http://schemas.android.com/apk/res-auto" xmlns:app="http://schemas.android.com/apk/res/com.contec" android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="20dp">
+    <TextView android:textSize="16sp" android:textColor="#027487" android:gravity="center" android:id="@+id/textviewnumber" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/number" android:layout_weight="1"/>
+    <TextView android:textSize="16sp" android:textColor="#027487" android:gravity="center" android:id="@+id/textviewupload" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/flow_record_upload" android:layout_weight="1"/>
+    <TextView android:textSize="16sp" android:textColor="#027487" android:gravity="center" android:id="@+id/textviewdownload" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/flow_record_download" android:layout_weight="1"/>
+    <TextView android:textSize="16sp" android:textColor="#027487" android:gravity="center" android:id="@+id/textviewdate" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/flow_record_date" android:layout_weight="0.9"/>
+</LinearLayout>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:my="http://schemas.android.com/apk/res/com.contec.phms" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:user="http://schemas.android.com/apk/res-auto" xmlns:app="http://schemas.android.com/apk/res/com.contec" android:orientation="vertical" android:id="@+id/layout_aboutus_main" android:background="@color/white" android:layout_width="match_parent" android:layout_height="match_parent">
+    <RelativeLayout style="@style/style_set_title_layout">
+        <Button style="@style/style_set_title_back"/>
+        <TextView android:text="@string/aboutus_text" style="@style/style_set_title_text"/>
+    </RelativeLayout>
+    <ScrollView android:layout_width="match_parent" android:layout_height="match_parent">
+        <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent" style="@style/layout_bg_margin">
+            <ImageView android:id="@+id/img_contec" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15dp" android:layout_marginRight="15dp"/>
+            <TextView android:textSize="@dimen/aboutus_compantyinfo" android:text="@string/aboutus_company" style="@style/AboutUsTextview"/>
+            <ImageView style="@style/AboutUsImageView"/>
+            <TextView android:text="@string/aboutus_company_phone" style="@style/AboutUsTextview"/>
+            <ImageView style="@style/AboutUsImageView"/>
+            <TextView android:text="@string/aboutus_contec" style="@style/AboutUsTextview"/>
+            <ImageView style="@style/AboutUsImageView"/>
+            <TextView android:text="@string/aboutus_wechat" style="@style/AboutUsTextview"/>
+            <ImageView android:background="@drawable/img_qr_code_contec" style="@style/AboutUsImageView_Qrcode"/>
+            <ImageView style="@style/AboutUsImageView"/>
+            <TextView android:text="@string/aboutus_phms" style="@style/AboutUsTextview"/>
+            <ImageView android:background="@drawable/img_qr_code_phms" android:layout_marginBottom="0dp" style="@style/AboutUsImageView_Qrcode"/>
+            <ImageView style="@style/AboutUsImageView"/>
+            <TextView android:text="@string/aboutus_jdstore" style="@style/AboutUsTextview"/>
+            <ImageView android:background="@drawable/img_qr_code_jd" style="@style/AboutUsImageView_Qrcode"/>
+            <TextView android:layout_marginTop="10dp" android:text="@string/aboutus_moredevices" style="@style/AboutUsTextview"/>
+            <ImageView style="@style/AboutUsImageView"/>
+            <TextView android:text="@string/aboutus_devicesshow" style="@style/AboutUsTextview"/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

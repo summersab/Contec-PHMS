@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:my="http://schemas.android.com/apk/res/com.contec.phms" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:user="http://schemas.android.com/apk/res-auto" xmlns:app="http://schemas.android.com/apk/res/com.contec" android:orientation="vertical" android:background="@android:color/white" android:layout_width="match_parent" android:layout_height="match_parent">
+    <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
+        <FrameLayout android:id="@+id/tab_content" android:background="#77557799" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1"/>
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@+id/mainbottomitemlayout" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@+id/main_collection_ly" android:background="@drawable/img_bottom_bg_s" android:descendantFocusability="blocksDescendants" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1">
+                <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" user:srcCompat="@drawable/img_bottom_menu_collection" android:layout_weight="1"/>
+                <TextView android:textSize="16sp" android:textColor="@color/white" android:id="@+id/data_transfer" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="5dp" android:text="@string/data_transfer_text"/>
+            </LinearLayout>
+            <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@+id/main_report_ly" android:background="@drawable/img_bottom_bg" android:descendantFocusability="blocksDescendants" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1">
+                <ImageView android:id="@+id/show_red_ball_msg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1"/>
+                <TextView android:textSize="16sp" android:textColor="@color/white" android:id="@+id/healthreport" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="5dp" android:text="@string/healthreport"/>
+            </LinearLayout>
+            <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@+id/main_advice_ly" android:background="@drawable/img_bottom_bg" android:visibility="gone" android:descendantFocusability="blocksDescendants" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1">
+                <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" user:srcCompat="@drawable/img_bottom_menu_advice" android:layout_weight="1"/>
+                <TextView android:textSize="16sp" android:textColor="@color/white" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="5dp" android:text="@string/healthadvice"/>
+            </LinearLayout>
+            <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@+id/main_introduction_ly" android:background="@drawable/img_bottom_bg" android:descendantFocusability="blocksDescendants" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1">
+                <ImageView android:id="@+id/productinfo_imgview" android:layout_width="wrap_content" android:layout_height="wrap_content" user:srcCompat="@drawable/img_bottom_menu_introductioimg_bottom_n" android:layout_weight="1"/>
+                <TextView android:textSize="16sp" android:textColor="@color/white" android:id="@+id/productinfo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="5dp" android:text="@string/productinfo"/>
+            </LinearLayout>
+            <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@+id/main_more_ly" android:background="@drawable/img_bottom_bg" android:descendantFocusability="blocksDescendants" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1">
+                <ImageView android:id="@+id/setting_more_imageview" android:layout_width="wrap_content" android:layout_height="wrap_content" user:srcCompat="@drawable/img_bottom_menu_more" android:layout_weight="1"/>
+                <TextView android:textSize="16sp" android:textColor="@color/white" android:id="@+id/setting_more" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="5dp" android:text="@string/setting_more"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

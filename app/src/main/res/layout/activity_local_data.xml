@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical" android:background="@color/white" android:layout_width="match_parent" android:layout_height="match_parent">
+    <RelativeLayout style="@style/style_set_title_layout">
+        <Button android:id="@+id/back" style="@style/style_set_title_back"/>
+        <TextView android:text="@string/trend_table" style="@style/style_set_title_text"/>
+    </RelativeLayout>
+    <ListView android:id="@+id/content" android:layout_width="match_parent" android:layout_height="match_parent" android:divider="@null"/>
+</LinearLayout>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:my="http://schemas.android.com/apk/res/com.contec.phms" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:user="http://schemas.android.com/apk/res-auto" xmlns:app="http://schemas.android.com/apk/res/com.contec" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content">
+    <LinearLayout android:orientation="vertical" android:layout_width="300dp" android:layout_height="300dp">
+        <RelativeLayout android:id="@+id/tae_sdk_login_qr_title_bar" android:background="@drawable/tae_sdk_login_qr_title_corner" android:layout_width="match_parent" android:layout_height="44dp">
+            <TextView android:textSize="25sp" android:textColor="#ffffff" android:id="@+id/tae_sdk_login_qr_text_taobao" android:background="#00000000" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10dp" android:text="@string/tae_sdk_login_qr_icon_taobao" android:layout_alignParentLeft="true" android:layout_centerVertical="true" android:layout_marginStart="10dp" android:layout_alignParentStart="true"/>
+            <TextView android:textColor="#ffffff" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/com_taobao_tae_sdk_qr_login_title_bar_text" android:layout_toRightOf="@+id/tae_sdk_login_qr_text_taobao" android:layout_centerVertical="true" android:layout_toEndOf="@+id/tae_sdk_login_qr_text_taobao"/>
+            <Button android:textSize="25sp" android:textColor="#ffffff" android:id="@+id/tae_sdk_qr_login_button_close" android:background="#00000000" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="20dp" android:text="@string/tae_sdk_login_qr_icon_close" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:layout_marginEnd="20dp" android:layout_alignParentEnd="true"/>
+        </RelativeLayout>
+        <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent">
+            <LinearLayout android:orientation="vertical" android:id="@+id/tae_sdk_login_qr_side_bar" android:background="#f8f8f8" android:layout_width="44dp" android:layout_height="match_parent">
+                <Button android:textSize="25sp" android:gravity="center" android:id="@+id/tae_sdk_login_qr_button_scan" android:background="#00000000" android:layout_width="match_parent" android:layout_height="match_parent" android:text="@string/tae_sdk_qr_login_icon_scan" android:layout_weight="1"/>
+                <Button android:textSize="25sp" android:textColor="#000000" android:gravity="center" android:id="@+id/tae_sdk_login_qr_button_password" android:background="#00000000" android:layout_width="match_parent" android:layout_height="match_parent" android:text="@string/tae_sdk_qr_login_icon_password" android:layout_weight="1"/>
+            </LinearLayout>
+            <RelativeLayout android:background="#f8f8f8" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_toRightOf="@+id/tae_sdk_login_qr_side_bar" android:layout_toEndOf="@+id/tae_sdk_login_qr_side_bar">
+                <com.alibaba.sdk.android.webview.BridgeWebView android:id="@+id/tae_sdk_login_qr_web_view" android:layout_width="match_parent" android:layout_height="match_parent"/>
+            </RelativeLayout>
+        </RelativeLayout>
+    </LinearLayout>
+</RelativeLayout>

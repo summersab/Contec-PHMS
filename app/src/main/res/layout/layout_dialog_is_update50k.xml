@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:user="http://schemas.android.com/apk/res-auto" xmlns:app="http://schemas.android.com/apk/res/com.contec" android:orientation="vertical" android:background="#00000000" android:layout_width="match_parent" android:layout_height="wrap_content">
+    <RelativeLayout android:layout_width="match_parent" android:layout_height="80dp">
+        <RelativeLayout android:background="#eafaf0" android:layout_width="match_parent" android:layout_height="80dp" android:layout_marginTop="5dp" android:layout_marginRight="5dp">
+            <ImageView android:layout_width="80dp" android:layout_height="60dp" android:layout_marginLeft="-15dp" android:layout_marginTop="5dp" user:srcCompat="@drawable/ic_updating50k_left" android:layout_alignParentLeft="true" android:layout_centerVertical="true"/>
+            <TextView android:textSize="20sp" android:textColor="#35cd63" android:gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/update_content" android:layout_centerHorizontal="true" android:layout_centerVertical="true"/>
+            <ImageView android:layout_width="80dp" android:layout_height="60dp" android:layout_marginLeft="1dp" android:layout_marginTop="8dp" user:srcCompat="@drawable/ic_updating50k_right" android:layout_alignParentRight="true" android:layout_centerVertical="true"/>
+        </RelativeLayout>
+        <ImageView android:layout_gravity="right" android:id="@+id/iv_close_dialog_isUpdate50k" android:layout_width="20dp" android:layout_height="20dp" user:srcCompat="@drawable/img_close" android:layout_alignParentRight="true"/>
+    </RelativeLayout>
+    <View android:background="@color/white" android:layout_width="match_parent" android:layout_height="7.3dp" android:layout_marginRight="5dp"/>
+    <View android:background="@color/white" android:layout_width="match_parent" android:layout_height="23dp" android:layout_marginRight="5dp"/>
+    <LinearLayout android:orientation="horizontal" android:background="@color/white" android:paddingLeft="20dp" android:paddingRight="20dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginRight="5dp">
+        <Button android:textSize="18sp" android:textColor="@color/register_textbox" android:id="@+id/btn_cancel_isUpdate50k" android:background="@drawable/shape_rectangle_radius" android:paddingTop="13dp" android:paddingBottom="13dp" android:layout_width="0dp" android:layout_height="wrap_content" android:text="@string/str_update_dialog_later_on" android:layout_weight="1"/>
+        <Button android:textSize="18sp" android:textColor="@color/white" android:id="@+id/btn_sure_isUpdate50k" android:background="@drawable/shape_rectangle_radius2" android:paddingTop="13dp" android:paddingBottom="13dp" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_marginLeft="20dp" android:text="@string/str_update_dialog_immediate_updates" android:layout_weight="1"/>
+    </LinearLayout>
+    <View android:background="@color/white" android:layout_width="match_parent" android:layout_height="23dp" android:layout_marginRight="5dp"/>
+</LinearLayout>
