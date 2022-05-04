@@ -97,11 +97,11 @@ public class PollingService extends Service {
             if (pollingService != null) {
                 switch (msg.what) {
                     case 1:
-                        pollingService.CLogE("BLe搜索结束");
+                        pollingService.CLogE("End BLE search");
                         pollingService.mScanning = false;
                         pollingService.mBluetoothAdapter.stopLeScan(pollingService.mBleScan.mLeScanCallback);
-                        pollingService.CLogI("传统设备个数：" + pollingService.mWaitConnectDeviceBeanLists_tradition.size());
-                        pollingService.CLogI("总设备个数：" + pollingService.mWaitConnectDeviceBeanLists.size());
+                        pollingService.CLogI("Number of traditional Bluetooth devices: " + pollingService.mWaitConnectDeviceBeanLists_tradition.size());
+                        pollingService.CLogI("Total number of Bluetooth devices: " + pollingService.mWaitConnectDeviceBeanLists.size());
                         if (pollingService.mWaitConnectDeviceBeanLists_tradition.size() > 0) {
                             pollingService.mWaitConnectDeviceBeanLists.addAll(pollingService.mWaitConnectDeviceBeanLists_tradition);
                         }
@@ -125,7 +125,7 @@ public class PollingService extends Service {
     public void onCreate() {
         super.onCreate();
         App_phms.getInstance().mEventBus.register(this);
-        CLogI("----ble轮询服务类启动");
+        CLogI("----Starting BLE polling service");
     }
 
     public IBinder onBind(Intent arg0) {
@@ -141,7 +141,7 @@ public class PollingService extends Service {
                 if (App_phms.getInstance().getmWaitConnectDeviceBeanLists().size() > 0) {
                     startConnectDevice();
                 } else {
-                    CLogI("执行到这里222");
+                    CLogI("Go here: 222");
                     startCallBack();
                 }
             } else if (JudgeDeviceType()) {
@@ -157,7 +157,7 @@ public class PollingService extends Service {
                 if (App_phms.getInstance().getmWaitConnectDeviceBeanLists().size() > 0) {
                     startConnectDevice();
                 } else {
-                    CLogI("执行到这里111");
+                    CLogI("Go here: 111");
                     startCallBack();
                 }
             }
@@ -173,7 +173,7 @@ public class PollingService extends Service {
     }
 
     private synchronized void startPolling() {
-        CLogI("开启轮询模式=-------");
+        CLogI("`startPolling()`=-------");
         this.mDeviceAddressSet.clear();
         this.mWaitConnectDeviceBeanLists_tradition.clear();
         this.mWaitConnectDeviceBeanLists.clear();
@@ -542,7 +542,7 @@ public class PollingService extends Service {
     }
 
     public static void stopService(Context pContext) {
-        CLog.e(TAG, "停止轮询服务类");
+        CLog.e(TAG, "`PollingService.stopService()`");
         App_phms.getInstance().getmWaitConnectDeviceBeanLists().clear();
         isFromUpoladFaidedMsg = false;
         pContext.stopService(new Intent(pContext, PollingService.class));

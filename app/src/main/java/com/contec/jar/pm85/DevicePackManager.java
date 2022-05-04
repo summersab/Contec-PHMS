@@ -3,6 +3,8 @@ package com.contec.jar.pm85;
 import android.bluetooth.BluetoothSocket;
 import java.util.ArrayList;
 
+import u.aly.dp;
+
 public class DevicePackManager {
     public static final int[] PackLength;
     public static final int e_pack_DataCount = 7;
@@ -139,162 +141,26 @@ public class DevicePackManager {
         return pack[0];
     }
 
-    /* JADX WARNING: type inference failed for: r19v26, types: [int] */
-    /* JADX WARNING: type inference failed for: r19v29, types: [int] */
-    /* JADX WARNING: type inference failed for: r19v32, types: [int] */
-    /* JADX WARNING: type inference failed for: r19v35, types: [int] */
-    /* JADX WARNING: Multi-variable type inference failed */
-    /* Code decompiled incorrectly, please refer to instructions dump. */
-    public static short[] getEcg(byte[] r21) {
-        /*
-            r19 = 3
-            byte r19 = r21[r19]
-            r0 = r19
-            r0 = r0 & 255(0xff, float:3.57E-43)
-            r19 = r0
-            r0 = r19
-            short r0 = (short) r0
-            r18 = r0
-            r19 = 4
-            byte r19 = r21[r19]
-            r0 = r19
-            r0 = r0 & 255(0xff, float:3.57E-43)
-            r19 = r0
-            r0 = r19
-            short r9 = (short) r0
-            r19 = 5
-            byte r19 = r21[r19]
-            int r19 = r19 >> 4
-            r19 = r19 & 15
-            r0 = r19
-            short r8 = (short) r0
-            r19 = 5
-            byte r19 = r21[r19]
-            r19 = r19 & 15
-            r0 = r19
-            short r0 = (short) r0
-            r17 = r0
-            r19 = 6
-            byte r19 = r21[r19]
-            r0 = r19
-            r0 = r0 & 255(0xff, float:3.57E-43)
-            r19 = r0
-            r0 = r19
-            short r15 = (short) r0
-            r19 = 7
-            byte r19 = r21[r19]
-            r0 = r19
-            r0 = r0 & 255(0xff, float:3.57E-43)
-            r19 = r0
-            r0 = r19
-            short r12 = (short) r0
-            r19 = 8
-            byte r19 = r21[r19]
-            int r19 = r19 >> 4
-            r0 = r19
-            r0 = r0 & 255(0xff, float:3.57E-43)
-            r19 = r0
-            r0 = r19
-            short r11 = (short) r0
-            r19 = 8
-            byte r19 = r21[r19]
-            r19 = r19 & 15
-            r0 = r19
-            short r14 = (short) r0
-            int r19 = r8 << 8
-            r0 = r19
-            r0 = r0 & 4095(0xfff, float:5.738E-42)
-            r19 = r0
-            r19 = r19 | r9
-            r0 = r19
-            short r7 = (short) r0
-            int r19 = r14 << 8
-            r0 = r19
-            r0 = r0 & 4095(0xfff, float:5.738E-42)
-            r19 = r0
-            r19 = r19 | r15
-            r0 = r19
-            short r13 = (short) r0
-            int r19 = r11 << 8
-            r0 = r19
-            r0 = r0 & 4095(0xfff, float:5.738E-42)
-            r19 = r0
-            r19 = r19 | r12
-            r0 = r19
-            short r10 = (short) r0
-            int r19 = r17 << 8
-            r0 = r19
-            r0 = r0 & 4095(0xfff, float:5.738E-42)
-            r19 = r0
-            r19 = r19 | r18
-            r0 = r19
-            short r0 = (short) r0
-            r16 = r0
-            int r0 = 4096 - r13
-            r19 = r0
-            r0 = r19
-            short r5 = (short) r0
-            int r0 = 4096 - r7
-            r19 = r0
-            r0 = r19
-            short r6 = (short) r0
-            int r19 = r7 - r13
-            r0 = r19
-            int r0 = r0 + 2048
-            r19 = r0
-            r0 = r19
-            short r4 = (short) r0
-            int r19 = r7 / 2
-            int r19 = r13 - r19
-            r0 = r19
-            int r0 = r0 + 1024
-            r19 = r0
-            r0 = r19
-            short r3 = (short) r0
-            int r19 = r13 / 2
-            int r19 = r7 - r19
-            r0 = r19
-            int r0 = r0 + 1024
-            r19 = r0
-            r0 = r19
-            short r2 = (short) r0
-            int r19 = r13 + r7
-            int r19 = r19 / 2
-            r0 = r19
-            int r0 = 4096 - r0
-            r19 = r0
-            r0 = r19
-            short r1 = (short) r0
-            int r19 = r13 + r7
-            r0 = r19
-            int r0 = r0 + -4096
-            r19 = r0
-            int r19 = r19 / 3
-            int r19 = r16 - r19
-            r0 = r19
-            short r0 = (short) r0
-            r16 = r0
-            r19 = 7
-            r0 = r19
-            short[] r0 = new short[r0]
-            r19 = r0
-            r20 = 0
-            r19[r20] = r4
-            r20 = 1
-            r19[r20] = r5
-            r20 = 2
-            r19[r20] = r6
-            r20 = 3
-            r19[r20] = r3
-            r20 = 4
-            r19[r20] = r2
-            r20 = 5
-            r19[r20] = r1
-            r20 = 6
-            r19[r20] = r16
-            return r19
-        */
-        throw new UnsupportedOperationException("Method not decompiled: com.contec.jar.pm85.DevicePackManager.getEcg(byte[]):short[]");
+    public static short[] getEcg(byte[] pack) {
+        short V_L = (short) (pack[3] & 255);
+        short LA_L = (short) (pack[4] & 255);
+        short LA_H = (short) ((pack[5] >> 4) & 15);
+        short V_H = (short) (pack[5] & dp.m);
+        short RA_L = (short) (pack[6] & 255);
+        short QB_L = (short) (pack[7] & 255);
+        short QB_H = (short) ((pack[8] >> 4) & 255);
+        short RA_H = (short) (pack[8] & dp.m);
+        short LA = (short) (((LA_H << 8) & 4095) | LA_L);
+        short RA = (short) (((RA_H << 8) & 4095) | RA_L);
+        short s = (short) (((QB_H << 8) & 4095) | QB_L);
+        short V = (short) (((V_H << 8) & 4095) | V_L);
+        short II = (short) (4096 - RA);
+        short III = (short) (4096 - LA);
+        short I = (short) ((LA - RA) + 2048);
+        short AVR = (short) ((RA - (LA / 2)) + 1024);
+        short AVL = (short) ((LA - (RA / 2)) + 1024);
+        short AVF = (short) (4096 - ((RA + LA) / 2));
+        return new short[]{I, II, III, AVR, AVL, AVF, (short) (V - (((RA + LA) - 4096) / 3))};
     }
 
     public static byte[] unPack(byte[] pack) {

@@ -95,275 +95,82 @@ public class Pedometer_Trend extends Trend {
         return _request;
     }
 
-    /* JADX DEBUG: Multi-variable search result rejected for TypeSearchVarInfo{r21v0, resolved type: byte} */
-    /* JADX DEBUG: Multi-variable search result rejected for TypeSearchVarInfo{r21v1, resolved type: byte} */
-    /* JADX DEBUG: Multi-variable search result rejected for TypeSearchVarInfo{r0v9, resolved type: byte} */
-    /* JADX DEBUG: Multi-variable search result rejected for TypeSearchVarInfo{r1v1, resolved type: byte} */
-    /* JADX DEBUG: Multi-variable search result rejected for TypeSearchVarInfo{r0v63, resolved type: byte} */
-    /* JADX DEBUG: Multi-variable search result rejected for TypeSearchVarInfo{r1v8, resolved type: byte} */
-    /* JADX DEBUG: Multi-variable search result rejected for TypeSearchVarInfo{r21v3, resolved type: byte} */
-    /* JADX WARNING: Multi-variable type inference failed */
-    /* Code decompiled incorrectly, please refer to instructions dump. */
-    public java.lang.String makeContect() {
-        /*
-            r27 = this;
-            r22 = 0
-            byte[] r22 = (byte[]) r22
-            r15 = 8
-            r0 = r27
-            java.util.List<com.contec.phms.db.PedometerHistoryDao> r0 = r0.mList
-            r24 = r0
-            if (r24 == 0) goto L_0x0221
-            r0 = r27
-            java.util.List<com.contec.phms.db.PedometerHistoryDao> r0 = r0.mList
-            r24 = r0
-            int r24 = r24.size()
-            r0 = r24
-            byte r12 = (byte) r0
-            r3 = 0
-            int r24 = r12 * r3
-            int r24 = r24 + 3
-            int r7 = r24 + 4
-            byte[] r0 = new byte[r7]
-            r22 = r0
-            r24 = 0
-            r22[r24] = r15
-            r24 = 1
-            r22[r24] = r12
-            r24 = 2
-            r25 = 0
-            r22[r24] = r25
-            r19 = 3
-            r24 = 80
-            int r11 = r24 / r12
-            r23 = 0
-            r17 = 0
-            r21 = 0
-            r20 = r19
-        L_0x0042:
-            r0 = r21
-            if (r0 < r12) goto L_0x008f
-            int r19 = r20 + 1
-            int r24 = r17 >> 8
-            r0 = r24
-            r0 = r0 & 255(0xff, float:3.57E-43)
-            r24 = r0
-            r0 = r24
-            byte r0 = (byte) r0
-            r24 = r0
-            r22[r20] = r24
-            int r20 = r19 + 1
-            r0 = r17
-            r0 = r0 & 255(0xff, float:3.57E-43)
-            r24 = r0
-            r0 = r24
-            byte r0 = (byte) r0
-            r24 = r0
-            r22[r19] = r24
-            int r19 = r20 + 1
-            int r24 = r23 >> 8
-            r0 = r24
-            r0 = r0 & 255(0xff, float:3.57E-43)
-            r24 = r0
-            r0 = r24
-            byte r0 = (byte) r0
-            r24 = r0
-            r22[r20] = r24
-            int r20 = r19 + 1
-            r0 = r23
-            r0 = r0 & 255(0xff, float:3.57E-43)
-            r24 = r0
-            r0 = r24
-            byte r0 = (byte) r0
-            r24 = r0
-            r22[r19] = r24
-        L_0x0086:
-            r0 = r27
-            r1 = r22
-            java.lang.String r24 = r0.encodeBASE64(r1)
-            return r24
-        L_0x008f:
-            r0 = r27
-            java.util.List<com.contec.phms.db.PedometerHistoryDao> r0 = r0.mList
-            r24 = r0
-            r0 = r24
-            r1 = r21
-            java.lang.Object r10 = r0.get(r1)
-            com.contec.phms.db.PedometerHistoryDao r10 = (com.contec.phms.db.PedometerHistoryDao) r10
-            java.lang.String r24 = "more"
-            java.lang.StringBuilder r25 = new java.lang.StringBuilder
-            java.lang.String r26 = "makecontent  _pedomterData list = "
-            r25.<init>(r26)
-            java.lang.String r26 = r10.toString()
-            java.lang.StringBuilder r25 = r25.append(r26)
-            java.lang.String r25 = r25.toString()
-            com.contec.phms.util.CLog.i(r24, r25)
-            java.lang.String r14 = r10.getmStartTime()
-            r24 = 2
-            r25 = 4
-            r0 = r24
-            r1 = r25
-            java.lang.String r24 = r14.substring(r0, r1)
-            java.lang.String r24 = r24.toString()
-            int r24 = java.lang.Integer.parseInt(r24)
-            r0 = r24
-            byte r0 = (byte) r0
-            r16 = r0
-            r24 = 5
-            r25 = 7
-            r0 = r24
-            r1 = r25
-            java.lang.String r24 = r14.substring(r0, r1)
-            java.lang.String r24 = r24.toString()
-            int r24 = java.lang.Integer.parseInt(r24)
-            r0 = r24
-            byte r9 = (byte) r0
-            r24 = 8
-            r25 = 10
-            r0 = r24
-            r1 = r25
-            java.lang.String r24 = r14.substring(r0, r1)
-            java.lang.String r24 = r24.toString()
-            int r24 = java.lang.Integer.parseInt(r24)
-            r0 = r24
-            byte r4 = (byte) r0
-            r24 = 11
-            r25 = 13
-            r0 = r24
-            r1 = r25
-            java.lang.String r24 = r14.substring(r0, r1)
-            java.lang.String r24 = r24.toString()
-            int r24 = java.lang.Integer.parseInt(r24)
-            r0 = r24
-            byte r6 = (byte) r0
-            r24 = 14
-            r25 = 16
-            r0 = r24
-            r1 = r25
-            java.lang.String r24 = r14.substring(r0, r1)
-            java.lang.String r24 = r24.toString()
-            int r24 = java.lang.Integer.parseInt(r24)
-            r0 = r24
-            byte r8 = (byte) r0
-            java.lang.String r24 = "more"
-            java.lang.StringBuilder r25 = new java.lang.StringBuilder
-            java.lang.String r26 = "makecontent  _pedomterData time = "
-            r25.<init>(r26)
-            r0 = r25
-            r1 = r16
-            java.lang.StringBuilder r25 = r0.append(r1)
-            java.lang.String r26 = "  "
-            java.lang.StringBuilder r25 = r25.append(r26)
-            r0 = r25
-            java.lang.StringBuilder r25 = r0.append(r9)
-            java.lang.String r26 = "  "
-            java.lang.StringBuilder r25 = r25.append(r26)
-            r0 = r25
-            java.lang.StringBuilder r25 = r0.append(r4)
-            java.lang.String r26 = "  "
-            java.lang.StringBuilder r25 = r25.append(r26)
-            r0 = r25
-            java.lang.StringBuilder r25 = r0.append(r6)
-            java.lang.String r26 = "  "
-            java.lang.StringBuilder r25 = r25.append(r26)
-            r0 = r25
-            java.lang.StringBuilder r25 = r0.append(r8)
-            java.lang.String r25 = r25.toString()
-            com.contec.phms.util.CLog.i(r24, r25)
-            int r19 = r20 + 1
-            r22[r20] = r16
-            int r20 = r19 + 1
-            r22[r19] = r9
-            int r19 = r20 + 1
-            r22[r20] = r4
-            int r20 = r19 + 1
-            r22[r19] = r6
-            int r19 = r20 + 1
-            r22[r20] = r8
-            int r13 = r10.getmStep()
-            int r2 = r10.getmCalories()
-            int r20 = r19 + 1
-            int r24 = r2 >> 8
-            r0 = r24
-            r0 = r0 & 255(0xff, float:3.57E-43)
-            r24 = r0
-            r0 = r24
-            byte r0 = (byte) r0
-            r24 = r0
-            r22[r19] = r24
-            int r19 = r20 + 1
-            r0 = r2 & 255(0xff, float:3.57E-43)
-            r24 = r0
-            r0 = r24
-            byte r0 = (byte) r0
-            r24 = r0
-            r22[r20] = r24
-            int r20 = r19 + 1
-            int r24 = r13 >> 8
-            r0 = r24
-            r0 = r0 & 255(0xff, float:3.57E-43)
-            r24 = r0
-            r0 = r24
-            byte r0 = (byte) r0
-            r24 = r0
-            r22[r19] = r24
-            int r19 = r20 + 1
-            r0 = r13 & 255(0xff, float:3.57E-43)
-            r24 = r0
-            r0 = r24
-            byte r0 = (byte) r0
-            r24 = r0
-            r22[r20] = r24
-            com.contec.phms.eventbus.EventFragment r5 = new com.contec.phms.eventbus.EventFragment
-            r5.<init>()
-            r24 = 2
-            r0 = r24
-            r5.setmWhichCommand(r0)
-            int r24 = r21 + 1
-            int r24 = r24 * r11
-            int r24 = r24 + 10
-            r0 = r24
-            r5.setmProgress(r0)
-            com.contec.phms.App_phms r24 = com.contec.phms.App_phms.getInstance()     // Catch:{ Exception -> 0x021c }
-            r0 = r24
-            de.greenrobot.event.EventBus r0 = r0.mEventBus     // Catch:{ Exception -> 0x021c }
-            r24 = r0
-            r0 = r24
-            r0.post(r5)     // Catch:{ Exception -> 0x021c }
-        L_0x01f6:
-            r5 = 0
-            r0 = r27
-            java.util.List<com.contec.phms.db.PedometerHistoryDao> r0 = r0.mList
-            r24 = r0
-            int r24 = r24.size()
-            int r24 = r24 + -1
-            r0 = r21
-            r1 = r24
-            if (r0 != r1) goto L_0x0216
-            int r23 = r10.getmSumStep()
-            float r24 = r10.getmSumCalories()
-            r0 = r24
-            int r0 = (int) r0
-            r17 = r0
-        L_0x0216:
-            int r21 = r21 + 1
-            r20 = r19
-            goto L_0x0042
-        L_0x021c:
-            r18 = move-exception
-            r18.printStackTrace()
-            goto L_0x01f6
-        L_0x0221:
-            r24 = 1
-            r0 = r24
-            byte[] r0 = new byte[r0]
-            r22 = r0
-            r24 = 0
-            r25 = 0
-            r22[r24] = r25
-            goto L_0x0086
-        */
-        throw new UnsupportedOperationException("Method not decompiled: com.contec.phms.upload.trend.Pedometer_Trend.makeContect():java.lang.String");
+    @Override // com.contec.phms.upload.trend.Trend
+    public String makeContect() {
+        byte[] pack;
+        int i;
+        if (this.mList != null) {
+            byte _size = (byte) this.mList.size();
+            int _length = (_size * 0) + 3 + 4;
+            pack = new byte[_length];
+            pack[0] = 8;
+            pack[1] = _size;
+            pack[2] = 0;
+            int i2 = 3;
+            int _per = 80 / _size;
+            int sumSteps = 0;
+            int cal = 0;
+            int j = 0;
+            while (true) {
+                i = i2;
+                if (j >= _size) {
+                    break;
+                }
+                PedometerHistoryDao _pedomterData = this.mList.get(j);
+                CLog.i("more", "makecontent  _pedomterData list = " + _pedomterData.toString());
+                String _time = _pedomterData.getmStartTime();
+                byte _year = (byte) Integer.parseInt(_time.substring(2, 4).toString());
+                byte _month = (byte) Integer.parseInt(_time.substring(5, 7).toString());
+                byte _day = (byte) Integer.parseInt(_time.substring(8, 10).toString());
+                byte _hour = (byte) Integer.parseInt(_time.substring(11, 13).toString());
+                byte _mm = (byte) Integer.parseInt(_time.substring(14, 16).toString());
+                CLog.i("more", "makecontent  _pedomterData time = " + ((int) _year) + "  " + ((int) _month) + "  " + ((int) _day) + "  " + ((int) _hour) + "  " + ((int) _mm));
+                int i3 = i + 1;
+                pack[i] = _year;
+                int i4 = i3 + 1;
+                pack[i3] = _month;
+                int i5 = i4 + 1;
+                pack[i4] = _day;
+                int i6 = i5 + 1;
+                pack[i5] = _hour;
+                int i7 = i6 + 1;
+                pack[i6] = _mm;
+                int _step = _pedomterData.getmStep();
+                int _calories = _pedomterData.getmCalories();
+                int i8 = i7 + 1;
+                pack[i7] = (byte) ((_calories >> 8) & 255);
+                int i9 = i8 + 1;
+                pack[i8] = (byte) (_calories & 255);
+                int i10 = i9 + 1;
+                pack[i9] = (byte) ((_step >> 8) & 255);
+                i2 = i10 + 1;
+                pack[i10] = (byte) (_step & 255);
+                EventFragment _fragment = new EventFragment();
+                _fragment.setmWhichCommand(2);
+                _fragment.setmProgress(((j + 1) * _per) + 10);
+                try {
+                    App_phms.getInstance().mEventBus.post(_fragment);
+                } catch (Exception e1) {
+                    e1.printStackTrace();
+                }
+                if (j == this.mList.size() - 1) {
+                    sumSteps = _pedomterData.getmSumStep();
+                    cal = (int) _pedomterData.getmSumCalories();
+                }
+                j++;
+            }
+            int i11 = i + 1;
+            pack[i] = (byte) ((cal >> 8) & 255);
+            int i12 = i11 + 1;
+            pack[i11] = (byte) (cal & 255);
+            int i13 = i12 + 1;
+            pack[i12] = (byte) ((sumSteps >> 8) & 255);
+            int i14 = i13 + 1;
+            pack[i13] = (byte) (sumSteps & 255);
+        } else {
+            pack = new byte[]{0};
+        }
+        return encodeBASE64(pack);
     }
 
     public String encodeBASE64(byte[] pack) {

@@ -41,13 +41,23 @@ import com.contec.phms.upload.trend.WTTrend_XML;
 import com.contec.phms.util.CLog;
 import com.contec.phms.util.Constants;
 import com.contec.phms.util.DeviceNameUtils;
+import com.contec.phms.util.FileOperation;
+import com.contec.phms.util.GetCurrentTimeMillis;
 import com.contec.phms.util.PageUtil;
+import com.contec.phms.util.PhmsSharedPreferences;
 import com.taobao.tae.sdk.TopComponent;
 import com.taobao.tae.sdk.model.Result;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import org.apache.commons.httpclient.HttpMethodBase;
+
+import cn.com.contec_net_3_android.Method_android_new_case;
+import cn.com.contec_net_3_android.Method_android_upload_case;
 import cn.com.contec_net_3_android.Method_android_upload_trend;
 import u.aly.bs;
 
@@ -258,1190 +268,257 @@ public class UploadTask {
         return _result;
     }
 
-    /* JADX WARNING: type inference failed for: r0v3, types: [com.contec.phms.device.template.DeviceData] */
-    /* JADX WARNING: type inference failed for: r0v173, types: [com.contec.phms.device.template.DeviceData] */
-    /* JADX WARNING: Multi-variable type inference failed */
-    /* Code decompiled incorrectly, please refer to instructions dump. */
     private boolean uploadCase() {
-        /*
-            r42 = this;
-            com.contec.phms.db.LoginUserDao r32 = com.contec.phms.util.PageUtil.getLoginUserInfo()
-            r19 = 0
-            java.lang.StringBuffer r21 = new java.lang.StringBuffer
-            r21.<init>()
-            r22 = 0
-            r0 = r42
-            com.contec.phms.device.template.DeviceData r4 = r0.mData
-            java.lang.String r4 = r4.mDataType
-            java.lang.String r5 = "ECG(PM10)"
-            boolean r4 = r4.equalsIgnoreCase(r5)
-            if (r4 == 0) goto L_0x03af
-            com.contec.phms.App_phms r4 = com.contec.phms.App_phms.getInstance()
-            android.content.Context r4 = r4.getApplicationContext()
-            com.contec.phms.util.PhmsSharedPreferences r4 = com.contec.phms.util.PhmsSharedPreferences.getInstance(r4)
-            java.lang.String r5 = "Electrocardiogram"
-            java.lang.String r6 = "auto"
-            java.lang.String r41 = r4.getString(r5, r6)
-            java.lang.String r4 = "auto"
-            r0 = r41
-            boolean r4 = r4.equals(r0)
-            if (r4 == 0) goto L_0x011f
-            r19 = 1
-        L_0x003b:
-            java.lang.String r4 = "UploadTask"
-            java.lang.StringBuilder r5 = new java.lang.StringBuilder
-            java.lang.String r6 = "type的值为:"
-            r5.<init>(r6)
-            r0 = r41
-            java.lang.StringBuilder r5 = r5.append(r0)
-            java.lang.String r6 = " _cardType的值为："
-            java.lang.StringBuilder r5 = r5.append(r6)
-            r0 = r19
-            java.lang.StringBuilder r5 = r5.append(r0)
-            java.lang.String r5 = r5.toString()
-            com.contec.phms.util.CLog.e(r4, r5)
-            r0 = r42
-            com.contec.phms.device.template.DeviceData r0 = r0.mData
-            r22 = r0
-            com.contec.phms.device.pm10.DeviceData r22 = (com.contec.phms.device.pm10.DeviceData) r22
-            r0 = r22
-            byte[] r0 = r0.TrendData
-            r28 = r0
-            java.lang.StringBuilder r4 = new java.lang.StringBuilder
-            r4.<init>()
-            r5 = 0
-            byte r5 = r28[r5]
-            int r5 = r5 + 2000
-            java.lang.StringBuilder r4 = r4.append(r5)
-            java.lang.String r5 = "-"
-            java.lang.StringBuilder r4 = r4.append(r5)
-            r5 = 1
-            byte r5 = r28[r5]
-            java.lang.StringBuilder r4 = r4.append(r5)
-            java.lang.String r5 = "-"
-            java.lang.StringBuilder r4 = r4.append(r5)
-            r5 = 2
-            byte r5 = r28[r5]
-            java.lang.StringBuilder r4 = r4.append(r5)
-            java.lang.String r5 = " "
-            java.lang.StringBuilder r4 = r4.append(r5)
-            r5 = 3
-            byte r5 = r28[r5]
-            java.lang.StringBuilder r4 = r4.append(r5)
-            java.lang.String r5 = ":"
-            java.lang.StringBuilder r4 = r4.append(r5)
-            r5 = 4
-            byte r5 = r28[r5]
-            java.lang.StringBuilder r4 = r4.append(r5)
-            java.lang.String r5 = ":"
-            java.lang.StringBuilder r4 = r4.append(r5)
-            r5 = 5
-            byte r5 = r28[r5]
-            java.lang.StringBuilder r4 = r4.append(r5)
-            java.lang.String r29 = r4.toString()
-            r34 = 0
-            com.contec.phms.util.GetCurrentTimeMillis r3 = new com.contec.phms.util.GetCurrentTimeMillis
-            r4 = 0
-            byte r4 = r28[r4]
-            r5 = 1
-            byte r5 = r28[r5]
-            r6 = 2
-            byte r6 = r28[r6]
-            r8 = 3
-            byte r7 = r28[r8]
-            r8 = 4
-            byte r8 = r28[r8]
-            r9 = 5
-            byte r9 = r28[r9]
-            r3.<init>(r4, r5, r6, r7, r8, r9)
-            java.lang.String r33 = r3.getTime()
-            java.text.SimpleDateFormat r35 = new java.text.SimpleDateFormat
-            java.lang.String r4 = "yyyyMMddHHmmss"
-            r0 = r35
-            r0.<init>(r4)
-            long r4 = java.lang.System.currentTimeMillis()     // Catch:{ ParseException -> 0x012d }
-            r8 = 1000(0x3e8, double:4.94E-321)
-            long r4 = r4 / r8
-            r0 = r35
-            r1 = r33
-            java.util.Date r6 = r0.parse(r1)     // Catch:{ ParseException -> 0x012d }
-            long r8 = r6.getTime()     // Catch:{ ParseException -> 0x012d }
-            r10 = 1000(0x3e8, double:4.94E-321)
-            long r8 = r8 / r10
-            long r4 = r4 - r8
-            r0 = r42
-            r0.difference = r4     // Catch:{ ParseException -> 0x012d }
-        L_0x00ff:
-            r0 = r42
-            long r4 = r0.difference
-            r8 = -2592000(0xffffffffffd87300, double:NaN)
-            int r4 = (r4 > r8 ? 1 : (r4 == r8 ? 0 : -1))
-            if (r4 < 0) goto L_0x0115
-            r0 = r42
-            long r4 = r0.difference
-            r8 = 31536000(0x1e13380, double:1.5580854E-316)
-            int r4 = (r4 > r8 ? 1 : (r4 == r8 ? 0 : -1))
-            if (r4 <= 0) goto L_0x0132
-        L_0x0115:
-            r0 = r42
-            com.contec.phms.device.template.DeviceData r4 = r0.mData
-            r5 = 1
-            r4.mCheckTimeIllegal = r5
-            r27 = 0
-        L_0x011e:
-            return r27
-        L_0x011f:
-            java.lang.String r4 = "doctor"
-            r0 = r41
-            boolean r4 = r4.equals(r0)
-            if (r4 == 0) goto L_0x003b
-            r19 = 0
-            goto L_0x003b
-        L_0x012d:
-            r37 = move-exception
-            r37.printStackTrace()
-            goto L_0x00ff
-        L_0x0132:
-            java.text.SimpleDateFormat r38 = new java.text.SimpleDateFormat
-            java.lang.String r4 = "yyyy-MM-dd HH:mm:ss"
-            r0 = r38
-            r0.<init>(r4)
-            r0 = r38
-            r1 = r29
-            java.util.Date r34 = r0.parse(r1)     // Catch:{ ParseException -> 0x0397 }
-        L_0x0143:
-            r42.baseinfo()
-            java.lang.String r4 = "Chinese"
-            r0 = r42
-            r0._sp10Language = r4
-            java.lang.String r4 = com.contec.phms.util.Constants.Language
-            java.lang.String r5 = "en"
-            boolean r4 = r4.contains(r5)
-            if (r4 == 0) goto L_0x039d
-            java.lang.String r4 = "English"
-            r0 = r42
-            r0._sp10Language = r4
-        L_0x015c:
-            r4 = 6
-            byte r4 = r28[r4]
-            r4 = r4 & 255(0xff, float:3.57E-43)
-            int r4 = r4 << 7
-            r5 = 7
-            byte r5 = r28[r5]
-            r5 = r5 & 255(0xff, float:3.57E-43)
-            r4 = r4 | r5
-            r0 = r4 & 2047(0x7ff, float:2.868E-42)
-            r24 = r0
-            java.lang.StringBuilder r4 = new java.lang.StringBuilder
-            r4.<init>()
-            r5 = 8
-            byte r5 = r28[r5]
-            java.lang.StringBuilder r4 = r4.append(r5)
-            r5 = 9
-            byte r5 = r28[r5]
-            java.lang.StringBuilder r4 = r4.append(r5)
-            r5 = 10
-            byte r5 = r28[r5]
-            java.lang.StringBuilder r4 = r4.append(r5)
-            r5 = 11
-            byte r5 = r28[r5]
-            java.lang.StringBuilder r4 = r4.append(r5)
-            r5 = 12
-            byte r5 = r28[r5]
-            java.lang.StringBuilder r4 = r4.append(r5)
-            r5 = 13
-            byte r5 = r28[r5]
-            java.lang.StringBuilder r4 = r4.append(r5)
-            r5 = 14
-            byte r5 = r28[r5]
-            java.lang.StringBuilder r4 = r4.append(r5)
-            r5 = 15
-            byte r5 = r28[r5]
-            java.lang.StringBuilder r4 = r4.append(r5)
-            r5 = 16
-            byte r5 = r28[r5]
-            java.lang.StringBuilder r4 = r4.append(r5)
-            r5 = 17
-            byte r5 = r28[r5]
-            java.lang.StringBuilder r4 = r4.append(r5)
-            r5 = 18
-            byte r5 = r28[r5]
-            java.lang.StringBuilder r4 = r4.append(r5)
-            r5 = 19
-            byte r5 = r28[r5]
-            java.lang.StringBuilder r4 = r4.append(r5)
-            r5 = 20
-            byte r5 = r28[r5]
-            java.lang.StringBuilder r4 = r4.append(r5)
-            r5 = 21
-            byte r5 = r28[r5]
-            java.lang.StringBuilder r4 = r4.append(r5)
-            java.lang.String r25 = r4.toString()
-            r0 = r38
-            r1 = r34
-            java.lang.String r40 = r0.format(r1)
-            java.lang.String r4 = "&lt;?xml version=\"1.0\" encoding=\"GBK\"?&gt;&lt;otherparam&gt;"
-            r0 = r21
-            r0.append(r4)
-            java.lang.String r4 = "&lt;heartrate&gt;"
-            r0 = r21
-            r0.append(r4)
-            java.lang.StringBuilder r4 = new java.lang.StringBuilder
-            r4.<init>()
-            r0 = r24
-            java.lang.StringBuilder r4 = r4.append(r0)
-            java.lang.String r4 = r4.toString()
-            r0 = r21
-            r0.append(r4)
-            java.lang.String r4 = "&lt;/heartrate&gt;&lt;feature&gt;"
-            r0 = r21
-            r0.append(r4)
-            java.lang.StringBuilder r4 = new java.lang.StringBuilder
-            r4.<init>()
-            r0 = r25
-            java.lang.StringBuilder r4 = r4.append(r0)
-            java.lang.String r4 = r4.toString()
-            r0 = r21
-            r0.append(r4)
-            java.lang.String r4 = "&lt;/feature&gt;&lt;checktime&gt;"
-            r0 = r21
-            r0.append(r4)
-            r0 = r21
-            r1 = r40
-            r0.append(r1)
-            java.lang.String r4 = "&lt;/checktime&gt;"
-            r0 = r21
-            r0.append(r4)
-            java.lang.String r4 = "&lt;caseName&gt;"
-            r0 = r21
-            r0.append(r4)
-            r0 = r42
-            com.contec.phms.db.LoginUserDao r4 = r0._loginUserInfo
-            java.lang.String r4 = r4.mUserName
-            r0 = r21
-            r0.append(r4)
-            java.lang.String r4 = "&lt;/caseName&gt;"
-            r0 = r21
-            r0.append(r4)
-            java.lang.String r4 = "&lt;age&gt;"
-            r0 = r21
-            r0.append(r4)
-            r0 = r42
-            java.lang.String r4 = r0._age
-            r0 = r21
-            r0.append(r4)
-            java.lang.String r4 = "&lt;/age&gt;"
-            r0 = r21
-            r0.append(r4)
-            java.lang.String r4 = "&lt;height&gt;"
-            r0 = r21
-            r0.append(r4)
-            r0 = r42
-            java.lang.String r4 = r0._height
-            r0 = r21
-            r0.append(r4)
-            java.lang.String r4 = "&lt;/height&gt;"
-            r0 = r21
-            r0.append(r4)
-            java.lang.String r4 = "&lt;weight&gt;"
-            r0 = r21
-            r0.append(r4)
-            r0 = r42
-            java.lang.String r4 = r0._weight
-            r0 = r21
-            r0.append(r4)
-            java.lang.String r4 = "&lt;/weight&gt;"
-            r0 = r21
-            r0.append(r4)
-            java.lang.String r4 = "&lt;sex&gt;"
-            r0 = r21
-            r0.append(r4)
-            r0 = r42
-            java.lang.String r4 = r0._sex
-            r0 = r21
-            r0.append(r4)
-            java.lang.String r4 = "&lt;/sex&gt;"
-            r0 = r21
-            r0.append(r4)
-            java.lang.String r4 = "&lt;language&gt;"
-            r0 = r21
-            r0.append(r4)
-            r0 = r42
-            java.lang.String r4 = r0._sp10Language
-            r0 = r21
-            r0.append(r4)
-            java.lang.String r4 = "&lt;/language&gt;"
-            r0 = r21
-            r0.append(r4)
-            java.lang.String r4 = "&lt;/otherparam&gt;"
-            r0 = r21
-            r0.append(r4)
-        L_0x02d3:
-            r0 = r42
-            com.contec.phms.device.template.DeviceData r4 = r0.mData
-            java.lang.String r4 = r4.mDataType
-            java.lang.String r5 = "contec8000gw"
-            boolean r4 = r4.equalsIgnoreCase(r5)
-            if (r4 == 0) goto L_0x02f2
-            r0 = r42
-            com.contec.phms.upload.cases.common.NEW_CASE r4 = r0.mCase
-            java.lang.String r40 = r4.getStrPaceTime()
-            r0 = r42
-            r1 = r21
-            r2 = r40
-            r0.process8000GW(r1, r2)
-        L_0x02f2:
-            r0 = r32
-            java.lang.String r3 = r0.mSID
-            r0 = r32
-            java.lang.String r4 = r0.mHospitalName
-            r0 = r32
-            java.lang.String r5 = r0.mHospitalID
-            r0 = r32
-            java.lang.String r6 = r0.mUserName
-            r0 = r42
-            com.contec.phms.upload.cases.common.NEW_CASE r8 = r0.mCase
-            java.lang.String r7 = r8.getCaseName()
-            java.lang.StringBuilder r8 = new java.lang.StringBuilder
-            r0 = r42
-            com.contec.phms.upload.cases.common.NEW_CASE r9 = r0.mCase
-            int r9 = r9.getCaseType()
-            java.lang.String r9 = java.lang.String.valueOf(r9)
-            r8.<init>(r9)
-            java.lang.String r8 = r8.toString()
-            r0 = r32
-            java.lang.String r9 = r0.mUID
-            com.contec.phms.App_phms r10 = com.contec.phms.App_phms.getInstance()
-            com.contec.phms.infos.UserInfo r10 = r10.mUserInfo
-            java.lang.String r10 = r10.mPassword
-            r0 = r42
-            com.contec.phms.upload.cases.common.NEW_CASE r11 = r0.mCase
-            java.lang.String r11 = r11.getStrPaceTime()
-            com.contec.phms.App_phms r12 = com.contec.phms.App_phms.getInstance()
-            com.contec.phms.infos.UserInfo r12 = r12.mUserInfo
-            java.lang.String r12 = r12.mSex
-            java.lang.StringBuilder r13 = new java.lang.StringBuilder
-            java.lang.String r14 = com.contec.phms.util.Constants.URL
-            java.lang.String r14 = java.lang.String.valueOf(r14)
-            r13.<init>(r14)
-            java.lang.String r14 = "/main.php"
-            java.lang.StringBuilder r13 = r13.append(r14)
-            java.lang.String r13 = r13.toString()
-            java.lang.StringBuilder r14 = new java.lang.StringBuilder
-            r14.<init>()
-            r0 = r19
-            java.lang.StringBuilder r14 = r14.append(r0)
-            java.lang.String r14 = r14.toString()
-            java.lang.String r15 = r21.toString()
-            r0 = r42
-            com.contec.phms.upload.cases.common.NEW_CASE r0 = r0.mCase
-            r16 = r0
-            java.lang.String r16 = r16.getStrCasePath()
-            r17 = 0
-            r18 = 0
-            java.lang.String r26 = cn.com.contec_net_3_android.Method_android_new_case.getCaseID(r3, r4, r5, r6, r7, r8, r9, r10, r11, r12, r13, r14, r15, r16, r17, r18)
-            java.lang.String r4 = "UploadTask"
-            java.lang.StringBuilder r5 = new java.lang.StringBuilder
-            java.lang.String r6 = "_responedResult:"
-            r5.<init>(r6)
-            r0 = r26
-            java.lang.StringBuilder r5 = r5.append(r0)
-            java.lang.String r5 = r5.toString()
-            com.contec.phms.util.CLog.i(r4, r5)
-            int r4 = r26.length()
-            r5 = 40
-            if (r4 >= r5) goto L_0x08bd
-            r27 = 0
-            goto L_0x011e
-        L_0x0397:
-            r36 = move-exception
-            r36.printStackTrace()
-            goto L_0x0143
-        L_0x039d:
-            java.lang.String r4 = com.contec.phms.util.Constants.Language
-            java.lang.String r5 = "zh"
-            boolean r4 = r4.contains(r5)
-            if (r4 == 0) goto L_0x015c
-            java.lang.String r4 = "Chinese"
-            r0 = r42
-            r0._sp10Language = r4
-            goto L_0x015c
-        L_0x03af:
-            r0 = r42
-            com.contec.phms.device.template.DeviceData r4 = r0.mData
-            java.lang.String r4 = r4.mDataType
-            java.lang.String r5 = "cms50k"
-            boolean r4 = r4.equalsIgnoreCase(r5)
-            if (r4 != 0) goto L_0x03d9
-            r0 = r42
-            com.contec.phms.device.template.DeviceData r4 = r0.mData
-            java.lang.String r4 = r4.mDataType
-            java.lang.String r5 = "ECG(CMS50K)"
-            boolean r4 = r4.equalsIgnoreCase(r5)
-            if (r4 != 0) goto L_0x03d9
-            r0 = r42
-            com.contec.phms.device.template.DeviceData r4 = r0.mData
-            java.lang.String r4 = r4.mDataType
-            java.lang.String r5 = "ECG(CMS50K1)"
-            boolean r4 = r4.equalsIgnoreCase(r5)
-            if (r4 == 0) goto L_0x071a
-        L_0x03d9:
-            com.contec.phms.App_phms r4 = com.contec.phms.App_phms.getInstance()
-            android.content.Context r4 = r4.getApplicationContext()
-            com.contec.phms.util.PhmsSharedPreferences r4 = com.contec.phms.util.PhmsSharedPreferences.getInstance(r4)
-            java.lang.String r5 = "cms50k_card_set"
-            java.lang.String r6 = "auto"
-            java.lang.String r41 = r4.getString(r5, r6)
-            r0 = r42
-            com.contec.phms.device.template.DeviceData r0 = r0.mData
-            r22 = r0
-            com.contec.phms.device.pm10.DeviceData r22 = (com.contec.phms.device.pm10.DeviceData) r22
-            java.lang.String r4 = "auto"
-            r0 = r41
-            boolean r4 = r4.equals(r0)
-            if (r4 == 0) goto L_0x06f4
-            r19 = 1
-        L_0x0401:
-            r42.baseinfo()
-            r0 = r42
-            com.contec.phms.db.LoginUserDao r4 = r0._loginUserInfo
-            java.lang.String r4 = r4.mPID
-            if (r4 == 0) goto L_0x0435
-            r0 = r42
-            com.contec.phms.db.LoginUserDao r4 = r0._loginUserInfo
-            java.lang.String r4 = r4.mPID
-            java.lang.String r5 = ""
-            boolean r4 = r4.equalsIgnoreCase(r5)
-            if (r4 != 0) goto L_0x0435
-            java.lang.StringBuilder r4 = new java.lang.StringBuilder
-            r4.<init>()
-            r0 = r42
-            com.contec.phms.db.LoginUserDao r5 = r0._loginUserInfo
-            java.lang.String r5 = r5.mPID
-            long r5 = java.lang.Long.parseLong(r5)
-            java.lang.StringBuilder r4 = r4.append(r5)
-            java.lang.String r4 = r4.toString()
-            r0 = r42
-            r0._pid = r4
-        L_0x0435:
-            r0 = r42
-            com.contec.phms.db.LoginUserDao r4 = r0._loginUserInfo
-            java.lang.String r4 = r4.mPhone
-            if (r4 == 0) goto L_0x0466
-            r0 = r42
-            com.contec.phms.db.LoginUserDao r4 = r0._loginUserInfo
-            java.lang.String r4 = r4.mPhone
-            java.lang.String r5 = ""
-            boolean r4 = r4.equalsIgnoreCase(r5)
-            if (r4 != 0) goto L_0x0466
-            java.lang.StringBuilder r4 = new java.lang.StringBuilder
-            r4.<init>()
-            r0 = r42
-            com.contec.phms.db.LoginUserDao r5 = r0._loginUserInfo
-            java.lang.String r5 = r5.mPhone
-            long r5 = java.lang.Long.parseLong(r5)
-            java.lang.StringBuilder r4 = r4.append(r5)
-            java.lang.String r4 = r4.toString()
-            r0 = r42
-            r0._phone = r4
-        L_0x0466:
-            java.lang.String r4 = "******************************"
-            java.lang.String r5 = "&&&&&&&&&&&&&&&&&&&&&"
-            com.contec.phms.util.CLog.e(r4, r5)
-            java.lang.String r4 = "******************************"
-            java.lang.StringBuilder r5 = new java.lang.StringBuilder
-            r5.<init>()
-            r0 = r42
-            java.lang.String r6 = r0._phone
-            java.lang.StringBuilder r5 = r5.append(r6)
-            java.lang.String r5 = r5.toString()
-            com.contec.phms.util.CLog.e(r4, r5)
-            java.lang.String r4 = "******************************"
-            java.lang.String r5 = "&&&&&&&&&&&&&&&&&&&&&"
-            com.contec.phms.util.CLog.e(r4, r5)
-            java.lang.String r4 = "chinese"
-            r0 = r42
-            r0._otherLanauage = r4
-            java.lang.String r4 = com.contec.phms.util.Constants.Language
-            java.lang.String r5 = "en"
-            boolean r4 = r4.contains(r5)
-            if (r4 == 0) goto L_0x0702
-            java.lang.String r4 = "english"
-            r0 = r42
-            r0._otherLanauage = r4
-        L_0x04a0:
-            r0 = r22
-            byte[] r0 = r0.TrendData
-            r28 = r0
-            r4 = 6
-            byte r4 = r28[r4]
-            r4 = r4 & 255(0xff, float:3.57E-43)
-            int r4 = r4 << 7
-            r5 = 7
-            byte r5 = r28[r5]
-            r5 = r5 & 255(0xff, float:3.57E-43)
-            r4 = r4 | r5
-            r0 = r4 & 2047(0x7ff, float:2.868E-42)
-            r24 = r0
-            java.lang.StringBuilder r4 = new java.lang.StringBuilder
-            r4.<init>()
-            r5 = 8
-            byte r5 = r28[r5]
-            java.lang.StringBuilder r4 = r4.append(r5)
-            r5 = 9
-            byte r5 = r28[r5]
-            java.lang.StringBuilder r4 = r4.append(r5)
-            r5 = 10
-            byte r5 = r28[r5]
-            java.lang.StringBuilder r4 = r4.append(r5)
-            r5 = 11
-            byte r5 = r28[r5]
-            java.lang.StringBuilder r4 = r4.append(r5)
-            r5 = 12
-            byte r5 = r28[r5]
-            java.lang.StringBuilder r4 = r4.append(r5)
-            r5 = 13
-            byte r5 = r28[r5]
-            java.lang.StringBuilder r4 = r4.append(r5)
-            r5 = 14
-            byte r5 = r28[r5]
-            java.lang.StringBuilder r4 = r4.append(r5)
-            r5 = 15
-            byte r5 = r28[r5]
-            java.lang.StringBuilder r4 = r4.append(r5)
-            r5 = 16
-            byte r5 = r28[r5]
-            java.lang.StringBuilder r4 = r4.append(r5)
-            r5 = 17
-            byte r5 = r28[r5]
-            java.lang.StringBuilder r4 = r4.append(r5)
-            r5 = 18
-            byte r5 = r28[r5]
-            java.lang.StringBuilder r4 = r4.append(r5)
-            r5 = 19
-            byte r5 = r28[r5]
-            java.lang.StringBuilder r4 = r4.append(r5)
-            r5 = 20
-            byte r5 = r28[r5]
-            java.lang.StringBuilder r4 = r4.append(r5)
-            r5 = 21
-            byte r5 = r28[r5]
-            java.lang.StringBuilder r4 = r4.append(r5)
-            java.lang.String r25 = r4.toString()
-            java.lang.StringBuilder r4 = new java.lang.StringBuilder
-            r4.<init>()
-            r5 = 0
-            byte r5 = r28[r5]
-            int r5 = r5 + 2000
-            java.lang.StringBuilder r4 = r4.append(r5)
-            java.lang.String r5 = "-"
-            java.lang.StringBuilder r4 = r4.append(r5)
-            r5 = 1
-            byte r5 = r28[r5]
-            java.lang.StringBuilder r4 = r4.append(r5)
-            java.lang.String r5 = "-"
-            java.lang.StringBuilder r4 = r4.append(r5)
-            r5 = 2
-            byte r5 = r28[r5]
-            java.lang.StringBuilder r4 = r4.append(r5)
-            java.lang.String r5 = " "
-            java.lang.StringBuilder r4 = r4.append(r5)
-            r5 = 3
-            byte r5 = r28[r5]
-            java.lang.StringBuilder r4 = r4.append(r5)
-            java.lang.String r5 = ":"
-            java.lang.StringBuilder r4 = r4.append(r5)
-            r5 = 4
-            byte r5 = r28[r5]
-            java.lang.StringBuilder r4 = r4.append(r5)
-            java.lang.String r5 = ":"
-            java.lang.StringBuilder r4 = r4.append(r5)
-            r5 = 5
-            byte r5 = r28[r5]
-            java.lang.StringBuilder r4 = r4.append(r5)
-            java.lang.String r29 = r4.toString()
-            r34 = 0
-            java.text.SimpleDateFormat r38 = new java.text.SimpleDateFormat
-            java.lang.String r4 = "yyyy-MM-dd HH:mm:ss"
-            r0 = r38
-            r0.<init>(r4)
-            r0 = r38
-            r1 = r29
-            java.util.Date r34 = r0.parse(r1)     // Catch:{ ParseException -> 0x0714 }
-        L_0x0596:
-            r0 = r38
-            r1 = r34
-            java.lang.String r40 = r0.format(r1)
-            java.lang.String r4 = "&lt;?xml version=\"1.0\" encoding=\"GBK\"?&gt;&lt;otherparam&gt;"
-            r0 = r21
-            r0.append(r4)
-            java.lang.String r4 = "&lt;heartrate&gt;"
-            r0 = r21
-            r0.append(r4)
-            java.lang.StringBuilder r4 = new java.lang.StringBuilder
-            r4.<init>()
-            r0 = r24
-            java.lang.StringBuilder r4 = r4.append(r0)
-            java.lang.String r4 = r4.toString()
-            r0 = r21
-            r0.append(r4)
-            java.lang.String r4 = "&lt;/heartrate&gt;&lt;feature&gt;"
-            r0 = r21
-            r0.append(r4)
-            java.lang.StringBuilder r4 = new java.lang.StringBuilder
-            r4.<init>()
-            r0 = r25
-            java.lang.StringBuilder r4 = r4.append(r0)
-            java.lang.String r4 = r4.toString()
-            r0 = r21
-            r0.append(r4)
-            java.lang.String r4 = "&lt;/feature&gt;&lt;checktime&gt;"
-            r0 = r21
-            r0.append(r4)
-            r0 = r21
-            r1 = r40
-            r0.append(r1)
-            java.lang.String r4 = "&lt;/checktime&gt;"
-            r0 = r21
-            r0.append(r4)
-            java.lang.String r4 = "&lt;pid&gt;"
-            r0 = r21
-            r0.append(r4)
-            java.lang.StringBuilder r4 = new java.lang.StringBuilder
-            r4.<init>()
-            r0 = r42
-            java.lang.String r5 = r0._pid
-            java.lang.StringBuilder r4 = r4.append(r5)
-            java.lang.String r4 = r4.toString()
-            r0 = r21
-            r0.append(r4)
-            java.lang.String r4 = "&lt;/pid&gt;&lt;caseName&gt;"
-            r0 = r21
-            r0.append(r4)
-            java.lang.StringBuilder r4 = new java.lang.StringBuilder
-            r4.<init>()
-            r0 = r42
-            com.contec.phms.db.LoginUserDao r5 = r0._loginUserInfo
-            java.lang.String r5 = r5.mUserName
-            java.lang.StringBuilder r4 = r4.append(r5)
-            java.lang.String r4 = r4.toString()
-            r0 = r21
-            r0.append(r4)
-            java.lang.String r4 = "&lt;/caseName&gt;"
-            r0 = r21
-            r0.append(r4)
-            java.lang.String r4 = "&lt;age&gt;"
-            r0 = r21
-            r0.append(r4)
-            r0 = r42
-            java.lang.String r4 = r0._age
-            r0 = r21
-            r0.append(r4)
-            java.lang.String r4 = "&lt;/age&gt;"
-            r0 = r21
-            r0.append(r4)
-            java.lang.String r4 = "&lt;height&gt;"
-            r0 = r21
-            r0.append(r4)
-            r0 = r42
-            java.lang.String r4 = r0._height
-            r0 = r21
-            r0.append(r4)
-            java.lang.String r4 = "&lt;/height&gt;"
-            r0 = r21
-            r0.append(r4)
-            java.lang.String r4 = "&lt;weight&gt;"
-            r0 = r21
-            r0.append(r4)
-            r0 = r42
-            java.lang.String r4 = r0._weight
-            r0 = r21
-            r0.append(r4)
-            java.lang.String r4 = "&lt;/weight&gt;"
-            r0 = r21
-            r0.append(r4)
-            java.lang.String r4 = "&lt;sex&gt;"
-            r0 = r21
-            r0.append(r4)
-            r0 = r42
-            java.lang.String r4 = r0._sex
-            r0 = r21
-            r0.append(r4)
-            java.lang.String r4 = "&lt;/sex&gt;"
-            r0 = r21
-            r0.append(r4)
-            java.lang.String r4 = "&lt;caseAddr&gt;"
-            r0 = r21
-            r0.append(r4)
-            r0 = r42
-            com.contec.phms.db.LoginUserDao r4 = r0._loginUserInfo
-            java.lang.String r4 = r4.mAddress
-            r0 = r21
-            r0.append(r4)
-            java.lang.String r4 = "&lt;/caseAddr&gt;"
-            r0 = r21
-            r0.append(r4)
-            java.lang.String r4 = "&lt;phone&gt;"
-            r0 = r21
-            r0.append(r4)
-            r0 = r42
-            java.lang.String r4 = r0._phone
-            r0 = r21
-            r0.append(r4)
-            java.lang.String r4 = "&lt;/phone&gt;"
-            r0 = r21
-            r0.append(r4)
-            java.lang.String r4 = "&lt;newtype&gt;"
-            r0 = r21
-            r0.append(r4)
-            java.lang.String r4 = "1"
-            r0 = r21
-            r0.append(r4)
-            java.lang.String r4 = "&lt;/newtype&gt;"
-            r0 = r21
-            r0.append(r4)
-            java.lang.String r4 = "&lt;language&gt;"
-            r0 = r21
-            r0.append(r4)
-            r0 = r42
-            java.lang.String r4 = r0._otherLanauage
-            r0 = r21
-            r0.append(r4)
-            java.lang.String r4 = "&lt;/language&gt;"
-            r0 = r21
-            r0.append(r4)
-            java.lang.String r4 = "&lt;/otherparam&gt;"
-            r0 = r21
-            r0.append(r4)
-            goto L_0x02d3
-        L_0x06f4:
-            java.lang.String r4 = "doctor"
-            r0 = r41
-            boolean r4 = r4.equals(r0)
-            if (r4 == 0) goto L_0x0401
-            r19 = 0
-            goto L_0x0401
-        L_0x0702:
-            java.lang.String r4 = com.contec.phms.util.Constants.Language
-            java.lang.String r5 = "zh"
-            boolean r4 = r4.contains(r5)
-            if (r4 == 0) goto L_0x04a0
-            java.lang.String r4 = "chinese"
-            r0 = r42
-            r0._otherLanauage = r4
-            goto L_0x04a0
-        L_0x0714:
-            r36 = move-exception
-            r36.printStackTrace()
-            goto L_0x0596
-        L_0x071a:
-            r42.baseinfo()
-            r0 = r42
-            com.contec.phms.db.LoginUserDao r4 = r0._loginUserInfo
-            java.lang.String r4 = r4.mPID
-            if (r4 == 0) goto L_0x074e
-            r0 = r42
-            com.contec.phms.db.LoginUserDao r4 = r0._loginUserInfo
-            java.lang.String r4 = r4.mPID
-            java.lang.String r5 = ""
-            boolean r4 = r4.equalsIgnoreCase(r5)
-            if (r4 != 0) goto L_0x074e
-            java.lang.StringBuilder r4 = new java.lang.StringBuilder
-            r4.<init>()
-            r0 = r42
-            com.contec.phms.db.LoginUserDao r5 = r0._loginUserInfo
-            java.lang.String r5 = r5.mPID
-            long r5 = java.lang.Long.parseLong(r5)
-            java.lang.StringBuilder r4 = r4.append(r5)
-            java.lang.String r4 = r4.toString()
-            r0 = r42
-            r0._pid = r4
-        L_0x074e:
-            r0 = r42
-            com.contec.phms.db.LoginUserDao r4 = r0._loginUserInfo
-            java.lang.String r4 = r4.mPhone
-            if (r4 == 0) goto L_0x077f
-            r0 = r42
-            com.contec.phms.db.LoginUserDao r4 = r0._loginUserInfo
-            java.lang.String r4 = r4.mPhone
-            java.lang.String r5 = ""
-            boolean r4 = r4.equalsIgnoreCase(r5)
-            if (r4 != 0) goto L_0x077f
-            java.lang.StringBuilder r4 = new java.lang.StringBuilder
-            r4.<init>()
-            r0 = r42
-            com.contec.phms.db.LoginUserDao r5 = r0._loginUserInfo
-            java.lang.String r5 = r5.mPhone
-            long r5 = java.lang.Long.parseLong(r5)
-            java.lang.StringBuilder r4 = r4.append(r5)
-            java.lang.String r4 = r4.toString()
-            r0 = r42
-            r0._phone = r4
-        L_0x077f:
-            java.lang.String r4 = "******************************"
-            java.lang.String r5 = "&&&&&&&&&&&&&&&&&&&&&"
-            com.contec.phms.util.CLog.e(r4, r5)
-            java.lang.String r4 = "******************************"
-            java.lang.StringBuilder r5 = new java.lang.StringBuilder
-            r5.<init>()
-            r0 = r42
-            java.lang.String r6 = r0._phone
-            java.lang.StringBuilder r5 = r5.append(r6)
-            java.lang.String r5 = r5.toString()
-            com.contec.phms.util.CLog.e(r4, r5)
-            java.lang.String r4 = "******************************"
-            java.lang.String r5 = "&&&&&&&&&&&&&&&&&&&&&"
-            com.contec.phms.util.CLog.e(r4, r5)
-            java.lang.String r4 = "chinese"
-            r0 = r42
-            r0._otherLanauage = r4
-            java.lang.String r4 = com.contec.phms.util.Constants.Language
-            java.lang.String r5 = "en"
-            boolean r4 = r4.contains(r5)
-            if (r4 == 0) goto L_0x08ab
-            java.lang.String r4 = "english"
-            r0 = r42
-            r0._otherLanauage = r4
-        L_0x07b9:
-            java.lang.String r4 = "&lt;?xml version=\"1.0\" encoding=\"GBK\"?&gt;&lt;otherparam&gt;"
-            r0 = r21
-            r0.append(r4)
-            java.lang.String r4 = "&lt;pid&gt;"
-            r0 = r21
-            r0.append(r4)
-            java.lang.StringBuilder r4 = new java.lang.StringBuilder
-            r4.<init>()
-            r0 = r42
-            java.lang.String r5 = r0._pid
-            java.lang.StringBuilder r4 = r4.append(r5)
-            java.lang.String r4 = r4.toString()
-            r0 = r21
-            r0.append(r4)
-            java.lang.String r4 = "&lt;/pid&gt;&lt;caseName&gt;"
-            r0 = r21
-            r0.append(r4)
-            java.lang.StringBuilder r4 = new java.lang.StringBuilder
-            r4.<init>()
-            java.lang.String r5 = "username"
-            java.lang.StringBuilder r4 = r4.append(r5)
-            java.lang.String r4 = r4.toString()
-            r0 = r21
-            r0.append(r4)
-            java.lang.String r4 = "&lt;/caseName&gt;"
-            r0 = r21
-            r0.append(r4)
-            java.lang.String r4 = "&lt;age&gt;"
-            r0 = r21
-            r0.append(r4)
-            r0 = r42
-            java.lang.String r4 = r0._age
-            r0 = r21
-            r0.append(r4)
-            java.lang.String r4 = "&lt;/age&gt;"
-            r0 = r21
-            r0.append(r4)
-            java.lang.String r4 = "&lt;height&gt;"
-            r0 = r21
-            r0.append(r4)
-            r0 = r42
-            java.lang.String r4 = r0._height
-            r0 = r21
-            r0.append(r4)
-            java.lang.String r4 = "&lt;/height&gt;"
-            r0 = r21
-            r0.append(r4)
-            java.lang.String r4 = "&lt;weight&gt;"
-            r0 = r21
-            r0.append(r4)
-            r0 = r42
-            java.lang.String r4 = r0._weight
-            r0 = r21
-            r0.append(r4)
-            java.lang.String r4 = "&lt;/weight&gt;"
-            r0 = r21
-            r0.append(r4)
-            java.lang.String r4 = "&lt;sex&gt;"
-            r0 = r21
-            r0.append(r4)
-            r0 = r42
-            java.lang.String r4 = r0._sex
-            r0 = r21
-            r0.append(r4)
-            java.lang.String r4 = "&lt;/sex&gt;"
-            r0 = r21
-            r0.append(r4)
-            java.lang.String r4 = "&lt;caseAddr&gt;"
-            r0 = r21
-            r0.append(r4)
-            r0 = r42
-            com.contec.phms.db.LoginUserDao r4 = r0._loginUserInfo
-            java.lang.String r4 = r4.mAddress
-            r0 = r21
-            r0.append(r4)
-            java.lang.String r4 = "&lt;/caseAddr&gt;"
-            r0 = r21
-            r0.append(r4)
-            java.lang.String r4 = "&lt;phone&gt;"
-            r0 = r21
-            r0.append(r4)
-            r0 = r42
-            java.lang.String r4 = r0._phone
-            r0 = r21
-            r0.append(r4)
-            java.lang.String r4 = "&lt;/phone&gt;"
-            r0 = r21
-            r0.append(r4)
-            java.lang.String r4 = "&lt;language&gt;"
-            r0 = r21
-            r0.append(r4)
-            r0 = r42
-            java.lang.String r4 = r0._otherLanauage
-            r0 = r21
-            r0.append(r4)
-            java.lang.String r4 = "&lt;/language&gt;"
-            r0 = r21
-            r0.append(r4)
-            java.lang.String r4 = "&lt;/otherparam&gt;"
-            r0 = r21
-            r0.append(r4)
-            goto L_0x02d3
-        L_0x08ab:
-            java.lang.String r4 = com.contec.phms.util.Constants.Language
-            java.lang.String r5 = "zh"
-            boolean r4 = r4.contains(r5)
-            if (r4 == 0) goto L_0x07b9
-            java.lang.String r4 = "chinese"
-            r0 = r42
-            r0._otherLanauage = r4
-            goto L_0x07b9
-        L_0x08bd:
-            r4 = 34
-            r5 = 40
-            r0 = r26
-            java.lang.String r20 = r0.substring(r4, r5)
-            java.lang.String r4 = "UploadTask"
-            java.lang.StringBuilder r5 = new java.lang.StringBuilder
-            java.lang.String r6 = "new  case  return code: "
-            r5.<init>(r6)
-            r0 = r20
-            java.lang.StringBuilder r5 = r5.append(r0)
-            java.lang.String r6 = "   Constants.URL: "
-            java.lang.StringBuilder r5 = r5.append(r6)
-            java.lang.String r6 = com.contec.phms.util.Constants.URL
-            java.lang.StringBuilder r5 = r5.append(r6)
-            java.lang.String r6 = "/main.php"
-            java.lang.StringBuilder r5 = r5.append(r6)
-            java.lang.String r5 = r5.toString()
-            com.contec.phms.util.CLog.e(r4, r5)
-            java.lang.String r4 = "100000"
-            r0 = r20
-            boolean r4 = r0.equals(r4)
-            if (r4 == 0) goto L_0x0a6b
-            java.lang.String r4 = r26.toString()
-            r5 = 42
-            r6 = 61
-            java.lang.String r7 = r4.substring(r5, r6)
-            cn.com.contec_net_3_android.Method_android_upload_case r3 = new cn.com.contec_net_3_android.Method_android_upload_case
-            r4 = 0
-            r0 = r42
-            com.contec.phms.upload.cases.common.NEW_CASE r5 = r0.mCase
-            java.lang.String r5 = r5.getStrCasePath()
-            com.contec.phms.App_phms r6 = com.contec.phms.App_phms.getInstance()
-            com.contec.phms.infos.UserInfo r6 = r6.mUserInfo
-            java.lang.String r6 = r6.mPHPSession
-            com.contec.phms.App_phms r8 = com.contec.phms.App_phms.getInstance()
-            com.contec.phms.infos.UserInfo r8 = r8.mUserInfo
-            java.lang.String r8 = r8.mUserID
-            com.contec.phms.App_phms r9 = com.contec.phms.App_phms.getInstance()
-            com.contec.phms.infos.UserInfo r9 = r9.mUserInfo
-            java.lang.String r9 = r9.mPassword
-            java.lang.StringBuilder r10 = new java.lang.StringBuilder
-            java.lang.String r11 = com.contec.phms.util.Constants.URL
-            java.lang.String r11 = java.lang.String.valueOf(r11)
-            r10.<init>(r11)
-            java.lang.String r11 = "/main.php"
-            java.lang.StringBuilder r10 = r10.append(r11)
-            java.lang.String r10 = r10.toString()
-            r3.<init>(r4, r5, r6, r7, r8, r9, r10)
-            java.lang.String r4 = "============="
-            java.lang.String r5 = "=================="
-            android.util.Log.e(r4, r5)
-            java.lang.String r4 = "获取当前的sessionID"
-            java.lang.StringBuilder r5 = new java.lang.StringBuilder
-            java.lang.String r6 = "SessionID值为：："
-            r5.<init>(r6)
-            com.contec.phms.App_phms r6 = com.contec.phms.App_phms.getInstance()
-            com.contec.phms.infos.UserInfo r6 = r6.mUserInfo
-            java.lang.String r6 = r6.mPHPSession
-            java.lang.StringBuilder r5 = r5.append(r6)
-            java.lang.String r5 = r5.toString()
-            android.util.Log.e(r4, r5)
-            java.lang.String r4 = "============="
-            java.lang.String r5 = "=================="
-            android.util.Log.e(r4, r5)
-            java.lang.String r31 = r3.init()
-            java.lang.String r4 = "UploadTask"
-            java.lang.StringBuilder r5 = new java.lang.StringBuilder
-            java.lang.String r6 = "++++++++++++++++++++++: "
-            r5.<init>(r6)
-            r0 = r31
-            java.lang.StringBuilder r5 = r5.append(r0)
-            java.lang.String r5 = r5.toString()
-            com.contec.phms.util.CLog.e(r4, r5)
-            if (r31 == 0) goto L_0x0a68
-            int r4 = r31.length()
-            r5 = 40
-            if (r4 <= r5) goto L_0x0a68
-            r4 = 34
-            r5 = 40
-            r0 = r31
-            java.lang.String r30 = r0.substring(r4, r5)
-            if (r30 == 0) goto L_0x0a65
-            int r4 = r30.length()
-            r5 = 1
-            if (r4 <= r5) goto L_0x0a65
-            java.lang.String r4 = "100000"
-            r0 = r30
-            boolean r4 = r0.equals(r4)
-            if (r4 == 0) goto L_0x0a62
-            r0 = r42
-            com.contec.phms.device.template.DeviceData r4 = r0.mData
-            java.lang.String r4 = r4.mDataType
-            java.lang.String r5 = "ECG(PM10)"
-            boolean r4 = r4.equalsIgnoreCase(r5)
-            if (r4 != 0) goto L_0x09d5
-            r0 = r42
-            com.contec.phms.device.template.DeviceData r4 = r0.mData
-            java.lang.String r4 = r4.mDataType
-            java.lang.String r5 = "ECG(CMS50K)"
-            boolean r4 = r4.equalsIgnoreCase(r5)
-            if (r4 != 0) goto L_0x09d5
-            r0 = r42
-            com.contec.phms.device.template.DeviceData r4 = r0.mData
-            java.lang.String r4 = r4.mDataType
-            java.lang.String r5 = "ECG(CMS50K1)"
-            boolean r4 = r4.equalsIgnoreCase(r5)
-            if (r4 == 0) goto L_0x0a5f
-        L_0x09d5:
-            r0 = r42
-            com.contec.phms.device.template.DeviceData r4 = r0.mData
-            r0 = r42
-            boolean r4 = r0.is50KContinuityOxygenData(r4)
-            if (r4 != 0) goto L_0x0a55
-            java.lang.String r4 = "UploadTask"
-            java.lang.String r5 = "---心电数据----"
-            com.contec.phms.util.CLog.i(r4, r5)
-            r0 = r22
-            r0.mCaseID = r7
-            com.contec.phms.upload.trend.PM10Trend_XML r4 = new com.contec.phms.upload.trend.PM10Trend_XML
-            r0 = r42
-            com.contec.phms.device.template.DeviceData r5 = r0.mData
-            r4.<init>(r5)
-            java.lang.String r0 = r4.mContent
-            r23 = r0
-            r4 = 1
-            r0 = r42
-            r1 = r23
-            boolean r27 = r0.uploadTrend(r1, r4)
-        L_0x0a02:
-            com.contec.phms.util.FileOperation.clearTempFiles()
-        L_0x0a05:
-            java.lang.String r4 = "UploadTask"
-            java.lang.StringBuilder r5 = new java.lang.StringBuilder
-            java.lang.String r6 = " 得到新病例id  mCase.getCaseType():"
-            r5.<init>(r6)
-            r0 = r42
-            com.contec.phms.upload.cases.common.NEW_CASE r6 = r0.mCase
-            int r6 = r6.getCaseType()
-            java.lang.StringBuilder r5 = r5.append(r6)
-            java.lang.String r6 = " mCase.getCaseName():"
-            java.lang.StringBuilder r5 = r5.append(r6)
-            r0 = r42
-            com.contec.phms.upload.cases.common.NEW_CASE r6 = r0.mCase
-            java.lang.String r6 = r6.getCaseName()
-            java.lang.StringBuilder r5 = r5.append(r6)
-            java.lang.String r6 = "_userinfo.mUserName:"
-            java.lang.StringBuilder r5 = r5.append(r6)
-            r0 = r32
-            java.lang.String r6 = r0.mUserName
-            java.lang.StringBuilder r5 = r5.append(r6)
-            java.lang.String r6 = " filePath"
-            java.lang.StringBuilder r5 = r5.append(r6)
-            r0 = r42
-            com.contec.phms.upload.cases.common.NEW_CASE r6 = r0.mCase
-            java.lang.String r6 = r6.getStrCasePath()
-            java.lang.StringBuilder r5 = r5.append(r6)
-            java.lang.String r5 = r5.toString()
-            com.contec.phms.util.CLog.e(r4, r5)
-            goto L_0x011e
-        L_0x0a55:
-            java.lang.String r4 = "UploadTask"
-            java.lang.String r5 = "-----连续血氧数据---"
-            com.contec.phms.util.CLog.i(r4, r5)
-            r27 = 1
-            goto L_0x0a02
-        L_0x0a5f:
-            r27 = 1
-            goto L_0x0a02
-        L_0x0a62:
-            r27 = 0
-            goto L_0x0a02
-        L_0x0a65:
-            r27 = 0
-            goto L_0x0a02
-        L_0x0a68:
-            r27 = 0
-            goto L_0x0a02
-        L_0x0a6b:
-            java.lang.String r4 = "the sessionid you passed is invalid"
-            r0 = r26
-            boolean r4 = r0.contains(r4)
-            if (r4 == 0) goto L_0x0a97
-            android.os.Message r39 = new android.os.Message
-            r39.<init>()
-            r4 = 528(0x210, float:7.4E-43)
-            r0 = r39
-            r0.what = r4
-            r4 = 1
-            r0 = r39
-            r0.arg2 = r4
-            com.contec.phms.App_phms r4 = com.contec.phms.App_phms.getInstance()
-            de.greenrobot.event.EventBusPostOnBackGround r4 = r4.mEventBusPostOnBackGround
-            r0 = r39
-            r4.postInMainThread(r0)
-        L_0x0a90:
-            r27 = 0
-            com.contec.phms.util.FileOperation.clearTempFiles()
-            goto L_0x0a05
-        L_0x0a97:
-            java.lang.String r4 = "100007"
-            r0 = r20
-            boolean r4 = r0.equals(r4)
-            if (r4 == 0) goto L_0x0abd
-            android.os.Message r39 = new android.os.Message
-            r39.<init>()
-            r4 = 519(0x207, float:7.27E-43)
-            r0 = r39
-            r0.what = r4
-            r4 = 1
-            r0 = r39
-            r0.arg2 = r4
-            com.contec.phms.App_phms r4 = com.contec.phms.App_phms.getInstance()
-            de.greenrobot.event.EventBusPostOnBackGround r4 = r4.mEventBusPostOnBackGround
-            r0 = r39
-            r4.postInMainThread(r0)
-            goto L_0x0a90
-        L_0x0abd:
-            java.lang.String r4 = "100004"
-            r0 = r20
-            boolean r4 = r0.equals(r4)
-            if (r4 != 0) goto L_0x0a90
-            java.lang.String r4 = "100003"
-            r0 = r20
-            r0.equals(r4)
-            goto L_0x0a90
-        */
-        throw new UnsupportedOperationException("Method not decompiled: com.contec.phms.upload.UploadTask.uploadCase():boolean");
+        boolean _result;
+        LoginUserDao _userinfo = PageUtil.getLoginUserInfo();
+        int _cardType = 0;
+        StringBuffer _content = new StringBuffer();
+        com.contec.phms.device.pm10.DeviceData _dataPM10 = null;
+        if (this.mData.mDataType.equalsIgnoreCase("ECG(PM10)")) {
+            String type = PhmsSharedPreferences.getInstance(App_phms.getInstance().getApplicationContext()).getString("Electrocardiogram", "auto");
+            if ("auto".equals(type)) {
+                _cardType = 1;
+            } else if ("doctor".equals(type)) {
+                _cardType = 0;
+            }
+            CLog.e("UploadTask", "type的值为:" + type + " _cardType的值为：" + _cardType);
+            _dataPM10 = (com.contec.phms.device.pm10.DeviceData) this.mData;
+            byte[] _temp = _dataPM10.TrendData;
+            String _time = (_temp[0] + 2000) + "-" + ((int) _temp[1]) + "-" + ((int) _temp[2]) + " " + ((int) _temp[3]) + ":" + ((int) _temp[4]) + ":" + ((int) _temp[5]);
+            Date dDate = null;
+            String collectTime = new GetCurrentTimeMillis(_temp[0], _temp[1], _temp[2], _temp[3], _temp[4], _temp[5]).getTime();
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
+            try {
+                this.difference = (System.currentTimeMillis() / 1000) - (dateFormat.parse(collectTime).getTime() / 1000);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            if (this.difference < -2592000 || this.difference > 31536000) {
+                this.mData.mCheckTimeIllegal = true;
+                return false;
+            }
+            SimpleDateFormat format2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            try {
+                dDate = format2.parse(_time);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            baseinfo();
+            this._sp10Language = "Chinese";
+            if (Constants.Language.contains("en")) {
+                this._sp10Language = "English";
+            } else if (Constants.Language.contains("zh")) {
+                this._sp10Language = "Chinese";
+            }
+            int _pluse = (((_temp[6] & 255) << 7) | (_temp[7] & 255)) & 2047;
+            String _pm10result = new StringBuilder().append((int) _temp[8]).append((int) _temp[9]).append((int) _temp[10]).append((int) _temp[11]).append((int) _temp[12]).append((int) _temp[13]).append((int) _temp[14]).append((int) _temp[15]).append((int) _temp[16]).append((int) _temp[17]).append((int) _temp[18]).append((int) _temp[19]).append((int) _temp[20]).append((int) _temp[21]).toString();
+            String reTime = format2.format(dDate);
+            _content.append("&lt;?xml version=\"1.0\" encoding=\"GBK\"?&gt;&lt;otherparam&gt;");
+            _content.append("&lt;heartrate&gt;");
+            _content.append(new StringBuilder().append(_pluse).toString());
+            _content.append("&lt;/heartrate&gt;&lt;feature&gt;");
+            _content.append(_pm10result);
+            _content.append("&lt;/feature&gt;&lt;checktime&gt;");
+            _content.append(reTime);
+            _content.append("&lt;/checktime&gt;");
+            _content.append("&lt;caseName&gt;");
+            _content.append(this._loginUserInfo.mUserName);
+            _content.append("&lt;/caseName&gt;");
+            _content.append("&lt;age&gt;");
+            _content.append(this._age);
+            _content.append("&lt;/age&gt;");
+            _content.append("&lt;height&gt;");
+            _content.append(this._height);
+            _content.append("&lt;/height&gt;");
+            _content.append("&lt;weight&gt;");
+            _content.append(this._weight);
+            _content.append("&lt;/weight&gt;");
+            _content.append("&lt;sex&gt;");
+            _content.append(this._sex);
+            _content.append("&lt;/sex&gt;");
+            _content.append("&lt;language&gt;");
+            _content.append(this._sp10Language);
+            _content.append("&lt;/language&gt;");
+            _content.append("&lt;/otherparam&gt;");
+        } else if (this.mData.mDataType.equalsIgnoreCase("cms50k") || this.mData.mDataType.equalsIgnoreCase("ECG(CMS50K)") || this.mData.mDataType.equalsIgnoreCase("ECG(CMS50K1)")) {
+            String type2 = PhmsSharedPreferences.getInstance(App_phms.getInstance().getApplicationContext()).getString("cms50k_card_set", "auto");
+            _dataPM10 = (com.contec.phms.device.pm10.DeviceData) this.mData;
+            if ("auto".equals(type2)) {
+                _cardType = 1;
+            } else if ("doctor".equals(type2)) {
+                _cardType = 0;
+            }
+            baseinfo();
+            if (this._loginUserInfo.mPID != null && !this._loginUserInfo.mPID.equalsIgnoreCase(bs.b)) {
+                this._pid = new StringBuilder().append(Long.parseLong(this._loginUserInfo.mPID)).toString();
+            }
+            if (this._loginUserInfo.mPhone != null && !this._loginUserInfo.mPhone.equalsIgnoreCase(bs.b)) {
+                this._phone = new StringBuilder().append(Long.parseLong(this._loginUserInfo.mPhone)).toString();
+            }
+            CLog.e("******************************", "&&&&&&&&&&&&&&&&&&&&&");
+            CLog.e("******************************", this._phone);
+            CLog.e("******************************", "&&&&&&&&&&&&&&&&&&&&&");
+            this._otherLanauage = "chinese";
+            if (Constants.Language.contains("en")) {
+                this._otherLanauage = "english";
+            } else if (Constants.Language.contains("zh")) {
+                this._otherLanauage = "chinese";
+            }
+            byte[] _temp2 = _dataPM10.TrendData;
+            int _pluse2 = (((_temp2[6] & 255) << 7) | (_temp2[7] & 255)) & 2047;
+            String _pm10result2 = new StringBuilder().append((int) _temp2[8]).append((int) _temp2[9]).append((int) _temp2[10]).append((int) _temp2[11]).append((int) _temp2[12]).append((int) _temp2[13]).append((int) _temp2[14]).append((int) _temp2[15]).append((int) _temp2[16]).append((int) _temp2[17]).append((int) _temp2[18]).append((int) _temp2[19]).append((int) _temp2[20]).append((int) _temp2[21]).toString();
+            String _time2 = (_temp2[0] + 2000) + "-" + ((int) _temp2[1]) + "-" + ((int) _temp2[2]) + " " + ((int) _temp2[3]) + ":" + ((int) _temp2[4]) + ":" + ((int) _temp2[5]);
+            Date dDate2 = null;
+            SimpleDateFormat format22 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            try {
+                dDate2 = format22.parse(_time2);
+            } catch (ParseException e2) {
+                e2.printStackTrace();
+            }
+            String reTime2 = format22.format(dDate2);
+            _content.append("&lt;?xml version=\"1.0\" encoding=\"GBK\"?&gt;&lt;otherparam&gt;");
+            _content.append("&lt;heartrate&gt;");
+            _content.append(new StringBuilder().append(_pluse2).toString());
+            _content.append("&lt;/heartrate&gt;&lt;feature&gt;");
+            _content.append(_pm10result2);
+            _content.append("&lt;/feature&gt;&lt;checktime&gt;");
+            _content.append(reTime2);
+            _content.append("&lt;/checktime&gt;");
+            _content.append("&lt;pid&gt;");
+            _content.append(this._pid);
+            _content.append("&lt;/pid&gt;&lt;caseName&gt;");
+            _content.append(this._loginUserInfo.mUserName);
+            _content.append("&lt;/caseName&gt;");
+            _content.append("&lt;age&gt;");
+            _content.append(this._age);
+            _content.append("&lt;/age&gt;");
+            _content.append("&lt;height&gt;");
+            _content.append(this._height);
+            _content.append("&lt;/height&gt;");
+            _content.append("&lt;weight&gt;");
+            _content.append(this._weight);
+            _content.append("&lt;/weight&gt;");
+            _content.append("&lt;sex&gt;");
+            _content.append(this._sex);
+            _content.append("&lt;/sex&gt;");
+            _content.append("&lt;caseAddr&gt;");
+            _content.append(this._loginUserInfo.mAddress);
+            _content.append("&lt;/caseAddr&gt;");
+            _content.append("&lt;phone&gt;");
+            _content.append(this._phone);
+            _content.append("&lt;/phone&gt;");
+            _content.append("&lt;newtype&gt;");
+            _content.append("1");
+            _content.append("&lt;/newtype&gt;");
+            _content.append("&lt;language&gt;");
+            _content.append(this._otherLanauage);
+            _content.append("&lt;/language&gt;");
+            _content.append("&lt;/otherparam&gt;");
+        } else {
+            baseinfo();
+            if (this._loginUserInfo.mPID != null && !this._loginUserInfo.mPID.equalsIgnoreCase(bs.b)) {
+                this._pid = new StringBuilder().append(Long.parseLong(this._loginUserInfo.mPID)).toString();
+            }
+            if (this._loginUserInfo.mPhone != null && !this._loginUserInfo.mPhone.equalsIgnoreCase(bs.b)) {
+                this._phone = new StringBuilder().append(Long.parseLong(this._loginUserInfo.mPhone)).toString();
+            }
+            CLog.e("******************************", "&&&&&&&&&&&&&&&&&&&&&");
+            CLog.e("******************************", this._phone);
+            CLog.e("******************************", "&&&&&&&&&&&&&&&&&&&&&");
+            this._otherLanauage = "chinese";
+            if (Constants.Language.contains("en")) {
+                this._otherLanauage = "english";
+            } else if (Constants.Language.contains("zh")) {
+                this._otherLanauage = "chinese";
+            }
+            _content.append("&lt;?xml version=\"1.0\" encoding=\"GBK\"?&gt;&lt;otherparam&gt;");
+            _content.append("&lt;pid&gt;");
+            _content.append(this._pid);
+            _content.append("&lt;/pid&gt;&lt;caseName&gt;");
+            _content.append("username");
+            _content.append("&lt;/caseName&gt;");
+            _content.append("&lt;age&gt;");
+            _content.append(this._age);
+            _content.append("&lt;/age&gt;");
+            _content.append("&lt;height&gt;");
+            _content.append(this._height);
+            _content.append("&lt;/height&gt;");
+            _content.append("&lt;weight&gt;");
+            _content.append(this._weight);
+            _content.append("&lt;/weight&gt;");
+            _content.append("&lt;sex&gt;");
+            _content.append(this._sex);
+            _content.append("&lt;/sex&gt;");
+            _content.append("&lt;caseAddr&gt;");
+            _content.append(this._loginUserInfo.mAddress);
+            _content.append("&lt;/caseAddr&gt;");
+            _content.append("&lt;phone&gt;");
+            _content.append(this._phone);
+            _content.append("&lt;/phone&gt;");
+            _content.append("&lt;language&gt;");
+            _content.append(this._otherLanauage);
+            _content.append("&lt;/language&gt;");
+            _content.append("&lt;/otherparam&gt;");
+        }
+        if (this.mData.mDataType.equalsIgnoreCase("contec8000gw")) {
+            String reTime3 = this.mCase.getStrPaceTime();
+            process8000GW(_content, reTime3);
+        }
+        String _responedResult = Method_android_new_case.getCaseID(_userinfo.mSID, _userinfo.mHospitalName, _userinfo.mHospitalID, _userinfo.mUserName, this.mCase.getCaseName(), new StringBuilder(String.valueOf(this.mCase.getCaseType())).toString(), _userinfo.mUID, App_phms.getInstance().mUserInfo.mPassword, this.mCase.getStrPaceTime(), App_phms.getInstance().mUserInfo.mSex, String.valueOf(Constants.URL) + "/main.php", new StringBuilder().append(_cardType).toString(), _content.toString(), this.mCase.getStrCasePath(), null, null);
+        CLog.i("UploadTask", "_responedResult:" + _responedResult);
+        if (_responedResult.length() < 40) {
+            return false;
+        }
+        String _code = _responedResult.substring(34, 40);
+        CLog.e("UploadTask", "new  case  return code：" + _code + "   Constants.URL: " + Constants.URL + "/main.php");
+        if (_code.equals(Constants.SUCCESS)) {
+            String mCaseID = _responedResult.toString().substring(42, 61);
+            Method_android_upload_case mUpload = new Method_android_upload_case(null, this.mCase.getStrCasePath(), App_phms.getInstance().mUserInfo.mPHPSession, mCaseID, App_phms.getInstance().mUserInfo.mUserID, App_phms.getInstance().mUserInfo.mPassword, String.valueOf(Constants.URL) + "/main.php");
+            Log.e("=============", "==================");
+            Log.e("获取当前的sessionID", "SessionID值为：：" + App_phms.getInstance().mUserInfo.mPHPSession);
+            Log.e("=============", "==================");
+            String _uploadreslut = mUpload.init();
+            CLog.e("UploadTask", "++++++++++++++++++++++: " + _uploadreslut);
+            if (_uploadreslut == null || _uploadreslut.length() <= 40) {
+                _result = false;
+            } else {
+                String _uploadCode = _uploadreslut.substring(34, 40);
+                if (_uploadCode == null || _uploadCode.length() <= 1) {
+                    _result = false;
+                } else if (!_uploadCode.equals(Constants.SUCCESS)) {
+                    _result = false;
+                } else if (!this.mData.mDataType.equalsIgnoreCase("ECG(PM10)") && !this.mData.mDataType.equalsIgnoreCase("ECG(CMS50K)") && !this.mData.mDataType.equalsIgnoreCase("ECG(CMS50K1)")) {
+                    _result = true;
+                } else if (!is50KContinuityOxygenData(this.mData)) {
+                    CLog.i("UploadTask", "---心电数据----");
+                    _dataPM10.mCaseID = mCaseID;
+                    String _p = new PM10Trend_XML(this.mData).mContent;
+                    _result = uploadTrend(_p, true);
+                } else {
+                    CLog.i("UploadTask", "-----连续血氧数据---");
+                    _result = true;
+                }
+            }
+            FileOperation.clearTempFiles();
+        } else {
+            if (_responedResult.contains("the sessionid you passed is invalid")) {
+                Message msgs = new Message();
+                msgs.what = Constants.V_RELOGIN_INBACKGROUND;
+                msgs.arg2 = 1;
+                App_phms.getInstance().mEventBusPostOnBackGround.postInMainThread(msgs);
+            } else if (_code.equals(Constants.LOGIN_IN_ANOTHER_PLACE)) {
+                Message msgs2 = new Message();
+                msgs2.what = Constants.Login_In_Another_Place;
+                msgs2.arg2 = 1;
+                App_phms.getInstance().mEventBusPostOnBackGround.postInMainThread(msgs2);
+            } else if (!_code.equals(Constants.CARD_USE_NUM_EXPIRED)) {
+                _code.equals(Constants.PASSED_VALIDITY);
+            }
+            _result = false;
+            FileOperation.clearTempFiles();
+        }
+        CLog.e("UploadTask", " 得到新病例id  mCase.getCaseType():" + this.mCase.getCaseType() + " mCase.getCaseName():" + this.mCase.getCaseName() + "_userinfo.mUserName:" + _userinfo.mUserName + " filePath" + this.mCase.getStrCasePath());
+        return _result;
     }
 
     private boolean is50KContinuityOxygenData(DeviceData mData2) {

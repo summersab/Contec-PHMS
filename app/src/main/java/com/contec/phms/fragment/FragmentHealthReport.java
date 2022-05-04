@@ -86,7 +86,7 @@ public class FragmentHealthReport extends FragmentWebViewBase {
 
     public void onDestroy() {
         super.onDestroy();
-        CLog.dT("FragmentWebViewBase", "FragmentHealthReport onDestroy  清空webview的缓存");
+        CLog.dT("FragmentWebViewBase", "`FragmentHealthReport.onDestroy()` - clear webview cache");
         this.mWebView.stopLoading();
         clearCacheFolder(getActivity().getCacheDir(), System.currentTimeMillis());
         this.mWebView.destroyDrawingCache();
@@ -134,7 +134,7 @@ public class FragmentHealthReport extends FragmentWebViewBase {
         String _pwd = LoginActivity.spPassword;
         CLog.eT("FragmentWebViewBase", String.valueOf(_username) + "  " + _pwd);
         String mPostDate = "&data[Card][uid]=" + _username + "&data[Card][pwd]=" + _pwd;
-        CLog.dT("FragmentWebViewBase", "健康报告*********************+mPostDate" + mPostDate);
+        CLog.dT("FragmentWebViewBase", "health report *********************+mPostDate" + mPostDate);
         if (Constants.Language.contains("1zh") || Constants.Language.contains("1en")) {
             if (!Locale.getDefault().getLanguage().contains("zh")) {
                 url = String.valueOf(Constants.URL_REPORT) + "/user/mlogin/en?";
@@ -147,7 +147,7 @@ public class FragmentHealthReport extends FragmentWebViewBase {
             url = String.valueOf(Constants.URL_REPORT) + "/user/mlogin/zh?";
         }
         this.mWebView.postUrl(url, EncodingUtils.getBytes(mPostDate, "GBK"));
-        CLog.eT("FragmentWebViewBase", "健康报告*********************+url" + url);
+        CLog.eT("FragmentWebViewBase", "health report *********************+url" + url);
         CLog.eT("FragmentWebViewBase", "posturl************** :" + Constants.URL_REPORT + "/user/mlogin");
     }
 
@@ -169,7 +169,7 @@ public class FragmentHealthReport extends FragmentWebViewBase {
             String _pwd = PageUtil.getLoginUserInfo().mPsw;
             CLog.eT("FragmentWebViewBase", String.valueOf(_username) + "  " + _pwd);
             String mPostDate = "&data[Card][uid]=" + _username + "&data[Card][pwd]=" + _pwd;
-            CLog.dT("FragmentWebViewBase", "健康建议*********************+mPostDate" + mPostDate);
+            CLog.dT("FragmentWebViewBase", "health advice *********************+mPostDate" + mPostDate);
             if (Constants.Language.contains("1zh") || Constants.Language.contains("1en")) {
                 if (!Locale.getDefault().getLanguage().contains("zh")) {
                     url2 = String.valueOf(Constants.URL_REPORT) + "/user/mlogin1/en?";
@@ -182,14 +182,14 @@ public class FragmentHealthReport extends FragmentWebViewBase {
                 url2 = String.valueOf(Constants.URL_REPORT) + "/user/mlogin1/zh?";
             }
             this.mWebView.postUrl(url2, EncodingUtils.getBytes(mPostDate, "GBK"));
-            CLog.dT("FragmentWebViewBase", "健康建议*********************+url" + url2);
+            CLog.dT("FragmentWebViewBase", "health advice *********************+url" + url2);
             mHealthReportIndex = 1;
         } else if (msg.what == 547) {
             String _username2 = PageUtil.getLoginUserInfo().mUID;
             String _pwd2 = PageUtil.getLoginUserInfo().mPsw;
             CLog.eT("FragmentWebViewBase", String.valueOf(_username2) + "  " + _pwd2);
             String mPostDate2 = "&data[Card][uid]=" + _username2 + "&data[Card][pwd]=" + _pwd2;
-            CLog.dT("FragmentWebViewBase", " user信息*********************+mPostDate" + mPostDate2);
+            CLog.dT("FragmentWebViewBase", " user information*********************+mPostDate" + mPostDate2);
             if (Constants.Language.contains("1zh") || Constants.Language.contains("1en")) {
                 if (!Locale.getDefault().getLanguage().contains("zh")) {
                     url = String.valueOf(Constants.URL_REPORT) + "/user/mlogin2/en?";
@@ -202,11 +202,11 @@ public class FragmentHealthReport extends FragmentWebViewBase {
                 url = String.valueOf(Constants.URL_REPORT) + "/user/mlogin2/zh?";
             }
             this.mWebView.postUrl(url, EncodingUtils.getBytes(mPostDate2, "GBK"));
-            CLog.dT("FragmentWebViewBase", " user信息*********************url: " + url);
+            CLog.dT("FragmentWebViewBase", " user information *********************url: " + url);
             mHealthReportIndex = 2;
         } else if (msg.what == 548) {
             mHealthReportIndex = 0;
-            CLog.dT("FragmentWebViewBase", "健康报告**********************");
+            CLog.dT("FragmentWebViewBase", "Health report **********************");
             Map<String, String> additionalHttpHeaders = new HashMap<>();
             if (Constants.Language.contains("1zh") || Constants.Language.contains("1en")) {
                 if (!Locale.getDefault().getLanguage().contains("zh")) {

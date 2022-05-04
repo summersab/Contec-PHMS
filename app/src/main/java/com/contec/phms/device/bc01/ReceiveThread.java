@@ -39,7 +39,7 @@ public class ReceiveThread extends com.contec.phms.device.template.ReceiveThread
     }
 
     public void arrangeMessage(byte[] buf, int length) {
-        Log.i("ReceiveThread", "信息返回");
+        Log.i("ReceiveThread", "Data returned");
         printData(buf, length);
         byte _receiveNum = this.m_DevicePackManager.arrangeMessage(buf, length);
         Log.i("ReceiveThread", "jar包返回的信息：" + _receiveNum);
@@ -79,7 +79,7 @@ public class ReceiveThread extends com.contec.phms.device.template.ReceiveThread
                         String _value = "0" + _dataBC.URO + "0" + _dataBC.BLD + "0" + _dataBC.BIL + "0" + _dataBC.KET + "0" + _dataBC.GLU + "0" + _dataBC.PRO + "0" + _dataBC.PH + "0" + _dataBC.NIT + "0" + _dataBC.LEU + "0" + _dataBC.SG + "0" + _dataBC.VC + "9" + _dataBC.MAL + "9" + _dataBC.CR + "9" + _dataBC.UCA;
                         FileOperation.writeToSDCard("time: " + _time + "  " + _value, "BC401");
                         Log.e("%%%%%%%%%%%%%%", "%%%%%%%%%%%%%%");
-                        Log.e("输出不兼容14试纸的数据", "time: " + _time + ";" + _value + ";" + _dataSize);
+                        Log.e("Output data incompatible with 14 panel test strips", "time: " + _time + ";" + _value + ";" + _dataSize);
                         Log.e("%%%%%%%%%%%%%%", "%%%%%%%%%%%%%%");
                     }
                     this.mData.mDate = new int[6];
@@ -95,30 +95,30 @@ public class ReceiveThread extends com.contec.phms.device.template.ReceiveThread
                     addData(this.mData);
                     DeviceManager.m_DeviceBean.mProgress = this.m_DevicePackManager.Percent;
                     App_phms.getInstance().mEventBusPostOnBackGround.postInMainThread(DeviceManager.m_DeviceBean);
-                    Log.i("ReceiveThread", "删除数据" + _receiveNum);
+                    Log.i("ReceiveThread", "delete data: " + _receiveNum);
                     SendCommand.send(DeviceCommand.Delete_AllData());
                     return;
                 }
                 return;
             case 6:
-                Log.e("怎么没执行这个0x06", "删除命令呢");
-                FileOperation.writeToSDCard(String.valueOf(getcureentbytetime()) + " 数据接收完毕并且删除成功", "BC401");
-                Log.i("ReceiveThread", "接收完毕，等待上传：" + _receiveNum);
+                Log.e("Why is 0x06 not executed", "What about the delete command?");
+                FileOperation.writeToSDCard(String.valueOf(getcureentbytetime()) + " Data received and deleted successfully", "BC401");
+                Log.i("ReceiveThread", "Received, waiting for upload：" + _receiveNum);
                 DeviceManager.mDeviceBeanList.mState = 6;
                 DeviceManager.m_DeviceBean.mState = 6;
                 App_phms.getInstance().mEventBusPostOnBackGround.postInMainThread(DeviceManager.m_DeviceBean);
                 DeviceService.mReceiveFinished = true;
                 return;
             case 8:
-                FileOperation.writeToSDCard(String.valueOf(getcureentbytetime()) + " 无新数据", "BC401");
-                Log.i("ReceiveThread", "无新数据：" + _receiveNum);
+                FileOperation.writeToSDCard(String.valueOf(getcureentbytetime()) + " No new data", "BC401");
+                Log.i("ReceiveThread", "No new data: " + _receiveNum);
                 DeviceManager.mDeviceBeanList.mState = 10;
                 DeviceManager.m_DeviceBean.mState = 10;
                 App_phms.getInstance().mEventBusPostOnBackGround.postInMainThread(DeviceManager.m_DeviceBean);
                 DeviceService.mReceiveFinished = true;
                 return;
             case 21:
-                FileOperation.writeToSDCard(String.valueOf(getcureentbytetime()) + " 数据返回", "BC401");
+                FileOperation.writeToSDCard(String.valueOf(getcureentbytetime()) + " Data returned", "BC401");
                 this.mData = new DeviceData();
                 BC401_Data _alldata = this.m_DevicePackManager.mBc401_Data;
                 this.mData.mDataList = _alldata.Structs;
@@ -129,7 +129,7 @@ public class ReceiveThread extends com.contec.phms.device.template.ReceiveThread
                     String _time2 = (_alldataBC.Year + 2000) + "-" + _alldataBC.Month + "-" + _alldataBC.Date + " " + _alldataBC.Hour + ":" + _alldataBC.Min + ":" + _alldataBC.Sec;
                     String _valuenew = String.valueOf(dataLength(_alldataBC.URO1)) + dataLength(_alldataBC.BLD1) + dataLength(_alldataBC.BIL1) + dataLength(_alldataBC.KET1) + dataLength(_alldataBC.GLU1) + dataLength(_alldataBC.PRO1) + dataLength(_alldataBC.PH1) + dataLength(_alldataBC.NIT1) + dataLength(_alldataBC.LEU1) + dataLength(_alldataBC.SG1) + dataLength(_alldataBC.VC1) + dataLength(_alldataBC.MAL1) + dataLength(_alldataBC.CR1) + dataLength(_alldataBC.UCA1);
                     Log.e("%%%%%%%%%%%%%%", "%%%%%%%%%%%%%%");
-                    Log.e("输出兼容14试纸的数据", "time: " + _time2 + ";" + _valuenew + ";" + _alldataSize);
+                    Log.e("Output data compatible with 14 panel test strips", "time: " + _time2 + ";" + _valuenew + ";" + _alldataSize);
                     Log.e("%%%%%%%%%%%%%%", "%%%%%%%%%%%%%%");
                     FileOperation.writeToSDCard("time: " + _time2 + "  " + ("0" + _alldataBC.URO + "0" + _alldataBC.BLD + "0" + _alldataBC.BIL + "0" + _alldataBC.KET + "0" + _alldataBC.GLU + "0" + _alldataBC.PRO + "0" + _alldataBC.PH + "0" + _alldataBC.NIT + "0" + _alldataBC.LEU + "0" + _alldataBC.SG + "0" + _alldataBC.VC + "0" + _alldataBC.MAL + "0" + _alldataBC.CR + "0" + _alldataBC.UCA) + "  " + _valuenew, "BC401");
                 }
@@ -172,10 +172,10 @@ public class ReceiveThread extends com.contec.phms.device.template.ReceiveThread
     public void addData(DeviceData deviceData) {
         DeviceData _data = (DeviceData) deviceData;
         if (_data.mDataList.size() == 0) {
-            CLog.i("ReceiveThread", "No New Datas");
+            CLog.i("ReceiveThread", "No New Data");
         } else if (_data.mDataList.size() > 0) {
             Log.i("$$$$$$$$$$$$$$$$$$$$$$", "$$$$$$$$$$$$$$$$$$$$$$$$$$");
-            Log.i("ReceiveThread", "旧版传统蓝牙不兼容14试纸的长度" + _data.mDataList.size());
+            Log.i("ReceiveThread", "The old version of Bluetooth is not compatible with 14 panel test strips: " + _data.mDataList.size());
             Log.i("$$$$$$$$$$$$$$$$$$$$$$", "$$$$$$$$$$$$$$$$$$$$$$$$$$");
             DatasContainer.mDeviceDatas.add(deviceData);
         }

@@ -43,9 +43,9 @@ public class DevicePackManager {
     }
 
     public byte arrangeMessage(byte[] buf, int length) {
-        Log.e("$$$$$$$$$$$$$$$$$$$$$$", "BLE蓝牙bufbufbufbufbufbufbufbufbuf");
+        Log.e("$$$$$$$$$$$$$$$$$$$$$$", "BLE Bluetooth bufbufbufbufbufbufbufbufbuf");
         PrintBytes.printData(buf, length);
-        Log.e("$$$$$$$$$$$$$$$$$$$$$$", "BLE蓝牙bufbufbufbufbufbufbufbufbuf");
+        Log.e("$$$$$$$$$$$$$$$$$$$$$$", "BLE Bluetooth bufbufbufbufbufbufbufbufbuf");
         byte _return = 0;
         this.i = 0;
         while (this.i < length) {
@@ -189,10 +189,10 @@ public class DevicePackManager {
                 this.mDeviceDataIW._value_ew[6] = (byte) (pack[8] & 255);
                 this.mDeviceDataIW._value_ew[7] = (byte) (pack[9] & 255);
                 String _cms50ew = new StringBuilder().append(this.mDeviceDataIW._Year).append(this.mDeviceDataIW._Month).append(this.mDeviceDataIW._Day).append(this.mDeviceDataIW._Hour).append(this.mDeviceDataIW._Min).append(this.mDeviceDataIW._Sec).append(this.mDeviceDataIW._value_ew[6]).append(this.mDeviceDataIW._value_ew[7]).toString();
-                Log.e("BLE蓝牙的数据", "_cms50ew========================");
+                Log.e("BLE Bluetooth Data", "_cms50ew========================");
                 PrintBytes.printData(pack);
-                Log.e("BLE蓝牙的数据", "_cms50ew" + _cms50ew);
-                Log.e("BLE蓝牙的数据", "_cms50ew========================");
+                Log.e("BLE Bluetooth Data", "_cms50ew" + _cms50ew);
+                Log.e("BLE Bluetooth Data", "_cms50ew========================");
                 this.mDeviceDataIWs.add(this.mDeviceDataIW);
                 if ((pack[1] & 64) == 64) {
                     this._packCount = 0;

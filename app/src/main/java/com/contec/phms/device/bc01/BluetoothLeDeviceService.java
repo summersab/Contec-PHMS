@@ -36,7 +36,7 @@ public class BluetoothLeDeviceService extends com.contec.phms.device.template.Bl
 
     public void onCreate() {
         super.onCreate();
-        LogI("创建服务---尿液分析仪Ble服务类");
+        LogI("`bc01.onCreate()`--- Ble urine analyzer");
         this.packManager = new PackManagerUran();
         new DatasContainer();
     }
@@ -48,7 +48,7 @@ public class BluetoothLeDeviceService extends com.contec.phms.device.template.Bl
     }
 
     public void arrangeMessage(byte[] buf, int length) {
-        CLog.i(TAG, "代码执行到尿液分析仪的arrangeMessage method中");
+        CLog.i(TAG, "`bc01.arrangeMessage()`");
         this.arrangeMessage = this.packManager.arrangeMessage(buf, length);
         if (this.arrangeMessage != 0 && (this.arrangeMessage & 255) != 136) {
             CLog.e("jar返回的信息", Integer.toHexString(this.arrangeMessage));
@@ -65,7 +65,7 @@ public class BluetoothLeDeviceService extends com.contec.phms.device.template.Bl
                     sendData(CommandUran.GetData_Stroge(0));
                     return;
                 case 17:
-                    CLog.e("显示数据", "对时失败");
+                    CLog.e("Display Data", "Time failed");
                     try {
                         Thread.sleep(100);
                     } catch (InterruptedException e2) {
@@ -89,13 +89,13 @@ public class BluetoothLeDeviceService extends com.contec.phms.device.template.Bl
                         return;
                     }
                     noNewData();
-                    FileOperation.writeToSDCard(String.valueOf(getcureentbytetime()) + " 无新数据", "BC401");
+                    FileOperation.writeToSDCard(String.valueOf(getcureentbytetime()) + " No new data", "BC401");
                     DeviceManager.mDeviceBeanList.mState = 10;
                     DeviceManager.m_DeviceBean.mState = 10;
                     DeviceService.mReceiveFinished = true;
                     return;
                 case 19:
-                    CLog.e("发送下一组数据请求", "发送请求数据");
+                    CLog.e("Send next set of data request commands", "Send data request commands");
                     try {
                         Thread.sleep(100);
                     } catch (InterruptedException e4) {
@@ -104,14 +104,14 @@ public class BluetoothLeDeviceService extends com.contec.phms.device.template.Bl
                     sendData(CommandUran.GET_ALL_DATA(1));
                     return;
                 case 20:
-                    CLog.e(TAG, "全部数据接收完成!");
-                    FileOperation.writeToSDCard(String.valueOf(getcureentbytetime()) + " 数据返回", "BC401");
+                    CLog.e(TAG, "All data received");
+                    FileOperation.writeToSDCard(String.valueOf(getcureentbytetime()) + " Data returned", "BC401");
                     try {
                         Thread.sleep(100);
                     } catch (InterruptedException e5) {
                         e5.printStackTrace();
                     }
-                    sendData(CommandUran.GET_DELETE_DATA());
+//                    sendData(CommandUran.GET_DELETE_DATA());
                     this.mData = new DeviceData();
                     BC401_Data _data = this.packManager.mBc401_Data;
                     this.mData.mDataList = _data.Structs;
@@ -122,7 +122,7 @@ public class BluetoothLeDeviceService extends com.contec.phms.device.template.Bl
                         String _value = "0" + _dataBC.URO + "0" + _dataBC.BLD + "0" + _dataBC.BIL + "0" + _dataBC.KET + "0" + _dataBC.GLU + "0" + _dataBC.PRO + "0" + _dataBC.PH + "0" + _dataBC.NIT + "0" + _dataBC.LEU + "0" + _dataBC.SG + "0" + _dataBC.VC + "9" + _dataBC.MAL + "9" + _dataBC.CR + "9" + _dataBC.UCA;
                         FileOperation.writeToSDCard("time: " + _time + "  " + _value, "BC401");
                         Log.e("%%%%%%%%%%%%%%", "%%%%%%%%%%%%%%");
-                        Log.e("输出不兼容14试纸的数据", "time: " + _time + ";" + _value + ";" + _dataSize);
+                        Log.e("Output data incompatible with 14 panel test strips", "time: " + _time + ";" + _value + ";" + _dataSize);
                         Log.e("%%%%%%%%%%%%%%", "%%%%%%%%%%%%%%");
                     }
                     this.mData.mDate = new int[6];

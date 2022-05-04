@@ -379,7 +379,7 @@ public class FragmentSettings extends FragmentBase implements View.OnTouchListen
                     FragmentSettings.this.mTv_set_new_BLE.setVisibility(View.INVISIBLE);
                     PhmsSharedPreferences.getInstance(FragmentSettings.this.getActivity()).saveBoolean("ifOpenBLe", false);
                 }
-                Log.i("jxx", "call 停止轮询服务类 method2");
+                Log.i("jxx", "call `PollingService.stopService()` method2");
                 PollingService.stopService(FragmentSettings.this.getActivity());
                 FragmentSettings.this.getActivity().startService(new Intent(FragmentSettings.this.getActivity(), PollingService.class));
             }
@@ -619,7 +619,7 @@ public class FragmentSettings extends FragmentBase implements View.OnTouchListen
                     startActivity(new Intent(App_phms.getInstance().getApplicationContext(), LoginActivity.class));
                     return true;
                 }
-                CLog.i("lz", "程序已经退出了,don't start activity.");
+                CLog.i("lz", "Program exited - don't start activity.");
                 return true;
             } else if (v.getId() == R.id.new_user_lead_layout) {
                 startActivity(new Intent(getActivity(), ActivityNewUserLead.class));

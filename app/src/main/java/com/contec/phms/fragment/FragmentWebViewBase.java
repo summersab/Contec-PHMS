@@ -172,7 +172,7 @@ abstract class FragmentWebViewBase extends FragmentBase implements View.OnClickL
         this.mTimer = new Timer();
         this.mTimer.schedule(new TimerTask() {
             public void run() {
-                CLog.eT(FragmentWebViewBase.TAG, "webview 开始计时 **********************");
+                CLog.eT(FragmentWebViewBase.TAG, "webview: starting timer **********************");
                 FragmentWebViewBase.this.mWebView.reload();
                 if (FragmentWebViewBase.this.mTimer != null) {
                     if (FragmentWebViewBase.this.mTimer != null) {
@@ -192,7 +192,7 @@ abstract class FragmentWebViewBase extends FragmentBase implements View.OnClickL
         }
 
         public void run() {
-            CLog.dT(FragmentWebViewBase.TAG, "20秒时间到了*****************************");
+            CLog.dT(FragmentWebViewBase.TAG, "20 seconds are up *****************************");
             FragmentWebViewBase.this.mWebView.reload();
         }
     }
@@ -217,7 +217,7 @@ abstract class FragmentWebViewBase extends FragmentBase implements View.OnClickL
                         return;
                     case Constants.LOGINFAILD /*65537*/:
                         FragmentWebViewBase.this.getActivity().startService(new Intent(FragmentWebViewBase.this.getActivity(), InstantMessageService.class));
-                        CLog.dT(FragmentWebViewBase.TAG, "登陆失败***********");
+                        CLog.dT(FragmentWebViewBase.TAG, "Login failed ***********");
                         return;
                     default:
                         return;
@@ -413,7 +413,7 @@ abstract class FragmentWebViewBase extends FragmentBase implements View.OnClickL
         if (this.mDialog == null) {
             this.mDialog = new ProgressDialog(getActivity());
             this.mDialog.setProgressStyle(0);
-            this.mDialog.setMessage("正在加载 ，请等待...");
+            this.mDialog.setMessage("Loading, please wait...");
             this.mDialog.setIndeterminate(false);
             this.mDialog.setCancelable(true);
             this.mDialog.setCanceledOnTouchOutside(false);
@@ -536,7 +536,7 @@ abstract class FragmentWebViewBase extends FragmentBase implements View.OnClickL
             }
 
             public void myDevice() {
-                CLog.eT(FragmentWebViewBase.TAG, "我的设备 **************");
+                CLog.eT(FragmentWebViewBase.TAG, "`myDevice()` **************");
                 Message msg = new Message();
                 msg.what = Constants.GO_BACK_DEVICE;
                 msg.arg2 = 13;
@@ -544,7 +544,7 @@ abstract class FragmentWebViewBase extends FragmentBase implements View.OnClickL
             }
 
             public String isApp() {
-                CLog.eT(FragmentWebViewBase.TAG, "isApp  **************");
+                CLog.eT(FragmentWebViewBase.TAG, "`isApp()`  **************");
                 return "26";
             }
         }, "contec");
@@ -767,7 +767,7 @@ abstract class FragmentWebViewBase extends FragmentBase implements View.OnClickL
         try {
             LoginUserDao _Loginuserdao = App_phms.getInstance().mHelper.getLoginUserDao().queryBuilder().queryForFirst();
             if (password1 != null && !password1.equals("undefined") && password2 != null && !password2.equals(bs.b) && password3 != null && !password3.equals(bs.b) && password2.equals(password3)) {
-                CLog.dT(TAG, "更改了密码");
+                CLog.dT(TAG, "Changed Password");
                 _Loginuserdao.mPsw = password2;
             }
             AjaxCallBack_login _ajAjaxCallBack_login = new AjaxCallBack_login(getActivity(), this.mHandlerLogin);

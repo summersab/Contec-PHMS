@@ -60,11 +60,11 @@ public class ActivityUserData extends ActivityBase implements View.OnClickListen
                     String _newsex = new String();
                     int _intsex = Integer.valueOf((String) ActivityUserData.this.mapUserinfo.get(LoginUserDao.UserSex)).intValue();
                     if (_intsex == 0) {
-                        _newsex = "男";
+                        _newsex = "Male";
                     } else if (_intsex == 1) {
-                        _newsex = "女";
+                        _newsex = "Female";
                     } else if (_intsex == 2) {
-                        _newsex = "保密";
+                        _newsex = "No choice";
                     }
                     ActivityUserData.this.mUserDataArray.add(new UserData(ActivityUserData.this.getString(R.string.user_sex), _newsex));
                     ActivityUserData.this.mUserDataArray.add(new UserData(ActivityUserData.this.getString(R.string.user_idcard), (String) ActivityUserData.this.mapUserinfo.get("useridcard")));
@@ -179,17 +179,17 @@ public class ActivityUserData extends ActivityBase implements View.OnClickListen
         this.mapUserinfo.put("userbirthday", PageUtil.getLoginUserInfo().mBirthday);
         this.mapUserinfo.put("useraddress", PageUtil.getLoginUserInfo().mAddress);
         this.mapUserinfo.put("userare", PageUtil.getLoginUserInfo().mAre);
-        this.mapUserinfo.put("usercardtype", "卡 user");
+        this.mapUserinfo.put("usercardtype", "user card");
         this.mapUserinfo.put("userdiskspace", PageUtil.getLoginUserInfo().mDiskSpace);
         this.mapUserinfo.put("usertotal", PageUtil.getLoginUserInfo().mTotal);
         this.mapUserinfo.put("userhospitalname", PageUtil.getLoginUserInfo().mHospitalName);
         int _intsex = Integer.valueOf(PageUtil.getLoginUserInfo().mSex).intValue();
         if (_intsex == 0) {
-            this.mapUserinfo.put(LoginUserDao.UserSex, "男");
+            this.mapUserinfo.put(LoginUserDao.UserSex, "Male");
         } else if (_intsex == 1) {
-            this.mapUserinfo.put(LoginUserDao.UserSex, "女");
+            this.mapUserinfo.put(LoginUserDao.UserSex, "Female");
         } else if (_intsex == 2) {
-            this.mapUserinfo.put(LoginUserDao.UserSex, "保密");
+            this.mapUserinfo.put(LoginUserDao.UserSex, "No choice");
         }
         this.mapUserinfo.put("userUsed", PageUtil.getLoginUserInfo().mUsed);
         this.mapUserinfo.put("usertotal", PageUtil.getLoginUserInfo().mTotal);

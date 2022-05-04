@@ -171,7 +171,7 @@ public class DataUploadSucceedNotificationService extends Service {
     }
 
     public static void stopService(Context pContext) {
-        CLog.e(TAG, "停止数据上传通知服务类");
+        CLog.e(TAG, "`DataUploadSucceedNotificationService.stopService()`");
         pContext.stopService(new Intent(pContext, DataUploadSucceedNotificationService.class));
     }
 

@@ -41,10 +41,10 @@ public class ConfigInfo {
         this.mDay = "22";
         this.mMonth = "9";
         this.mYear = "1985";
-        this.mSex = "女";
+        this.mSex = "Female";
         this.mWeight = "70";
         this.mHeight = "171";
-        this.mPeople = "汉";
+        this.mPeople = "American";
         this.mPhone = "110";
         this.mOrganizationM = bs.b;
         this.mAddr = bs.b;
@@ -72,8 +72,8 @@ public class ConfigInfo {
             PatientSection.addItem("Uploader").setValue("uploader");
             PatientSection.addItem("Month").setValue(9);
             PatientSection.addItem("Year").setValue(1985);
-            PatientSection.addItem(UserInfoDao.Sex).setValue("女");
-            PatientSection.addItem("People").setValue("汉");
+            PatientSection.addItem(UserInfoDao.Sex).setValue("Female");
+            PatientSection.addItem("People").setValue("American");
             PatientSection.addItem("Phone").setValue("110");
             PatientSection.addItem("OrganizationM").setValue(bs.b);
             PatientSection.addItem("Addr").setValue(bs.b);

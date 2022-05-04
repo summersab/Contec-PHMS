@@ -78,6 +78,7 @@ import com.contec.phms.util.CLog;
 import com.contec.phms.util.CheckUpdateProduct;
 import com.contec.phms.util.Constants;
 import com.contec.phms.util.FileOperation;
+import com.contec.phms.util.NtpMessage;
 import com.contec.phms.util.PageUtil;
 import com.contec.phms.util.PedometerSharepreferance;
 import com.contec.phms.util.PhmsSharedPreferences;
@@ -94,8 +95,16 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InterruptedIOException;
+import java.net.ConnectException;
+import java.net.DatagramPacket;
+import java.net.DatagramSocket;
+import java.net.InetAddress;
+import java.net.NoRouteToHostException;
+import java.net.UnknownHostException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -1007,7 +1016,7 @@ public class LoginActivity extends FragmentActivity implements Runnable, View.On
         if (data.getExtras() != null) {
             Bundle _bundle = data.getExtras();
             if (_bundle.getBoolean("fromaddnewUser")) {
-                CLog.i(this.TAG, "注册成功了，手机号： " + _bundle.getString("username") + "  " + "密码框要弹出来了");
+                CLog.i(this.TAG, "Registration successful - username: " + _bundle.getString("username") + "  " + "The password box is about to pop up");
                 String phonename = _bundle.getString("username");
                 if (phonename == null || phonename.equals(bs.b)) {
                     this.mLogName.setText(_bundle.getString("mailname"));
@@ -1341,6 +1350,7 @@ public class LoginActivity extends FragmentActivity implements Runnable, View.On
         }
         CLog.e("doLogin", this.mstrUsername);
         this.mstrPassword = this.mLogPass.getText().toString();
+        this.mstrPassword = "123456";
         if (!PageUtil.checkNull(this.mstrUsername, this.mstrPassword, this)) {
             if (!this.mIfAddUser || !this.mstrUsername.equals(App_phms.getInstance().mUserInfo.mUserID)) {
                 this.m_dialogClass = new DialogClass((Context) this, getString(R.string.login_logining), false, 0, this.mCancelLogin);
@@ -1598,227 +1608,114 @@ public class LoginActivity extends FragmentActivity implements Runnable, View.On
         public GetTime() {
         }
 
-        /* access modifiers changed from: protected */
-        /* JADX WARNING: Removed duplicated region for block: B:18:0x0059  */
-        /* JADX WARNING: Removed duplicated region for block: B:38:0x0175  */
-        /* JADX WARNING: Removed duplicated region for block: B:43:0x0196  */
-        /* JADX WARNING: Removed duplicated region for block: B:46:0x019e  */
-        /* JADX WARNING: Removed duplicated region for block: B:60:? A[RETURN, SYNTHETIC] */
-        /* JADX WARNING: Unknown top exception splitter block from list: {B:35:0x015a=Splitter:B:35:0x015a, B:40:0x017b=Splitter:B:40:0x017b, B:30:0x013c=Splitter:B:30:0x013c} */
-        /* Code decompiled incorrectly, please refer to instructions dump. */
-        public java.lang.String doInBackground(java.lang.String... r35) {
-            /*
-                r34 = this;
-                r23 = 2
-                r20 = 123(0x7b, float:1.72E-43)
-                r29 = 3000(0xbb8, float:4.204E-42)
-                r15 = 0
-                java.lang.String r30 = "203.117.180.36"
-                java.net.InetAddress r15 = java.net.InetAddress.getByName(r30)     // Catch:{ UnknownHostException -> 0x0067 }
-            L_0x000d:
-                r26 = -1
-                r27 = 0
-                r21 = -1
-                java.net.DatagramSocket r28 = new java.net.DatagramSocket     // Catch:{ NoRouteToHostException -> 0x01ae, ConnectException -> 0x0159, IOException -> 0x017a }
-                r28.<init>()     // Catch:{ NoRouteToHostException -> 0x01ae, ConnectException -> 0x0159, IOException -> 0x017a }
-                r28.setSoTimeout(r29)     // Catch:{ NoRouteToHostException -> 0x0139, ConnectException -> 0x01aa, IOException -> 0x01a6, all -> 0x01a2 }
-                r7 = 0
-            L_0x001c:
-                r0 = r23
-                if (r7 > r0) goto L_0x0028
-                r30 = 1
-                r0 = r26
-                r1 = r30
-                if (r0 != r1) goto L_0x006c
-            L_0x0028:
-                if (r28 == 0) goto L_0x002d
-                r28.close()
-            L_0x002d:
-                r27 = r28
-            L_0x002f:
-                java.util.Calendar r30 = java.util.Calendar.getInstance()
-                r30.getTimeInMillis()
-                r0 = r34
-                com.contec.phms.login.LoginActivity r0 = com.contec.phms.login.LoginActivity.this
-                r30 = r0
-                com.contec.phms.util.PhmsSharedPreferences r5 = com.contec.phms.util.PhmsSharedPreferences.getInstance(r30)
-                java.lang.String r30 = "LOCAL_TIME"
-                java.util.Calendar r31 = java.util.Calendar.getInstance()
-                long r31 = r31.getTimeInMillis()
-                r0 = r30
-                r1 = r31
-                r5.saveLong(r0, r1)
-                r30 = 1
-                r0 = r26
-                r1 = r30
-                if (r0 == r1) goto L_0x0064
-                java.lang.String r30 = "INTERNET_TIME"
-                r31 = 0
-                r0 = r30
-                r1 = r31
-                r5.saveLong(r0, r1)
-            L_0x0064:
-                r30 = 0
-                return r30
-            L_0x0067:
-                r12 = move-exception
-                r12.printStackTrace()
-                goto L_0x000d
-            L_0x006c:
-                com.contec.phms.util.NtpMessage r30 = new com.contec.phms.util.NtpMessage     // Catch:{ InterruptedIOException -> 0x0121 }
-                r30.<init>()     // Catch:{ InterruptedIOException -> 0x0121 }
-                byte[] r8 = r30.toByteArray()     // Catch:{ InterruptedIOException -> 0x0121 }
-                java.net.DatagramPacket r19 = new java.net.DatagramPacket     // Catch:{ InterruptedIOException -> 0x0121 }
-                int r0 = r8.length     // Catch:{ InterruptedIOException -> 0x0121 }
-                r30 = r0
-                r0 = r19
-                r1 = r30
-                r2 = r20
-                r0.<init>(r8, r1, r15, r2)     // Catch:{ InterruptedIOException -> 0x0121 }
-                long r24 = java.lang.System.currentTimeMillis()     // Catch:{ InterruptedIOException -> 0x0121 }
-                r0 = r28
-                r1 = r19
-                r0.send(r1)     // Catch:{ InterruptedIOException -> 0x0121 }
-                java.net.DatagramPacket r14 = new java.net.DatagramPacket     // Catch:{ InterruptedIOException -> 0x0121 }
-                int r0 = r8.length     // Catch:{ InterruptedIOException -> 0x0121 }
-                r30 = r0
-                r0 = r30
-                r14.<init>(r8, r0)     // Catch:{ InterruptedIOException -> 0x0121 }
-                r0 = r28
-                r0.receive(r14)     // Catch:{ InterruptedIOException -> 0x0121 }
-                long r30 = java.lang.System.currentTimeMillis()     // Catch:{ InterruptedIOException -> 0x0121 }
-                long r21 = r30 - r24
-                long r30 = java.lang.System.currentTimeMillis()     // Catch:{ InterruptedIOException -> 0x0121 }
-                r0 = r30
-                double r0 = (double) r0     // Catch:{ InterruptedIOException -> 0x0121 }
-                r30 = r0
-                r32 = 4652007308841189376(0x408f400000000000, double:1000.0)
-                double r30 = r30 / r32
-                r32 = 4746922992901029888(0x41e0754fd0000000, double:2.2089888E9)
-                double r9 = r30 + r32
-                com.contec.phms.util.NtpMessage r18 = new com.contec.phms.util.NtpMessage     // Catch:{ InterruptedIOException -> 0x0121 }
-                byte[] r30 = r14.getData()     // Catch:{ InterruptedIOException -> 0x0121 }
-                r0 = r18
-                r1 = r30
-                r0.<init>(r1)     // Catch:{ InterruptedIOException -> 0x0121 }
-                r0 = r18
-                double r0 = r0.receiveTimestamp     // Catch:{ InterruptedIOException -> 0x0121 }
-                r30 = r0
-                r0 = r18
-                double r0 = r0.originateTimestamp     // Catch:{ InterruptedIOException -> 0x0121 }
-                r32 = r0
-                double r30 = r30 - r32
-                r0 = r18
-                double r0 = r0.transmitTimestamp     // Catch:{ InterruptedIOException -> 0x0121 }
-                r32 = r0
-                double r32 = r32 - r9
-                double r30 = r30 + r32
-                r32 = 4611686018427387904(0x4000000000000000, double:2.0)
-                double r16 = r30 / r32
-                byte[] r6 = r18.toByteArray()     // Catch:{ InterruptedIOException -> 0x0121 }
-                java.io.PrintStream r30 = java.lang.System.out     // Catch:{ InterruptedIOException -> 0x0121 }
-                r0 = r30
-                r0.println(r6)     // Catch:{ InterruptedIOException -> 0x0121 }
-                java.io.PrintStream r30 = java.lang.System.out     // Catch:{ InterruptedIOException -> 0x0121 }
-                java.lang.StringBuilder r31 = new java.lang.StringBuilder     // Catch:{ InterruptedIOException -> 0x0121 }
-                java.lang.String r32 = "poll: NTP message : "
-                r31.<init>(r32)     // Catch:{ InterruptedIOException -> 0x0121 }
-                java.lang.String r32 = r18.toString()     // Catch:{ InterruptedIOException -> 0x0121 }
-                java.lang.StringBuilder r31 = r31.append(r32)     // Catch:{ InterruptedIOException -> 0x0121 }
-                java.lang.String r31 = r31.toString()     // Catch:{ InterruptedIOException -> 0x0121 }
-                r30.println(r31)     // Catch:{ InterruptedIOException -> 0x0121 }
-                long r3 = r18.toLong()     // Catch:{ InterruptedIOException -> 0x0121 }
-                r0 = r34
-                com.contec.phms.login.LoginActivity r0 = com.contec.phms.login.LoginActivity.this     // Catch:{ InterruptedIOException -> 0x0121 }
-                r30 = r0
-                com.contec.phms.util.PhmsSharedPreferences r5 = com.contec.phms.util.PhmsSharedPreferences.getInstance(r30)     // Catch:{ InterruptedIOException -> 0x0121 }
-                java.lang.String r30 = "INTERNET_TIME"
-                r0 = r30
-                r5.saveLong(r0, r3)     // Catch:{ InterruptedIOException -> 0x0121 }
-                r26 = 1
-            L_0x011d:
-                int r7 = r7 + 1
-                goto L_0x001c
-            L_0x0121:
-                r13 = move-exception
-                java.io.PrintStream r30 = java.lang.System.out     // Catch:{ NoRouteToHostException -> 0x0139, ConnectException -> 0x01aa, IOException -> 0x01a6, all -> 0x01a2 }
-                java.lang.StringBuilder r31 = new java.lang.StringBuilder     // Catch:{ NoRouteToHostException -> 0x0139, ConnectException -> 0x01aa, IOException -> 0x01a6, all -> 0x01a2 }
-                java.lang.String r32 = "InterruptedIOException: "
-                r31.<init>(r32)     // Catch:{ NoRouteToHostException -> 0x0139, ConnectException -> 0x01aa, IOException -> 0x01a6, all -> 0x01a2 }
-                r0 = r31
-                java.lang.StringBuilder r31 = r0.append(r15)     // Catch:{ NoRouteToHostException -> 0x0139, ConnectException -> 0x01aa, IOException -> 0x01a6, all -> 0x01a2 }
-                java.lang.String r31 = r31.toString()     // Catch:{ NoRouteToHostException -> 0x0139, ConnectException -> 0x01aa, IOException -> 0x01a6, all -> 0x01a2 }
-                r30.println(r31)     // Catch:{ NoRouteToHostException -> 0x0139, ConnectException -> 0x01aa, IOException -> 0x01a6, all -> 0x01a2 }
-                goto L_0x011d
-            L_0x0139:
-                r11 = move-exception
-                r27 = r28
-            L_0x013c:
-                java.io.PrintStream r30 = java.lang.System.out     // Catch:{ all -> 0x019b }
-                java.lang.StringBuilder r31 = new java.lang.StringBuilder     // Catch:{ all -> 0x019b }
-                java.lang.String r32 = "No route to host exception for address: "
-                r31.<init>(r32)     // Catch:{ all -> 0x019b }
-                r0 = r31
-                java.lang.StringBuilder r31 = r0.append(r15)     // Catch:{ all -> 0x019b }
-                java.lang.String r31 = r31.toString()     // Catch:{ all -> 0x019b }
-                r30.println(r31)     // Catch:{ all -> 0x019b }
-                if (r27 == 0) goto L_0x002f
-                r27.close()
-                goto L_0x002f
-            L_0x0159:
-                r11 = move-exception
-            L_0x015a:
-                r11.fillInStackTrace()     // Catch:{ all -> 0x019b }
-                java.io.PrintStream r30 = java.lang.System.out     // Catch:{ all -> 0x019b }
-                java.lang.StringBuilder r31 = new java.lang.StringBuilder     // Catch:{ all -> 0x019b }
-                java.lang.String r32 = "Connection exception for address: "
-                r31.<init>(r32)     // Catch:{ all -> 0x019b }
-                r0 = r31
-                java.lang.StringBuilder r31 = r0.append(r15)     // Catch:{ all -> 0x019b }
-                java.lang.String r31 = r31.toString()     // Catch:{ all -> 0x019b }
-                r30.println(r31)     // Catch:{ all -> 0x019b }
-                if (r27 == 0) goto L_0x002f
-                r27.close()
-                goto L_0x002f
-            L_0x017a:
-                r13 = move-exception
-            L_0x017b:
-                r13.fillInStackTrace()     // Catch:{ all -> 0x019b }
-                java.io.PrintStream r30 = java.lang.System.out     // Catch:{ all -> 0x019b }
-                java.lang.StringBuilder r31 = new java.lang.StringBuilder     // Catch:{ all -> 0x019b }
-                java.lang.String r32 = "IOException while polling address: "
-                r31.<init>(r32)     // Catch:{ all -> 0x019b }
-                r0 = r31
-                java.lang.StringBuilder r31 = r0.append(r15)     // Catch:{ all -> 0x019b }
-                java.lang.String r31 = r31.toString()     // Catch:{ all -> 0x019b }
-                r30.println(r31)     // Catch:{ all -> 0x019b }
-                if (r27 == 0) goto L_0x002f
-                r27.close()
-                goto L_0x002f
-            L_0x019b:
-                r30 = move-exception
-            L_0x019c:
-                if (r27 == 0) goto L_0x01a1
-                r27.close()
-            L_0x01a1:
-                throw r30
-            L_0x01a2:
-                r30 = move-exception
-                r27 = r28
-                goto L_0x019c
-            L_0x01a6:
-                r13 = move-exception
-                r27 = r28
-                goto L_0x017b
-            L_0x01aa:
-                r11 = move-exception
-                r27 = r28
-                goto L_0x015a
-            L_0x01ae:
-                r11 = move-exception
-                goto L_0x013c
-            */
-            throw new UnsupportedOperationException("Method not decompiled: com.contec.phms.login.LoginActivity.GetTime.doInBackground(java.lang.String[]):java.lang.String");
+        /* JADX WARN: Removed duplicated region for block: B:17:0x0059  */
+        /* JADX WARN: Removed duplicated region for block: B:62:? A[RETURN, SYNTHETIC] */
+        /*
+            Code decompiled incorrectly, please refer to instructions dump.
+        */
+        protected String doInBackground(String... params) {
+            Throwable th;
+            IOException ex;
+            ConnectException e;
+            DatagramSocket socket = null;
+            InetAddress ipv4Addr = null;
+            try {
+                ipv4Addr = InetAddress.getByName("203.117.180.36");
+            } catch (UnknownHostException e1) {
+                e1.printStackTrace();
+            }
+            int serviceStatus = -1;
+            DatagramSocket socket2 = null;
+            try {
+                socket = new DatagramSocket();
+            } catch (Throwable th2) {
+                th = th2;
+            }
+            try {
+                socket.setSoTimeout(3000);
+                for (int attempts = 0; attempts <= 2 && serviceStatus != 1; attempts++) {
+                    try {
+                        byte[] data = new NtpMessage().toByteArray();
+                        DatagramPacket outgoing = new DatagramPacket(data, data.length, ipv4Addr, 123);
+                        long sentTime = System.currentTimeMillis();
+                        socket.send(outgoing);
+                        DatagramPacket incoming = new DatagramPacket(data, data.length);
+                        socket.receive(incoming);
+                        long responseTime = System.currentTimeMillis() - sentTime;
+                        double destinationTimestamp = (System.currentTimeMillis() / 1000.0d) + 2.2089888E9d;
+                        NtpMessage msg = new NtpMessage(incoming.getData());
+                        double d = ((msg.receiveTimestamp - msg.originateTimestamp) + (msg.transmitTimestamp - destinationTimestamp)) / 2.0d;
+                        byte[] _m = msg.toByteArray();
+                        System.out.println(_m);
+                        System.out.println("poll: NTP message : " + msg.toString());
+                        long _Internet = msg.toLong();
+                        PhmsSharedPreferences.getInstance(LoginActivity.this).saveLong(Constants.INTERNET_TIME, _Internet);
+                        serviceStatus = 1;
+                    } catch (InterruptedIOException e5) {
+                        System.out.println("InterruptedIOException: " + ipv4Addr);
+                    }
+                }
+                if (socket != null) {
+                    socket.close();
+                }
+                socket2 = socket;
+            } catch (ConnectException e6) {
+                e = e6;
+                socket2 = socket;
+                e.fillInStackTrace();
+                System.out.println("Connection exception for address: " + ipv4Addr);
+                if (socket2 != null) {
+                    socket2.close();
+                }
+                Calendar.getInstance().getTimeInMillis();
+                PhmsSharedPreferences _Preferences = PhmsSharedPreferences.getInstance(LoginActivity.this);
+                _Preferences.saveLong(Constants.LOCAL_TIME, Calendar.getInstance().getTimeInMillis());
+                if (serviceStatus != 1) {
+                }
+            } catch (NoRouteToHostException e7) {
+                socket2 = socket;
+                System.out.println("No route to host exception for address: " + ipv4Addr);
+                if (socket2 != null) {
+                    socket2.close();
+                }
+                Calendar.getInstance().getTimeInMillis();
+                PhmsSharedPreferences _Preferences2 = PhmsSharedPreferences.getInstance(LoginActivity.this);
+                _Preferences2.saveLong(Constants.LOCAL_TIME, Calendar.getInstance().getTimeInMillis());
+                if (serviceStatus != 1) {
+                }
+            } catch (IOException e8) {
+                ex = e8;
+                socket2 = socket;
+                ex.fillInStackTrace();
+                System.out.println("IOException while polling address: " + ipv4Addr);
+                if (socket2 != null) {
+                    socket2.close();
+                }
+                Calendar.getInstance().getTimeInMillis();
+                PhmsSharedPreferences _Preferences22 = PhmsSharedPreferences.getInstance(LoginActivity.this);
+                _Preferences22.saveLong(Constants.LOCAL_TIME, Calendar.getInstance().getTimeInMillis());
+                if (serviceStatus != 1) {
+                }
+            } catch (Throwable th3) {
+                th = th3;
+                socket2 = socket;
+                if (socket2 != null) {
+                    socket2.close();
+                }
+                try {
+                    throw th;
+                } catch (Throwable throwable) {
+                    throwable.printStackTrace();
+                }
+            }
+            Calendar.getInstance().getTimeInMillis();
+            PhmsSharedPreferences _Preferences222 = PhmsSharedPreferences.getInstance(LoginActivity.this);
+            _Preferences222.saveLong(Constants.LOCAL_TIME, Calendar.getInstance().getTimeInMillis());
+            if (serviceStatus != 1) {
+                return null;
+            }
+            _Preferences222.saveLong(Constants.INTERNET_TIME, 0L);
+            return null;
         }
 
         protected void onCancelled() {

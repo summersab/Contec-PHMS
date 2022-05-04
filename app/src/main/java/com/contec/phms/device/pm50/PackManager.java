@@ -10,6 +10,9 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
 import u.aly.bs;
 import u.aly.dp;
 
@@ -230,65 +233,39 @@ public class PackManager extends com.contec.phms.device.template.PackManager {
         this.mTimeString = new StringBuilder().append(this.mDeviceData.mDate[0]).append(this.mDeviceData.mDate[1]).append(this.mDeviceData.mDate[2]).append(this.mDeviceData.mDate[3]).append(this.mDeviceData.mDate[4]).toString();
     }
 
-    /* JADX WARNING: Removed duplicated region for block: B:13:0x0037 A[SYNTHETIC, Splitter:B:13:0x0037] */
-    /* JADX WARNING: Removed duplicated region for block: B:17:0x003d  */
-    /* Code decompiled incorrectly, please refer to instructions dump. */
-    public void saveUploaded(java.lang.String r10) {
-        /*
-            r9 = this;
-            r2 = 0
-            r0 = 0
-            r4 = 0
-            java.io.File r1 = new java.io.File     // Catch:{ IOException -> 0x0034 }
-            java.lang.String r7 = com.contec.phms.util.Constants.UploadedDatas_abpm50     // Catch:{ IOException -> 0x0034 }
-            r1.<init>(r7)     // Catch:{ IOException -> 0x0034 }
-            boolean r7 = r1.exists()     // Catch:{ IOException -> 0x0047 }
-            if (r7 == 0) goto L_0x0011
-            r4 = 1
-        L_0x0011:
-            java.io.FileWriter r3 = new java.io.FileWriter     // Catch:{ IOException -> 0x0047 }
-            java.lang.String r7 = com.contec.phms.util.Constants.UploadedDatas_abpm50     // Catch:{ IOException -> 0x0047 }
-            r8 = 1
-            r3.<init>(r7, r8)     // Catch:{ IOException -> 0x0047 }
-            java.lang.StringBuilder r7 = new java.lang.StringBuilder     // Catch:{ IOException -> 0x004a }
-            java.lang.String r8 = ";"
-            r7.<init>(r8)     // Catch:{ IOException -> 0x004a }
-            java.lang.StringBuilder r7 = r7.append(r10)     // Catch:{ IOException -> 0x004a }
-            java.lang.String r7 = r7.toString()     // Catch:{ IOException -> 0x004a }
-            r3.write(r7)     // Catch:{ IOException -> 0x004a }
-            r3.flush()     // Catch:{ IOException -> 0x004a }
-            r3.close()     // Catch:{ IOException -> 0x004a }
-            r0 = 0
-            r2 = r3
-        L_0x0033:
-            return
-        L_0x0034:
-            r5 = move-exception
-        L_0x0035:
-            if (r2 == 0) goto L_0x003b
-            r2.close()     // Catch:{ IOException -> 0x0042 }
-            r2 = 0
-        L_0x003b:
-            if (r0 == 0) goto L_0x003e
-            r0 = 0
-        L_0x003e:
-            r5.printStackTrace()
-            goto L_0x0033
-        L_0x0042:
-            r6 = move-exception
-            r6.printStackTrace()
-            goto L_0x003e
-        L_0x0047:
-            r5 = move-exception
-            r0 = r1
-            goto L_0x0035
-        L_0x004a:
-            r5 = move-exception
-            r0 = r1
-            r2 = r3
-            goto L_0x0035
-        */
-        throw new UnsupportedOperationException("Method not decompiled: com.contec.phms.device.pm50.PackManager.saveUploaded(java.lang.String):void");
+    public void saveUploaded(String save) {
+        IOException e;
+        FileWriter _fw = null;
+        File _file = null;
+        File _file2 = new File(Constants.UploadedDatas_abpm50);
+        try {
+            if (_file2.exists()) {
+            }
+            FileWriter _fw2 = new FileWriter(Constants.UploadedDatas_abpm50, true);
+            try {
+                _fw2.write(";" + save);
+                _fw2.flush();
+                _fw2.close();
+            } catch (IOException e2) {
+                e = e2;
+                _file = _file2;
+                _fw = _fw2;
+                if (_fw != null) {
+                    try {
+                        _fw.close();
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                        e.printStackTrace();
+                    }
+                }
+                if (_file != null) {
+                }
+                e.printStackTrace();
+            }
+        } catch (IOException e3) {
+            e = e3;
+            _file = _file2;
+        }
     }
 
     public static boolean isUploaded(String path, String pTimeString) {

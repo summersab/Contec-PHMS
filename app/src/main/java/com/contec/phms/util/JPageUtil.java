@@ -39,29 +39,21 @@ public class JPageUtil {
         pActivity.getWindow().setFlags(1024, 1024);
     }
 
-    /* JADX WARNING: Removed duplicated region for block: B:11:0x0008 A[SYNTHETIC] */
-    /* JADX WARNING: Removed duplicated region for block: B:4:0x000a  */
-    /* Code decompiled incorrectly, please refer to instructions dump. */
-    public static boolean isNumeric(java.lang.String r3) {
-        /*
-            int r1 = r3.length()
-        L_0x0004:
-            int r1 = r1 + -1
-            if (r1 >= 0) goto L_0x000a
-            r2 = 1
-        L_0x0009:
-            return r2
-        L_0x000a:
-            char r0 = r3.charAt(r1)
-            r2 = 48
-            if (r0 < r2) goto L_0x0016
-            r2 = 57
-            if (r0 <= r2) goto L_0x0004
-        L_0x0016:
-            r2 = 0
-            goto L_0x0009
-        */
-        throw new UnsupportedOperationException("Method not decompiled: com.contec.phms.util.JPageUtil.isNumeric(java.lang.String):boolean");
+    public static boolean isNumeric(String str) {
+        int chr;
+        int i = str.length();
+        do {
+            i--;
+            if (i >= 0) {
+                chr = str.charAt(i);
+                if (chr < 48) {
+                    break;
+                }
+            } else {
+                return true;
+            }
+        } while (chr <= 57);
+        return false;
     }
 
     public static String addUUID(String pPath) {
@@ -401,7 +393,7 @@ public class JPageUtil {
             return null;
         }
         byte[] _nowDateByte = getStringTimeByteNow();
-        CLog.d("ReceiveThread", " 不合法日期pDate:" + pDate + "  startime:" + _startTime + "  " + _endTime + "  \nyear:" + _nowDateByte[0] + " month:" + _nowDateByte[1] + " day:" + _nowDateByte[2] + "  hour:" + _nowDateByte[3] + "  min:" + _nowDateByte[4] + " ss:" + _nowDateByte[5] + " \n" + "start:" + _start + " end:" + _end);
+        CLog.d("ReceiveThread", " Invalid date pDate: " + pDate + "  startime:" + _startTime + "  " + _endTime + "  \nyear:" + _nowDateByte[0] + " month:" + _nowDateByte[1] + " day:" + _nowDateByte[2] + "  hour:" + _nowDateByte[3] + "  min:" + _nowDateByte[4] + " ss:" + _nowDateByte[5] + " \n" + "start:" + _start + " end:" + _end);
         return _nowDateByte;
     }
 
@@ -417,7 +409,7 @@ public class JPageUtil {
         String nowdateTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(_calendar.getTime());
         JFileOperation.writeToSDCard("对比时间中*********：存储的网络时间：" + getDateTime(netTime) + "   本地登录的时间：" + getDateTime(loginTime) + "  加减之后的时间：" + nowdateTime, "Cms50D_BT");
         JFileOperation.writeToSDCard("对比时间中*********：存储的网络时间：" + getDateTime(netTime) + "   本地登录的时间：" + getDateTime(loginTime) + "  加减之后的时间：" + nowdateTime, "Cms50E_BT");
-        CLog.dT(TAG, "存储的网络时间：" + netTime + "   本地登录的时间：" + loginTime + "  加减之后的时间：" + nowdateTime);
+        CLog.dT(TAG, "Stored network time: ：" + netTime + "   login time: " + loginTime + "  time now: " + nowdateTime);
         _calendar.add(1, -1);
         String _startTime = getStringTime(_calendar.getTimeInMillis());
         _calendar.add(1, 1);
@@ -429,7 +421,7 @@ public class JPageUtil {
             return null;
         }
         byte[] _nowDateByte = getStringTimeByteNow();
-        CLog.d("ReceiveThread", " 不合法日期pDate:" + pDate + "  startime:" + _startTime + "  " + _endTime + "  \nyear:" + _nowDateByte[0] + " month:" + _nowDateByte[1] + " day:" + _nowDateByte[2] + "  hour:" + _nowDateByte[3] + "  min:" + _nowDateByte[4] + " ss:" + _nowDateByte[5] + " \n" + "start:" + _start + " end:" + _end);
+        CLog.d("ReceiveThread", " Invalid date pDate:" + pDate + "  startime:" + _startTime + "  " + _endTime + "  \nyear:" + _nowDateByte[0] + " month:" + _nowDateByte[1] + " day:" + _nowDateByte[2] + "  hour:" + _nowDateByte[3] + "  min:" + _nowDateByte[4] + " ss:" + _nowDateByte[5] + " \n" + "start:" + _start + " end:" + _end);
         return _nowDateByte;
     }
 

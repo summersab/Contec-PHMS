@@ -198,8 +198,8 @@ public class DevicePackManager {
                 DebugLog.e("DevicePackManager", "-------单次血氧脉率数据--------");
                 this._packCount++;
                 byte[] _point = {(byte) (pack[2] & 255), (byte) (pack[3] & dp.m), (byte) (pack[4] & 255), (byte) (pack[5] & 255), (byte) (pack[6] & 255), (byte) (pack[7] & 255), (byte) (pack[8] & 255), (byte) (((pack[3] & 64) << 1) | pack[9])};
-                Log.e("jxx", "年：" + _point[0] + "月:" + _point[1] + " 日：" + _point[2] + " 时：" + _point[3] + " 分：" + _point[4] + " 秒：" + _point[5]);
-                Log.e("jxx", "血氧：" + _point[6] + " 脉率:" + _point[7]);
+                Log.e("jxx", "year: " + _point[0] + " month: " + _point[1] + " day: " + _point[2] + " hour: " + _point[3] + " minute: " + _point[4] + " second: " + _point[5]);
+                Log.e("jxx", "Blood oxygen: " + _point[6] + " Pulse rate: " + _point[7]);
                 this.mSpo2h.getmSpo2PointList().add(_point);
                 if ((pack[1] & 64) == 64) {
                     this._packCount = 0;

@@ -32,10 +32,10 @@
                     <TextView android:gravity="left" android:id="@+id/usetofulcrum" android:layout_width="wrap_content" android:layout_height="5dp" android:layout_marginLeft="15dp" android:layout_alignParentBottom="true"/>
                 </RelativeLayout>
                 <com.contec.phms.widget.XListView android:id="@+id/list_view_device" android:paddingLeft="8dp" android:paddingRight="8dp" android:visibility="gone" android:scrollbars="none" android:animationCache="true" android:alwaysDrawnWithCache="true" android:layout_width="match_parent" android:layout_height="match_parent" android:cacheColorHint="#0000" android:divider="#00000000" android:dividerHeight="5dp"/>
-                <com.contec.phms.activity.MultiDirectionSlidingDrawer android:id="@+id/rundrawer" android:visibility="gone" android:layout_width="match_parent" android:layout_height="match_parent" my:direction="top_to_bottom|right_to_left|bottom_to_top" my:handle="@+id/handle" my:content="@+id/content">
+                <!--com.contec.phms.activity.MultiDirectionSlidingDrawer android:id="@+id/rundrawer" android:visibility="gone" android:layout_width="match_parent" android:layout_height="match_parent" my:direction="top_to_bottom|right_to_left|bottom_to_top" my:handle="@+id/handle" my:content="@+id/content">
                     <include android:id="@+id/content" layout="@layout/pen_content_ball"/>
                     <include android:id="@+id/handle" layout="@layout/pen_origin"/>
-                </com.contec.phms.activity.MultiDirectionSlidingDrawer>
+                </com.contec.phms.activity.MultiDirectionSlidingDrawer-->
             </FrameLayout>
         </LinearLayout>
     </LinearLayout>

@@ -203,7 +203,7 @@ public class CustomDevicescellview extends RelativeLayout {
                             try {
                                 Thread.sleep(500);
                                 CLog.d(CustomDevicescellview.this.TAG, "状态符合连接需求 ***开始链接");
-                                CLog.i("jxx", "call 停止轮询服务类 method1");
+                                CLog.i("jxx", "call `PollingService.stopService()` method1");
                                 PollingService.stopService(context);
                                 App_phms.getInstance().getmWaitConnectDeviceBeanLists().add(new WaitConnectDeviceBean(DeviceManager.mRefreshBean, 0, true));
                                 CLog.i("jxx", "xx集合的大小1: " + App_phms.getInstance().getmWaitConnectDeviceBeanLists().size());

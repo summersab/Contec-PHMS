@@ -2,237 +2,196 @@ package com.contec.phms.device.cms50k.update;
 
 import android.os.Environment;
 import android.util.Log;
+import android.util.Xml;
+import com.alibaba.cchannel.push.receiver.CPushMessageCodec;
 import com.contec.phms.App_phms;
 import com.contec.phms.util.Constants;
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.RandomAccessFile;
 import java.math.BigInteger;
 import java.security.MessageDigest;
+import java.util.ArrayList;
 import java.util.List;
 import org.apache.commons.httpclient.cookie.CookieSpec;
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserException;
+import org.xmlpull.v1.XmlPullParserFactory;
+import org.xmlpull.v1.XmlSerializer;
 import u.aly.bs;
-import u.aly.dp;
 
+/* loaded from: classes.dex */
 public class Update50KUtils {
     public static final String MainURl = "http://data2.contec365.com";
-    public static final String TAG = Update50KUtils.class.getSimpleName();
     public static final String XmlURL = "http://data2.contec365.com/updatesoftware/androidsoftware/4020/current.xml";
-    public static final String fileUrl = (Environment.getExternalStorageDirectory() + CookieSpec.PATH_DELIM + "CYw/");
-    public static boolean flagClose = false;
     private static FileInputStream instream = null;
-    public static long islong = 0;
-    public static long mUpdateFileSize = 0;
-    public static RandomAccessFile randomFile = null;
     public static final String updateFilename = "update.bin";
     public static final String updateXMlFilename = "updateFile.xml";
+    public static final String TAG = Update50KUtils.class.getSimpleName();
+    public static long mUpdateFileSize = 0;
+    public static final String fileUrl = Environment.getExternalStorageDirectory() + CookieSpec.PATH_DELIM + "CYw/";
+    public static boolean flagClose = false;
+    public static RandomAccessFile randomFile = null;
+    public static long islong = 0;
 
-    /* JADX WARNING: Code restructure failed: missing block: B:19:0x0050, code lost:
-        r2 = r3;
-        r0 = r1;
-     */
-    /* JADX WARNING: Code restructure failed: missing block: B:21:?, code lost:
-        r5 = r7.next();
-     */
-    /* Code decompiled incorrectly, please refer to instructions dump. */
-    public static java.util.List<com.contec.phms.device.cms50k.update.Xml50KUpdateBean> XMLParser(java.lang.String r13) {
-        /*
-            r8 = 0
-            r0 = 0
-            r2 = 0
-            if (r13 == 0) goto L_0x001b
-            java.lang.String r10 = r13.trim()     // Catch:{ Exception -> 0x0034 }
-            java.lang.String r11 = ""
-            boolean r10 = r10.equals(r11)     // Catch:{ Exception -> 0x0034 }
-            if (r10 != 0) goto L_0x001b
-            java.io.ByteArrayInputStream r9 = new java.io.ByteArrayInputStream     // Catch:{ Exception -> 0x0034 }
-            byte[] r10 = r13.getBytes()     // Catch:{ Exception -> 0x0034 }
-            r9.<init>(r10)     // Catch:{ Exception -> 0x0034 }
-            r8 = r9
-        L_0x001b:
-            org.xmlpull.v1.XmlPullParser r7 = android.util.Xml.newPullParser()
-            java.lang.String r10 = "UTF-8"
-            r7.setInput(r8, r10)     // Catch:{ XmlPullParserException -> 0x0117, IOException -> 0x011d }
-            int r5 = r7.getEventType()     // Catch:{ XmlPullParserException -> 0x0117, IOException -> 0x011d }
-            r3 = r2
-            r1 = r0
-        L_0x002a:
-            r10 = 1
-            if (r5 != r10) goto L_0x004d
-            r8.close()     // Catch:{ XmlPullParserException -> 0x012a, IOException -> 0x0123 }
-            r2 = r3
-            r0 = r1
-        L_0x0032:
-            r3 = r2
-        L_0x0033:
-            return r3
-        L_0x0034:
-            r4 = move-exception
-            java.lang.String r10 = "info"
-            java.lang.StringBuilder r11 = new java.lang.StringBuilder
-            java.lang.String r12 = r4.getMessage()
-            java.lang.String r12 = java.lang.String.valueOf(r12)
-            r11.<init>(r12)
-            java.lang.String r11 = r11.toString()
-            android.util.Log.i(r10, r11)
-            r3 = r2
-            goto L_0x0033
-        L_0x004d:
-            switch(r5) {
-                case 0: goto L_0x0059;
-                case 1: goto L_0x0050;
-                case 2: goto L_0x0060;
-                case 3: goto L_0x0104;
-                default: goto L_0x0050;
+    /* JADX WARN: Can't fix incorrect switch cases order, some code will duplicate */
+    public static List<Xml50KUpdateBean> XMLParser(String xml) {
+        IOException e;
+        XmlPullParserException e2;
+        int eventType = 0;
+        ByteArrayInputStream tInputStringStream = null;
+        Xml50KUpdateBean bean = null;
+        List<Xml50KUpdateBean> beans = null;
+        if (xml != null) {
+            try {
+                if (!xml.trim().equals(bs.b)) {
+                    tInputStringStream = new ByteArrayInputStream(xml.getBytes());
+                }
+            } catch (Exception e3) {
+                Log.i("info", new StringBuilder(String.valueOf(e3.getMessage())).toString());
+                return null;
             }
-        L_0x0050:
-            r2 = r3
-            r0 = r1
-        L_0x0052:
-            int r5 = r7.next()     // Catch:{ XmlPullParserException -> 0x0117, IOException -> 0x011d }
-            r3 = r2
-            r1 = r0
-            goto L_0x002a
-        L_0x0059:
-            java.util.ArrayList r2 = new java.util.ArrayList     // Catch:{ XmlPullParserException -> 0x012a, IOException -> 0x0123 }
-            r2.<init>()     // Catch:{ XmlPullParserException -> 0x012a, IOException -> 0x0123 }
-            r0 = r1
-            goto L_0x0052
-        L_0x0060:
-            java.lang.String r6 = r7.getName()     // Catch:{ XmlPullParserException -> 0x012a, IOException -> 0x0123 }
-            java.lang.String r10 = "file"
-            boolean r10 = r6.equalsIgnoreCase(r10)     // Catch:{ XmlPullParserException -> 0x012a, IOException -> 0x0123 }
-            if (r10 == 0) goto L_0x0134
-            com.contec.phms.device.cms50k.update.Xml50KUpdateBean r0 = new com.contec.phms.device.cms50k.update.Xml50KUpdateBean     // Catch:{ XmlPullParserException -> 0x012a, IOException -> 0x0123 }
-            r0.<init>()     // Catch:{ XmlPullParserException -> 0x012a, IOException -> 0x0123 }
-        L_0x0071:
-            java.lang.String r10 = "type"
-            boolean r10 = r6.equalsIgnoreCase(r10)     // Catch:{ XmlPullParserException -> 0x012e, IOException -> 0x0127 }
-            if (r10 == 0) goto L_0x0081
-            java.lang.String r10 = r7.nextText()     // Catch:{ XmlPullParserException -> 0x012e, IOException -> 0x0127 }
-            r0.type = r10     // Catch:{ XmlPullParserException -> 0x012e, IOException -> 0x0127 }
-            r2 = r3
-            goto L_0x0052
-        L_0x0081:
-            java.lang.String r10 = "fname"
-            boolean r10 = r6.equalsIgnoreCase(r10)     // Catch:{ XmlPullParserException -> 0x012e, IOException -> 0x0127 }
-            if (r10 == 0) goto L_0x0091
-            java.lang.String r10 = r7.nextText()     // Catch:{ XmlPullParserException -> 0x012e, IOException -> 0x0127 }
-            r0.fname = r10     // Catch:{ XmlPullParserException -> 0x012e, IOException -> 0x0127 }
-            r2 = r3
-            goto L_0x0052
-        L_0x0091:
-            java.lang.String r10 = "md5"
-            boolean r10 = r6.equalsIgnoreCase(r10)     // Catch:{ XmlPullParserException -> 0x012e, IOException -> 0x0127 }
-            if (r10 == 0) goto L_0x00a1
-            java.lang.String r10 = r7.nextText()     // Catch:{ XmlPullParserException -> 0x012e, IOException -> 0x0127 }
-            r0.md5 = r10     // Catch:{ XmlPullParserException -> 0x012e, IOException -> 0x0127 }
-            r2 = r3
-            goto L_0x0052
-        L_0x00a1:
-            java.lang.String r10 = "path"
-            boolean r10 = r6.equalsIgnoreCase(r10)     // Catch:{ XmlPullParserException -> 0x012e, IOException -> 0x0127 }
-            if (r10 == 0) goto L_0x00b1
-            java.lang.String r10 = r7.nextText()     // Catch:{ XmlPullParserException -> 0x012e, IOException -> 0x0127 }
-            r0.path = r10     // Catch:{ XmlPullParserException -> 0x012e, IOException -> 0x0127 }
-            r2 = r3
-            goto L_0x0052
-        L_0x00b1:
-            java.lang.String r10 = "size"
-            boolean r10 = r6.equalsIgnoreCase(r10)     // Catch:{ XmlPullParserException -> 0x012e, IOException -> 0x0127 }
-            if (r10 == 0) goto L_0x00c1
-            java.lang.String r10 = r7.nextText()     // Catch:{ XmlPullParserException -> 0x012e, IOException -> 0x0127 }
-            r0.size = r10     // Catch:{ XmlPullParserException -> 0x012e, IOException -> 0x0127 }
-            r2 = r3
-            goto L_0x0052
-        L_0x00c1:
-            java.lang.String r10 = "typecode"
-            boolean r10 = r6.equalsIgnoreCase(r10)     // Catch:{ XmlPullParserException -> 0x012e, IOException -> 0x0127 }
-            if (r10 == 0) goto L_0x00d1
-            java.lang.String r10 = r7.nextText()     // Catch:{ XmlPullParserException -> 0x012e, IOException -> 0x0127 }
-            r0.typecode = r10     // Catch:{ XmlPullParserException -> 0x012e, IOException -> 0x0127 }
-            r2 = r3
-            goto L_0x0052
-        L_0x00d1:
-            java.lang.String r10 = "version"
-            boolean r10 = r6.equalsIgnoreCase(r10)     // Catch:{ XmlPullParserException -> 0x012e, IOException -> 0x0127 }
-            if (r10 == 0) goto L_0x00e2
-            java.lang.String r10 = r7.nextText()     // Catch:{ XmlPullParserException -> 0x012e, IOException -> 0x0127 }
-            r0.version = r10     // Catch:{ XmlPullParserException -> 0x012e, IOException -> 0x0127 }
-            r2 = r3
-            goto L_0x0052
-        L_0x00e2:
-            java.lang.String r10 = "uploaddate"
-            boolean r10 = r6.equalsIgnoreCase(r10)     // Catch:{ XmlPullParserException -> 0x012e, IOException -> 0x0127 }
-            if (r10 == 0) goto L_0x00f3
-            java.lang.String r10 = r7.nextText()     // Catch:{ XmlPullParserException -> 0x012e, IOException -> 0x0127 }
-            r0.uploaddate = r10     // Catch:{ XmlPullParserException -> 0x012e, IOException -> 0x0127 }
-            r2 = r3
-            goto L_0x0052
-        L_0x00f3:
-            java.lang.String r10 = "description"
-            boolean r10 = r6.equalsIgnoreCase(r10)     // Catch:{ XmlPullParserException -> 0x012e, IOException -> 0x0127 }
-            if (r10 == 0) goto L_0x0131
-            java.lang.String r10 = r7.nextText()     // Catch:{ XmlPullParserException -> 0x012e, IOException -> 0x0127 }
-            r0.description = r10     // Catch:{ XmlPullParserException -> 0x012e, IOException -> 0x0127 }
-            r2 = r3
-            goto L_0x0052
-        L_0x0104:
-            java.lang.String r10 = r7.getName()     // Catch:{ XmlPullParserException -> 0x012a, IOException -> 0x0123 }
-            java.lang.String r11 = "file"
-            boolean r10 = r10.equalsIgnoreCase(r11)     // Catch:{ XmlPullParserException -> 0x012a, IOException -> 0x0123 }
-            if (r10 == 0) goto L_0x0050
-            r3.add(r1)     // Catch:{ XmlPullParserException -> 0x012a, IOException -> 0x0123 }
-            r0 = 0
-            r2 = r3
-            goto L_0x0052
-        L_0x0117:
-            r4 = move-exception
-        L_0x0118:
-            r4.printStackTrace()
-            goto L_0x0032
-        L_0x011d:
-            r4 = move-exception
-        L_0x011e:
-            r4.printStackTrace()
-            goto L_0x0032
-        L_0x0123:
-            r4 = move-exception
-            r2 = r3
-            r0 = r1
-            goto L_0x011e
-        L_0x0127:
-            r4 = move-exception
-            r2 = r3
-            goto L_0x011e
-        L_0x012a:
-            r4 = move-exception
-            r2 = r3
-            r0 = r1
-            goto L_0x0118
-        L_0x012e:
-            r4 = move-exception
-            r2 = r3
-            goto L_0x0118
-        L_0x0131:
-            r2 = r3
-            goto L_0x0052
-        L_0x0134:
-            r0 = r1
-            goto L_0x0071
-        */
-        throw new UnsupportedOperationException("Method not decompiled: com.contec.phms.device.cms50k.update.Update50KUtils.XMLParser(java.lang.String):java.util.List");
+        }
+        XmlPullParser parser = Xml.newPullParser();
+        try {
+            parser.setInput(tInputStringStream, "UTF-8");
+            eventType = parser.getEventType();
+        } catch (XmlPullParserException e5) {
+            e2 = e5;
+        }
+        while (true) {
+            List<Xml50KUpdateBean> beans2 = beans;
+            Xml50KUpdateBean bean2 = bean;
+            if (eventType == 1) {
+                try {
+                    tInputStringStream.close();
+                } catch (IOException ioException) {
+                    ioException.printStackTrace();
+                }
+                beans = beans2;
+                return beans;
+            }
+            switch (eventType) {
+                case 0:
+                    beans = new ArrayList<>();
+                    bean = bean2;
+                    break;
+                case 1:
+                default:
+                    beans = beans2;
+                    bean = bean2;
+                    break;
+                case 2:
+                    String name = parser.getName();
+                    if (name.equalsIgnoreCase("file")) {
+                        bean = new Xml50KUpdateBean();
+                    } else {
+                        bean = bean2;
+                    }
+                    try {
+                        if (!name.equalsIgnoreCase("type")) {
+                            if (!name.equalsIgnoreCase("fname")) {
+                                if (!name.equalsIgnoreCase("md5")) {
+                                    if (!name.equalsIgnoreCase("path")) {
+                                        if (!name.equalsIgnoreCase("size")) {
+                                            if (!name.equalsIgnoreCase("typecode")) {
+                                                if (!name.equalsIgnoreCase("version")) {
+                                                    if (!name.equalsIgnoreCase("uploaddate")) {
+                                                        if (!name.equalsIgnoreCase("description")) {
+                                                            beans = beans2;
+                                                            break;
+                                                        } else {
+                                                            bean.description = parser.nextText();
+                                                            beans = beans2;
+                                                            break;
+                                                        }
+                                                    } else {
+                                                        bean.uploaddate = parser.nextText();
+                                                        beans = beans2;
+                                                        break;
+                                                    }
+                                                } else {
+                                                    bean.version = parser.nextText();
+                                                    beans = beans2;
+                                                    break;
+                                                }
+                                            } else {
+                                                bean.typecode = parser.nextText();
+                                                beans = beans2;
+                                                break;
+                                            }
+                                        } else {
+                                            bean.size = parser.nextText();
+                                            beans = beans2;
+                                            break;
+                                        }
+                                    } else {
+                                        bean.path = parser.nextText();
+                                        beans = beans2;
+                                        break;
+                                    }
+                                } else {
+                                    bean.md5 = parser.nextText();
+                                    beans = beans2;
+                                    break;
+                                }
+                            } else {
+                                bean.fname = parser.nextText();
+                                beans = beans2;
+                                break;
+                            }
+                        } else {
+                            bean.type = parser.nextText();
+                            beans = beans2;
+                            break;
+                        }
+                    } catch (IOException e8) {
+                        e = e8;
+                        beans = beans2;
+                        e.printStackTrace();
+                        return beans;
+                    } catch (XmlPullParserException e9) {
+                        e2 = e9;
+                        beans = beans2;
+                        e2.printStackTrace();
+                        return beans;
+                    }
+                case 3:
+                    if (parser.getName().equalsIgnoreCase("file")) {
+                        beans2.add(bean2);
+                        bean = null;
+                        beans = beans2;
+                        break;
+                    }
+                    beans = beans2;
+                    bean = bean2;
+                    break;
+            }
+            try {
+                eventType = parser.next();
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            } catch (XmlPullParserException xmlPullParserException) {
+                xmlPullParserException.printStackTrace();
+            }
+        }
     }
 
     public static byte[] doPackIsUpdateCommand(byte[] pack) {
         int hiPre = ((pack[7] << 8) | (pack[6] & 255)) & 65535;
-        String valueOf = String.valueOf(hiPre);
-        int hiPre1 = (((pack[11] & 255) << 24) | ((pack[10] & 255) << dp.n) | ((pack[9] & 255) << 8) | (pack[8] & 255)) & -1;
-        mUpdateFileSize = (long) hiPre1;
+        String.valueOf(hiPre);
+        int hiPre1 = (((pack[11] & 255) << 24) | ((pack[10] & 255) << 16) | ((pack[9] & 255) << 8) | (pack[8] & 255)) & (-1);
+        mUpdateFileSize = hiPre1;
         Log.e("wsd1", "String  long >>" + Integer.toHexString(hiPre1));
-        return new byte[]{-76, 0, (byte) (hiPre & 127), (byte) ((hiPre >> 7) & 127), (byte) ((hiPre >> 14) & 127), (byte) (hiPre1 & 127), (byte) ((hiPre1 >> 7) & 127), (byte) ((hiPre1 >> 14) & 127), 0};
+        byte[] pack1 = {-76, 0, (byte) (hiPre & 127), (byte) ((hiPre >> 7) & 127), (byte) ((hiPre >> 14) & 127), (byte) (hiPre1 & 127), (byte) ((hiPre1 >> 7) & 127), (byte) ((hiPre1 >> 14) & 127), 0};
+        return pack1;
     }
 
     public static byte[] doPackUpdateData(byte[] pack) {
@@ -246,575 +205,395 @@ public class Update50KUtils {
         pack1[0] = -75;
         for (int i = 0; i < 7; i++) {
             byte mm7 = pack[i];
-            byte mm1 = mm7;
             if (mm7 < 0) {
-                mm6 = (byte) ((((byte) (((byte) ((pack[i] << 0) & 128)) >> (7 - i))) ^ -1) + 1);
+                mm6 = (byte) ((((byte) (((byte) ((pack[i] << 0) & 128)) >> (7 - i))) ^ (-1)) + 1);
                 int i2 = i + 7;
-                pack1[i2] = (byte) (pack1[i2] | (mm1 & Byte.MAX_VALUE));
+                pack1[i2] = (byte) (pack1[i2] | (mm7 & Byte.MAX_VALUE));
             } else {
                 mm6 = (byte) (((byte) ((mm7 << 0) & 128)) >> (7 - i));
                 int i3 = i + 7;
-                pack1[i3] = (byte) (pack1[i3] | (mm1 >> 0));
+                pack1[i3] = (byte) (pack1[i3] | (mm7 >> 0));
             }
             pack1[1] = (byte) (pack1[1] | mm6);
         }
         for (int i4 = 0; i4 < 7; i4++) {
             byte mm8 = pack[i4 + 7];
-            byte mm12 = mm8;
             if (mm8 < 0) {
-                mm5 = (byte) ((((byte) (((byte) ((mm8 << 0) & 128)) >> (7 - i4))) ^ -1) + 1);
+                mm5 = (byte) ((((byte) (((byte) ((mm8 << 0) & 128)) >> (7 - i4))) ^ (-1)) + 1);
                 int i5 = i4 + 14;
-                pack1[i5] = (byte) (pack1[i5] | (mm12 & Byte.MAX_VALUE));
+                pack1[i5] = (byte) (pack1[i5] | (mm8 & Byte.MAX_VALUE));
             } else {
                 mm5 = (byte) (((byte) ((mm8 << 0) & 128)) >> (7 - i4));
                 int i6 = i4 + 14;
-                pack1[i6] = (byte) (pack1[i6] | (mm12 >> 0));
+                pack1[i6] = (byte) (pack1[i6] | (mm8 >> 0));
             }
             pack1[2] = (byte) (pack1[2] | mm5);
         }
         for (int i7 = 0; i7 < 7; i7++) {
             byte mm9 = pack[i7 + 14];
-            byte mm13 = mm9;
             if (mm9 < 0) {
-                mm4 = (byte) ((((byte) (((byte) ((mm9 << 0) & 128)) >> (7 - i7))) ^ -1) + 1);
+                mm4 = (byte) ((((byte) (((byte) ((mm9 << 0) & 128)) >> (7 - i7))) ^ (-1)) + 1);
                 int i8 = i7 + 21;
-                pack1[i8] = (byte) (pack1[i8] | (mm13 & Byte.MAX_VALUE));
+                pack1[i8] = (byte) (pack1[i8] | (mm9 & Byte.MAX_VALUE));
             } else {
                 mm4 = (byte) (((byte) ((mm9 << 0) & 128)) >> (7 - i7));
                 int i9 = i7 + 21;
-                pack1[i9] = (byte) (pack1[i9] | (mm13 >> 0));
+                pack1[i9] = (byte) (pack1[i9] | (mm9 >> 0));
             }
             pack1[3] = (byte) (pack1[3] | mm4);
         }
         for (int i10 = 0; i10 < 7; i10++) {
             byte mm10 = pack[i10 + 21];
-            byte mm14 = mm10;
             if (mm10 < 0) {
-                mm3 = (byte) ((((byte) (((byte) ((mm10 << 0) & 128)) >> (7 - i10))) ^ -1) + 1);
+                mm3 = (byte) ((((byte) (((byte) ((mm10 << 0) & 128)) >> (7 - i10))) ^ (-1)) + 1);
                 int i11 = i10 + 28;
-                pack1[i11] = (byte) (pack1[i11] | (mm14 & Byte.MAX_VALUE));
+                pack1[i11] = (byte) (pack1[i11] | (mm10 & Byte.MAX_VALUE));
             } else {
                 mm3 = (byte) (((byte) ((mm10 << 0) & 128)) >> (7 - i10));
                 int i12 = i10 + 28;
-                pack1[i12] = (byte) (pack1[i12] | (mm14 >> 0));
+                pack1[i12] = (byte) (pack1[i12] | (mm10 >> 0));
             }
             pack1[4] = (byte) (pack1[4] | mm3);
         }
         for (int i13 = 0; i13 < 7; i13++) {
             byte mm11 = pack[i13 + 28];
-            byte mm15 = mm11;
             if (mm11 < 0) {
-                mm2 = (byte) ((((byte) (((byte) ((mm11 << 0) & 128)) >> (7 - i13))) ^ -1) + 1);
+                mm2 = (byte) ((((byte) (((byte) ((mm11 << 0) & 128)) >> (7 - i13))) ^ (-1)) + 1);
                 int i14 = i13 + 35;
-                pack1[i14] = (byte) (pack1[i14] | (mm15 & Byte.MAX_VALUE));
+                pack1[i14] = (byte) (pack1[i14] | (mm11 & Byte.MAX_VALUE));
             } else {
                 mm2 = (byte) (((byte) ((mm11 << 0) & 128)) >> (7 - i13));
                 int i15 = i13 + 35;
-                pack1[i15] = (byte) (pack1[i15] | (mm15 >> 0));
+                pack1[i15] = (byte) (pack1[i15] | (mm11 >> 0));
             }
             pack1[5] = (byte) (pack1[5] | mm2);
         }
         for (int i16 = 0; i16 < 7; i16++) {
-            byte mm16 = pack[i16 + 35];
-            byte mm17 = mm16;
-            if (mm16 < 0) {
-                mm = (byte) ((((byte) (((byte) ((mm16 << 0) & 128)) >> (7 - i16))) ^ -1) + 1);
+            byte mm12 = pack[i16 + 35];
+            if (mm12 < 0) {
+                mm = (byte) ((((byte) (((byte) ((mm12 << 0) & 128)) >> (7 - i16))) ^ (-1)) + 1);
                 int i17 = i16 + 42;
-                pack1[i17] = (byte) (pack1[i17] | (mm17 & Byte.MAX_VALUE));
+                pack1[i17] = (byte) (pack1[i17] | (mm12 & Byte.MAX_VALUE));
             } else {
-                mm = (byte) (((byte) ((mm16 << 0) & 128)) >> (7 - i16));
+                mm = (byte) (((byte) ((mm12 << 0) & 128)) >> (7 - i16));
                 int i18 = i16 + 42;
-                pack1[i18] = (byte) (pack1[i18] | (mm17 >> 0));
+                pack1[i18] = (byte) (pack1[i18] | (mm12 >> 0));
             }
             pack1[6] = (byte) (pack1[6] | mm);
         }
         return pack1;
     }
 
-    /* JADX WARNING: Removed duplicated region for block: B:21:0x003c A[SYNTHETIC, Splitter:B:21:0x003c] */
-    /* JADX WARNING: Removed duplicated region for block: B:29:0x0050 A[SYNTHETIC, Splitter:B:29:0x0050] */
-    /* JADX WARNING: Removed duplicated region for block: B:35:0x005c A[SYNTHETIC, Splitter:B:35:0x005c] */
-    /* JADX WARNING: Unknown top exception splitter block from list: {B:18:0x0032=Splitter:B:18:0x0032, B:26:0x0046=Splitter:B:26:0x0046} */
-    /* Code decompiled incorrectly, please refer to instructions dump. */
-    public static byte[] readSDFile(java.lang.String r8) {
-        /*
-            r1 = 0
-            byte[] r1 = (byte[]) r1
-            java.io.File r3 = new java.io.File
-            r3.<init>(r8)
-            boolean r7 = r3.exists()
-            if (r7 != 0) goto L_0x0017
-            r3.createNewFile()     // Catch:{ Exception -> 0x0012 }
-        L_0x0011:
-            return r1
-        L_0x0012:
-            r2 = move-exception
-            r2.printStackTrace()
-            goto L_0x0011
-        L_0x0017:
-            r4 = 0
-            java.io.FileInputStream r5 = new java.io.FileInputStream     // Catch:{ FileNotFoundException -> 0x0031, IOException -> 0x0045 }
-            r5.<init>(r3)     // Catch:{ FileNotFoundException -> 0x0031, IOException -> 0x0045 }
-            int r6 = r5.available()     // Catch:{ FileNotFoundException -> 0x006b, IOException -> 0x0068, all -> 0x0065 }
-            byte[] r1 = new byte[r6]     // Catch:{ FileNotFoundException -> 0x006b, IOException -> 0x0068, all -> 0x0065 }
-            r5.read(r1)     // Catch:{ FileNotFoundException -> 0x006b, IOException -> 0x0068, all -> 0x0065 }
-            if (r5 == 0) goto L_0x0011
-            r5.close()     // Catch:{ IOException -> 0x002c }
-            goto L_0x0011
-        L_0x002c:
-            r2 = move-exception
-            r2.printStackTrace()
-            goto L_0x0011
-        L_0x0031:
-            r2 = move-exception
-        L_0x0032:
-            r2.printStackTrace()     // Catch:{ all -> 0x0059 }
-            r7 = 0
-            r0 = r7
-            byte[] r0 = (byte[]) r0     // Catch:{ all -> 0x0059 }
-            r1 = r0
-            if (r4 == 0) goto L_0x0011
-            r4.close()     // Catch:{ IOException -> 0x0040 }
-            goto L_0x0011
-        L_0x0040:
-            r2 = move-exception
-            r2.printStackTrace()
-            goto L_0x0011
-        L_0x0045:
-            r2 = move-exception
-        L_0x0046:
-            r2.printStackTrace()     // Catch:{ all -> 0x0059 }
-            r7 = 0
-            r0 = r7
-            byte[] r0 = (byte[]) r0     // Catch:{ all -> 0x0059 }
-            r1 = r0
-            if (r4 == 0) goto L_0x0011
-            r4.close()     // Catch:{ IOException -> 0x0054 }
-            goto L_0x0011
-        L_0x0054:
-            r2 = move-exception
-            r2.printStackTrace()
-            goto L_0x0011
-        L_0x0059:
-            r7 = move-exception
-        L_0x005a:
-            if (r4 == 0) goto L_0x005f
-            r4.close()     // Catch:{ IOException -> 0x0060 }
-        L_0x005f:
-            throw r7
-        L_0x0060:
-            r2 = move-exception
-            r2.printStackTrace()
-            goto L_0x005f
-        L_0x0065:
-            r7 = move-exception
-            r4 = r5
-            goto L_0x005a
-        L_0x0068:
-            r2 = move-exception
-            r4 = r5
-            goto L_0x0046
-        L_0x006b:
-            r2 = move-exception
-            r4 = r5
-            goto L_0x0032
-        */
-        throw new UnsupportedOperationException("Method not decompiled: com.contec.phms.device.cms50k.update.Update50KUtils.readSDFile(java.lang.String):byte[]");
-    }
-
-    /* JADX WARNING: Code restructure failed: missing block: B:11:?, code lost:
-        r3 = r7.next();
-     */
-    /* JADX WARNING: Code restructure failed: missing block: B:9:0x0030, code lost:
-        r0 = r1;
-        r8 = r9;
-     */
-    /* Code decompiled incorrectly, please refer to instructions dump. */
-    public static java.util.List<com.contec.phms.device.cms50k.update.Xml50KUpdateBean> pullParseXmlFile() {
-        /*
-            r8 = 0
-            r0 = 0
-            org.xmlpull.v1.XmlPullParserFactory r4 = org.xmlpull.v1.XmlPullParserFactory.newInstance()     // Catch:{ XmlPullParserException -> 0x00db, IOException -> 0x00e1 }
-            org.xmlpull.v1.XmlPullParser r7 = r4.newPullParser()     // Catch:{ XmlPullParserException -> 0x00db, IOException -> 0x00e1 }
-            java.io.File r10 = new java.io.File     // Catch:{ XmlPullParserException -> 0x00db, IOException -> 0x00e1 }
-            java.lang.String r11 = fileUrl     // Catch:{ XmlPullParserException -> 0x00db, IOException -> 0x00e1 }
-            java.lang.String r12 = "updateFile.xml"
-            r10.<init>(r11, r12)     // Catch:{ XmlPullParserException -> 0x00db, IOException -> 0x00e1 }
-            java.io.FileInputStream r5 = new java.io.FileInputStream     // Catch:{ XmlPullParserException -> 0x00db, IOException -> 0x00e1 }
-            r5.<init>(r10)     // Catch:{ XmlPullParserException -> 0x00db, IOException -> 0x00e1 }
-            java.lang.String r11 = "utf-8"
-            r7.setInput(r5, r11)     // Catch:{ XmlPullParserException -> 0x00db, IOException -> 0x00e1 }
-            int r3 = r7.getEventType()     // Catch:{ XmlPullParserException -> 0x00db, IOException -> 0x00e1 }
-            r1 = r0
-            r9 = r8
-        L_0x0023:
-            r11 = 1
-            if (r11 != r3) goto L_0x0029
-            r0 = r1
-            r8 = r9
-        L_0x0028:
-            return r8
-        L_0x0029:
-            java.lang.String r6 = r7.getName()     // Catch:{ XmlPullParserException -> 0x00ee, IOException -> 0x00e7 }
-            switch(r3) {
-                case 0: goto L_0x0039;
-                case 1: goto L_0x00d7;
-                case 2: goto L_0x0040;
-                case 3: goto L_0x00c8;
-                default: goto L_0x0030;
+    public static byte[] readSDFile(String fileName) {
+        Throwable th;
+        IOException e;
+        FileNotFoundException e2;
+        FileInputStream fis = null;
+        byte[] buffer = null;
+        File file = new File(fileName);
+        if (!file.exists()) {
+            try {
+                file.createNewFile();
+            } catch (Exception e3) {
+                e3.printStackTrace();
             }
-        L_0x0030:
-            r0 = r1
-            r8 = r9
-        L_0x0032:
-            int r3 = r7.next()     // Catch:{ XmlPullParserException -> 0x00db, IOException -> 0x00e1 }
-            r1 = r0
-            r9 = r8
-            goto L_0x0023
-        L_0x0039:
-            java.util.ArrayList r8 = new java.util.ArrayList     // Catch:{ XmlPullParserException -> 0x00ee, IOException -> 0x00e7 }
-            r8.<init>()     // Catch:{ XmlPullParserException -> 0x00ee, IOException -> 0x00e7 }
-            r0 = r1
-            goto L_0x0032
-        L_0x0040:
-            java.lang.String r11 = "file"
-            boolean r11 = r11.equals(r6)     // Catch:{ XmlPullParserException -> 0x00ee, IOException -> 0x00e7 }
-            if (r11 == 0) goto L_0x00f8
-            com.contec.phms.device.cms50k.update.Xml50KUpdateBean r0 = new com.contec.phms.device.cms50k.update.Xml50KUpdateBean     // Catch:{ XmlPullParserException -> 0x00ee, IOException -> 0x00e7 }
-            r0.<init>()     // Catch:{ XmlPullParserException -> 0x00ee, IOException -> 0x00e7 }
-        L_0x004d:
-            java.lang.String r11 = "fname"
-            boolean r11 = r11.equals(r6)     // Catch:{ XmlPullParserException -> 0x00f2, IOException -> 0x00eb }
-            if (r11 == 0) goto L_0x005c
-            java.lang.String r11 = r7.nextText()     // Catch:{ XmlPullParserException -> 0x00f2, IOException -> 0x00eb }
-            r0.setFname(r11)     // Catch:{ XmlPullParserException -> 0x00f2, IOException -> 0x00eb }
-        L_0x005c:
-            java.lang.String r11 = "md5"
-            boolean r11 = r11.equals(r6)     // Catch:{ XmlPullParserException -> 0x00f2, IOException -> 0x00eb }
-            if (r11 == 0) goto L_0x006b
-            java.lang.String r11 = r7.nextText()     // Catch:{ XmlPullParserException -> 0x00f2, IOException -> 0x00eb }
-            r0.setMd5(r11)     // Catch:{ XmlPullParserException -> 0x00f2, IOException -> 0x00eb }
-        L_0x006b:
-            java.lang.String r11 = "path"
-            boolean r11 = r11.equals(r6)     // Catch:{ XmlPullParserException -> 0x00f2, IOException -> 0x00eb }
-            if (r11 == 0) goto L_0x007a
-            java.lang.String r11 = r7.nextText()     // Catch:{ XmlPullParserException -> 0x00f2, IOException -> 0x00eb }
-            r0.setPath(r11)     // Catch:{ XmlPullParserException -> 0x00f2, IOException -> 0x00eb }
-        L_0x007a:
-            java.lang.String r11 = "size"
-            boolean r11 = r11.equals(r6)     // Catch:{ XmlPullParserException -> 0x00f2, IOException -> 0x00eb }
-            if (r11 == 0) goto L_0x0089
-            java.lang.String r11 = r7.nextText()     // Catch:{ XmlPullParserException -> 0x00f2, IOException -> 0x00eb }
-            r0.setSize(r11)     // Catch:{ XmlPullParserException -> 0x00f2, IOException -> 0x00eb }
-        L_0x0089:
-            java.lang.String r11 = "version"
-            boolean r11 = r11.equals(r6)     // Catch:{ XmlPullParserException -> 0x00f2, IOException -> 0x00eb }
-            if (r11 == 0) goto L_0x0098
-            java.lang.String r11 = r7.nextText()     // Catch:{ XmlPullParserException -> 0x00f2, IOException -> 0x00eb }
-            r0.setVersion(r11)     // Catch:{ XmlPullParserException -> 0x00f2, IOException -> 0x00eb }
-        L_0x0098:
-            java.lang.String r11 = "typecode"
-            boolean r11 = r11.equals(r6)     // Catch:{ XmlPullParserException -> 0x00f2, IOException -> 0x00eb }
-            if (r11 == 0) goto L_0x00a7
-            java.lang.String r11 = r7.nextText()     // Catch:{ XmlPullParserException -> 0x00f2, IOException -> 0x00eb }
-            r0.setType(r11)     // Catch:{ XmlPullParserException -> 0x00f2, IOException -> 0x00eb }
-        L_0x00a7:
-            java.lang.String r11 = "description"
-            boolean r11 = r11.equals(r6)     // Catch:{ XmlPullParserException -> 0x00f2, IOException -> 0x00eb }
-            if (r11 == 0) goto L_0x00b6
-            java.lang.String r11 = r7.nextText()     // Catch:{ XmlPullParserException -> 0x00f2, IOException -> 0x00eb }
-            r0.setDescription(r11)     // Catch:{ XmlPullParserException -> 0x00f2, IOException -> 0x00eb }
-        L_0x00b6:
-            java.lang.String r11 = "uploaddate"
-            boolean r11 = r11.equals(r6)     // Catch:{ XmlPullParserException -> 0x00f2, IOException -> 0x00eb }
-            if (r11 == 0) goto L_0x00f5
-            java.lang.String r11 = r7.nextText()     // Catch:{ XmlPullParserException -> 0x00f2, IOException -> 0x00eb }
-            r0.setUploaddate(r11)     // Catch:{ XmlPullParserException -> 0x00f2, IOException -> 0x00eb }
-            r8 = r9
-            goto L_0x0032
-        L_0x00c8:
-            java.lang.String r11 = "file"
-            boolean r11 = r11.equals(r6)     // Catch:{ XmlPullParserException -> 0x00ee, IOException -> 0x00e7 }
-            if (r11 == 0) goto L_0x0030
-            r9.add(r1)     // Catch:{ XmlPullParserException -> 0x00ee, IOException -> 0x00e7 }
-            r0 = 0
-            r8 = r9
-            goto L_0x0032
-        L_0x00d7:
-            r0 = r1
-            r8 = r9
-            goto L_0x0032
-        L_0x00db:
-            r2 = move-exception
-        L_0x00dc:
-            r2.printStackTrace()
-            goto L_0x0028
-        L_0x00e1:
-            r2 = move-exception
-        L_0x00e2:
-            r2.printStackTrace()
-            goto L_0x0028
-        L_0x00e7:
-            r2 = move-exception
-            r0 = r1
-            r8 = r9
-            goto L_0x00e2
-        L_0x00eb:
-            r2 = move-exception
-            r8 = r9
-            goto L_0x00e2
-        L_0x00ee:
-            r2 = move-exception
-            r0 = r1
-            r8 = r9
-            goto L_0x00dc
-        L_0x00f2:
-            r2 = move-exception
-            r8 = r9
-            goto L_0x00dc
-        L_0x00f5:
-            r8 = r9
-            goto L_0x0032
-        L_0x00f8:
-            r0 = r1
-            goto L_0x004d
-        */
-        throw new UnsupportedOperationException("Method not decompiled: com.contec.phms.device.cms50k.update.Update50KUtils.pullParseXmlFile():java.util.List");
+        } else {
+            FileInputStream fis2 = null;
+            try {
+                fis = new FileInputStream(file);
+            } catch (Throwable th2) {
+                th = th2;
+            }
+            try {
+                int length = fis.available();
+                buffer = new byte[length];
+                fis.read(buffer);
+                if (fis != null) {
+                    try {
+                        fis.close();
+                    } catch (IOException e6) {
+                        e6.printStackTrace();
+                    }
+                }
+            } catch (FileNotFoundException e7) {
+                e2 = e7;
+                fis2 = fis;
+                e2.printStackTrace();
+                buffer = null;
+                if (fis2 != null) {
+                    try {
+                        fis2.close();
+                    } catch (IOException e8) {
+                        e8.printStackTrace();
+                    }
+                }
+                return buffer;
+            } catch (IOException e9) {
+                e = e9;
+                fis2 = fis;
+                e.printStackTrace();
+                buffer = null;
+                if (fis2 != null) {
+                    try {
+                        fis2.close();
+                    } catch (IOException e10) {
+                        e10.printStackTrace();
+                    }
+                }
+                return buffer;
+            } catch (Throwable th3) {
+                th = th3;
+                fis2 = fis;
+                if (fis2 != null) {
+                    try {
+                        fis2.close();
+                    } catch (IOException e11) {
+                        e11.printStackTrace();
+                    }
+                }
+                try {
+                    throw th;
+                } catch (Throwable throwable) {
+                    throwable.printStackTrace();
+                }
+            }
+        }
+        return buffer;
     }
 
-    /* JADX WARNING: Removed duplicated region for block: B:32:0x017a A[SYNTHETIC, Splitter:B:32:0x017a] */
-    /* JADX WARNING: Removed duplicated region for block: B:40:0x018b A[SYNTHETIC, Splitter:B:40:0x018b] */
-    /* JADX WARNING: Removed duplicated region for block: B:48:0x019c A[SYNTHETIC, Splitter:B:48:0x019c] */
-    /* JADX WARNING: Removed duplicated region for block: B:54:0x01aa A[SYNTHETIC, Splitter:B:54:0x01aa] */
-    /* JADX WARNING: Removed duplicated region for block: B:76:? A[RETURN, SYNTHETIC] */
-    /* JADX WARNING: Removed duplicated region for block: B:78:? A[RETURN, SYNTHETIC] */
-    /* JADX WARNING: Removed duplicated region for block: B:80:? A[RETURN, SYNTHETIC] */
-    /* JADX WARNING: Unknown top exception splitter block from list: {B:21:0x0164=Splitter:B:21:0x0164, B:29:0x0175=Splitter:B:29:0x0175, B:37:0x0186=Splitter:B:37:0x0186, B:45:0x0197=Splitter:B:45:0x0197} */
-    /* Code decompiled incorrectly, please refer to instructions dump. */
-    public static void createUpdateXmlFile(java.util.List<com.contec.phms.device.cms50k.update.Xml50KUpdateBean> r11) {
-        /*
-            java.lang.String r8 = android.os.Environment.getExternalStorageState()
-            java.lang.String r9 = "mounted"
-            boolean r8 = r8.equals(r9)
-            if (r8 == 0) goto L_0x005a
-            org.xmlpull.v1.XmlSerializer r6 = android.util.Xml.newSerializer()
-            java.lang.String r2 = fileUrl
-            java.io.File r1 = new java.io.File
-            r1.<init>(r2)
-            boolean r8 = r1.exists()
-            if (r8 != 0) goto L_0x0020
-            r1.mkdir()
-        L_0x0020:
-            java.io.File r7 = new java.io.File
-            java.lang.String r8 = "updateFile.xml"
-            r7.<init>(r2, r8)
-            r3 = 0
-            java.io.FileOutputStream r4 = new java.io.FileOutputStream     // Catch:{ FileNotFoundException -> 0x01c5, IllegalArgumentException -> 0x0174, IllegalStateException -> 0x0185, IOException -> 0x0196 }
-            r4.<init>(r7)     // Catch:{ FileNotFoundException -> 0x01c5, IllegalArgumentException -> 0x0174, IllegalStateException -> 0x0185, IOException -> 0x0196 }
-            java.lang.String r8 = "utf-8"
-            r6.setOutput(r4, r8)     // Catch:{ FileNotFoundException -> 0x0162, IllegalArgumentException -> 0x01c2, IllegalStateException -> 0x01bf, IOException -> 0x01bc, all -> 0x01b9 }
-            java.lang.String r8 = "utf-8"
-            r9 = 1
-            java.lang.Boolean r9 = java.lang.Boolean.valueOf(r9)     // Catch:{ FileNotFoundException -> 0x0162, IllegalArgumentException -> 0x01c2, IllegalStateException -> 0x01bf, IOException -> 0x01bc, all -> 0x01b9 }
-            r6.startDocument(r8, r9)     // Catch:{ FileNotFoundException -> 0x0162, IllegalArgumentException -> 0x01c2, IllegalStateException -> 0x01bf, IOException -> 0x01bc, all -> 0x01b9 }
-            r8 = 0
-            java.lang.String r9 = "response"
-            r6.startTag(r8, r9)     // Catch:{ FileNotFoundException -> 0x0162, IllegalArgumentException -> 0x01c2, IllegalStateException -> 0x01bf, IOException -> 0x01bc, all -> 0x01b9 }
-            java.util.Iterator r8 = r11.iterator()     // Catch:{ FileNotFoundException -> 0x0162, IllegalArgumentException -> 0x01c2, IllegalStateException -> 0x01bf, IOException -> 0x01bc, all -> 0x01b9 }
-        L_0x0046:
-            boolean r9 = r8.hasNext()     // Catch:{ FileNotFoundException -> 0x0162, IllegalArgumentException -> 0x01c2, IllegalStateException -> 0x01bf, IOException -> 0x01bc, all -> 0x01b9 }
-            if (r9 != 0) goto L_0x005b
-            r8 = 0
-            java.lang.String r9 = "response"
-            r6.endTag(r8, r9)     // Catch:{ FileNotFoundException -> 0x0162, IllegalArgumentException -> 0x01c2, IllegalStateException -> 0x01bf, IOException -> 0x01bc, all -> 0x01b9 }
-            r6.endDocument()     // Catch:{ FileNotFoundException -> 0x0162, IllegalArgumentException -> 0x01c2, IllegalStateException -> 0x01bf, IOException -> 0x01bc, all -> 0x01b9 }
-            if (r4 == 0) goto L_0x005a
-            r4.close()     // Catch:{ IOException -> 0x01b3 }
-        L_0x005a:
-            return
-        L_0x005b:
-            java.lang.Object r5 = r8.next()     // Catch:{ FileNotFoundException -> 0x0162, IllegalArgumentException -> 0x01c2, IllegalStateException -> 0x01bf, IOException -> 0x01bc, all -> 0x01b9 }
-            com.contec.phms.device.cms50k.update.Xml50KUpdateBean r5 = (com.contec.phms.device.cms50k.update.Xml50KUpdateBean) r5     // Catch:{ FileNotFoundException -> 0x0162, IllegalArgumentException -> 0x01c2, IllegalStateException -> 0x01bf, IOException -> 0x01bc, all -> 0x01b9 }
-            r9 = 0
-            java.lang.String r10 = "file"
-            r6.startTag(r9, r10)     // Catch:{ FileNotFoundException -> 0x0162, IllegalArgumentException -> 0x01c2, IllegalStateException -> 0x01bf, IOException -> 0x01bc, all -> 0x01b9 }
-            r9 = 0
-            java.lang.String r10 = "fname"
-            r6.startTag(r9, r10)     // Catch:{ FileNotFoundException -> 0x0162, IllegalArgumentException -> 0x01c2, IllegalStateException -> 0x01bf, IOException -> 0x01bc, all -> 0x01b9 }
-            java.lang.StringBuilder r9 = new java.lang.StringBuilder     // Catch:{ FileNotFoundException -> 0x0162, IllegalArgumentException -> 0x01c2, IllegalStateException -> 0x01bf, IOException -> 0x01bc, all -> 0x01b9 }
-            java.lang.String r10 = r5.getFname()     // Catch:{ FileNotFoundException -> 0x0162, IllegalArgumentException -> 0x01c2, IllegalStateException -> 0x01bf, IOException -> 0x01bc, all -> 0x01b9 }
-            java.lang.String r10 = java.lang.String.valueOf(r10)     // Catch:{ FileNotFoundException -> 0x0162, IllegalArgumentException -> 0x01c2, IllegalStateException -> 0x01bf, IOException -> 0x01bc, all -> 0x01b9 }
-            r9.<init>(r10)     // Catch:{ FileNotFoundException -> 0x0162, IllegalArgumentException -> 0x01c2, IllegalStateException -> 0x01bf, IOException -> 0x01bc, all -> 0x01b9 }
-            java.lang.String r9 = r9.toString()     // Catch:{ FileNotFoundException -> 0x0162, IllegalArgumentException -> 0x01c2, IllegalStateException -> 0x01bf, IOException -> 0x01bc, all -> 0x01b9 }
-            r6.text(r9)     // Catch:{ FileNotFoundException -> 0x0162, IllegalArgumentException -> 0x01c2, IllegalStateException -> 0x01bf, IOException -> 0x01bc, all -> 0x01b9 }
-            r9 = 0
-            java.lang.String r10 = "fname"
-            r6.endTag(r9, r10)     // Catch:{ FileNotFoundException -> 0x0162, IllegalArgumentException -> 0x01c2, IllegalStateException -> 0x01bf, IOException -> 0x01bc, all -> 0x01b9 }
-            r9 = 0
-            java.lang.String r10 = "md5"
-            r6.startTag(r9, r10)     // Catch:{ FileNotFoundException -> 0x0162, IllegalArgumentException -> 0x01c2, IllegalStateException -> 0x01bf, IOException -> 0x01bc, all -> 0x01b9 }
-            java.lang.StringBuilder r9 = new java.lang.StringBuilder     // Catch:{ FileNotFoundException -> 0x0162, IllegalArgumentException -> 0x01c2, IllegalStateException -> 0x01bf, IOException -> 0x01bc, all -> 0x01b9 }
-            java.lang.String r10 = r5.getMd5()     // Catch:{ FileNotFoundException -> 0x0162, IllegalArgumentException -> 0x01c2, IllegalStateException -> 0x01bf, IOException -> 0x01bc, all -> 0x01b9 }
-            java.lang.String r10 = java.lang.String.valueOf(r10)     // Catch:{ FileNotFoundException -> 0x0162, IllegalArgumentException -> 0x01c2, IllegalStateException -> 0x01bf, IOException -> 0x01bc, all -> 0x01b9 }
-            r9.<init>(r10)     // Catch:{ FileNotFoundException -> 0x0162, IllegalArgumentException -> 0x01c2, IllegalStateException -> 0x01bf, IOException -> 0x01bc, all -> 0x01b9 }
-            java.lang.String r9 = r9.toString()     // Catch:{ FileNotFoundException -> 0x0162, IllegalArgumentException -> 0x01c2, IllegalStateException -> 0x01bf, IOException -> 0x01bc, all -> 0x01b9 }
-            r6.text(r9)     // Catch:{ FileNotFoundException -> 0x0162, IllegalArgumentException -> 0x01c2, IllegalStateException -> 0x01bf, IOException -> 0x01bc, all -> 0x01b9 }
-            r9 = 0
-            java.lang.String r10 = "md5"
-            r6.endTag(r9, r10)     // Catch:{ FileNotFoundException -> 0x0162, IllegalArgumentException -> 0x01c2, IllegalStateException -> 0x01bf, IOException -> 0x01bc, all -> 0x01b9 }
-            r9 = 0
-            java.lang.String r10 = "path"
-            r6.startTag(r9, r10)     // Catch:{ FileNotFoundException -> 0x0162, IllegalArgumentException -> 0x01c2, IllegalStateException -> 0x01bf, IOException -> 0x01bc, all -> 0x01b9 }
-            java.lang.String r9 = r5.getPath()     // Catch:{ FileNotFoundException -> 0x0162, IllegalArgumentException -> 0x01c2, IllegalStateException -> 0x01bf, IOException -> 0x01bc, all -> 0x01b9 }
-            r6.text(r9)     // Catch:{ FileNotFoundException -> 0x0162, IllegalArgumentException -> 0x01c2, IllegalStateException -> 0x01bf, IOException -> 0x01bc, all -> 0x01b9 }
-            r9 = 0
-            java.lang.String r10 = "path"
-            r6.endTag(r9, r10)     // Catch:{ FileNotFoundException -> 0x0162, IllegalArgumentException -> 0x01c2, IllegalStateException -> 0x01bf, IOException -> 0x01bc, all -> 0x01b9 }
-            r9 = 0
-            java.lang.String r10 = "size"
-            r6.startTag(r9, r10)     // Catch:{ FileNotFoundException -> 0x0162, IllegalArgumentException -> 0x01c2, IllegalStateException -> 0x01bf, IOException -> 0x01bc, all -> 0x01b9 }
-            java.lang.StringBuilder r9 = new java.lang.StringBuilder     // Catch:{ FileNotFoundException -> 0x0162, IllegalArgumentException -> 0x01c2, IllegalStateException -> 0x01bf, IOException -> 0x01bc, all -> 0x01b9 }
-            java.lang.String r10 = r5.getSize()     // Catch:{ FileNotFoundException -> 0x0162, IllegalArgumentException -> 0x01c2, IllegalStateException -> 0x01bf, IOException -> 0x01bc, all -> 0x01b9 }
-            java.lang.String r10 = java.lang.String.valueOf(r10)     // Catch:{ FileNotFoundException -> 0x0162, IllegalArgumentException -> 0x01c2, IllegalStateException -> 0x01bf, IOException -> 0x01bc, all -> 0x01b9 }
-            r9.<init>(r10)     // Catch:{ FileNotFoundException -> 0x0162, IllegalArgumentException -> 0x01c2, IllegalStateException -> 0x01bf, IOException -> 0x01bc, all -> 0x01b9 }
-            java.lang.String r9 = r9.toString()     // Catch:{ FileNotFoundException -> 0x0162, IllegalArgumentException -> 0x01c2, IllegalStateException -> 0x01bf, IOException -> 0x01bc, all -> 0x01b9 }
-            r6.text(r9)     // Catch:{ FileNotFoundException -> 0x0162, IllegalArgumentException -> 0x01c2, IllegalStateException -> 0x01bf, IOException -> 0x01bc, all -> 0x01b9 }
-            r9 = 0
-            java.lang.String r10 = "size"
-            r6.endTag(r9, r10)     // Catch:{ FileNotFoundException -> 0x0162, IllegalArgumentException -> 0x01c2, IllegalStateException -> 0x01bf, IOException -> 0x01bc, all -> 0x01b9 }
-            r9 = 0
-            java.lang.String r10 = "version"
-            r6.startTag(r9, r10)     // Catch:{ FileNotFoundException -> 0x0162, IllegalArgumentException -> 0x01c2, IllegalStateException -> 0x01bf, IOException -> 0x01bc, all -> 0x01b9 }
-            java.lang.StringBuilder r9 = new java.lang.StringBuilder     // Catch:{ FileNotFoundException -> 0x0162, IllegalArgumentException -> 0x01c2, IllegalStateException -> 0x01bf, IOException -> 0x01bc, all -> 0x01b9 }
-            java.lang.String r10 = r5.getVersion()     // Catch:{ FileNotFoundException -> 0x0162, IllegalArgumentException -> 0x01c2, IllegalStateException -> 0x01bf, IOException -> 0x01bc, all -> 0x01b9 }
-            java.lang.String r10 = java.lang.String.valueOf(r10)     // Catch:{ FileNotFoundException -> 0x0162, IllegalArgumentException -> 0x01c2, IllegalStateException -> 0x01bf, IOException -> 0x01bc, all -> 0x01b9 }
-            r9.<init>(r10)     // Catch:{ FileNotFoundException -> 0x0162, IllegalArgumentException -> 0x01c2, IllegalStateException -> 0x01bf, IOException -> 0x01bc, all -> 0x01b9 }
-            java.lang.String r9 = r9.toString()     // Catch:{ FileNotFoundException -> 0x0162, IllegalArgumentException -> 0x01c2, IllegalStateException -> 0x01bf, IOException -> 0x01bc, all -> 0x01b9 }
-            r6.text(r9)     // Catch:{ FileNotFoundException -> 0x0162, IllegalArgumentException -> 0x01c2, IllegalStateException -> 0x01bf, IOException -> 0x01bc, all -> 0x01b9 }
-            r9 = 0
-            java.lang.String r10 = "version"
-            r6.endTag(r9, r10)     // Catch:{ FileNotFoundException -> 0x0162, IllegalArgumentException -> 0x01c2, IllegalStateException -> 0x01bf, IOException -> 0x01bc, all -> 0x01b9 }
-            r9 = 0
-            java.lang.String r10 = "typecode"
-            r6.startTag(r9, r10)     // Catch:{ FileNotFoundException -> 0x0162, IllegalArgumentException -> 0x01c2, IllegalStateException -> 0x01bf, IOException -> 0x01bc, all -> 0x01b9 }
-            java.lang.StringBuilder r9 = new java.lang.StringBuilder     // Catch:{ FileNotFoundException -> 0x0162, IllegalArgumentException -> 0x01c2, IllegalStateException -> 0x01bf, IOException -> 0x01bc, all -> 0x01b9 }
-            java.lang.String r10 = r5.getTypecode()     // Catch:{ FileNotFoundException -> 0x0162, IllegalArgumentException -> 0x01c2, IllegalStateException -> 0x01bf, IOException -> 0x01bc, all -> 0x01b9 }
-            java.lang.String r10 = java.lang.String.valueOf(r10)     // Catch:{ FileNotFoundException -> 0x0162, IllegalArgumentException -> 0x01c2, IllegalStateException -> 0x01bf, IOException -> 0x01bc, all -> 0x01b9 }
-            r9.<init>(r10)     // Catch:{ FileNotFoundException -> 0x0162, IllegalArgumentException -> 0x01c2, IllegalStateException -> 0x01bf, IOException -> 0x01bc, all -> 0x01b9 }
-            java.lang.String r9 = r9.toString()     // Catch:{ FileNotFoundException -> 0x0162, IllegalArgumentException -> 0x01c2, IllegalStateException -> 0x01bf, IOException -> 0x01bc, all -> 0x01b9 }
-            r6.text(r9)     // Catch:{ FileNotFoundException -> 0x0162, IllegalArgumentException -> 0x01c2, IllegalStateException -> 0x01bf, IOException -> 0x01bc, all -> 0x01b9 }
-            r9 = 0
-            java.lang.String r10 = "typecode"
-            r6.endTag(r9, r10)     // Catch:{ FileNotFoundException -> 0x0162, IllegalArgumentException -> 0x01c2, IllegalStateException -> 0x01bf, IOException -> 0x01bc, all -> 0x01b9 }
-            r9 = 0
-            java.lang.String r10 = "description"
-            r6.startTag(r9, r10)     // Catch:{ FileNotFoundException -> 0x0162, IllegalArgumentException -> 0x01c2, IllegalStateException -> 0x01bf, IOException -> 0x01bc, all -> 0x01b9 }
-            java.lang.StringBuilder r9 = new java.lang.StringBuilder     // Catch:{ FileNotFoundException -> 0x0162, IllegalArgumentException -> 0x01c2, IllegalStateException -> 0x01bf, IOException -> 0x01bc, all -> 0x01b9 }
-            java.lang.String r10 = r5.getDescription()     // Catch:{ FileNotFoundException -> 0x0162, IllegalArgumentException -> 0x01c2, IllegalStateException -> 0x01bf, IOException -> 0x01bc, all -> 0x01b9 }
-            java.lang.String r10 = java.lang.String.valueOf(r10)     // Catch:{ FileNotFoundException -> 0x0162, IllegalArgumentException -> 0x01c2, IllegalStateException -> 0x01bf, IOException -> 0x01bc, all -> 0x01b9 }
-            r9.<init>(r10)     // Catch:{ FileNotFoundException -> 0x0162, IllegalArgumentException -> 0x01c2, IllegalStateException -> 0x01bf, IOException -> 0x01bc, all -> 0x01b9 }
-            java.lang.String r9 = r9.toString()     // Catch:{ FileNotFoundException -> 0x0162, IllegalArgumentException -> 0x01c2, IllegalStateException -> 0x01bf, IOException -> 0x01bc, all -> 0x01b9 }
-            r6.text(r9)     // Catch:{ FileNotFoundException -> 0x0162, IllegalArgumentException -> 0x01c2, IllegalStateException -> 0x01bf, IOException -> 0x01bc, all -> 0x01b9 }
-            r9 = 0
-            java.lang.String r10 = "description"
-            r6.endTag(r9, r10)     // Catch:{ FileNotFoundException -> 0x0162, IllegalArgumentException -> 0x01c2, IllegalStateException -> 0x01bf, IOException -> 0x01bc, all -> 0x01b9 }
-            r9 = 0
-            java.lang.String r10 = "uploaddate"
-            r6.startTag(r9, r10)     // Catch:{ FileNotFoundException -> 0x0162, IllegalArgumentException -> 0x01c2, IllegalStateException -> 0x01bf, IOException -> 0x01bc, all -> 0x01b9 }
-            java.lang.StringBuilder r9 = new java.lang.StringBuilder     // Catch:{ FileNotFoundException -> 0x0162, IllegalArgumentException -> 0x01c2, IllegalStateException -> 0x01bf, IOException -> 0x01bc, all -> 0x01b9 }
-            java.lang.String r10 = r5.getUploaddate()     // Catch:{ FileNotFoundException -> 0x0162, IllegalArgumentException -> 0x01c2, IllegalStateException -> 0x01bf, IOException -> 0x01bc, all -> 0x01b9 }
-            java.lang.String r10 = java.lang.String.valueOf(r10)     // Catch:{ FileNotFoundException -> 0x0162, IllegalArgumentException -> 0x01c2, IllegalStateException -> 0x01bf, IOException -> 0x01bc, all -> 0x01b9 }
-            r9.<init>(r10)     // Catch:{ FileNotFoundException -> 0x0162, IllegalArgumentException -> 0x01c2, IllegalStateException -> 0x01bf, IOException -> 0x01bc, all -> 0x01b9 }
-            java.lang.String r9 = r9.toString()     // Catch:{ FileNotFoundException -> 0x0162, IllegalArgumentException -> 0x01c2, IllegalStateException -> 0x01bf, IOException -> 0x01bc, all -> 0x01b9 }
-            r6.text(r9)     // Catch:{ FileNotFoundException -> 0x0162, IllegalArgumentException -> 0x01c2, IllegalStateException -> 0x01bf, IOException -> 0x01bc, all -> 0x01b9 }
-            r9 = 0
-            java.lang.String r10 = "uploaddate"
-            r6.endTag(r9, r10)     // Catch:{ FileNotFoundException -> 0x0162, IllegalArgumentException -> 0x01c2, IllegalStateException -> 0x01bf, IOException -> 0x01bc, all -> 0x01b9 }
-            r9 = 0
-            java.lang.String r10 = "file"
-            r6.endTag(r9, r10)     // Catch:{ FileNotFoundException -> 0x0162, IllegalArgumentException -> 0x01c2, IllegalStateException -> 0x01bf, IOException -> 0x01bc, all -> 0x01b9 }
-            goto L_0x0046
-        L_0x0162:
-            r0 = move-exception
-            r3 = r4
-        L_0x0164:
-            r0.printStackTrace()     // Catch:{ all -> 0x01a7 }
-            if (r3 == 0) goto L_0x005a
-            r3.close()     // Catch:{ IOException -> 0x016e }
-            goto L_0x005a
-        L_0x016e:
-            r0 = move-exception
-            r0.printStackTrace()
-            goto L_0x005a
-        L_0x0174:
-            r0 = move-exception
-        L_0x0175:
-            r0.printStackTrace()     // Catch:{ all -> 0x01a7 }
-            if (r3 == 0) goto L_0x005a
-            r3.close()     // Catch:{ IOException -> 0x017f }
-            goto L_0x005a
-        L_0x017f:
-            r0 = move-exception
-            r0.printStackTrace()
-            goto L_0x005a
-        L_0x0185:
-            r0 = move-exception
-        L_0x0186:
-            r0.printStackTrace()     // Catch:{ all -> 0x01a7 }
-            if (r3 == 0) goto L_0x005a
-            r3.close()     // Catch:{ IOException -> 0x0190 }
-            goto L_0x005a
-        L_0x0190:
-            r0 = move-exception
-            r0.printStackTrace()
-            goto L_0x005a
-        L_0x0196:
-            r0 = move-exception
-        L_0x0197:
-            r0.printStackTrace()     // Catch:{ all -> 0x01a7 }
-            if (r3 == 0) goto L_0x005a
-            r3.close()     // Catch:{ IOException -> 0x01a1 }
-            goto L_0x005a
-        L_0x01a1:
-            r0 = move-exception
-            r0.printStackTrace()
-            goto L_0x005a
-        L_0x01a7:
-            r8 = move-exception
-        L_0x01a8:
-            if (r3 == 0) goto L_0x01ad
-            r3.close()     // Catch:{ IOException -> 0x01ae }
-        L_0x01ad:
-            throw r8
-        L_0x01ae:
-            r0 = move-exception
-            r0.printStackTrace()
-            goto L_0x01ad
-        L_0x01b3:
-            r0 = move-exception
-            r0.printStackTrace()
-            goto L_0x005a
-        L_0x01b9:
-            r8 = move-exception
-            r3 = r4
-            goto L_0x01a8
-        L_0x01bc:
-            r0 = move-exception
-            r3 = r4
-            goto L_0x0197
-        L_0x01bf:
-            r0 = move-exception
-            r3 = r4
-            goto L_0x0186
-        L_0x01c2:
-            r0 = move-exception
-            r3 = r4
-            goto L_0x0175
-        L_0x01c5:
-            r0 = move-exception
-            goto L_0x0164
-        */
-        throw new UnsupportedOperationException("Method not decompiled: com.contec.phms.device.cms50k.update.Update50KUtils.createUpdateXmlFile(java.util.List):void");
+    public static List<Xml50KUpdateBean> pullParseXmlFile() {
+        IOException e;
+        XmlPullParserException e2;
+        List<Xml50KUpdateBean> xmlBeanLists = null;
+        Xml50KUpdateBean bean = null;
+        try {
+            XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
+            XmlPullParser parse = factory.newPullParser();
+            File xmlFile = new File(fileUrl, updateXMlFilename);
+            InputStream in = new FileInputStream(xmlFile);
+            parse.setInput(in, CPushMessageCodec.UTF8);
+            int eventType = parse.getEventType();
+            while (true) {
+                Xml50KUpdateBean bean2 = bean;
+                List<Xml50KUpdateBean> xmlBeanLists2 = xmlBeanLists;
+                if (1 == eventType) {
+                    return xmlBeanLists2;
+                }
+                try {
+                    String nodeName = parse.getName();
+                    switch (eventType) {
+                        case 0:
+                            xmlBeanLists = new ArrayList<>();
+                            bean = bean2;
+                            break;
+                        case 1:
+                            bean = bean2;
+                            xmlBeanLists = xmlBeanLists2;
+                            break;
+                        case 2:
+                            if ("file".equals(nodeName)) {
+                                bean = new Xml50KUpdateBean();
+                            } else {
+                                bean = bean2;
+                            }
+                            try {
+                                if ("fname".equals(nodeName)) {
+                                    bean.setFname(parse.nextText());
+                                }
+                                if ("md5".equals(nodeName)) {
+                                    bean.setMd5(parse.nextText());
+                                }
+                                if ("path".equals(nodeName)) {
+                                    bean.setPath(parse.nextText());
+                                }
+                                if ("size".equals(nodeName)) {
+                                    bean.setSize(parse.nextText());
+                                }
+                                if ("version".equals(nodeName)) {
+                                    bean.setVersion(parse.nextText());
+                                }
+                                if ("typecode".equals(nodeName)) {
+                                    bean.setType(parse.nextText());
+                                }
+                                if ("description".equals(nodeName)) {
+                                    bean.setDescription(parse.nextText());
+                                }
+                                if (!"uploaddate".equals(nodeName)) {
+                                    xmlBeanLists = xmlBeanLists2;
+                                    break;
+                                } else {
+                                    bean.setUploaddate(parse.nextText());
+                                    xmlBeanLists = xmlBeanLists2;
+                                    break;
+                                }
+                            } catch (IOException e3) {
+                                e = e3;
+                                xmlBeanLists = xmlBeanLists2;
+                                e.printStackTrace();
+                                return xmlBeanLists;
+                            } catch (XmlPullParserException e4) {
+                                e2 = e4;
+                                xmlBeanLists = xmlBeanLists2;
+                                e2.printStackTrace();
+                                return xmlBeanLists;
+                            }
+                        case 3:
+                            if ("file".equals(nodeName)) {
+                                xmlBeanLists2.add(bean2);
+                                bean = null;
+                                xmlBeanLists = xmlBeanLists2;
+                                break;
+                            }
+                        default:
+                            bean = bean2;
+                            xmlBeanLists = xmlBeanLists2;
+                            break;
+                    }
+                    eventType = parse.next();
+                } catch (IOException e5) {
+                    e = e5;
+                    xmlBeanLists = xmlBeanLists2;
+                } catch (XmlPullParserException e6) {
+                    e2 = e6;
+                    xmlBeanLists = xmlBeanLists2;
+                }
+            }
+        } catch (IOException e7) {
+            e = e7;
+        } catch (XmlPullParserException e8) {
+            e2 = e8;
+        }
+        return xmlBeanLists;
+    }
+
+    public static void createUpdateXmlFile(List<Xml50KUpdateBean> xmlBeanLists) {
+        Throwable th;
+        IOException e;
+        IllegalStateException e2;
+        IllegalArgumentException e3;
+        OutputStream os = null;
+        if (Environment.getExternalStorageState().equals("mounted")) {
+            XmlSerializer ser = Xml.newSerializer();
+            String mSavePath = fileUrl;
+            File file = new File(mSavePath);
+            if (!file.exists()) {
+                file.mkdir();
+            }
+            File xmlFile = new File(mSavePath, updateXMlFilename);
+            OutputStream os2 = null;
+            try {
+                try {
+                    os = new FileOutputStream(xmlFile);
+                } catch (Throwable th2) {
+                    th = th2;
+                }
+            } catch (IllegalArgumentException e6) {
+                e3 = e6;
+            } catch (IllegalStateException e7) {
+                e2 = e7;
+            }
+            try {
+                ser.setOutput(os, CPushMessageCodec.UTF8);
+                ser.startDocument(CPushMessageCodec.UTF8, true);
+                ser.startTag(null, "response");
+                for (Xml50KUpdateBean s : xmlBeanLists) {
+                    ser.startTag(null, "file");
+                    ser.startTag(null, "fname");
+                    ser.text(new StringBuilder(String.valueOf(s.getFname())).toString());
+                    ser.endTag(null, "fname");
+                    ser.startTag(null, "md5");
+                    ser.text(new StringBuilder(String.valueOf(s.getMd5())).toString());
+                    ser.endTag(null, "md5");
+                    ser.startTag(null, "path");
+                    ser.text(s.getPath());
+                    ser.endTag(null, "path");
+                    ser.startTag(null, "size");
+                    ser.text(new StringBuilder(String.valueOf(s.getSize())).toString());
+                    ser.endTag(null, "size");
+                    ser.startTag(null, "version");
+                    ser.text(new StringBuilder(String.valueOf(s.getVersion())).toString());
+                    ser.endTag(null, "version");
+                    ser.startTag(null, "typecode");
+                    ser.text(new StringBuilder(String.valueOf(s.getTypecode())).toString());
+                    ser.endTag(null, "typecode");
+                    ser.startTag(null, "description");
+                    ser.text(new StringBuilder(String.valueOf(s.getDescription())).toString());
+                    ser.endTag(null, "description");
+                    ser.startTag(null, "uploaddate");
+                    ser.text(new StringBuilder(String.valueOf(s.getUploaddate())).toString());
+                    ser.endTag(null, "uploaddate");
+                    ser.endTag(null, "file");
+                }
+                ser.endTag(null, "response");
+                ser.endDocument();
+                if (os != null) {
+                    try {
+                        os.close();
+                    } catch (IOException e8) {
+                        e8.printStackTrace();
+                    }
+                }
+            } catch (FileNotFoundException e9) {
+                e = e9;
+                os2 = os;
+                e.printStackTrace();
+                if (os2 != null) {
+                    try {
+                        os2.close();
+                    } catch (IOException e10) {
+                        e10.printStackTrace();
+                    }
+                }
+            } catch (IOException e11) {
+                e = e11;
+                os2 = os;
+                e.printStackTrace();
+                if (os2 != null) {
+                    try {
+                        os2.close();
+                    } catch (IOException e12) {
+                        e12.printStackTrace();
+                    }
+                }
+            } catch (IllegalArgumentException e13) {
+                e3 = e13;
+                os2 = os;
+                e3.printStackTrace();
+                if (os2 != null) {
+                    try {
+                        os2.close();
+                    } catch (IOException e14) {
+                        e14.printStackTrace();
+                    }
+                }
+            } catch (IllegalStateException e15) {
+                e2 = e15;
+                os2 = os;
+                e2.printStackTrace();
+                if (os2 != null) {
+                    try {
+                        os2.close();
+                    } catch (IOException e16) {
+                        e16.printStackTrace();
+                    }
+                }
+            } catch (Throwable th3) {
+                th = th3;
+                os2 = os;
+                if (os2 != null) {
+                    try {
+                        os2.close();
+                    } catch (IOException e17) {
+                        e17.printStackTrace();
+                    }
+                }
+                try {
+                    throw th;
+                } catch (Throwable throwable) {
+                    throwable.printStackTrace();
+                }
+            }
+        }
     }
 
     public static String getFileMD5(File file) {
@@ -830,19 +609,20 @@ public class Update50KUtils {
                     int len = in.read(buffer, 0, 1024);
                     if (len == -1) {
                         in.close();
-                        return new BigInteger(1, digest.digest()).toString(16);
+                        BigInteger bigInt = new BigInteger(1, digest.digest());
+                        return bigInt.toString(16);
                     }
                     digest.update(buffer, 0, len);
                 } catch (Exception e) {
                     e = e;
-                    FileInputStream fileInputStream = in;
+                    e.printStackTrace();
+                    return null;
                 }
             }
         } catch (Exception e2) {
             Exception e = e2;
-            e.printStackTrace();
-            return null;
         }
+        return null;
     }
 
     public static byte[] readFileByRandomAccess(String fileName) {
@@ -855,11 +635,12 @@ public class Update50KUtils {
         for (int i = 0; i < _size; i++) {
             CHECK_SUM += pack[i] & 255;
         }
-        pack[pack.length - 1] = (byte) (CHECK_SUM & 127);
+        byte _return = (byte) (CHECK_SUM & 127);
+        pack[pack.length - 1] = _return;
         return pack;
     }
 
-    public static List<Xml50KUpdateBean> getXmlBean(List<Xml50KUpdateBean> list) {
+    public static List<Xml50KUpdateBean> getXmlBean(List<Xml50KUpdateBean> result) {
         return null;
     }
 
@@ -932,7 +713,7 @@ public class Update50KUtils {
                     bos.write(buffer2, 0, len22);
                     byte[] string2 = bos.toByteArray();
                     Log.i("info", "=============" + string2);
-                    String bytes2HexString = bytes2HexString(string2);
+                    bytes2HexString(string2);
                     string3 = doPackUpdateData(string2);
                     flag = false;
                 }
@@ -954,7 +735,7 @@ public class Update50KUtils {
             ret = String.valueOf(ret) + hex.toUpperCase() + Constants.DOUHAO;
         }
         int i = 0 + 1;
-        Log.i("info", String.valueOf(ret) + "=======" + 0);
+        Log.i("info", String.valueOf(ret) + "=======0");
         return ret;
     }
 }

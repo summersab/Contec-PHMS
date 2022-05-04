@@ -1,5 +1,6 @@
 package com.contec.jar.cms50k;
 
+import com.alibaba.cchannel.CloudChannel;
 import com.contec.phms.util.Constants;
 import java.util.ArrayList;
 import u.aly.dp;
@@ -154,2245 +155,536 @@ public class DevicePackManager {
         return false;
     }
 
-    /* JADX DEBUG: Multi-variable search result rejected for TypeSearchVarInfo{r0v193, resolved type: java.lang.Object[]} */
-    /* JADX DEBUG: Multi-variable search result rejected for TypeSearchVarInfo{r0v303, resolved type: java.lang.Object[]} */
-    /* JADX WARNING: Multi-variable type inference failed */
-    /* Code decompiled incorrectly, please refer to instructions dump. */
-    public byte processData(byte[] r18) {
-        /*
-            r17 = this;
-            r8 = 0
-            r14 = 0
-            byte r14 = r18[r14]
-            switch(r14) {
-                case -60: goto L_0x0008;
-                case -59: goto L_0x001d;
-                case -58: goto L_0x0007;
-                case -57: goto L_0x0007;
-                case -56: goto L_0x003b;
-                case -55: goto L_0x0007;
-                case -54: goto L_0x0007;
-                case -53: goto L_0x0007;
-                case -52: goto L_0x0007;
-                case -51: goto L_0x0007;
-                case -50: goto L_0x0007;
-                case -49: goto L_0x0eb8;
-                case -48: goto L_0x06e4;
-                case -47: goto L_0x08c3;
-                case -46: goto L_0x08e0;
-                case -45: goto L_0x0a0e;
-                case -44: goto L_0x0b8a;
-                case -43: goto L_0x0ce8;
-                case -42: goto L_0x0d65;
-                case -41: goto L_0x0007;
-                case -40: goto L_0x0007;
-                case -39: goto L_0x0007;
-                case -38: goto L_0x0007;
-                case -37: goto L_0x0007;
-                case -36: goto L_0x0007;
-                case -35: goto L_0x0007;
-                case -34: goto L_0x0007;
-                case -33: goto L_0x0007;
-                case -32: goto L_0x00d6;
-                case -31: goto L_0x01ae;
-                case -30: goto L_0x0244;
-                case -29: goto L_0x02b5;
-                case -28: goto L_0x0315;
-                case -27: goto L_0x039b;
-                case -26: goto L_0x0559;
-                case -25: goto L_0x06d2;
-                case -24: goto L_0x06db;
-                case -23: goto L_0x0007;
-                case -22: goto L_0x0007;
-                case -21: goto L_0x0007;
-                case -20: goto L_0x0007;
-                case -19: goto L_0x0007;
-                case -18: goto L_0x0007;
-                case -17: goto L_0x0007;
-                case -16: goto L_0x0007;
-                case -15: goto L_0x0efe;
-                case -14: goto L_0x003e;
-                case -13: goto L_0x004a;
-                case -12: goto L_0x0067;
-                case -11: goto L_0x0084;
-                case -10: goto L_0x0007;
-                case -9: goto L_0x0007;
-                case -8: goto L_0x0007;
-                case -7: goto L_0x0007;
-                case -6: goto L_0x0007;
-                case -5: goto L_0x00a4;
-                case -4: goto L_0x00bd;
-                default: goto L_0x0007;
-            }
-        L_0x0007:
-            return r8
-        L_0x0008:
-            boolean r14 = r17.Check(r18)
-            if (r14 == 0) goto L_0x001a
-            r14 = 5
-            byte r14 = r18[r14]
-            r15 = 1
-            if (r14 != r15) goto L_0x0017
-            r8 = 21
-            goto L_0x0007
-        L_0x0017:
-            r8 = 22
-            goto L_0x0007
-        L_0x001a:
-            r8 = 22
-            goto L_0x0007
-        L_0x001d:
-            boolean r14 = r17.Check(r18)
-            if (r14 == 0) goto L_0x0038
-            r14 = 1
-            byte r14 = r18[r14]
-            r15 = 1
-            if (r14 != r15) goto L_0x002c
-            r8 = 37
-            goto L_0x0007
-        L_0x002c:
-            r14 = 1
-            byte r14 = r18[r14]
-            r15 = 2
-            if (r14 != r15) goto L_0x0035
-            r8 = 38
-            goto L_0x0007
-        L_0x0035:
-            r8 = 39
-            goto L_0x0007
-        L_0x0038:
-            r8 = 39
-            goto L_0x0007
-        L_0x003b:
-            r8 = 40
-            goto L_0x0007
-        L_0x003e:
-            boolean r14 = r17.Check(r18)
-            if (r14 == 0) goto L_0x0047
-            r8 = 69
-            goto L_0x0007
-        L_0x0047:
-            r8 = 71
-            goto L_0x0007
-        L_0x004a:
-            java.lang.String r14 = "DevicePackManager"
-            java.lang.String r15 = "-------校时反馈--------"
-            com.contec.jar.cms50k.DebugLog.e(r14, r15)
-            boolean r14 = r17.Check(r18)
-            if (r14 == 0) goto L_0x0064
-            r14 = 1
-            byte r14 = r18[r14]
-            r14 = r14 & 255(0xff, float:3.57E-43)
-            if (r14 != 0) goto L_0x0061
-            r8 = 16
-            goto L_0x0007
-        L_0x0061:
-            r8 = 17
-            goto L_0x0007
-        L_0x0064:
-            r8 = 17
-            goto L_0x0007
-        L_0x0067:
-            java.lang.String r14 = "DevicePackManager"
-            java.lang.String r15 = "-------设置计步反馈--------"
-            com.contec.jar.cms50k.DebugLog.e(r14, r15)
-            boolean r14 = r17.Check(r18)
-            if (r14 == 0) goto L_0x0081
-            r14 = 1
-            byte r14 = r18[r14]
-            r14 = r14 & 255(0xff, float:3.57E-43)
-            if (r14 != 0) goto L_0x007e
-            r8 = 32
-            goto L_0x0007
-        L_0x007e:
-            r8 = 33
-            goto L_0x0007
-        L_0x0081:
-            r8 = 33
-            goto L_0x0007
-        L_0x0084:
-            java.lang.String r14 = "DevicePackManager"
-            java.lang.String r15 = "-------体重参数设置--------"
-            com.contec.jar.cms50k.DebugLog.e(r14, r15)
-            boolean r14 = r17.Check(r18)
-            if (r14 == 0) goto L_0x00a0
-            r14 = 1
-            byte r14 = r18[r14]
-            r14 = r14 & 255(0xff, float:3.57E-43)
-            if (r14 != 0) goto L_0x009c
-            r8 = 48
-            goto L_0x0007
-        L_0x009c:
-            r8 = 49
-            goto L_0x0007
-        L_0x00a0:
-            r8 = 49
-            goto L_0x0007
-        L_0x00a4:
-            boolean r14 = r17.Check(r18)
-            if (r14 == 0) goto L_0x00b9
-            r14 = 1
-            byte r14 = r18[r14]
-            r14 = r14 & 255(0xff, float:3.57E-43)
-            if (r14 != 0) goto L_0x00b5
-            r8 = -112(0xffffffffffffff90, float:NaN)
-            goto L_0x0007
-        L_0x00b5:
-            r8 = -111(0xffffffffffffff91, float:NaN)
-            goto L_0x0007
-        L_0x00b9:
-            r8 = -112(0xffffffffffffff90, float:NaN)
-            goto L_0x0007
-        L_0x00bd:
-            boolean r14 = r17.Check(r18)
-            if (r14 == 0) goto L_0x00d2
-            r14 = 1
-            byte r14 = r18[r14]
-            r14 = r14 & 255(0xff, float:3.57E-43)
-            if (r14 != 0) goto L_0x00ce
-            r8 = 24
-            goto L_0x0007
-        L_0x00ce:
-            r8 = 25
-            goto L_0x0007
-        L_0x00d2:
-            r8 = 25
-            goto L_0x0007
-        L_0x00d6:
-            r0 = r18
-            int r14 = r0.length
-            r0 = r18
-            com.contec.jar.cms50k.PrintBytes.printDatai(r0, r14)
-            java.lang.String r14 = "DevicePackManager"
-            java.lang.String r15 = "-------数据存储空间--------"
-            com.contec.jar.cms50k.DebugLog.e(r14, r15)
-            r14 = 5
-            byte r14 = r18[r14]
-            int r14 = r14 << 7
-            r15 = 4
-            byte r15 = r18[r15]
-            r15 = r15 & 255(0xff, float:3.57E-43)
-            r14 = r14 | r15
-            r15 = 65535(0xffff, float:9.1834E-41)
-            r14 = r14 & r15
-            r0 = r17
-            r0.mCount = r14
-            r14 = 1
-            byte r14 = r18[r14]
-            switch(r14) {
-                case 0: goto L_0x0100;
-                case 1: goto L_0x0128;
-                case 2: goto L_0x0150;
-                case 3: goto L_0x0178;
-                case 4: goto L_0x01a0;
-                default: goto L_0x00fe;
-            }
-        L_0x00fe:
-            goto L_0x0007
-        L_0x0100:
-            java.lang.String r14 = "DevicePackManager"
-            java.lang.StringBuilder r15 = new java.lang.StringBuilder
-            java.lang.String r16 = "单次血氧数据个数："
-            r15.<init>(r16)
-            r0 = r17
-            int r0 = r0.mCount
-            r16 = r0
-            java.lang.StringBuilder r15 = r15.append(r16)
-            java.lang.String r15 = r15.toString()
-            com.contec.jar.cms50k.DebugLog.d(r14, r15)
-            r0 = r17
-            int r14 = r0.mCount
-            if (r14 != 0) goto L_0x0124
-            r8 = 65
-            goto L_0x0007
-        L_0x0124:
-            r8 = 64
-            goto L_0x0007
-        L_0x0128:
-            java.lang.String r14 = "DevicePackManager"
-            java.lang.StringBuilder r15 = new java.lang.StringBuilder
-            java.lang.String r16 = "全天计步器个数："
-            r15.<init>(r16)
-            r0 = r17
-            int r0 = r0.mCount
-            r16 = r0
-            java.lang.StringBuilder r15 = r15.append(r16)
-            java.lang.String r15 = r15.toString()
-            com.contec.jar.cms50k.DebugLog.d(r14, r15)
-            r0 = r17
-            int r14 = r0.mCount
-            if (r14 != 0) goto L_0x014c
-            r8 = 81
-            goto L_0x0007
-        L_0x014c:
-            r8 = 80
-            goto L_0x0007
-        L_0x0150:
-            java.lang.String r14 = "DevicePackManager"
-            java.lang.StringBuilder r15 = new java.lang.StringBuilder
-            java.lang.String r16 = "5分钟计步器个数："
-            r15.<init>(r16)
-            r0 = r17
-            int r0 = r0.mCount
-            r16 = r0
-            java.lang.StringBuilder r15 = r15.append(r16)
-            java.lang.String r15 = r15.toString()
-            com.contec.jar.cms50k.DebugLog.d(r14, r15)
-            r0 = r17
-            int r14 = r0.mCount
-            if (r14 != 0) goto L_0x0174
-            r8 = 97
-            goto L_0x0007
-        L_0x0174:
-            r8 = 96
-            goto L_0x0007
-        L_0x0178:
-            java.lang.String r14 = "DevicePackManager"
-            java.lang.StringBuilder r15 = new java.lang.StringBuilder
-            java.lang.String r16 = "心电数据个数："
-            r15.<init>(r16)
-            r0 = r17
-            int r0 = r0.mCount
-            r16 = r0
-            java.lang.StringBuilder r15 = r15.append(r16)
-            java.lang.String r15 = r15.toString()
-            com.contec.jar.cms50k.DebugLog.d(r14, r15)
-            r0 = r17
-            int r14 = r0.mCount
-            if (r14 != 0) goto L_0x019c
-            r8 = 113(0x71, float:1.58E-43)
-            goto L_0x0007
-        L_0x019c:
-            r8 = 112(0x70, float:1.57E-43)
-            goto L_0x0007
-        L_0x01a0:
-            r0 = r17
-            int r14 = r0.mCount
-            if (r14 != 0) goto L_0x01aa
-            r8 = -127(0xffffffffffffff81, float:NaN)
-            goto L_0x0007
-        L_0x01aa:
-            r8 = -128(0xffffffffffffff80, float:NaN)
-            goto L_0x0007
-        L_0x01ae:
-            java.lang.String r14 = "DevicePackManager"
-            java.lang.String r15 = "-------单次血氧脉率数据--------"
-            com.contec.jar.cms50k.DebugLog.e(r14, r15)
-            r0 = r17
-            int r14 = r0._packCount
-            int r14 = r14 + 1
-            r0 = r17
-            r0._packCount = r14
-            r14 = 8
-            byte[] r7 = new byte[r14]
-            r14 = 0
-            r15 = 2
-            byte r15 = r18[r15]
-            r15 = r15 & 255(0xff, float:3.57E-43)
-            byte r15 = (byte) r15
-            r7[r14] = r15
-            r14 = 1
-            r15 = 3
-            byte r15 = r18[r15]
-            r15 = r15 & 15
-            byte r15 = (byte) r15
-            r7[r14] = r15
-            r14 = 2
-            r15 = 4
-            byte r15 = r18[r15]
-            r15 = r15 & 255(0xff, float:3.57E-43)
-            byte r15 = (byte) r15
-            r7[r14] = r15
-            r14 = 3
-            r15 = 5
-            byte r15 = r18[r15]
-            r15 = r15 & 255(0xff, float:3.57E-43)
-            byte r15 = (byte) r15
-            r7[r14] = r15
-            r14 = 4
-            r15 = 6
-            byte r15 = r18[r15]
-            r15 = r15 & 255(0xff, float:3.57E-43)
-            byte r15 = (byte) r15
-            r7[r14] = r15
-            r14 = 5
-            r15 = 7
-            byte r15 = r18[r15]
-            r15 = r15 & 255(0xff, float:3.57E-43)
-            byte r15 = (byte) r15
-            r7[r14] = r15
-            r14 = 6
-            r15 = 8
-            byte r15 = r18[r15]
-            r15 = r15 & 255(0xff, float:3.57E-43)
-            byte r15 = (byte) r15
-            r7[r14] = r15
-            r14 = 7
-            r15 = 3
-            byte r15 = r18[r15]
-            r15 = r15 & 64
-            int r15 = r15 << 1
-            r16 = 9
-            byte r16 = r18[r16]
-            r15 = r15 | r16
-            byte r15 = (byte) r15
-            r7[r14] = r15
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataSPO2H r14 = r0.mSpo2h
-            java.util.ArrayList<java.lang.Object> r14 = r14.Spo2Point
-            r14.add(r7)
-            r14 = 1
-            byte r14 = r18[r14]
-            r14 = r14 & 64
-            r15 = 64
-            if (r14 != r15) goto L_0x022f
-            r8 = 67
-            r14 = 0
-            r0 = r17
-            r0._packCount = r14
-            goto L_0x0007
-        L_0x022f:
-            r0 = r17
-            int r14 = r0._packCount
-            r15 = 10
-            if (r14 != r15) goto L_0x0240
-            r8 = 66
-            r14 = 0
-            r0 = r17
-            r0._packCount = r14
-            goto L_0x0007
-        L_0x0240:
-            r8 = -120(0xffffffffffffff88, float:NaN)
-            goto L_0x0007
-        L_0x0244:
-            java.lang.String r14 = "DevicePackManager"
-            java.lang.String r15 = "-------全天总步数数据返回--------"
-            com.contec.jar.cms50k.DebugLog.e(r14, r15)
-            r0 = r17
-            int r14 = r0._packCount
-            int r14 = r14 + 1
-            r0 = r17
-            r0._packCount = r14
-            unPackPedometer(r18)
-            r14 = 7
-            byte[] r2 = new byte[r14]
-            r14 = 0
-            r15 = 2
-            byte r15 = r18[r15]
-            r2[r14] = r15
-            r14 = 1
-            r15 = 3
-            byte r15 = r18[r15]
-            r2[r14] = r15
-            r14 = 2
-            r15 = 4
-            byte r15 = r18[r15]
-            r2[r14] = r15
-            r14 = 3
-            r15 = 6
-            byte r15 = r18[r15]
-            r2[r14] = r15
-            r14 = 4
-            r15 = 7
-            byte r15 = r18[r15]
-            r2[r14] = r15
-            r14 = 5
-            r15 = 8
-            byte r15 = r18[r15]
-            r2[r14] = r15
-            r14 = 6
-            r15 = 9
-            byte r15 = r18[r15]
-            r2[r14] = r15
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataPedometerJar r14 = r0.mPedometerJar
-            r14.addDayPedometerData(r2)
-            r14 = 1
-            byte r14 = r18[r14]
-            r14 = r14 & 64
-            r15 = 64
-            if (r14 != r15) goto L_0x02a0
-            r8 = 83
-            r14 = 0
-            r0 = r17
-            r0._packCount = r14
-            goto L_0x0007
-        L_0x02a0:
-            r0 = r17
-            int r14 = r0._packCount
-            r15 = 10
-            if (r14 != r15) goto L_0x02b1
-            r14 = 0
-            r0 = r17
-            r0._packCount = r14
-            r8 = 82
-            goto L_0x0007
-        L_0x02b1:
-            r8 = -120(0xffffffffffffff88, float:NaN)
-            goto L_0x0007
-        L_0x02b5:
-            java.lang.String r14 = "DevicePackManager"
-            java.lang.String r15 = "-------全天每5分钟步数基本信息--------"
-            com.contec.jar.cms50k.DebugLog.e(r14, r15)
-            r8 = 100
-            r14 = 1
-            byte r14 = r18[r14]
-            r0 = r17
-            r0.mYear = r14
-            r14 = 2
-            byte r14 = r18[r14]
-            r0 = r17
-            r0.mMonth = r14
-            r14 = 3
-            byte r14 = r18[r14]
-            r0 = r17
-            r0.mDay = r14
-            r14 = 4
-            byte r14 = r18[r14]
-            r0 = r17
-            r0.mHour = r14
-            com.contec.jar.cms50k.MinData r14 = new com.contec.jar.cms50k.MinData
-            r14.<init>()
-            r0 = r17
-            r0.mMinData = r14
-            r14 = 5
-            byte[] r5 = new byte[r14]
-            r14 = 0
-            r15 = 1
-            byte r15 = r18[r15]
-            r5[r14] = r15
-            r14 = 1
-            r15 = 2
-            byte r15 = r18[r15]
-            r5[r14] = r15
-            r14 = 2
-            r15 = 3
-            byte r15 = r18[r15]
-            r5[r14] = r15
-            r14 = 3
-            r15 = 4
-            byte r15 = r18[r15]
-            r5[r14] = r15
-            r14 = 4
-            r15 = 24
-            r5[r14] = r15
-            r0 = r17
-            com.contec.jar.cms50k.MinData r14 = r0.mMinData
-            r14.mStartDate = r5
-            r0 = r17
-            int r14 = r0.mCount
-            int r14 = r14 + -1
-            r0 = r17
-            r0.mCount = r14
-            goto L_0x0007
-        L_0x0315:
-            java.lang.String r14 = "DevicePackManager"
-            java.lang.String r15 = "-------全天每5分钟步数具体数据--------"
-            com.contec.jar.cms50k.DebugLog.e(r14, r15)
-            r0 = r17
-            int r14 = r0._packCount
-            int r14 = r14 + 1
-            r0 = r17
-            r0._packCount = r14
-            unECG_Pack(r18)
-            r10 = 0
-        L_0x032a:
-            r14 = 3
-            if (r10 < r14) goto L_0x0350
-            r14 = 1
-            byte r14 = r18[r14]
-            r14 = r14 & 64
-            r15 = 64
-            if (r14 != r15) goto L_0x0386
-            r0 = r17
-            java.util.ArrayList<java.lang.Object> r14 = r0.minDatas
-            r0 = r17
-            com.contec.jar.cms50k.MinData r15 = r0.mMinData
-            r14.add(r15)
-            r0 = r17
-            int r14 = r0.mCount
-            if (r14 != 0) goto L_0x0383
-            r8 = 101(0x65, float:1.42E-43)
-        L_0x0349:
-            r14 = 0
-            r0 = r17
-            r0._packCount = r14
-            goto L_0x0007
-        L_0x0350:
-            r14 = 4
-            byte[] r4 = new byte[r14]
-            r14 = 0
-            int r15 = r10 * 4
-            int r15 = r15 + 4
-            byte r15 = r18[r15]
-            r4[r14] = r15
-            r14 = 1
-            int r15 = r10 * 4
-            int r15 = r15 + 5
-            byte r15 = r18[r15]
-            r4[r14] = r15
-            r14 = 2
-            int r15 = r10 * 4
-            int r15 = r15 + 6
-            byte r15 = r18[r15]
-            r4[r14] = r15
-            r14 = 3
-            int r15 = r10 * 4
-            int r15 = r15 + 7
-            byte r15 = r18[r15]
-            r4[r14] = r15
-            r0 = r17
-            com.contec.jar.cms50k.MinData r14 = r0.mMinData
-            java.util.List<byte[]> r14 = r14.mMinDataList
-            r14.add(r4)
-            int r10 = r10 + 1
-            goto L_0x032a
-        L_0x0383:
-            r8 = 99
-            goto L_0x0349
-        L_0x0386:
-            r0 = r17
-            int r14 = r0._packCount
-            r15 = 10
-            if (r14 != r15) goto L_0x0397
-            r14 = 0
-            r0 = r17
-            r0._packCount = r14
-            r8 = 98
-            goto L_0x0007
-        L_0x0397:
-            r8 = -120(0xffffffffffffff88, float:NaN)
-            goto L_0x0007
-        L_0x039b:
-            java.lang.String r14 = "DevicePackManager"
-            java.lang.String r15 = "-------心电图片段基本信息--------"
-            com.contec.jar.cms50k.DebugLog.e(r14, r15)
-            r14 = 0
-            r0 = r17
-            r0._packCount = r14
-            r8 = 117(0x75, float:1.64E-43)
-            com.contec.jar.cms50k.DeviceDataECG r14 = new com.contec.jar.cms50k.DeviceDataECG
-            r14.<init>()
-            r0 = r17
-            r0.mEcg = r14
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataECG r14 = r0.mEcg
-            r15 = 22
-            byte[] r15 = new byte[r15]
-            r14.Point_data = r15
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataECG r14 = r0.mEcg
-            byte[] r14 = r14.Point_data
-            r15 = 0
-            r16 = 1
-            byte r16 = r18[r16]
-            r14[r15] = r16
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataECG r14 = r0.mEcg
-            byte[] r14 = r14.Point_data
-            r15 = 1
-            r16 = 2
-            byte r16 = r18[r16]
-            r14[r15] = r16
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataECG r14 = r0.mEcg
-            byte[] r14 = r14.Point_data
-            r15 = 2
-            r16 = 3
-            byte r16 = r18[r16]
-            r14[r15] = r16
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataECG r14 = r0.mEcg
-            byte[] r14 = r14.Point_data
-            r15 = 3
-            r16 = 4
-            byte r16 = r18[r16]
-            r14[r15] = r16
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataECG r14 = r0.mEcg
-            byte[] r14 = r14.Point_data
-            r15 = 4
-            r16 = 5
-            byte r16 = r18[r16]
-            r14[r15] = r16
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataECG r14 = r0.mEcg
-            byte[] r14 = r14.Point_data
-            r15 = 5
-            r16 = 6
-            byte r16 = r18[r16]
-            r14[r15] = r16
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataECG r14 = r0.mEcg
-            byte[] r14 = r14.Point_data
-            r15 = 6
-            r16 = 8
-            byte r16 = r18[r16]
-            r14[r15] = r16
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataECG r14 = r0.mEcg
-            byte[] r14 = r14.Point_data
-            r15 = 7
-            r16 = 7
-            byte r16 = r18[r16]
-            r14[r15] = r16
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataECG r14 = r0.mEcg
-            byte[] r14 = r14.Point_data
-            r15 = 9
-            byte r15 = r18[r15]
-            r0 = r17
-            r0.dealData(r14, r15)
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataECG r14 = r0.mEcg
-            byte[] r14 = r14.Point_data
-            r15 = 10
-            byte r15 = r18[r15]
-            r0 = r17
-            r0.dealData(r14, r15)
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataECG r14 = r0.mEcg
-            byte[] r14 = r14.Point_data
-            r15 = 11
-            byte r15 = r18[r15]
-            r0 = r17
-            r0.dealData(r14, r15)
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataECG r14 = r0.mEcg
-            byte[] r14 = r14.Point_data
-            r15 = 12
-            byte r15 = r18[r15]
-            r0 = r17
-            r0.dealData(r14, r15)
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataECG r14 = r0.mEcg
-            byte[] r14 = r14.Point_data
-            r15 = 13
-            byte r15 = r18[r15]
-            r0 = r17
-            r0.dealData(r14, r15)
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataECG r14 = r0.mEcg
-            byte[] r14 = r14.Point_data
-            r15 = 14
-            byte r15 = r18[r15]
-            r0 = r17
-            r0.dealData(r14, r15)
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataECG r14 = r0.mEcg
-            byte[] r14 = r14.Point_data
-            r15 = 9
-            byte r14 = r14[r15]
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataECG r15 = r0.mEcg
-            byte[] r15 = r15.Point_data
-            r16 = 10
-            byte r15 = r15[r16]
-            r14 = r14 | r15
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataECG r15 = r0.mEcg
-            byte[] r15 = r15.Point_data
-            r16 = 11
-            byte r15 = r15[r16]
-            r14 = r14 | r15
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataECG r15 = r0.mEcg
-            byte[] r15 = r15.Point_data
-            r16 = 12
-            byte r15 = r15[r16]
-            r14 = r14 | r15
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataECG r15 = r0.mEcg
-            byte[] r15 = r15.Point_data
-            r16 = 13
-            byte r15 = r15[r16]
-            r14 = r14 | r15
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataECG r15 = r0.mEcg
-            byte[] r15 = r15.Point_data
-            r16 = 14
-            byte r15 = r15[r16]
-            r14 = r14 | r15
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataECG r15 = r0.mEcg
-            byte[] r15 = r15.Point_data
-            r16 = 15
-            byte r15 = r15[r16]
-            r14 = r14 | r15
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataECG r15 = r0.mEcg
-            byte[] r15 = r15.Point_data
-            r16 = 16
-            byte r15 = r15[r16]
-            r14 = r14 | r15
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataECG r15 = r0.mEcg
-            byte[] r15 = r15.Point_data
-            r16 = 17
-            byte r15 = r15[r16]
-            r14 = r14 | r15
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataECG r15 = r0.mEcg
-            byte[] r15 = r15.Point_data
-            r16 = 18
-            byte r15 = r15[r16]
-            r14 = r14 | r15
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataECG r15 = r0.mEcg
-            byte[] r15 = r15.Point_data
-            r16 = 19
-            byte r15 = r15[r16]
-            r14 = r14 | r15
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataECG r15 = r0.mEcg
-            byte[] r15 = r15.Point_data
-            r16 = 20
-            byte r15 = r15[r16]
-            r14 = r14 | r15
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataECG r15 = r0.mEcg
-            byte[] r15 = r15.Point_data
-            r16 = 21
-            byte r15 = r15[r16]
-            r14 = r14 | r15
-            if (r14 <= 0) goto L_0x051a
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataECG r14 = r0.mEcg
-            byte[] r14 = r14.Point_data
-            r15 = 8
-            r16 = 0
-            r14[r15] = r16
-        L_0x051a:
-            r14 = 16
-            byte r14 = r18[r14]
-            int r14 = r14 << 7
-            r15 = 15
-            byte r15 = r18[r15]
-            r15 = r15 & 255(0xff, float:3.57E-43)
-            r14 = r14 | r15
-            r15 = 65535(0xffff, float:9.1834E-41)
-            r3 = r14 & r15
-            java.lang.String r14 = "info"
-            java.lang.StringBuilder r15 = new java.lang.StringBuilder
-            r15.<init>()
-            java.lang.StringBuilder r15 = r15.append(r3)
-            java.lang.String r15 = r15.toString()
-            com.contec.jar.cms50k.DebugLog.i(r14, r15)
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataECG r14 = r0.mEcg
-            int r15 = r3 * 2
-            byte[] r15 = new byte[r15]
-            r14.ECG_Data = r15
-            r0 = r17
-            int r14 = r0.mCount
-            int r14 = r14 + -1
-            r0 = r17
-            r0.mCount = r14
-            r14 = 0
-            r0 = r17
-            r0.mCount_ECG = r14
-            goto L_0x0007
-        L_0x0559:
-            r0 = r18
-            int r14 = r0.length
-            r0 = r18
-            com.contec.jar.cms50k.PrintBytes.printData(r0, r14)
-            java.lang.String r14 = "DevicePackManager"
-            java.lang.String r15 = "-------心电片段--------"
-            com.contec.jar.cms50k.DebugLog.e(r14, r15)
-            unECG_Pack(r18)
-            r0 = r17
-            int r14 = r0._packCount
-            int r14 = r14 + 1
-            r0 = r17
-            r0._packCount = r14
-            r14 = 1
-            byte r14 = r18[r14]
-            r14 = r14 & 64
-            r15 = 64
-            if (r14 != r15) goto L_0x05cd
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataECG r14 = r0.mEcg
-            byte[] r14 = r14.ECG_Data
-            int r14 = r14.length
-            r0 = r17
-            int r15 = r0.mCount_ECG
-            int r15 = r15 * 12
-            int r6 = r14 - r15
-            r10 = 0
-        L_0x058e:
-            if (r10 < r6) goto L_0x05b4
-            r0 = r17
-            java.util.ArrayList<com.contec.jar.cms50k.DeviceDataECG> r14 = r0.mEcgs
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataECG r15 = r0.mEcg
-            r14.add(r15)
-            r14 = 0
-            r0 = r17
-            r0._packCount = r14
-            r0 = r17
-            int r14 = r0.mCount
-            if (r14 != 0) goto L_0x05ca
-            r8 = 116(0x74, float:1.63E-43)
-        L_0x05a8:
-            r0 = r17
-            int r14 = r0.mCount_ECG
-            int r14 = r14 + 1
-            r0 = r17
-            r0.mCount_ECG = r14
-            goto L_0x0007
-        L_0x05b4:
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataECG r14 = r0.mEcg
-            byte[] r14 = r14.ECG_Data
-            r0 = r17
-            int r15 = r0.mCount_ECG
-            int r15 = r15 * 12
-            int r15 = r15 + r10
-            int r16 = r10 + 4
-            byte r16 = r18[r16]
-            r14[r15] = r16
-            int r10 = r10 + 1
-            goto L_0x058e
-        L_0x05ca:
-            r8 = 115(0x73, float:1.61E-43)
-            goto L_0x05a8
-        L_0x05cd:
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataECG r14 = r0.mEcg
-            byte[] r14 = r14.ECG_Data
-            r0 = r17
-            int r15 = r0.mCount_ECG
-            int r15 = r15 * 12
-            int r15 = r15 + 0
-            r16 = 4
-            byte r16 = r18[r16]
-            r14[r15] = r16
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataECG r14 = r0.mEcg
-            byte[] r14 = r14.ECG_Data
-            r0 = r17
-            int r15 = r0.mCount_ECG
-            int r15 = r15 * 12
-            int r15 = r15 + 1
-            r16 = 5
-            byte r16 = r18[r16]
-            r14[r15] = r16
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataECG r14 = r0.mEcg
-            byte[] r14 = r14.ECG_Data
-            r0 = r17
-            int r15 = r0.mCount_ECG
-            int r15 = r15 * 12
-            int r15 = r15 + 2
-            r16 = 6
-            byte r16 = r18[r16]
-            r14[r15] = r16
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataECG r14 = r0.mEcg
-            byte[] r14 = r14.ECG_Data
-            r0 = r17
-            int r15 = r0.mCount_ECG
-            int r15 = r15 * 12
-            int r15 = r15 + 3
-            r16 = 7
-            byte r16 = r18[r16]
-            r14[r15] = r16
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataECG r14 = r0.mEcg
-            byte[] r14 = r14.ECG_Data
-            r0 = r17
-            int r15 = r0.mCount_ECG
-            int r15 = r15 * 12
-            int r15 = r15 + 4
-            r16 = 8
-            byte r16 = r18[r16]
-            r14[r15] = r16
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataECG r14 = r0.mEcg
-            byte[] r14 = r14.ECG_Data
-            r0 = r17
-            int r15 = r0.mCount_ECG
-            int r15 = r15 * 12
-            int r15 = r15 + 5
-            r16 = 9
-            byte r16 = r18[r16]
-            r14[r15] = r16
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataECG r14 = r0.mEcg
-            byte[] r14 = r14.ECG_Data
-            r0 = r17
-            int r15 = r0.mCount_ECG
-            int r15 = r15 * 12
-            int r15 = r15 + 6
-            r16 = 10
-            byte r16 = r18[r16]
-            r14[r15] = r16
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataECG r14 = r0.mEcg
-            byte[] r14 = r14.ECG_Data
-            r0 = r17
-            int r15 = r0.mCount_ECG
-            int r15 = r15 * 12
-            int r15 = r15 + 7
-            r16 = 11
-            byte r16 = r18[r16]
-            r14[r15] = r16
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataECG r14 = r0.mEcg
-            byte[] r14 = r14.ECG_Data
-            r0 = r17
-            int r15 = r0.mCount_ECG
-            int r15 = r15 * 12
-            int r15 = r15 + 8
-            r16 = 12
-            byte r16 = r18[r16]
-            r14[r15] = r16
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataECG r14 = r0.mEcg
-            byte[] r14 = r14.ECG_Data
-            r0 = r17
-            int r15 = r0.mCount_ECG
-            int r15 = r15 * 12
-            int r15 = r15 + 9
-            r16 = 13
-            byte r16 = r18[r16]
-            r14[r15] = r16
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataECG r14 = r0.mEcg
-            byte[] r14 = r14.ECG_Data
-            r0 = r17
-            int r15 = r0.mCount_ECG
-            int r15 = r15 * 12
-            int r15 = r15 + 10
-            r16 = 14
-            byte r16 = r18[r16]
-            r14[r15] = r16
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataECG r14 = r0.mEcg
-            byte[] r14 = r14.ECG_Data
-            r0 = r17
-            int r15 = r0.mCount_ECG
-            int r15 = r15 * 12
-            int r15 = r15 + 11
-            r16 = 15
-            byte r16 = r18[r16]
-            r14[r15] = r16
-            r0 = r17
-            int r14 = r0._packCount
-            r15 = 10
-            if (r14 != r15) goto L_0x06ce
-            r14 = 0
-            r0 = r17
-            r0._packCount = r14
-            r8 = 114(0x72, float:1.6E-43)
-            goto L_0x05a8
-        L_0x06ce:
-            r8 = -120(0xffffffffffffff88, float:NaN)
-            goto L_0x05a8
-        L_0x06d2:
-            java.lang.String r14 = "DevicePackManager"
-            java.lang.String r15 = "-------脉搏波基本信息--------"
-            com.contec.jar.cms50k.DebugLog.e(r14, r15)
-            goto L_0x0007
-        L_0x06db:
-            java.lang.String r14 = "DevicePackManager"
-            java.lang.String r15 = "-------脉搏波数据信息--------"
-            com.contec.jar.cms50k.DebugLog.e(r14, r15)
-            goto L_0x0007
-        L_0x06e4:
-            java.lang.String r14 = "DevicePackManager"
-            java.lang.String r15 = "-------查询连续数据基本信息--------"
-            com.contec.jar.cms50k.DebugLog.e(r14, r15)
-            r14 = 12
-            byte r14 = r18[r14]
-            r14 = r14 & 127(0x7f, float:1.78E-43)
-            int r14 = r14 << 14
-            r15 = 11
-            byte r15 = r18[r15]
-            r15 = r15 & 127(0x7f, float:1.78E-43)
-            int r15 = r15 << 7
-            r14 = r14 | r15
-            r15 = 10
-            byte r15 = r18[r15]
-            r15 = r15 & 127(0x7f, float:1.78E-43)
-            r14 = r14 | r15
-            r0 = r17
-            r0.mSegmentLen = r14
-            r0 = r17
-            int r14 = r0.mSegmentLen
-            if (r14 != 0) goto L_0x072a
-            r14 = 0
-            r0 = r17
-            r0.mPackCount = r14
-            r14 = 1
-            byte r14 = r18[r14]
-            switch(r14) {
-                case 0: goto L_0x071a;
-                case 1: goto L_0x071e;
-                case 2: goto L_0x0722;
-                case 3: goto L_0x0726;
-                default: goto L_0x0718;
-            }
-        L_0x0718:
-            goto L_0x0007
-        L_0x071a:
-            r8 = -79
-            goto L_0x0007
-        L_0x071e:
-            r8 = -77
-            goto L_0x0007
-        L_0x0722:
-            r8 = -75
-            goto L_0x0007
-        L_0x0726:
-            r8 = -71
-            goto L_0x0007
-        L_0x072a:
-            r14 = 0
-            r0 = r17
-            r0.mPackCount = r14
-            r14 = 1
-            byte r14 = r18[r14]
-            switch(r14) {
-                case 0: goto L_0x0737;
-                case 1: goto L_0x0795;
-                case 2: goto L_0x07f3;
-                case 3: goto L_0x0865;
-                default: goto L_0x0735;
-            }
-        L_0x0735:
-            goto L_0x0007
-        L_0x0737:
-            r8 = -80
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataSPO2H r14 = r0.mSpo2h
-            int[] r14 = r14.PulseTime
-            r15 = 0
-            r16 = 2
-            byte r16 = r18[r16]
-            r14[r15] = r16
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataSPO2H r14 = r0.mSpo2h
-            int[] r14 = r14.PulseTime
-            r15 = 1
-            r16 = 3
-            byte r16 = r18[r16]
-            r14[r15] = r16
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataSPO2H r14 = r0.mSpo2h
-            int[] r14 = r14.PulseTime
-            r15 = 2
-            r16 = 4
-            byte r16 = r18[r16]
-            r14[r15] = r16
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataSPO2H r14 = r0.mSpo2h
-            int[] r14 = r14.PulseTime
-            r15 = 3
-            r16 = 5
-            byte r16 = r18[r16]
-            r14[r15] = r16
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataSPO2H r14 = r0.mSpo2h
-            int[] r14 = r14.PulseTime
-            r15 = 4
-            r16 = 6
-            byte r16 = r18[r16]
-            r14[r15] = r16
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataSPO2H r14 = r0.mSpo2h
-            int[] r14 = r14.PulseTime
-            r15 = 5
-            r16 = 7
-            byte r16 = r18[r16]
-            r14[r15] = r16
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataSPO2H r14 = r0.mSpo2h
-            r0 = r17
-            int r15 = r0.mSegmentLen
-            byte[] r15 = new byte[r15]
-            r14.PulseSegment = r15
-            goto L_0x0007
-        L_0x0795:
-            r8 = -78
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataSPO2H r14 = r0.mSpo2h
-            int[] r14 = r14.Spo2Time
-            r15 = 0
-            r16 = 2
-            byte r16 = r18[r16]
-            r14[r15] = r16
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataSPO2H r14 = r0.mSpo2h
-            int[] r14 = r14.Spo2Time
-            r15 = 1
-            r16 = 3
-            byte r16 = r18[r16]
-            r14[r15] = r16
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataSPO2H r14 = r0.mSpo2h
-            int[] r14 = r14.Spo2Time
-            r15 = 2
-            r16 = 4
-            byte r16 = r18[r16]
-            r14[r15] = r16
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataSPO2H r14 = r0.mSpo2h
-            int[] r14 = r14.Spo2Time
-            r15 = 3
-            r16 = 5
-            byte r16 = r18[r16]
-            r14[r15] = r16
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataSPO2H r14 = r0.mSpo2h
-            int[] r14 = r14.Spo2Time
-            r15 = 4
-            r16 = 6
-            byte r16 = r18[r16]
-            r14[r15] = r16
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataSPO2H r14 = r0.mSpo2h
-            int[] r14 = r14.Spo2Time
-            r15 = 5
-            r16 = 7
-            byte r16 = r18[r16]
-            r14[r15] = r16
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataSPO2H r14 = r0.mSpo2h
-            r0 = r17
-            int r15 = r0.mSegmentLen
-            byte[] r15 = new byte[r15]
-            r14.Spo2Segment = r15
-            goto L_0x0007
-        L_0x07f3:
-            r8 = -76
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataSPO2H r14 = r0.mSpo2h
-            int[] r14 = r14.MovementTime
-            r15 = 0
-            r16 = 2
-            byte r16 = r18[r16]
-            r14[r15] = r16
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataSPO2H r14 = r0.mSpo2h
-            int[] r14 = r14.MovementTime
-            r15 = 1
-            r16 = 3
-            byte r16 = r18[r16]
-            r14[r15] = r16
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataSPO2H r14 = r0.mSpo2h
-            int[] r14 = r14.MovementTime
-            r15 = 2
-            r16 = 4
-            byte r16 = r18[r16]
-            r14[r15] = r16
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataSPO2H r14 = r0.mSpo2h
-            int[] r14 = r14.MovementTime
-            r15 = 3
-            r16 = 5
-            byte r16 = r18[r16]
-            r14[r15] = r16
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataSPO2H r14 = r0.mSpo2h
-            int[] r14 = r14.MovementTime
-            r15 = 4
-            r16 = 6
-            byte r16 = r18[r16]
-            r14[r15] = r16
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataSPO2H r14 = r0.mSpo2h
-            int[] r14 = r14.MovementTime
-            r15 = 5
-            r16 = 7
-            byte r16 = r18[r16]
-            r14[r15] = r16
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataSPO2H r14 = r0.mSpo2h
-            r0 = r17
-            int r15 = r0.mSegmentLen
-            byte[] r15 = new byte[r15]
-            r14.MovementPoint = r15
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataSPO2H r14 = r0.mSpo2h
-            r15 = 8
-            byte r15 = r18[r15]
-            r14.MovementStart = r15
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataSPO2H r14 = r0.mSpo2h
-            r15 = 9
-            byte r15 = r18[r15]
-            r14.MovementEnd = r15
-            goto L_0x0007
-        L_0x0865:
-            r8 = -72
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataSPO2H r14 = r0.mSpo2h
-            int[] r14 = r14.RrTime
-            r15 = 0
-            r16 = 2
-            byte r16 = r18[r16]
-            r14[r15] = r16
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataSPO2H r14 = r0.mSpo2h
-            int[] r14 = r14.RrTime
-            r15 = 1
-            r16 = 3
-            byte r16 = r18[r16]
-            r14[r15] = r16
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataSPO2H r14 = r0.mSpo2h
-            int[] r14 = r14.RrTime
-            r15 = 2
-            r16 = 4
-            byte r16 = r18[r16]
-            r14[r15] = r16
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataSPO2H r14 = r0.mSpo2h
-            int[] r14 = r14.RrTime
-            r15 = 3
-            r16 = 5
-            byte r16 = r18[r16]
-            r14[r15] = r16
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataSPO2H r14 = r0.mSpo2h
-            int[] r14 = r14.RrTime
-            r15 = 4
-            r16 = 6
-            byte r16 = r18[r16]
-            r14[r15] = r16
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataSPO2H r14 = r0.mSpo2h
-            int[] r14 = r14.RrTime
-            r15 = 5
-            r16 = 7
-            byte r16 = r18[r16]
-            r14[r15] = r16
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataSPO2H r14 = r0.mSpo2h
-            r0 = r17
-            int r15 = r0.mSegmentLen
-            byte[] r15 = new byte[r15]
-            r14.RRPoint = r15
-            goto L_0x0007
-        L_0x08c3:
-            r14 = 2
-            byte r14 = r18[r14]
-            if (r14 != 0) goto L_0x0007
-            r14 = 1
-            byte r14 = r18[r14]
-            switch(r14) {
-                case 0: goto L_0x08d0;
-                case 1: goto L_0x08d4;
-                case 2: goto L_0x08d8;
-                case 3: goto L_0x08dc;
-                default: goto L_0x08ce;
-            }
-        L_0x08ce:
-            goto L_0x0007
-        L_0x08d0:
-            r8 = -64
-            goto L_0x0007
-        L_0x08d4:
-            r8 = -63
-            goto L_0x0007
-        L_0x08d8:
-            r8 = -62
-            goto L_0x0007
-        L_0x08dc:
-            r8 = -61
-            goto L_0x0007
-        L_0x08e0:
-            java.lang.String r14 = "DevicePackManager"
-            java.lang.StringBuilder r15 = new java.lang.StringBuilder
-            java.lang.String r16 = "-------脉率值--------"
-            r15.<init>(r16)
-            r0 = r18
-            int r0 = r0.length
-            r16 = r0
-            java.lang.StringBuilder r15 = r15.append(r16)
-            java.lang.String r15 = r15.toString()
-            com.contec.jar.cms50k.DebugLog.e(r14, r15)
-            byte[] r18 = unNewPack(r18)
-            r0 = r17
-            int r14 = r0.mPackCount
-            r0 = r17
-            int r15 = r0.mSegmentLen
-            int r15 = r15 / 27
-            if (r14 != r15) goto L_0x09a6
-            r0 = r17
-            int r14 = r0.mSegmentLen
-            int r11 = r14 % 27
-            r14 = 5
-            byte r14 = r18[r14]
-            r0 = r17
-            r0.pluse = r14
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataSPO2H r14 = r0.mSpo2h
-            byte[] r14 = r14.PulseSegment
-            r0 = r17
-            int r15 = r0.mPackCount
-            int r15 = r15 * 27
-            r0 = r17
-            byte r0 = r0.pluse
-            r16 = r0
-            r14[r15] = r16
-            r10 = 1
-        L_0x092b:
-            int r14 = r11 / 2
-            if (r10 <= r14) goto L_0x0953
-            r8 = -125(0xffffffffffffff83, float:NaN)
-        L_0x0931:
-            r0 = r17
-            int r14 = r0.mPackCount
-            int r14 = r14 + 1
-            r0 = r17
-            r0.mPackCount = r14
-            r0 = r17
-            int r14 = r0.mPackCount
-            r0 = r17
-            int r15 = r0.mSegmentLen
-            int r15 = r15 / 27
-            if (r14 != r15) goto L_0x0007
-            r0 = r17
-            int r14 = r0.mSegmentLen
-            int r14 = r14 % 27
-            if (r14 != 0) goto L_0x0007
-            r8 = -125(0xffffffffffffff83, float:NaN)
-            goto L_0x0007
-        L_0x0953:
-            r0 = r17
-            byte r14 = r0.pluse
-            int r15 = r10 + 5
-            byte r15 = r18[r15]
-            byte[] r12 = unContinuousData(r14, r15)
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataSPO2H r14 = r0.mSpo2h
-            byte[] r14 = r14.PulseSegment
-            r0 = r17
-            int r15 = r0.mPackCount
-            int r15 = r15 * 27
-            int r16 = r10 * 2
-            int r15 = r15 + r16
-            int r15 = r15 + -1
-            r16 = 0
-            byte r16 = r12[r16]
-            r14[r15] = r16
-            r0 = r17
-            int r14 = r0.mPackCount
-            int r14 = r14 * 27
-            int r15 = r10 * 2
-            int r14 = r14 + r15
-            r0 = r17
-            int r15 = r0.mSegmentLen
-            if (r14 >= r15) goto L_0x099c
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataSPO2H r14 = r0.mSpo2h
-            byte[] r14 = r14.PulseSegment
-            r0 = r17
-            int r15 = r0.mPackCount
-            int r15 = r15 * 27
-            int r16 = r10 * 2
-            int r15 = r15 + r16
-            r16 = 1
-            byte r16 = r12[r16]
-            r14[r15] = r16
-        L_0x099c:
-            r14 = 1
-            byte r14 = r12[r14]
-            r0 = r17
-            r0.pluse = r14
-            int r10 = r10 + 1
-            goto L_0x092b
-        L_0x09a6:
-            r14 = 5
-            byte r14 = r18[r14]
-            r0 = r17
-            r0.pluse = r14
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataSPO2H r14 = r0.mSpo2h
-            byte[] r14 = r14.PulseSegment
-            r0 = r17
-            int r15 = r0.mPackCount
-            int r15 = r15 * 27
-            r0 = r17
-            byte r0 = r0.pluse
-            r16 = r0
-            r14[r15] = r16
-            r10 = 1
-        L_0x09c2:
-            r14 = 14
-            if (r10 < r14) goto L_0x09ca
-            r8 = -126(0xffffffffffffff82, float:NaN)
-            goto L_0x0931
-        L_0x09ca:
-            r0 = r17
-            byte r14 = r0.pluse
-            int r15 = r10 + 5
-            byte r15 = r18[r15]
-            byte[] r12 = unContinuousData(r14, r15)
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataSPO2H r14 = r0.mSpo2h
-            byte[] r14 = r14.PulseSegment
-            r0 = r17
-            int r15 = r0.mPackCount
-            int r15 = r15 * 27
-            int r16 = r10 * 2
-            int r15 = r15 + r16
-            int r15 = r15 + -1
-            r16 = 0
-            byte r16 = r12[r16]
-            r14[r15] = r16
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataSPO2H r14 = r0.mSpo2h
-            byte[] r14 = r14.PulseSegment
-            r0 = r17
-            int r15 = r0.mPackCount
-            int r15 = r15 * 27
-            int r16 = r10 * 2
-            int r15 = r15 + r16
-            r16 = 1
-            byte r16 = r12[r16]
-            r14[r15] = r16
-            r14 = 1
-            byte r14 = r12[r14]
-            r0 = r17
-            r0.pluse = r14
-            int r10 = r10 + 1
-            goto L_0x09c2
-        L_0x0a0e:
-            java.lang.String r14 = "DevicePackManager"
-            java.lang.String r15 = "-------血氧--------"
-            com.contec.jar.cms50k.DebugLog.e(r14, r15)
-            byte[] r18 = unNewPack(r18)
-            r0 = r17
-            int r14 = r0.mPackCount
-            r0 = r17
-            int r15 = r0.mSegmentLen
-            int r15 = r15 / 27
-            if (r14 != r15) goto L_0x0af6
-            java.lang.String r14 = "cms50k"
-            java.lang.String r15 = "连续数据包结束"
-            com.contec.jar.cms50k.DebugLog.e(r14, r15)
-            r0 = r17
-            int r14 = r0.mSegmentLen
-            int r11 = r14 % 27
-            r14 = 5
-            byte r14 = r18[r14]
-            r0 = r17
-            r0.spo2 = r14
-            r0 = r17
-            byte r14 = r0.spo2
-            r14 = r14 & 255(0xff, float:3.57E-43)
-            r15 = 255(0xff, float:3.57E-43)
-            if (r14 != r15) goto L_0x0a49
-            r14 = 127(0x7f, float:1.78E-43)
-            r0 = r17
-            r0.spo2 = r14
-        L_0x0a49:
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataSPO2H r14 = r0.mSpo2h
-            byte[] r14 = r14.Spo2Segment
-            r0 = r17
-            int r15 = r0.mPackCount
-            int r15 = r15 * 27
-            r0 = r17
-            byte r0 = r0.spo2
-            r16 = r0
-            r14[r15] = r16
-            r10 = 1
-        L_0x0a5e:
-            int r14 = r11 / 2
-            if (r10 <= r14) goto L_0x0a86
-            r8 = -109(0xffffffffffffff93, float:NaN)
-        L_0x0a64:
-            r0 = r17
-            int r14 = r0.mPackCount
-            int r14 = r14 + 1
-            r0 = r17
-            r0.mPackCount = r14
-            r0 = r17
-            int r14 = r0.mPackCount
-            r0 = r17
-            int r15 = r0.mSegmentLen
-            int r15 = r15 / 27
-            if (r14 != r15) goto L_0x0007
-            r0 = r17
-            int r14 = r0.mSegmentLen
-            int r14 = r14 % 27
-            if (r14 != 0) goto L_0x0007
-            r8 = -109(0xffffffffffffff93, float:NaN)
-            goto L_0x0007
-        L_0x0a86:
-            r0 = r17
-            byte r14 = r0.spo2
-            int r15 = r10 + 5
-            byte r15 = r18[r15]
-            byte[] r13 = unContinuousData(r14, r15)
-            r14 = 0
-            byte r14 = r13[r14]
-            r14 = r14 & 255(0xff, float:3.57E-43)
-            r15 = 255(0xff, float:3.57E-43)
-            if (r14 != r15) goto L_0x0aa0
-            r14 = 0
-            r15 = 127(0x7f, float:1.78E-43)
-            r13[r14] = r15
-        L_0x0aa0:
-            r14 = 1
-            byte r14 = r13[r14]
-            r14 = r14 & 255(0xff, float:3.57E-43)
-            r15 = 255(0xff, float:3.57E-43)
-            if (r14 != r15) goto L_0x0aae
-            r14 = 1
-            r15 = 127(0x7f, float:1.78E-43)
-            r13[r14] = r15
-        L_0x0aae:
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataSPO2H r14 = r0.mSpo2h
-            byte[] r14 = r14.Spo2Segment
-            r0 = r17
-            int r15 = r0.mPackCount
-            int r15 = r15 * 27
-            int r16 = r10 * 2
-            int r15 = r15 + r16
-            int r15 = r15 + -1
-            r16 = 0
-            byte r16 = r13[r16]
-            r14[r15] = r16
-            r0 = r17
-            int r14 = r0.mPackCount
-            int r14 = r14 * 27
-            int r15 = r10 * 2
-            int r14 = r14 + r15
-            r0 = r17
-            int r15 = r0.mSegmentLen
-            if (r14 >= r15) goto L_0x0aeb
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataSPO2H r14 = r0.mSpo2h
-            byte[] r14 = r14.Spo2Segment
-            r0 = r17
-            int r15 = r0.mPackCount
-            int r15 = r15 * 27
-            int r16 = r10 * 2
-            int r15 = r15 + r16
-            r16 = 1
-            byte r16 = r13[r16]
-            r14[r15] = r16
-        L_0x0aeb:
-            r14 = 1
-            byte r14 = r13[r14]
-            r0 = r17
-            r0.spo2 = r14
-            int r10 = r10 + 1
-            goto L_0x0a5e
-        L_0x0af6:
-            r14 = 5
-            byte r14 = r18[r14]
-            r0 = r17
-            r0.spo2 = r14
-            r0 = r17
-            byte r14 = r0.spo2
-            r14 = r14 & 255(0xff, float:3.57E-43)
-            r15 = 255(0xff, float:3.57E-43)
-            if (r14 != r15) goto L_0x0b0d
-            r14 = 127(0x7f, float:1.78E-43)
-            r0 = r17
-            r0.spo2 = r14
-        L_0x0b0d:
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataSPO2H r14 = r0.mSpo2h
-            byte[] r14 = r14.Spo2Segment
-            r0 = r17
-            int r15 = r0.mPackCount
-            int r15 = r15 * 27
-            r0 = r17
-            byte r0 = r0.spo2
-            r16 = r0
-            r14[r15] = r16
-            r10 = 1
-        L_0x0b22:
-            r14 = 14
-            if (r10 < r14) goto L_0x0b2a
-            r8 = -110(0xffffffffffffff92, float:NaN)
-            goto L_0x0a64
-        L_0x0b2a:
-            r0 = r17
-            byte r14 = r0.spo2
-            int r15 = r10 + 5
-            byte r15 = r18[r15]
-            byte[] r13 = unContinuousData(r14, r15)
-            r14 = 0
-            byte r14 = r13[r14]
-            r14 = r14 & 255(0xff, float:3.57E-43)
-            r15 = 255(0xff, float:3.57E-43)
-            if (r14 != r15) goto L_0x0b44
-            r14 = 0
-            r15 = 127(0x7f, float:1.78E-43)
-            r13[r14] = r15
-        L_0x0b44:
-            r14 = 1
-            byte r14 = r13[r14]
-            r14 = r14 & 255(0xff, float:3.57E-43)
-            r15 = 255(0xff, float:3.57E-43)
-            if (r14 != r15) goto L_0x0b52
-            r14 = 1
-            r15 = 127(0x7f, float:1.78E-43)
-            r13[r14] = r15
-        L_0x0b52:
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataSPO2H r14 = r0.mSpo2h
-            byte[] r14 = r14.Spo2Segment
-            r0 = r17
-            int r15 = r0.mPackCount
-            int r15 = r15 * 27
-            int r16 = r10 * 2
-            int r15 = r15 + r16
-            int r15 = r15 + -1
-            r16 = 0
-            byte r16 = r13[r16]
-            r14[r15] = r16
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataSPO2H r14 = r0.mSpo2h
-            byte[] r14 = r14.Spo2Segment
-            r0 = r17
-            int r15 = r0.mPackCount
-            int r15 = r15 * 27
-            int r16 = r10 * 2
-            int r15 = r15 + r16
-            r16 = 1
-            byte r16 = r13[r16]
-            r14[r15] = r16
-            r14 = 1
-            byte r14 = r13[r14]
-            r0 = r17
-            r0.spo2 = r14
-            int r10 = r10 + 1
-            goto L_0x0b22
-        L_0x0b8a:
-            java.lang.String r14 = "DevicePackManager"
-            java.lang.String r15 = "-------体动--------"
-            com.contec.jar.cms50k.DebugLog.e(r14, r15)
-            unPack(r18)
-            r0 = r17
-            int r14 = r0.mPackCount
-            r0 = r17
-            int r15 = r0.mSegmentLen
-            int r15 = r15 / 12
-            if (r14 != r15) goto L_0x0bf6
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataSPO2H r14 = r0.mSpo2h
-            byte[] r14 = r14.MovementPoint
-            int r14 = r14.length
-            r0 = r17
-            int r15 = r0.mPackCount
-            int r15 = r15 * 12
-            int r6 = r14 - r15
-            r10 = 0
-        L_0x0bb0:
-            if (r10 < r6) goto L_0x0be0
-            r8 = -74
-            r14 = 0
-            r0 = r17
-            r0.mPackCount = r14
-        L_0x0bb9:
-            r0 = r17
-            int r14 = r0.mPackCount
-            int r14 = r14 + 1
-            r0 = r17
-            r0.mPackCount = r14
-            r0 = r17
-            int r14 = r0.mPackCount
-            r0 = r17
-            int r15 = r0.mSegmentLen
-            int r15 = r15 / 12
-            if (r14 != r15) goto L_0x0007
-            r0 = r17
-            int r14 = r0.mSegmentLen
-            int r14 = r14 % 12
-            if (r14 != 0) goto L_0x0007
-            r8 = -74
-            r14 = 0
-            r0 = r17
-            r0.mPackCount = r14
-            goto L_0x0007
-        L_0x0be0:
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataSPO2H r14 = r0.mSpo2h
-            byte[] r14 = r14.MovementPoint
-            r0 = r17
-            int r15 = r0.mPackCount
-            int r15 = r15 * 12
-            int r15 = r15 + r10
-            int r16 = r10 + 5
-            byte r16 = r18[r16]
-            r14[r15] = r16
-            int r10 = r10 + 1
-            goto L_0x0bb0
-        L_0x0bf6:
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataSPO2H r14 = r0.mSpo2h
-            byte[] r14 = r14.MovementPoint
-            r0 = r17
-            int r15 = r0.mPackCount
-            int r15 = r15 * 12
-            r16 = 5
-            byte r16 = r18[r16]
-            r14[r15] = r16
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataSPO2H r14 = r0.mSpo2h
-            byte[] r14 = r14.MovementPoint
-            r0 = r17
-            int r15 = r0.mPackCount
-            int r15 = r15 * 12
-            int r15 = r15 + 1
-            r16 = 6
-            byte r16 = r18[r16]
-            r14[r15] = r16
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataSPO2H r14 = r0.mSpo2h
-            byte[] r14 = r14.MovementPoint
-            r0 = r17
-            int r15 = r0.mPackCount
-            int r15 = r15 * 12
-            int r15 = r15 + 2
-            r16 = 7
-            byte r16 = r18[r16]
-            r14[r15] = r16
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataSPO2H r14 = r0.mSpo2h
-            byte[] r14 = r14.MovementPoint
-            r0 = r17
-            int r15 = r0.mPackCount
-            int r15 = r15 * 12
-            int r15 = r15 + 3
-            r16 = 8
-            byte r16 = r18[r16]
-            r14[r15] = r16
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataSPO2H r14 = r0.mSpo2h
-            byte[] r14 = r14.MovementPoint
-            r0 = r17
-            int r15 = r0.mPackCount
-            int r15 = r15 * 12
-            int r15 = r15 + 4
-            r16 = 9
-            byte r16 = r18[r16]
-            r14[r15] = r16
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataSPO2H r14 = r0.mSpo2h
-            byte[] r14 = r14.MovementPoint
-            r0 = r17
-            int r15 = r0.mPackCount
-            int r15 = r15 * 12
-            int r15 = r15 + 5
-            r16 = 10
-            byte r16 = r18[r16]
-            r14[r15] = r16
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataSPO2H r14 = r0.mSpo2h
-            byte[] r14 = r14.MovementPoint
-            r0 = r17
-            int r15 = r0.mPackCount
-            int r15 = r15 * 12
-            int r15 = r15 + 6
-            r16 = 11
-            byte r16 = r18[r16]
-            r14[r15] = r16
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataSPO2H r14 = r0.mSpo2h
-            byte[] r14 = r14.MovementPoint
-            r0 = r17
-            int r15 = r0.mPackCount
-            int r15 = r15 * 12
-            int r15 = r15 + 7
-            r16 = 12
-            byte r16 = r18[r16]
-            r14[r15] = r16
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataSPO2H r14 = r0.mSpo2h
-            byte[] r14 = r14.MovementPoint
-            r0 = r17
-            int r15 = r0.mPackCount
-            int r15 = r15 * 12
-            int r15 = r15 + 8
-            r16 = 13
-            byte r16 = r18[r16]
-            r14[r15] = r16
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataSPO2H r14 = r0.mSpo2h
-            byte[] r14 = r14.MovementPoint
-            r0 = r17
-            int r15 = r0.mPackCount
-            int r15 = r15 * 12
-            int r15 = r15 + 9
-            r16 = 14
-            byte r16 = r18[r16]
-            r14[r15] = r16
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataSPO2H r14 = r0.mSpo2h
-            byte[] r14 = r14.MovementPoint
-            r0 = r17
-            int r15 = r0.mPackCount
-            int r15 = r15 * 12
-            int r15 = r15 + 10
-            r16 = 15
-            byte r16 = r18[r16]
-            r14[r15] = r16
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataSPO2H r14 = r0.mSpo2h
-            byte[] r14 = r14.MovementPoint
-            r0 = r17
-            int r15 = r0.mPackCount
-            int r15 = r15 * 12
-            int r15 = r15 + 11
-            r16 = 16
-            byte r16 = r18[r16]
-            r14[r15] = r16
-            r8 = -73
-            goto L_0x0bb9
-        L_0x0ce8:
-            java.lang.String r14 = "DevicePackManager"
-            java.lang.String r15 = "-------连续五分钟RR间期数据的基本信息--------"
-            com.contec.jar.cms50k.DebugLog.e(r14, r15)
-            r8 = -56
-            r14 = 1
-            byte r14 = r18[r14]
-            r0 = r17
-            r0.mYear = r14
-            r14 = 2
-            byte r14 = r18[r14]
-            r0 = r17
-            r0.mMonth = r14
-            r14 = 3
-            byte r14 = r18[r14]
-            r0 = r17
-            r0.mDay = r14
-            r14 = 4
-            byte r14 = r18[r14]
-            r0 = r17
-            r0.mHour = r14
-            r14 = 5
-            byte r14 = r18[r14]
-            r0 = r17
-            r0.mMinu = r14
-            r14 = 6
-            byte r14 = r18[r14]
-            r0 = r17
-            r0.mSeco = r14
-            com.contec.jar.cms50k.MinData r14 = new com.contec.jar.cms50k.MinData
-            r14.<init>()
-            r0 = r17
-            r0.mMinData = r14
-            r14 = 6
-            byte[] r1 = new byte[r14]
-            r14 = 0
-            r15 = 1
-            byte r15 = r18[r15]
-            r1[r14] = r15
-            r14 = 0
-            r15 = 2
-            byte r15 = r18[r15]
-            r1[r14] = r15
-            r14 = 0
-            r15 = 3
-            byte r15 = r18[r15]
-            r1[r14] = r15
-            r14 = 0
-            r15 = 4
-            byte r15 = r18[r15]
-            r1[r14] = r15
-            r14 = 0
-            r15 = 5
-            byte r15 = r18[r15]
-            r1[r14] = r15
-            r14 = 0
-            r15 = 6
-            byte r15 = r18[r15]
-            r1[r14] = r15
-            r14 = 0
-            r15 = 0
-            r1[r14] = r15
-            r14 = 0
-            r15 = 0
-            r1[r14] = r15
-            r0 = r17
-            com.contec.jar.cms50k.MinData r14 = r0.mMinData
-            r14.mStartDate = r1
-            r0 = r17
-            int r14 = r0.mCount
-            int r14 = r14 + -1
-            r0 = r17
-            r0.mCount = r14
-            goto L_0x0007
-        L_0x0d65:
-            java.lang.String r14 = "DevicePackManager"
-            java.lang.String r15 = "-------连续RR间数据--------"
-            com.contec.jar.cms50k.DebugLog.e(r14, r15)
-            unPack(r18)
-            r0 = r17
-            int r14 = r0._packCount
-            int r14 = r14 + 1
-            r0 = r17
-            r0._packCount = r14
-            r14 = 1
-            byte r14 = r18[r14]
-            r14 = r14 & 64
-            r15 = 64
-            if (r14 != r15) goto L_0x0dc4
-            java.lang.String r14 = "cms50k"
-            java.lang.String r15 = "数据包结束"
-            com.contec.jar.cms50k.DebugLog.e(r14, r15)
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataSPO2H r14 = r0.mSpo2h
-            byte[] r14 = r14.PulseSegment
-            int r14 = r14.length
-            r0 = r17
-            int r15 = r0.mPackCount
-            int r15 = r15 * 12
-            int r6 = r14 - r15
-            r10 = 0
-        L_0x0d99:
-            if (r10 < r6) goto L_0x0dae
-            r8 = -62
-            r14 = 0
-            r0 = r17
-            r0._packCount = r14
-        L_0x0da2:
-            r0 = r17
-            int r14 = r0.mPackCount
-            int r14 = r14 + 1
-            r0 = r17
-            r0.mPackCount = r14
-            goto L_0x0007
-        L_0x0dae:
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataSPO2H r14 = r0.mSpo2h
-            byte[] r14 = r14.PulseSegment
-            r0 = r17
-            int r15 = r0.mPackCount
-            int r15 = r15 * 12
-            int r15 = r15 + r10
-            int r16 = r10 + 5
-            byte r16 = r18[r16]
-            r14[r15] = r16
-            int r10 = r10 + 1
-            goto L_0x0d99
-        L_0x0dc4:
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataSPO2H r14 = r0.mSpo2h
-            byte[] r14 = r14.RRPoint
-            r0 = r17
-            int r15 = r0.mPackCount
-            int r15 = r15 * 12
-            int r15 = r15 + 0
-            r16 = 5
-            byte r16 = r18[r16]
-            r14[r15] = r16
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataSPO2H r14 = r0.mSpo2h
-            byte[] r14 = r14.RRPoint
-            r0 = r17
-            int r15 = r0.mPackCount
-            int r15 = r15 * 12
-            int r15 = r15 + 1
-            r16 = 6
-            byte r16 = r18[r16]
-            r14[r15] = r16
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataSPO2H r14 = r0.mSpo2h
-            byte[] r14 = r14.RRPoint
-            r0 = r17
-            int r15 = r0.mPackCount
-            int r15 = r15 * 12
-            int r15 = r15 + 2
-            r16 = 7
-            byte r16 = r18[r16]
-            r14[r15] = r16
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataSPO2H r14 = r0.mSpo2h
-            byte[] r14 = r14.RRPoint
-            r0 = r17
-            int r15 = r0.mPackCount
-            int r15 = r15 * 12
-            int r15 = r15 + 3
-            r16 = 8
-            byte r16 = r18[r16]
-            r14[r15] = r16
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataSPO2H r14 = r0.mSpo2h
-            byte[] r14 = r14.RRPoint
-            r0 = r17
-            int r15 = r0.mPackCount
-            int r15 = r15 * 12
-            int r15 = r15 + 4
-            r16 = 9
-            byte r16 = r18[r16]
-            r14[r15] = r16
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataSPO2H r14 = r0.mSpo2h
-            byte[] r14 = r14.RRPoint
-            r0 = r17
-            int r15 = r0.mPackCount
-            int r15 = r15 * 12
-            int r15 = r15 + 5
-            r16 = 10
-            byte r16 = r18[r16]
-            r14[r15] = r16
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataSPO2H r14 = r0.mSpo2h
-            byte[] r14 = r14.RRPoint
-            r0 = r17
-            int r15 = r0.mPackCount
-            int r15 = r15 * 12
-            int r15 = r15 + 6
-            r16 = 11
-            byte r16 = r18[r16]
-            r14[r15] = r16
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataSPO2H r14 = r0.mSpo2h
-            byte[] r14 = r14.RRPoint
-            r0 = r17
-            int r15 = r0.mPackCount
-            int r15 = r15 * 12
-            int r15 = r15 + 7
-            r16 = 12
-            byte r16 = r18[r16]
-            r14[r15] = r16
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataSPO2H r14 = r0.mSpo2h
-            byte[] r14 = r14.RRPoint
-            r0 = r17
-            int r15 = r0.mPackCount
-            int r15 = r15 * 12
-            int r15 = r15 + 8
-            r16 = 13
-            byte r16 = r18[r16]
-            r14[r15] = r16
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataSPO2H r14 = r0.mSpo2h
-            byte[] r14 = r14.RRPoint
-            r0 = r17
-            int r15 = r0.mPackCount
-            int r15 = r15 * 12
-            int r15 = r15 + 9
-            r16 = 14
-            byte r16 = r18[r16]
-            r14[r15] = r16
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataSPO2H r14 = r0.mSpo2h
-            byte[] r14 = r14.RRPoint
-            r0 = r17
-            int r15 = r0.mPackCount
-            int r15 = r15 * 12
-            int r15 = r15 + 10
-            r16 = 15
-            byte r16 = r18[r16]
-            r14[r15] = r16
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataSPO2H r14 = r0.mSpo2h
-            byte[] r14 = r14.RRPoint
-            r0 = r17
-            int r15 = r0.mPackCount
-            int r15 = r15 * 12
-            int r15 = r15 + 11
-            r16 = 16
-            byte r16 = r18[r16]
-            r14[r15] = r16
-            r8 = -61
-            goto L_0x0da2
-        L_0x0eb8:
-            java.lang.String r14 = "DevicePackManager"
-            java.lang.String r15 = "-------数据封装结果--------"
-            com.contec.jar.cms50k.DebugLog.e(r14, r15)
-            r14 = 8
-            byte[] r9 = new byte[r14]
-            r14 = 0
-            r15 = 1
-            byte r15 = r18[r15]
-            r9[r14] = r15
-            r14 = 1
-            r15 = 2
-            byte r15 = r18[r15]
-            r9[r14] = r15
-            r14 = 2
-            r15 = 3
-            byte r15 = r18[r15]
-            r9[r14] = r15
-            r14 = 3
-            r15 = 4
-            byte r15 = r18[r15]
-            r9[r14] = r15
-            r14 = 4
-            r15 = 5
-            byte r15 = r18[r15]
-            r9[r14] = r15
-            r14 = 5
-            r15 = 6
-            byte r15 = r18[r15]
-            r9[r14] = r15
-            r14 = 6
-            r15 = 7
-            byte r15 = r18[r15]
-            r9[r14] = r15
-            r14 = 7
-            r15 = 8
-            byte r15 = r18[r15]
-            r9[r14] = r15
-            r0 = r17
-            com.contec.jar.cms50k.DeviceDataSPO2H r14 = r0.mSpo2h
-            r14.mCodedata = r9
-            r8 = -49
-            goto L_0x0007
-        L_0x0efe:
-            r14 = 7
-            byte r14 = r18[r14]
-            r15 = 48
-            if (r14 != r15) goto L_0x0f26
-            r14 = 8
-            byte r14 = r18[r14]
-            r15 = 48
-            if (r14 != r15) goto L_0x0f17
-            r14 = 2
-            r0 = r17
-            r0.setProduct(r14)
-        L_0x0f13:
-            r8 = -15
-            goto L_0x0007
-        L_0x0f17:
-            r14 = 8
-            byte r14 = r18[r14]
-            r15 = 49
-            if (r14 != r15) goto L_0x0f13
-            r14 = 3
-            r0 = r17
-            r0.setProduct(r14)
-            goto L_0x0f13
-        L_0x0f26:
-            r14 = 7
-            byte r14 = r18[r14]
-            r15 = 49
-            if (r14 != r15) goto L_0x0f13
-            r14 = 8
-            byte r14 = r18[r14]
-            r15 = 48
-            if (r14 != r15) goto L_0x0f3c
-            r14 = 0
-            r0 = r17
-            r0.setProduct(r14)
-            goto L_0x0f13
-        L_0x0f3c:
-            r14 = 8
-            byte r14 = r18[r14]
-            r15 = 49
-            if (r14 != r15) goto L_0x0f13
-            r14 = 1
-            r0 = r17
-            r0.setProduct(r14)
-            goto L_0x0f13
-        */
-        throw new UnsupportedOperationException("Method not decompiled: com.contec.jar.cms50k.DevicePackManager.processData(byte[]):byte");
+    public byte processData(byte[] pack) {
+        byte _return;
+        byte _return2;
+        byte _return3;
+        byte _return4;
+        byte _return5;
+        byte _return6;
+        switch (pack[0]) {
+            case -60:
+                if (!Check(pack) || pack[5] != 1) {
+                    return (byte) 22;
+                }
+                return (byte) 21;
+            case -59:
+                if (!Check(pack)) {
+                    return (byte) 39;
+                }
+                if (pack[1] == 1) {
+                    return (byte) 37;
+                }
+                if (pack[1] == 2) {
+                    return (byte) 38;
+                }
+                return (byte) 39;
+            case -58:
+            case -57:
+            case -55:
+            case -54:
+            case -53:
+            case -52:
+            case -51:
+            case -50:
+            case -41:
+            case -40:
+            case -39:
+            case Constants.SESSION_INVALID /* -38 */:
+            case Constants.CANCEL_DATA_TRANSF /* -37 */:
+            case Constants.GET_DOCTOR_DATA_TYPE_ERROR /* -36 */:
+            case Constants.FILE_READ_ERROR /* -35 */:
+            case Constants.CREATE_DIR_ERROR /* -34 */:
+            case Constants.FILE_WRITE_ERROR /* -33 */:
+            case Constants.MALLOC_ERROR /* -23 */:
+            case Constants.CREATE_THREAD_ERROR /* -22 */:
+            case -21:
+            case Constants.DOWNLOAD_FILENAME_TOO_LONG /* -20 */:
+            case Constants.DOWNLOAD_PARA_ERROR /* -19 */:
+            case Constants.DOWNLOAD_COMPLETE_ERROR /* -18 */:
+            case Constants.HOLD_PLACE_ERROR /* -17 */:
+            case Constants.GET_LIST_ERROR /* -16 */:
+            case -10:
+            case -9:
+            case -8:
+            case -7:
+            case -6:
+            default:
+                return (byte) 0;
+            case -56:
+                return (byte) 40;
+            case -49:
+                DebugLog.e("DevicePackManager", "-------数据封装结果--------");
+                byte[] code = {pack[1], pack[2], pack[3], pack[4], pack[5], pack[6], pack[7], pack[8]};
+                this.mSpo2h.mCodedata = code;
+                return (byte) -49;
+            case -48:
+                DebugLog.e("DevicePackManager", "-------查询连续数据基本信息--------");
+                this.mSegmentLen = ((pack[12] & Byte.MAX_VALUE) << 14) | ((pack[11] & Byte.MAX_VALUE) << 7) | (pack[10] & Byte.MAX_VALUE);
+                if (this.mSegmentLen == 0) {
+                    this.mPackCount = 0;
+                    switch (pack[1]) {
+                        case 0:
+                            return (byte) -79;
+                        case 1:
+                            return (byte) -77;
+                        case 2:
+                            return (byte) -75;
+                        case 3:
+                            return (byte) -71;
+                        default:
+                            return (byte) 0;
+                    }
+                } else {
+                    this.mPackCount = 0;
+                    switch (pack[1]) {
+                        case 0:
+                            this.mSpo2h.PulseTime[0] = pack[2];
+                            this.mSpo2h.PulseTime[1] = pack[3];
+                            this.mSpo2h.PulseTime[2] = pack[4];
+                            this.mSpo2h.PulseTime[3] = pack[5];
+                            this.mSpo2h.PulseTime[4] = pack[6];
+                            this.mSpo2h.PulseTime[5] = pack[7];
+                            this.mSpo2h.PulseSegment = new byte[this.mSegmentLen];
+                            return (byte) -80;
+                        case 1:
+                            this.mSpo2h.Spo2Time[0] = pack[2];
+                            this.mSpo2h.Spo2Time[1] = pack[3];
+                            this.mSpo2h.Spo2Time[2] = pack[4];
+                            this.mSpo2h.Spo2Time[3] = pack[5];
+                            this.mSpo2h.Spo2Time[4] = pack[6];
+                            this.mSpo2h.Spo2Time[5] = pack[7];
+                            this.mSpo2h.Spo2Segment = new byte[this.mSegmentLen];
+                            return (byte) -78;
+                        case 2:
+                            this.mSpo2h.MovementTime[0] = pack[2];
+                            this.mSpo2h.MovementTime[1] = pack[3];
+                            this.mSpo2h.MovementTime[2] = pack[4];
+                            this.mSpo2h.MovementTime[3] = pack[5];
+                            this.mSpo2h.MovementTime[4] = pack[6];
+                            this.mSpo2h.MovementTime[5] = pack[7];
+                            this.mSpo2h.MovementPoint = new byte[this.mSegmentLen];
+                            this.mSpo2h.MovementStart = pack[8];
+                            this.mSpo2h.MovementEnd = pack[9];
+                            return (byte) -76;
+                        case 3:
+                            this.mSpo2h.RrTime[0] = pack[2];
+                            this.mSpo2h.RrTime[1] = pack[3];
+                            this.mSpo2h.RrTime[2] = pack[4];
+                            this.mSpo2h.RrTime[3] = pack[5];
+                            this.mSpo2h.RrTime[4] = pack[6];
+                            this.mSpo2h.RrTime[5] = pack[7];
+                            this.mSpo2h.RRPoint = new byte[this.mSegmentLen];
+                            return (byte) -72;
+                        default:
+                            return (byte) 0;
+                    }
+                }
+            case -47:
+                if (pack[2] != 0) {
+                    return (byte) 0;
+                }
+                switch (pack[1]) {
+                    case 0:
+                        return (byte) -64;
+                    case 1:
+                        return (byte) -63;
+                    case 2:
+                        return (byte) -62;
+                    case 3:
+                        return (byte) -61;
+                    default:
+                        return (byte) 0;
+                }
+            case -46:
+                DebugLog.e("DevicePackManager", "-------脉率值--------" + pack.length);
+                byte[] pack2 = unNewPack(pack);
+                if (this.mPackCount == this.mSegmentLen / 27) {
+                    int lastLen = this.mSegmentLen % 27;
+                    this.pluse = pack2[5];
+                    this.mSpo2h.PulseSegment[this.mPackCount * 27] = this.pluse;
+                    for (int i = 1; i <= lastLen / 2; i++) {
+                        byte[] pluseData = unContinuousData(this.pluse, pack2[i + 5]);
+                        this.mSpo2h.PulseSegment[((this.mPackCount * 27) + (i * 2)) - 1] = pluseData[0];
+                        if ((this.mPackCount * 27) + (i * 2) < this.mSegmentLen) {
+                            this.mSpo2h.PulseSegment[(this.mPackCount * 27) + (i * 2)] = pluseData[1];
+                        }
+                        this.pluse = pluseData[1];
+                    }
+                    _return4 = -125;
+                } else {
+                    this.pluse = pack2[5];
+                    this.mSpo2h.PulseSegment[this.mPackCount * 27] = this.pluse;
+                    for (int i2 = 1; i2 < 14; i2++) {
+                        byte[] pluseData2 = unContinuousData(this.pluse, pack2[i2 + 5]);
+                        this.mSpo2h.PulseSegment[((this.mPackCount * 27) + (i2 * 2)) - 1] = pluseData2[0];
+                        this.mSpo2h.PulseSegment[(this.mPackCount * 27) + (i2 * 2)] = pluseData2[1];
+                        this.pluse = pluseData2[1];
+                    }
+                    _return4 = -126;
+                }
+                this.mPackCount++;
+                if (this.mPackCount == this.mSegmentLen / 27 && this.mSegmentLen % 27 == 0) {
+                    return (byte) -125;
+                }
+                return _return4;
+            case -45:
+                DebugLog.e("DevicePackManager", "-------血氧--------");
+                byte[] pack3 = unNewPack(pack);
+                if (this.mPackCount == this.mSegmentLen / 27) {
+                    DebugLog.e("cms50k", "连续数据包结束");
+                    int lastLen2 = this.mSegmentLen % 27;
+                    this.spo2 = pack3[5];
+                    if ((this.spo2 & 255) == 255) {
+                        this.spo2 = Byte.MAX_VALUE;
+                    }
+                    this.mSpo2h.Spo2Segment[this.mPackCount * 27] = this.spo2;
+                    for (int i3 = 1; i3 <= lastLen2 / 2; i3++) {
+                        byte[] spo2Data = unContinuousData(this.spo2, pack3[i3 + 5]);
+                        if ((spo2Data[0] & 255) == 255) {
+                            spo2Data[0] = Byte.MAX_VALUE;
+                        }
+                        if ((spo2Data[1] & 255) == 255) {
+                            spo2Data[1] = Byte.MAX_VALUE;
+                        }
+                        this.mSpo2h.Spo2Segment[((this.mPackCount * 27) + (i3 * 2)) - 1] = spo2Data[0];
+                        if ((this.mPackCount * 27) + (i3 * 2) < this.mSegmentLen) {
+                            this.mSpo2h.Spo2Segment[(this.mPackCount * 27) + (i3 * 2)] = spo2Data[1];
+                        }
+                        this.spo2 = spo2Data[1];
+                    }
+                    _return3 = -109;
+                } else {
+                    this.spo2 = pack3[5];
+                    if ((this.spo2 & 255) == 255) {
+                        this.spo2 = Byte.MAX_VALUE;
+                    }
+                    this.mSpo2h.Spo2Segment[this.mPackCount * 27] = this.spo2;
+                    for (int i4 = 1; i4 < 14; i4++) {
+                        byte[] spo2Data2 = unContinuousData(this.spo2, pack3[i4 + 5]);
+                        if ((spo2Data2[0] & 255) == 255) {
+                            spo2Data2[0] = Byte.MAX_VALUE;
+                        }
+                        if ((spo2Data2[1] & 255) == 255) {
+                            spo2Data2[1] = Byte.MAX_VALUE;
+                        }
+                        this.mSpo2h.Spo2Segment[((this.mPackCount * 27) + (i4 * 2)) - 1] = spo2Data2[0];
+                        this.mSpo2h.Spo2Segment[(this.mPackCount * 27) + (i4 * 2)] = spo2Data2[1];
+                        this.spo2 = spo2Data2[1];
+                    }
+                    _return3 = -110;
+                }
+                this.mPackCount++;
+                if (this.mPackCount == this.mSegmentLen / 27 && this.mSegmentLen % 27 == 0) {
+                    return (byte) -109;
+                }
+                return _return3;
+            case -44:
+                DebugLog.e("DevicePackManager", "-------体动--------");
+                unPack(pack);
+                if (this.mPackCount == this.mSegmentLen / 12) {
+                    int _len = this.mSpo2h.MovementPoint.length - (this.mPackCount * 12);
+                    for (int i5 = 0; i5 < _len; i5++) {
+                        this.mSpo2h.MovementPoint[(this.mPackCount * 12) + i5] = pack[i5 + 5];
+                    }
+                    _return2 = -74;
+                    this.mPackCount = 0;
+                } else {
+                    this.mSpo2h.MovementPoint[this.mPackCount * 12] = pack[5];
+                    this.mSpo2h.MovementPoint[(this.mPackCount * 12) + 1] = pack[6];
+                    this.mSpo2h.MovementPoint[(this.mPackCount * 12) + 2] = pack[7];
+                    this.mSpo2h.MovementPoint[(this.mPackCount * 12) + 3] = pack[8];
+                    this.mSpo2h.MovementPoint[(this.mPackCount * 12) + 4] = pack[9];
+                    this.mSpo2h.MovementPoint[(this.mPackCount * 12) + 5] = pack[10];
+                    this.mSpo2h.MovementPoint[(this.mPackCount * 12) + 6] = pack[11];
+                    this.mSpo2h.MovementPoint[(this.mPackCount * 12) + 7] = pack[12];
+                    this.mSpo2h.MovementPoint[(this.mPackCount * 12) + 8] = pack[13];
+                    this.mSpo2h.MovementPoint[(this.mPackCount * 12) + 9] = pack[14];
+                    this.mSpo2h.MovementPoint[(this.mPackCount * 12) + 10] = pack[15];
+                    this.mSpo2h.MovementPoint[(this.mPackCount * 12) + 11] = pack[16];
+                    _return2 = -73;
+                }
+                this.mPackCount++;
+                if (!(this.mPackCount == this.mSegmentLen / 12 && this.mSegmentLen % 12 == 0)) {
+                    return _return2;
+                }
+                this.mPackCount = 0;
+                return (byte) -74;
+            case -43:
+                DebugLog.e("DevicePackManager", "-------连续五分钟RR间期数据的基本信息--------");
+                this.mYear = pack[1];
+                this.mMonth = pack[2];
+                this.mDay = pack[3];
+                this.mHour = pack[4];
+                this.mMinu = pack[5];
+                this.mSeco = pack[6];
+                this.mMinData = new MinData();
+                byte[] _RRdate = new byte[6];
+                _RRdate[0] = pack[1];
+                _RRdate[0] = pack[2];
+                _RRdate[0] = pack[3];
+                _RRdate[0] = pack[4];
+                _RRdate[0] = pack[5];
+                _RRdate[0] = pack[6];
+                _RRdate[0] = 0;
+                _RRdate[0] = 0;
+                this.mMinData.mStartDate = _RRdate;
+                this.mCount--;
+                return (byte) -56;
+            case -42:
+                DebugLog.e("DevicePackManager", "-------连续RR间数据--------");
+                unPack(pack);
+                this._packCount++;
+                if ((pack[1] & 64) == 64) {
+                    DebugLog.e("cms50k", "数据包结束");
+                    int _len2 = this.mSpo2h.PulseSegment.length - (this.mPackCount * 12);
+                    for (int i6 = 0; i6 < _len2; i6++) {
+                        this.mSpo2h.PulseSegment[(this.mPackCount * 12) + i6] = pack[i6 + 5];
+                    }
+                    _return = -62;
+                    this._packCount = 0;
+                } else {
+                    this.mSpo2h.RRPoint[(this.mPackCount * 12) + 0] = pack[5];
+                    this.mSpo2h.RRPoint[(this.mPackCount * 12) + 1] = pack[6];
+                    this.mSpo2h.RRPoint[(this.mPackCount * 12) + 2] = pack[7];
+                    this.mSpo2h.RRPoint[(this.mPackCount * 12) + 3] = pack[8];
+                    this.mSpo2h.RRPoint[(this.mPackCount * 12) + 4] = pack[9];
+                    this.mSpo2h.RRPoint[(this.mPackCount * 12) + 5] = pack[10];
+                    this.mSpo2h.RRPoint[(this.mPackCount * 12) + 6] = pack[11];
+                    this.mSpo2h.RRPoint[(this.mPackCount * 12) + 7] = pack[12];
+                    this.mSpo2h.RRPoint[(this.mPackCount * 12) + 8] = pack[13];
+                    this.mSpo2h.RRPoint[(this.mPackCount * 12) + 9] = pack[14];
+                    this.mSpo2h.RRPoint[(this.mPackCount * 12) + 10] = pack[15];
+                    this.mSpo2h.RRPoint[(this.mPackCount * 12) + 11] = pack[16];
+                    _return = -61;
+                }
+                this.mPackCount++;
+                return _return;
+            case Constants.UPDATEXML_UPLOAD_FAIL /* -32 */:
+                PrintBytes.printDatai(pack, pack.length);
+                DebugLog.e("DevicePackManager", "-------数据存储空间--------");
+                this.mCount = ((pack[5] << 7) | (pack[4] & 255)) & 65535;
+                switch (pack[1]) {
+                    case 0:
+                        DebugLog.d("DevicePackManager", "单次血氧数据个数：" + this.mCount);
+                        if (this.mCount == 0) {
+                            return (byte) 65;
+                        }
+                        return (byte) 64;
+                    case 1:
+                        DebugLog.d("DevicePackManager", "全天计步器个数：" + this.mCount);
+                        if (this.mCount == 0) {
+                            return (byte) 81;
+                        }
+                        return (byte) 80;
+                    case 2:
+                        DebugLog.d("DevicePackManager", "5分钟计步器个数：" + this.mCount);
+                        if (this.mCount == 0) {
+                            return (byte) 97;
+                        }
+                        return (byte) 96;
+                    case 3:
+                        DebugLog.d("DevicePackManager", "心电数据个数：" + this.mCount);
+                        if (this.mCount == 0) {
+                            return (byte) 113;
+                        }
+                        return (byte) 112;
+                    case 4:
+                        if (this.mCount == 0) {
+                            return (byte) -127;
+                        }
+                        return Byte.MIN_VALUE;
+                    default:
+                        return (byte) 0;
+                }
+            case Constants.GENERATE_XML_FAIL /* -31 */:
+                DebugLog.e("DevicePackManager", "-------单次血氧脉率数据--------");
+                this._packCount++;
+                byte[] _point = {(byte) (pack[2] & 255), (byte) (pack[3] & dp.m), (byte) (pack[4] & 255), (byte) (pack[5] & 255), (byte) (pack[6] & 255), (byte) (pack[7] & 255), (byte) (pack[8] & 255), (byte) (((pack[3] & 64) << 1) | pack[9])};
+                this.mSpo2h.Spo2Point.add(_point);
+                if ((pack[1] & 64) == 64) {
+                    this._packCount = 0;
+                    return (byte) 67;
+                } else if (this._packCount != 10) {
+                    return (byte) -120;
+                } else {
+                    this._packCount = 0;
+                    return (byte) 66;
+                }
+            case Constants.THREAD_OUT /* -30 */:
+                DebugLog.e("DevicePackManager", "-------全天总步数数据返回--------");
+                this._packCount++;
+                unPackPedometer(pack);
+                byte[] _data = {pack[2], pack[3], pack[4], pack[6], pack[7], pack[8], pack[9]};
+                this.mPedometerJar.addDayPedometerData(_data);
+                if ((pack[1] & 64) == 64) {
+                    this._packCount = 0;
+                    return (byte) 83;
+                } else if (this._packCount != 10) {
+                    return (byte) -120;
+                } else {
+                    this._packCount = 0;
+                    return (byte) 82;
+                }
+            case Constants.UPDATE_XML_FAIL /* -29 */:
+                DebugLog.e("DevicePackManager", "-------全天每5分钟步数基本信息--------");
+                this.mYear = pack[1];
+                this.mMonth = pack[2];
+                this.mDay = pack[3];
+                this.mHour = pack[4];
+                this.mMinData = new MinData();
+                byte[] _date = {pack[1], pack[2], pack[3], pack[4], 24};
+                this.mMinData.mStartDate = _date;
+                this.mCount--;
+                return (byte) 100;
+            case Constants.ALL_FILE_ERROR /* -28 */:
+                DebugLog.e("DevicePackManager", "-------全天每5分钟步数具体数据--------");
+                this._packCount++;
+                unECG_Pack(pack);
+                for (int i7 = 0; i7 < 3; i7++) {
+                    byte[] _dataMin = {pack[(i7 * 4) + 4], pack[(i7 * 4) + 5], pack[(i7 * 4) + 6], pack[(i7 * 4) + 7]};
+                    this.mMinData.mMinDataList.add(_dataMin);
+                }
+                if ((pack[1] & 64) == 64) {
+                    this.minDatas.add(this.mMinData);
+                    if (this.mCount == 0) {
+                        _return6 = 101;
+                    } else {
+                        _return6 = 99;
+                    }
+                    this._packCount = 0;
+                    return _return6;
+                } else if (this._packCount != 10) {
+                    return (byte) -120;
+                } else {
+                    this._packCount = 0;
+                    return (byte) 98;
+                }
+            case Constants.NO_COMPLETE /* -27 */:
+                DebugLog.e("DevicePackManager", "-------心电图片段基本信息--------");
+                this._packCount = 0;
+                this.mEcg = new DeviceDataECG();
+                this.mEcg.Point_data = new byte[22];
+                this.mEcg.Point_data[0] = pack[1];
+                this.mEcg.Point_data[1] = pack[2];
+                this.mEcg.Point_data[2] = pack[3];
+                this.mEcg.Point_data[3] = pack[4];
+                this.mEcg.Point_data[4] = pack[5];
+                this.mEcg.Point_data[5] = pack[6];
+                this.mEcg.Point_data[6] = pack[8];
+                this.mEcg.Point_data[7] = pack[7];
+                dealData(this.mEcg.Point_data, pack[9]);
+                dealData(this.mEcg.Point_data, pack[10]);
+                dealData(this.mEcg.Point_data, pack[11]);
+                dealData(this.mEcg.Point_data, pack[12]);
+                dealData(this.mEcg.Point_data, pack[13]);
+                dealData(this.mEcg.Point_data, pack[14]);
+                if ((this.mEcg.Point_data[9] | this.mEcg.Point_data[10] | this.mEcg.Point_data[11] | this.mEcg.Point_data[12] | this.mEcg.Point_data[13] | this.mEcg.Point_data[14] | this.mEcg.Point_data[15] | this.mEcg.Point_data[16] | this.mEcg.Point_data[17] | this.mEcg.Point_data[18] | this.mEcg.Point_data[19] | this.mEcg.Point_data[20] | this.mEcg.Point_data[21]) > 0) {
+                    this.mEcg.Point_data[8] = 0;
+                }
+                int _dataLen = ((pack[16] << 7) | (pack[15] & 255)) & 65535;
+                DebugLog.i("info", new StringBuilder().append(_dataLen).toString());
+                this.mEcg.ECG_Data = new byte[_dataLen * 2];
+                this.mCount--;
+                this.mCount_ECG = 0;
+                return (byte) 117;
+            case Constants.LAST_CHECKOUT_FAIL /* -26 */:
+                PrintBytes.printData(pack, pack.length);
+                DebugLog.e("DevicePackManager", "-------心电片段--------");
+                unECG_Pack(pack);
+                this._packCount++;
+                if ((pack[1] & 64) == 64) {
+                    int _len3 = this.mEcg.ECG_Data.length - (this.mCount_ECG * 12);
+                    for (int i8 = 0; i8 < _len3; i8++) {
+                        this.mEcg.ECG_Data[(this.mCount_ECG * 12) + i8] = pack[i8 + 4];
+                    }
+                    this.mEcgs.add(this.mEcg);
+                    this._packCount = 0;
+                    if (this.mCount == 0) {
+                        _return5 = 116;
+                    } else {
+                        _return5 = 115;
+                    }
+                } else {
+                    this.mEcg.ECG_Data[(this.mCount_ECG * 12) + 0] = pack[4];
+                    this.mEcg.ECG_Data[(this.mCount_ECG * 12) + 1] = pack[5];
+                    this.mEcg.ECG_Data[(this.mCount_ECG * 12) + 2] = pack[6];
+                    this.mEcg.ECG_Data[(this.mCount_ECG * 12) + 3] = pack[7];
+                    this.mEcg.ECG_Data[(this.mCount_ECG * 12) + 4] = pack[8];
+                    this.mEcg.ECG_Data[(this.mCount_ECG * 12) + 5] = pack[9];
+                    this.mEcg.ECG_Data[(this.mCount_ECG * 12) + 6] = pack[10];
+                    this.mEcg.ECG_Data[(this.mCount_ECG * 12) + 7] = pack[11];
+                    this.mEcg.ECG_Data[(this.mCount_ECG * 12) + 8] = pack[12];
+                    this.mEcg.ECG_Data[(this.mCount_ECG * 12) + 9] = pack[13];
+                    this.mEcg.ECG_Data[(this.mCount_ECG * 12) + 10] = pack[14];
+                    this.mEcg.ECG_Data[(this.mCount_ECG * 12) + 11] = pack[15];
+                    if (this._packCount == 10) {
+                        this._packCount = 0;
+                        _return5 = 114;
+                    } else {
+                        _return5 = -120;
+                    }
+                }
+                this.mCount_ECG++;
+                return _return5;
+            case Constants.NET_INIT_FAIL /* -25 */:
+                DebugLog.e("DevicePackManager", "-------脉搏波基本信息--------");
+                return (byte) 0;
+            case Constants.UNITE_FILE_ERROR /* -24 */:
+                DebugLog.e("DevicePackManager", "-------脉搏波数据信息--------");
+                return (byte) 0;
+            case -15:
+                if (pack[7] == 48) {
+                    if (pack[8] == 48) {
+                        setProduct(2);
+                    } else if (pack[8] == 49) {
+                        setProduct(3);
+                    }
+                } else if (pack[7] == 49) {
+                    if (pack[8] == 48) {
+                        setProduct(0);
+                    } else if (pack[8] == 49) {
+                        setProduct(1);
+                    }
+                }
+                return (byte) -15;
+            case -14:
+                if (Check(pack)) {
+                    return (byte) 69;
+                }
+                return (byte) 71;
+            case -13:
+                DebugLog.e("DevicePackManager", "-------校时反馈--------");
+                if (!Check(pack)) {
+                    return CloudChannel.SDK_VERSION;
+                }
+                if ((pack[1] & 255) == 0) {
+                    return dp.n;
+                }
+                return CloudChannel.SDK_VERSION;
+            case -12:
+                DebugLog.e("DevicePackManager", "-------设置计步反馈--------");
+                if (!Check(pack) || (pack[1] & 255) != 0) {
+                    return (byte) 33;
+                }
+                return (byte) 32;
+            case -11:
+                DebugLog.e("DevicePackManager", "-------体重参数设置--------");
+                if (!Check(pack) || (pack[1] & 255) != 0) {
+                    return (byte) 49;
+                }
+                return (byte) 48;
+            case -5:
+                if (!Check(pack) || (pack[1] & 255) == 0) {
+                    return (byte) -112;
+                }
+                return (byte) -111;
+            case -4:
+                if (!Check(pack) || (pack[1] & 255) != 0) {
+                    return (byte) 25;
+                }
+                return (byte) 24;
+        }
     }
 
     static byte[] unPackPedometer(byte[] pack) {

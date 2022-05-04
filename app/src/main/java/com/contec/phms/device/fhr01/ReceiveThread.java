@@ -127,60 +127,21 @@ public class ReceiveThread extends com.contec.phms.device.template.ReceiveThread
         }
     }
 
-    /* JADX WARNING: Incorrect type for immutable var: ssa=byte, code=int, for r1v2, types: [byte] */
-    /* Code decompiled incorrectly, please refer to instructions dump. */
-    static int max(java.util.ArrayList<byte[]> r8) {
-        /*
-            r7 = 0
-            int r2 = r8.size()
-            int r0 = r2 / 2
-            r4 = 0
-            r3 = 0
-        L_0x0009:
-            if (r3 < r0) goto L_0x002a
-            int r5 = r2 % 2
-            if (r5 == 0) goto L_0x0029
-            int r5 = r2 + -1
-            java.lang.Object r5 = r8.get(r5)
-            byte[] r5 = (byte[]) r5
-            byte r5 = r5[r7]
-            r5 = r5 & 255(0xff, float:3.57E-43)
-            if (r4 >= r5) goto L_0x0029
-            int r5 = r2 + -1
-            java.lang.Object r5 = r8.get(r5)
-            byte[] r5 = (byte[]) r5
-            byte r5 = r5[r7]
-            r4 = r5 & 255(0xff, float:3.57E-43)
-        L_0x0029:
-            return r4
-        L_0x002a:
-            java.lang.Object r5 = r8.get(r3)
-            byte[] r5 = (byte[]) r5
-            byte r5 = r5[r7]
-            r6 = r5 & 255(0xff, float:3.57E-43)
-            int r5 = r3 + r0
-            java.lang.Object r5 = r8.get(r5)
-            byte[] r5 = (byte[]) r5
-            byte r5 = r5[r7]
-            r5 = r5 & 255(0xff, float:3.57E-43)
-            if (r6 <= r5) goto L_0x0050
-            java.lang.Object r5 = r8.get(r3)
-            byte[] r5 = (byte[]) r5
-            byte r1 = r5[r7]
-        L_0x004a:
-            if (r4 >= r1) goto L_0x004d
-            r4 = r1
-        L_0x004d:
-            int r3 = r3 + 1
-            goto L_0x0009
-        L_0x0050:
-            int r5 = r3 + r0
-            java.lang.Object r5 = r8.get(r5)
-            byte[] r5 = (byte[]) r5
-            byte r5 = r5[r7]
-            r1 = r5 & 255(0xff, float:3.57E-43)
-            goto L_0x004a
-        */
-        throw new UnsupportedOperationException("Method not decompiled: com.contec.phms.device.fhr01.ReceiveThread.max(java.util.ArrayList):int");
+    /* JADX WARN: Multi-variable type inference failed */
+    static int max(ArrayList<byte[]> pValue) {
+        int _size = pValue.size();
+        int _len = _size / 2;
+        int max = 0;
+        for (int i = 0; i < _len; i++) {
+            int _m = (pValue.get(i)[0] & 255) > (pValue.get(i + _len)[0] & 255) ? pValue.get(i)[0] : pValue.get(i + _len)[0] & 255;
+            if (max < _m) {
+                max = _m;
+            }
+        }
+        if (_size % 2 == 0 || max >= (pValue.get(_size - 1)[0] & 255)) {
+            return max;
+        }
+        int max2 = pValue.get(_size - 1)[0] & 255;
+        return max2;
     }
 }

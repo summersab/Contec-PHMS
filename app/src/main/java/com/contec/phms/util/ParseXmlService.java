@@ -63,7 +63,7 @@ public class ParseXmlService {
             String xmString = new String(sb.toString().getBytes("UTF-8"));
             try {
                 xmlUTF8 = URLEncoder.encode(xmString, "UTF-8");
-                System.out.println("utf-8 编码：" + xmlUTF8);
+                System.out.println("utf-8 encoding: " + xmlUTF8);
                 String str = xmString;
             } catch (UnsupportedEncodingException e) {
                 e = e;

@@ -86,7 +86,7 @@ public class FragmentDataSerchDevice extends FragmentBase {
                 }
             } else if ("android.bluetooth.adapter.action.DISCOVERY_FINISHED".equals(action)) {
                 FragmentDataSerchDevice.this.mautoSearchDevicesProgressBar.setVisibility(View.INVISIBLE);
-            } else if ("android.bluetooth.adapter.action.STATE_CHANGED".equals(action) && FragmentDataSerchDevice.this.mBluetoothAdapter.getState() == 12) {
+            } else if ("android.bluetooth.adapter.action.STATE_CHANGED".equals(action) && FragmentDataSerchDevice.this.mBluetoothAdapter.getState() == BluetoothAdapter.STATE_ON) {
                 FragmentDataSerchDevice.this.mBluetoothAdapter.startDiscovery();
             }
         }
@@ -235,7 +235,7 @@ public class FragmentDataSerchDevice extends FragmentBase {
 
     public void register(boolean isBle) {
         if (!isBle) {
-            LogI("使用传统蓝牙搜索设备");
+            LogI("Searching for traditional Bluetooth devices");
             this.ISREGISTBLUETOOTHREVIER = true;
             CLog.i(TAG, "register ActivityDataSerchDevice receiver");
             IntentFilter filter = new IntentFilter("android.bluetooth.device.action.FOUND");
@@ -243,8 +243,8 @@ public class FragmentDataSerchDevice extends FragmentBase {
             filter.addAction("android.bluetooth.adapter.action.STATE_CHANGED");
             getActivity().registerReceiver(this.mReceiver, filter);
             this.mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-            if (this.mBluetoothAdapter.getState() == 12) {
-                CLog.i(TAG, "判断是否是搜索状态：" + this.mBluetoothAdapter.isDiscovering());
+            if (this.mBluetoothAdapter.getState() == BluetoothAdapter.STATE_ON) {
+                CLog.i(TAG, "Bluetooth in discovering state: " + this.mBluetoothAdapter.isDiscovering());
                 if (this.mBluetoothAdapter.isDiscovering()) {
                     this.mBluetoothAdapter.cancelDiscovery();
                 }
@@ -252,22 +252,22 @@ public class FragmentDataSerchDevice extends FragmentBase {
                     CLog.i(TAG, "startDiscovery failed, close bluetooth!");
                     this.mBluetoothAdapter.startDiscovery();
                 }
-            } else if (this.mBluetoothAdapter.getState() == 10) {
+            } else if (this.mBluetoothAdapter.getState() == BluetoothAdapter.STATE_OFF) {
                 this.mBluetoothAdapter.enable();
                 CLog.i(TAG, "Bluetooth State: " + this.mBluetoothAdapter.isEnabled());
             }
         } else if (!this.phoneHardWareIsSupportBLE || !this.phoneSystemVersionIsSupport) {
             register(false);
         } else {
-            this.mBluetoothAdapter = ((BluetoothManager) getActivity().getSystemService("bluetooth")).getAdapter();
-            if (this.mBluetoothAdapter.getState() == 10) {
+            this.mBluetoothAdapter = ((BluetoothManager) getActivity().getSystemService(Context.BLUETOOTH_SERVICE)).getAdapter();
+            if (this.mBluetoothAdapter.getState() == BluetoothAdapter.STATE_OFF) {
                 this.mBluetoothAdapter.enable();
             }
             if (this.mBluetoothAdapter == null) {
                 register(false);
                 return;
             }
-            CLog.i(TAG, "使用BLE搜索设备");
+            CLog.i(TAG, "Search for devices using BLE");
             scanLeDevice(true);
         }
     }
@@ -276,10 +276,10 @@ public class FragmentDataSerchDevice extends FragmentBase {
         super.onResume();
         this.onPause = false;
         if (MainActivityNew.mfragmentcurrentindex != 5) {
-            CLog.e(TAG, "我要退出了   添加设备的onresume 状态******  MainActivityNew.currentTab != 5");
+            CLog.e(TAG, "Exiting onResume function******  MainActivityNew.currentTab != 5");
             return;
         }
-        CLog.i("jxx", "call 停止轮询服务类 method5");
+        CLog.i("jxx", "call `PollingService.stopService()` method5");
         PollingService.stopService(getActivity());
         String _userName = PageUtil.getLoginUserInfo().mUserName;
         if (_userName == null || _userName.equals(bs.b)) {
@@ -315,7 +315,7 @@ public class FragmentDataSerchDevice extends FragmentBase {
         }
         FragmentActivity activity = getActivity();
         getActivity();
-        ((InputMethodManager) activity.getSystemService("input_method")).hideSoftInputFromWindow(this.mView.getWindowToken(), 0);
+        ((InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(this.mView.getWindowToken(), 0);
         getSdcardPhoto(App_phms.getInstance().GetUserInfoNAME(), this.mHeadName);
         CLog.e(TAG, "添加设备的onresume 状态***********************");
         Constants.GO_TO_ADD_DEVICE = false;
@@ -371,7 +371,7 @@ public class FragmentDataSerchDevice extends FragmentBase {
     }
 
     private void checkDevice(BluetoothDevice device, String mBluetoothType, byte[] scanRecord) {
-        CLog.i("jxx", "搜到的设备：" + device.getAddress() + "\n" + "名字：" + device.getName() + "\n类型：" + mBluetoothType);
+        CLog.i("jxx", "Device found:   " + device.getAddress() + "\n" + "Name: " + device.getName() + "\nType: " + mBluetoothType);
         if (Build.VERSION.SDK_INT >= 18) {
             CLog.i("jxx", "type:" + device.getType());
         }
@@ -603,9 +603,9 @@ public class FragmentDataSerchDevice extends FragmentBase {
                             broadcastPacketFiled = Constants.BroadcastPacketHasFiled;
                             break;
                     }
-                    CLog.i("jxx", "pBluetoothType类型：" + pBluetoothType);
+                    CLog.i("jxx", "pBluetoothType: " + pBluetoothType);
                     if (Constants.DEVICE_BLUEBOOTH_TYPE_BLE.equals(pBluetoothType)) {
-                        CLog.i("jxx", "pBluetoothType类型--：" + pBluetoothType);
+                        CLog.i("jxx", "pBluetoothType: " + pBluetoothType);
                         _beanDao.mBroadcastPacketFiled = Constants.BroadcastPacketHasFiled;
                     } else {
                         _beanDao.mBroadcastPacketFiled = broadcastPacketFiled;
@@ -698,7 +698,7 @@ public class FragmentDataSerchDevice extends FragmentBase {
                     mBluetoothType = Constants.DEVICE_BLUEBOOTH_TYPE_CLASSIC;
                     FragmentDataSerchDevice.this.checkDevice(device, mBluetoothType, scanRecord);
                 }
-                CLog.i(FragmentDataSerchDevice.TAG, "蓝牙类型：" + mBluetoothType);
+                CLog.i(FragmentDataSerchDevice.TAG, "Bluetooth type: " + mBluetoothType);
                 String unused = FragmentDataSerchDevice.this.unPackData(device, scanRecord);
             }
         };
@@ -714,9 +714,9 @@ public class FragmentDataSerchDevice extends FragmentBase {
             builder2.append(PageUtil.toASCLL(Integer.toHexString(scanRecord[i])));
             builder3.append(String.valueOf(Integer.toHexString(scanRecord[i])) + " ");
         }
-        CLog.i(TAG, "设备名字：" + device.getName());
-        CLog.i(TAG, "原数据:" + builder3.toString());
-        CLog.i(TAG, "处理后的数据:" + builder2.toString() + "\n-----");
+        CLog.i(TAG, "Device name:    " + device.getName());
+        CLog.i(TAG, "Raw data:       " + builder3.toString());
+        CLog.i(TAG, "Processed Data: " + builder2.toString() + "\n-----");
         if (scanRecord.length <= 13) {
             return bs.b;
         }

@@ -8,9 +8,14 @@ import com.contec.phms.manager.device.DeviceListItem;
 import com.contec.phms.util.Constants;
 import com.contec.phms.util.PageUtil;
 import com.j256.ormlite.dao.Dao;
+import com.j256.ormlite.dao.RawRowMapper;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
+
 import u.aly.bs;
 
 public class DeviceListDaoOperation {
@@ -186,51 +191,56 @@ public class DeviceListDaoOperation {
         return _list;
     }
 
-    /* JADX WARNING: Removed duplicated region for block: B:5:0x0037 A[Catch:{ Exception -> 0x004a }] */
-    /* Code decompiled incorrectly, please refer to instructions dump. */
     public boolean isHasMac() {
-        /*
-            r11 = this;
-            com.contec.phms.App_phms r8 = com.contec.phms.App_phms.getInstance()
-            com.contec.phms.infos.UserInfo r8 = r8.mUserInfo
-            java.lang.String r2 = r8.mUserID
-            java.lang.StringBuilder r8 = new java.lang.StringBuilder
-            java.lang.String r9 = "select * from DEVICE_LIST_ITEM_BEAN where UserName = '"
-            r8.<init>(r9)
-            java.lang.StringBuilder r8 = r8.append(r2)
-            java.lang.String r9 = "'"
-            java.lang.StringBuilder r8 = r8.append(r9)
-            java.lang.String r1 = r8.toString()
-            r0 = 1
-            com.j256.ormlite.dao.Dao<com.contec.phms.db.DeviceListItemBeanDao, java.lang.String> r8 = mDao     // Catch:{ Exception -> 0x004a }
-            com.contec.phms.db.DeviceListDaoOperation$1 r9 = new com.contec.phms.db.DeviceListDaoOperation$1     // Catch:{ Exception -> 0x004a }
-            r9.<init>()     // Catch:{ Exception -> 0x004a }
-            r10 = 0
-            java.lang.String[] r10 = new java.lang.String[r10]     // Catch:{ Exception -> 0x004a }
-            com.j256.ormlite.dao.GenericRawResults r7 = r8.queryRaw((java.lang.String) r1, r9, (java.lang.String[]) r10)     // Catch:{ Exception -> 0x004a }
-            java.util.Iterator r5 = r7.iterator()     // Catch:{ Exception -> 0x004a }
-        L_0x0030:
-            boolean r8 = r5.hasNext()     // Catch:{ Exception -> 0x004a }
-            if (r8 != 0) goto L_0x0037
-        L_0x0036:
-            return r0
-        L_0x0037:
-            java.lang.Object r3 = r5.next()     // Catch:{ Exception -> 0x004a }
-            com.contec.phms.db.DeviceListItemBeanDao r3 = (com.contec.phms.db.DeviceListItemBeanDao) r3     // Catch:{ Exception -> 0x004a }
-            java.lang.String r6 = r3.mDeviceMac     // Catch:{ Exception -> 0x004a }
-            if (r6 == 0) goto L_0x0048
-            int r8 = r6.length()     // Catch:{ Exception -> 0x004a }
-            r9 = 1
-            if (r8 >= r9) goto L_0x0030
-        L_0x0048:
-            r0 = 0
-            goto L_0x0036
-        L_0x004a:
-            r4 = move-exception
-            r4.printStackTrace()
-            goto L_0x0036
-        */
-        throw new UnsupportedOperationException("Method not decompiled: com.contec.phms.db.DeviceListDaoOperation.isHasMac():boolean");
+        String _userNameD = App_phms.getInstance().mUserInfo.mUserID;
+        String _sql = "select * from DEVICE_LIST_ITEM_BEAN where UserName = '" + _userNameD + "'";
+        try {
+            for (DeviceListItemBeanDao deviceListItemBeanDao : mDao.queryRaw(_sql, new RawRowMapper<DeviceListItemBeanDao>() { // from class: com.contec.phms.db.DeviceListDaoOperation.1
+                /* JADX WARN: Can't rename method to resolve collision */
+                @Override // com.j256.ormlite.dao.RawRowMapper
+                public DeviceListItemBeanDao mapRow(String[] columnNames, String[] resultColumns) throws SQLException {
+                    DeviceListItemBeanDao beanDao = new DeviceListItemBeanDao();
+                    for (int i = 0; i < columnNames.length; i++) {
+                        if ("UserName".equals(columnNames[i])) {
+                            beanDao.mUserName = resultColumns[i];
+                        } else if (DeviceListItemBeanDao.BluetoothType.equals(columnNames[i])) {
+                            beanDao.mBluetoothType = resultColumns[i];
+                        } else if (DeviceListItemBeanDao.BroadcastPacketFiled.equals(columnNames[i])) {
+                            beanDao.mBroadcastPacketFiled = resultColumns[i];
+                        } else if (DeviceListItemBeanDao.DataTime.equals(columnNames[i])) {
+                            beanDao.mDataTime = resultColumns[i];
+                        } else if (DeviceListItemBeanDao.DeviceCode.equals(columnNames[i])) {
+                            beanDao.mDeviceCode = resultColumns[i];
+                        } else if (DeviceListItemBeanDao.DeviceMAC.equals(columnNames[i])) {
+                            beanDao.mDeviceMac = resultColumns[i];
+                        } else if (DeviceListItemBeanDao.DeviceName.equals(columnNames[i])) {
+                            beanDao.mDeviceName = resultColumns[i];
+                        } else if (DeviceListItemBeanDao.ReceiveData.equals(columnNames[i])) {
+                            beanDao.mReceiveDataStr = resultColumns[i];
+                        } else if ("mId".equals(columnNames[i])) {
+                            beanDao.mId = Integer.valueOf(resultColumns[i]).intValue();
+                        } else if (DeviceListItemBeanDao.UseNum.equals(columnNames[i])) {
+                            beanDao.mUseNum = Integer.valueOf(resultColumns[i]).intValue();
+                        } else if (DeviceListItemBeanDao.IsNew.equals(columnNames[i])) {
+                            beanDao.isNew = Boolean.valueOf(resultColumns[i]).booleanValue();
+                        }
+                    }
+                    return beanDao;
+                }
+            }, new String[0])) {
+                String mDeviceMac = deviceListItemBeanDao.mDeviceMac;
+                if (mDeviceMac == null || mDeviceMac.length() < 1) {
+                    return false;
+                }
+                ListIterator<Object> iterator = null;
+                while (iterator.hasNext()) {
+                }
+            }
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return true;
+        }
     }
 
     public void insertDevice(DeviceListItemBeanDao pDao) {

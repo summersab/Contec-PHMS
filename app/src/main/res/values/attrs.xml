@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <attr name="alignmentMode">
+    <attr name="alignmentModeValue">
         <enum name="alignBounds" value="0" />
         <enum name="alignMargins" value="1" />
     </attr>
@@ -16,10 +16,10 @@
     </attr>
     <attr name="layout_row" format="integer">
     </attr>
-    <attr name="layout_rowSpan" format="integer">
+    <attr name="layout_rowSpanValue" format="integer">
         <enum name="qwer" value="1" />
     </attr>
-    <attr name="layout_columnSpan" format="integer">
+    <attr name="layout_columnSpanValue" format="integer">
         <enum name="asdf" value="1" />
     </attr>
     <attr name="arcWidth" format="dimension">

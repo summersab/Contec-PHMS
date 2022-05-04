@@ -255,7 +255,7 @@ public class FragmentManagerDevices extends FragmentBase {
                                         App_phms.getInstance().getmRemoveConnectDeviceBeanLists().remove(index);
                                     }
                                 }
-                                CLog.i("jxx", "call 停止轮询服务类 method3");
+                                CLog.i("jxx", "call `PollingService.stopService()` method3");
                                 PollingService.stopService(ManagerDevicesAdapter.this.mContext);
                                 ManagerDevicesAdapter.this.mContext.startService(new Intent(ManagerDevicesAdapter.this.mContext, PollingService.class));
                             } catch (SQLException e) {

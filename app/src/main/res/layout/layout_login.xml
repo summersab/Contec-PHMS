@@ -13,7 +13,22 @@
         </LinearLayout>
         <LinearLayout android:orientation="horizontal" android:id="@+id/login_psw_layout" android:background="@drawable/drawable_login_input_box_bottom" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_below="@+id/login_user_layout" android:layout_centerHorizontal="true">
             <TextView android:textSize="@dimen/regist_login_textviewsize" android:textColor="#444444" android:layout_gravity="center_vertical" android:id="@+id/login1_text_psw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="13dp" android:layout_marginRight="13dp" android:text="@string/input_psw"/>
-            <EditText android:textSize="@dimen/input_phone_hint_size" android:textColor="#7a7a7a" android:textColorHint="#707070" android:layout_gravity="center_vertical" android:id="@+id/login_edit_pwd" android:background="@null" android:saveEnabled="true" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="@string/strInputPswHint" android:cursorVisible="true" android:password="true" android:layout_weight="1" android:textCursorDrawable="@null"/>
+
+            <EditText
+                android:id="@+id/login_edit_pwd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:background="@null"
+                android:cursorVisible="true"
+                android:hint="@string/strInputPswHint"
+                android:password="true"
+                android:saveEnabled="true"
+                android:textColor="#7a7a7a"
+                android:textColorHint="#707070"
+                android:textCursorDrawable="@null"
+                android:textSize="@dimen/input_phone_hint_size" />
         </LinearLayout>
         <RelativeLayout android:gravity="center_horizontal" android:id="@+id/distances2" android:paddingLeft="13dp" android:layout_width="match_parent" android:layout_height="wrap_content">
             <CheckBox android:textSize="@dimen/login_activty_autologin_tvsize" android:textColor="#444444" android:gravity="center_vertical" android:id="@+id/login_cb_auto" android:background="@null" android:paddingLeft="@dimen/login_activty_autologin_tvpaddingsize" android:layout_width="wrap_content" android:layout_height="wrap_content" android:button="@drawable/drawable_loginpage_btn_check_new" android:text="@string/opt_autoLogin" android:layout_alignParentLeft="true" android:layout_centerVertical="true"/>

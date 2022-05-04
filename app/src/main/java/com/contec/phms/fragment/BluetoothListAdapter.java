@@ -142,7 +142,7 @@ public class BluetoothListAdapter extends BaseAdapter {
     }
 
     void diappear(View rowView) {
-        if (rowView.getVisibility() == 0) {
+        if (rowView.getVisibility() == View.VISIBLE) {
             rowView.setAnimation(AnimationUtils.loadAnimation(this.context, R.anim.push_right_out));
         }
     }
@@ -195,7 +195,7 @@ public class BluetoothListAdapter extends BaseAdapter {
                 return;
             case 34:
                 this.contectProgress.setVisibility(View.INVISIBLE);
-                p_TV.setText("升级失败");
+                p_TV.setText("Upgrade failed");
                 return;
             default:
                 return;

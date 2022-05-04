@@ -111,6 +111,7 @@ import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -406,7 +407,7 @@ public class Fragmentdevicelist extends Fragment implements Runnable, View.OnCli
         this.m_newDevicesListView_phone.requestFocus();
         this.m_newDevicesListView_phone.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             public void onFocusChange(View v, boolean hasFocus) {
-                CLog.e(Fragmentdevicelist.TAG, "listview 是否获取焦点：" + hasFocus);
+                CLog.e(Fragmentdevicelist.TAG, "listview has focus: " + hasFocus);
                 if (hasFocus) {
                     Message msg = new Message();
                     msg.what = 502;
@@ -507,21 +508,21 @@ public class Fragmentdevicelist extends Fragment implements Runnable, View.OnCli
         }
         FrameLayout mlayout_Fragmentdevicelist_main = (FrameLayout) this.mView.findViewById(R.id.layout_Fragmentdevicelist_main);
         this.mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        this.mRunDrawer = (MultiDirectionSlidingDrawer) this.mView.findViewById(R.id.rundrawer);
-        this.mRunDrawer.setOnDrawerOpenListener(new MultiDirectionSlidingDrawer.OnDrawerOpenListener() {
-            public void onDrawerOpened() {
-                Constants.REPORT = false;
-                Constants.START_USER_INFO_PAGE = false;
-                Fragmentdevicelist.this.drawhandlerlayoutchangewhenopendraw();
-            }
-        });
-        this.mRunDrawer.setOnDrawerCloseListener(new MultiDirectionSlidingDrawer.OnDrawerCloseListener() {
-            public void onDrawerClosed() {
-                Constants.REPORT = false;
-                Constants.START_USER_INFO_PAGE = false;
-                Fragmentdevicelist.this.OnCloseDraw();
-            }
-        });
+        //this.mRunDrawer = (MultiDirectionSlidingDrawer) this.mView.findViewById(R.id.rundrawer);
+        //this.mRunDrawer.setOnDrawerOpenListener(new MultiDirectionSlidingDrawer.OnDrawerOpenListener() {
+        //    public void onDrawerOpened() {
+        //        Constants.REPORT = false;
+        //        Constants.START_USER_INFO_PAGE = false;
+        //        Fragmentdevicelist.this.drawhandlerlayoutchangewhenopendraw();
+        //    }
+        //});
+        //this.mRunDrawer.setOnDrawerCloseListener(new MultiDirectionSlidingDrawer.OnDrawerCloseListener() {
+        //    public void onDrawerClosed() {
+        //        Constants.REPORT = false;
+        //        Constants.START_USER_INFO_PAGE = false;
+        //        Fragmentdevicelist.this.OnCloseDraw();
+        //    }
+        //});
         this.msearch_new_devices_bt = (ImageButton) this.mView.findViewById(R.id.search_new_devices_bt);
         this.msearch_new_devices_bt.getLayoutParams().height = Constants.M_SCREENWEIGH / 2;
         this.msearch_new_devices_bt.getLayoutParams().width = Constants.M_SCREENWEIGH / 2;
@@ -593,7 +594,7 @@ public class Fragmentdevicelist extends Fragment implements Runnable, View.OnCli
         ((ImageView) this.mView.findViewById(R.id.img_handler_drop_btn)).setImageResource(R.drawable.drawable_drop_down_btn);
         ((RelativeLayout) this.mView.findViewById(R.id.linearlayout_title)).setVisibility(View.VISIBLE);
         ((RelativeLayout) this.mView.findViewById(R.id.drawer_layout)).setVisibility(View.GONE);
-        ((LinearLayout) this.mView.findViewById(R.id.handle)).getLayoutParams().height = ScreenAdapter.dip2px(this.mcontext, 110.0f);
+        //((LinearLayout) this.mView.findViewById(R.id.handle)).getLayoutParams().height = ScreenAdapter.dip2px(this.mcontext, 110.0f);
         LinearLayout mHandleTopLayout = (LinearLayout) this.mView.findViewById(R.id.handle_top_layout);
         mHandleTopLayout.getLayoutParams().height = ScreenAdapter.dip2px(this.mcontext, 75.0f);
         mHandleTopLayout.setVisibility(View.VISIBLE);
@@ -614,7 +615,7 @@ public class Fragmentdevicelist extends Fragment implements Runnable, View.OnCli
         ((ImageView) this.mView.findViewById(R.id.img_handler_drop_btn)).setImageResource(R.drawable.img_drop_up_btn);
         ((RelativeLayout) this.mView.findViewById(R.id.linearlayout_title)).setVisibility(View.GONE);
         ((RelativeLayout) this.mView.findViewById(R.id.drawer_layout)).setVisibility(View.VISIBLE);
-        ((LinearLayout) this.mView.findViewById(R.id.handle)).getLayoutParams().height = ScreenAdapter.dip2px(this.mcontext, 25.0f);
+        //((LinearLayout) this.mView.findViewById(R.id.handle)).getLayoutParams().height = ScreenAdapter.dip2px(this.mcontext, 25.0f);
         LinearLayout mHandleTopLayout = (LinearLayout) this.mView.findViewById(R.id.handle_top_layout);
         mHandleTopLayout.getLayoutParams().height = 0;
         mHandleTopLayout.setVisibility(View.INVISIBLE);
@@ -694,8 +695,8 @@ public class Fragmentdevicelist extends Fragment implements Runnable, View.OnCli
         this.mpebometer_Speed_Text = (TextView) this.mView.findViewById(R.id.pedometer_speed);
         this.mpebometer_puse_btn = (Button) this.mView.findViewById(R.id.pebometer_puse_btn);
         this.mpebometer_stop_btn = (Button) this.mView.findViewById(R.id.pebometer_over_btn);
-        this.mpebometer_puse_btn.setOnClickListener(this);
-        this.mpebometer_stop_btn.setOnClickListener(this);
+//        this.mpebometer_puse_btn.setOnClickListener(this);
+//        this.mpebometer_stop_btn.setOnClickListener(this);
         this.mpebometer_handler_calorie_Text = (TextView) this.mView.findViewById(R.id.pedometer_handler_show_cal_text);
         this.mpebometer_handler_Distance_Text = (TextView) this.mView.findViewById(R.id.pedometer_handler_distance_text);
         this.mpebometer_handler_StepsTextSmall = (TextView) this.mView.findViewById(R.id.pedometer_handler_steps_big_text);
@@ -708,23 +709,23 @@ public class Fragmentdevicelist extends Fragment implements Runnable, View.OnCli
             List<PedometerSumStepKm> _dao = this.mDatabaseHelper.getPedometerSumStepKmDao().queryBuilder().where().eq("Date", new SimpleDateFormat("yyyy-MM-dd").format(new Date())).and().eq("UserID", App_phms.getInstance().mUserInfo.mUserID).query();
             this._distance = 0;
             this._calSum = 0.0f;
-            if (_dao == null || _dao.size() <= 0) {
-                this.mpebometer_handler_StepsTextSmall.setText(new StringBuilder(String.valueOf(this.mSteps)).toString());
-                sethandlerDistancetextviewvalue(this._distance);
-                setHandlerlayoutCaloriesValuse(this._calSum + this.mCalories);
-                Message msg = new Message();
-                msg.what = 502;
-                msg.arg2 = 1;
-                App_phms.getInstance().mEventBusPostOnBackGround.postInMainThread(msg);
-            }
-            PedometerSumStepKm _sumstep = _dao.get(0);
-            this.mSumSteps = _sumstep.getmSumStep();
-            this.mpebometer_handler_StepsTextSmall.setText(new StringBuilder(String.valueOf(this.mSumSteps + this.mSteps)).toString());
-            this._distance = _sumstep.getmSumDistance();
-            this.mDistanceSumTodayInt = this._distance;
-            this._calSum = _sumstep.getmCal();
-            sethandlerDistancetextviewvalue(this._distance);
-            setHandlerlayoutCaloriesValuse(this._calSum + this.mCalories);
+            //if (_dao == null || _dao.size() <= 0) {
+            //    this.mpebometer_handler_StepsTextSmall.setText(new StringBuilder(String.valueOf(this.mSteps)).toString());
+            //    sethandlerDistancetextviewvalue(this._distance);
+            //    setHandlerlayoutCaloriesValuse(this._calSum + this.mCalories);
+            //    Message msg = new Message();
+            //    msg.what = 502;
+            //    msg.arg2 = 1;
+            //    App_phms.getInstance().mEventBusPostOnBackGround.postInMainThread(msg);
+            //}
+            //PedometerSumStepKm _sumstep = _dao.get(0);
+            //this.mSumSteps = _sumstep.getmSumStep();
+            //this.mpebometer_handler_StepsTextSmall.setText(new StringBuilder(String.valueOf(this.mSumSteps + this.mSteps)).toString());
+            //this._distance = _sumstep.getmSumDistance();
+            //this.mDistanceSumTodayInt = this._distance;
+            //this._calSum = _sumstep.getmCal();
+            //sethandlerDistancetextviewvalue(this._distance);
+            //setHandlerlayoutCaloriesValuse(this._calSum + this.mCalories);
             Message msg2 = new Message();
             msg2.what = 502;
             msg2.arg2 = 1;
@@ -820,7 +821,7 @@ public class Fragmentdevicelist extends Fragment implements Runnable, View.OnCli
         setLayoutVlaueWhenLanguageChanges();
         this.m_newDevicesListView_phone.setAdapter(this.m_adapter);
         this.m_adapter.notifyDataSetChanged();
-        initData();
+//        initData();
         if (this.mService != null) {
             Log.i("lz", "onresume is not null resumeinit");
             onResumeinit();
@@ -1555,405 +1556,88 @@ public class Fragmentdevicelist extends Fragment implements Runnable, View.OnCli
         };
     }
 
-    /* access modifiers changed from: private */
-    /* JADX WARNING: Removed duplicated region for block: B:20:0x0233  */
-    @android.annotation.SuppressLint({"SimpleDateFormat"})
-    /* Code decompiled incorrectly, please refer to instructions dump. */
-    public void initData() {
-        /*
-            r20 = this;
-            com.contec.phms.App_phms r17 = com.contec.phms.App_phms.getInstance()
-            r0 = r17
-            com.contec.phms.infos.UserInfo r0 = r0.mUserInfo
-            r17 = r0
-            r0 = r17
-            java.lang.String r0 = r0.mUserID
-            r17 = r0
-            r0 = r17
-            r1 = r20
-            r1.mUserID = r0
-            com.contec.phms.App_phms r17 = com.contec.phms.App_phms.getInstance()
-            r0 = r17
-            com.contec.phms.infos.UserInfo r0 = r0.mUserInfo
-            r17 = r0
-            r0 = r17
-            java.lang.String r0 = r0.mUserName
-            r17 = r0
-            r0 = r17
-            r1 = r20
-            r1.mUserName = r0
-            r0 = r20
-            com.contec.phms.util.PedometerSharepreferance r0 = r0.mPedometerSharepreferance
-            r17 = r0
-            int r17 = r17.getTarget()
-            r0 = r17
-            r1 = r20
-            r1.mStepTarget = r0
-            r0 = r20
-            com.contec.phms.widget.BallProgressView r0 = r0.mBallProgressView
-            r17 = r0
-            r0 = r20
-            int r0 = r0.mStepTarget
-            r18 = r0
-            r17.setmTargetSteps(r18)
-            r0 = r20
-            android.widget.TextView r0 = r0.mpebometer_handler_steptarget_aim
-            r17 = r0
-            java.lang.StringBuilder r18 = new java.lang.StringBuilder
-            r0 = r20
-            int r0 = r0.mStepTarget
-            r19 = r0
-            java.lang.String r19 = java.lang.String.valueOf(r19)
-            r18.<init>(r19)
-            java.lang.String r18 = r18.toString()
-            r17.setText(r18)
-            java.text.SimpleDateFormat r5 = new java.text.SimpleDateFormat
-            java.lang.String r17 = "yyyy-MM-dd"
-            r0 = r17
-            r5.<init>(r0)
-            long r17 = java.lang.System.currentTimeMillis()
-            java.lang.Long r17 = java.lang.Long.valueOf(r17)
-            r0 = r17
-            java.lang.String r17 = r5.format(r0)
-            r0 = r17
-            r1 = r20
-            r1.mDateStrSum = r0
-            com.contec.phms.App_phms r17 = com.contec.phms.App_phms.getInstance()
-            r0 = r17
-            com.contec.phms.db.DatabaseHelper r0 = r0.mHelper
-            r17 = r0
-            com.j256.ormlite.dao.Dao r17 = r17.getPedometerhistoryDao()
-            r0 = r17
-            r1 = r20
-            r1.mDao = r0
-            r4 = 0
-            r10 = 0
-            r11 = 0
-            r0 = r20
-            com.j256.ormlite.dao.Dao<com.contec.phms.db.PedometerHistoryDao, java.lang.String> r0 = r0.mDao     // Catch:{ SQLException -> 0x0276 }
-            r17 = r0
-            com.j256.ormlite.stmt.QueryBuilder r17 = r17.queryBuilder()     // Catch:{ SQLException -> 0x0276 }
-            com.j256.ormlite.stmt.Where r17 = r17.where()     // Catch:{ SQLException -> 0x0276 }
-            java.lang.String r18 = "Date"
-            r0 = r20
-            java.lang.String r0 = r0.mDateStrSum     // Catch:{ SQLException -> 0x0276 }
-            r19 = r0
-            com.j256.ormlite.stmt.Where r17 = r17.eq(r18, r19)     // Catch:{ SQLException -> 0x0276 }
-            com.j256.ormlite.stmt.Where r17 = r17.and()     // Catch:{ SQLException -> 0x0276 }
-            java.lang.String r18 = "UserID"
-            r0 = r20
-            java.lang.String r0 = r0.mUserID     // Catch:{ SQLException -> 0x0276 }
-            r19 = r0
-            com.j256.ormlite.stmt.Where r17 = r17.eq(r18, r19)     // Catch:{ SQLException -> 0x0276 }
-            java.util.List r17 = r17.query()     // Catch:{ SQLException -> 0x0276 }
-            r0 = r17
-            r1 = r20
-            r1.mPedometerHistoryDaoList = r0     // Catch:{ SQLException -> 0x0276 }
-            r0 = r20
-            java.util.List<com.contec.phms.db.PedometerHistoryDao> r0 = r0.mPedometerHistoryDaoList     // Catch:{ SQLException -> 0x0276 }
-            r17 = r0
-            int r17 = r17.size()     // Catch:{ SQLException -> 0x0276 }
-            if (r17 <= 0) goto L_0x00ed
-            r16 = 0
-        L_0x00dd:
-            r0 = r20
-            java.util.List<com.contec.phms.db.PedometerHistoryDao> r0 = r0.mPedometerHistoryDaoList     // Catch:{ SQLException -> 0x0276 }
-            r17 = r0
-            int r17 = r17.size()     // Catch:{ SQLException -> 0x0276 }
-            r0 = r16
-            r1 = r17
-            if (r0 < r1) goto L_0x0250
-        L_0x00ed:
-            java.text.SimpleDateFormat r5 = new java.text.SimpleDateFormat
-            java.lang.String r17 = "yyyy年MM月dd日 E"
-            r0 = r17
-            r5.<init>(r0)
-            long r17 = java.lang.System.currentTimeMillis()
-            java.lang.Long r17 = java.lang.Long.valueOf(r17)
-            r0 = r17
-            java.lang.String r17 = r5.format(r0)
-            r0 = r17
-            r1 = r20
-            r1.mDateStr = r0
-            java.lang.String r17 = com.contec.phms.util.Constants.Language
-            java.lang.String r18 = "en"
-            boolean r17 = r17.equals(r18)
-            if (r17 == 0) goto L_0x027c
-            java.util.Calendar r13 = java.util.Calendar.getInstance()
-            java.util.Date r17 = r13.getTime()
-            java.lang.String r3 = r17.toString()
-            java.lang.StringBuilder r17 = new java.lang.StringBuilder
-            r18 = 0
-            r19 = 10
-            r0 = r18
-            r1 = r19
-            java.lang.String r18 = r3.substring(r0, r1)
-            java.lang.String r18 = java.lang.String.valueOf(r18)
-            r17.<init>(r18)
-            java.lang.String r18 = " "
-            java.lang.StringBuilder r17 = r17.append(r18)
-            int r18 = r3.length()
-            int r18 = r18 + -4
-            int r19 = r3.length()
-            r0 = r18
-            r1 = r19
-            java.lang.String r18 = r3.substring(r0, r1)
-            java.lang.StringBuilder r17 = r17.append(r18)
-            java.lang.String r17 = r17.toString()
-            r0 = r17
-            r1 = r20
-            r1.mDateStr = r0
-            r13 = 0
-        L_0x015c:
-            java.lang.String r17 = "PedometerService"
-            java.lang.StringBuilder r18 = new java.lang.StringBuilder
-            java.lang.String r19 = "**********mUserName:"
-            r18.<init>(r19)
-            r0 = r20
-            java.lang.String r0 = r0.mUserName
-            r19 = r0
-            java.lang.StringBuilder r18 = r18.append(r19)
-            java.lang.String r19 = "     "
-            java.lang.StringBuilder r18 = r18.append(r19)
-            r0 = r20
-            java.lang.String r0 = r0.mUserID
-            r19 = r0
-            java.lang.StringBuilder r18 = r18.append(r19)
-            java.lang.String r18 = r18.toString()
-            com.contec.phms.util.CLog.e(r17, r18)
-            java.text.SimpleDateFormat r5 = new java.text.SimpleDateFormat
-            java.lang.String r17 = "HH:mm:ss"
-            r0 = r17
-            r5.<init>(r0)
-            r0 = r20
-            r0.mDistanceSumTodayInt = r4
-            r0 = r20
-            r0.mStepsSumInt = r10
-            r0 = r20
-            r0.mTotalSeconds = r11
-            com.contec.phms.App_phms r17 = com.contec.phms.App_phms.getInstance()     // Catch:{ SQLException -> 0x03be }
-            r0 = r17
-            com.contec.phms.db.DatabaseHelper r0 = r0.mHelper     // Catch:{ SQLException -> 0x03be }
-            r17 = r0
-            com.j256.ormlite.dao.Dao r17 = r17.getPedometerSumStepKmDao()     // Catch:{ SQLException -> 0x03be }
-            com.j256.ormlite.stmt.QueryBuilder r17 = r17.queryBuilder()     // Catch:{ SQLException -> 0x03be }
-            com.j256.ormlite.stmt.Where r17 = r17.where()     // Catch:{ SQLException -> 0x03be }
-            java.lang.String r18 = "Date"
-            r0 = r20
-            java.lang.String r0 = r0.mDateStrSum     // Catch:{ SQLException -> 0x03be }
-            r19 = r0
-            com.j256.ormlite.stmt.Where r17 = r17.eq(r18, r19)     // Catch:{ SQLException -> 0x03be }
-            com.j256.ormlite.stmt.Where r17 = r17.and()     // Catch:{ SQLException -> 0x03be }
-            java.lang.String r18 = "UserID"
-            r0 = r20
-            java.lang.String r0 = r0.mUserID     // Catch:{ SQLException -> 0x03be }
-            r19 = r0
-            com.j256.ormlite.stmt.Where r17 = r17.eq(r18, r19)     // Catch:{ SQLException -> 0x03be }
-            java.util.List r7 = r17.query()     // Catch:{ SQLException -> 0x03be }
-            java.lang.String r17 = TAG     // Catch:{ SQLException -> 0x03be }
-            java.lang.StringBuilder r18 = new java.lang.StringBuilder     // Catch:{ SQLException -> 0x03be }
-            java.lang.String r19 = "**********_listPedometerSumStepKm:"
-            r18.<init>(r19)     // Catch:{ SQLException -> 0x03be }
-            r0 = r18
-            java.lang.StringBuilder r18 = r0.append(r7)     // Catch:{ SQLException -> 0x03be }
-            java.lang.String r18 = r18.toString()     // Catch:{ SQLException -> 0x03be }
-            com.contec.phms.util.CLog.e(r17, r18)     // Catch:{ SQLException -> 0x03be }
-            if (r7 == 0) goto L_0x03ac
-            int r17 = r7.size()     // Catch:{ SQLException -> 0x03be }
-            if (r17 <= 0) goto L_0x03ac
-            r17 = 0
-            r0 = r17
-            java.lang.Object r9 = r7.get(r0)     // Catch:{ SQLException -> 0x03be }
-            com.contec.phms.db.PedometerSumStepKm r9 = (com.contec.phms.db.PedometerSumStepKm) r9     // Catch:{ SQLException -> 0x03be }
-            int r17 = r9.getmSumStep()     // Catch:{ SQLException -> 0x03be }
-            r0 = r17
-            r1 = r20
-            r1.mStepsSumInt = r0     // Catch:{ SQLException -> 0x03be }
-            int r17 = r9.getmSumDistance()     // Catch:{ SQLException -> 0x03be }
-            r0 = r17
-            r1 = r20
-            r1.mDistanceSumTodayInt = r0     // Catch:{ SQLException -> 0x03be }
-            java.lang.String r17 = TAG     // Catch:{ SQLException -> 0x03be }
-            java.lang.StringBuilder r18 = new java.lang.StringBuilder     // Catch:{ SQLException -> 0x03be }
-            java.lang.String r19 = "**********_listPedometerSumStepKm:"
-            r18.<init>(r19)     // Catch:{ SQLException -> 0x03be }
-            float r19 = r9.getmCal()     // Catch:{ SQLException -> 0x03be }
-            java.lang.StringBuilder r18 = r18.append(r19)     // Catch:{ SQLException -> 0x03be }
-            java.lang.String r18 = r18.toString()     // Catch:{ SQLException -> 0x03be }
-            com.contec.phms.util.CLog.e(r17, r18)     // Catch:{ SQLException -> 0x03be }
-        L_0x0225:
-            r0 = r20
-            int r0 = r0.mUnit
-            r17 = r0
-            r18 = 1
-            r0 = r17
-            r1 = r18
-            if (r0 == r1) goto L_0x0246
-            float r0 = (float) r4
-            r17 = r0
-            r18 = 1079113889(0x4051f8a1, float:3.2808)
-            float r17 = r17 * r18
-            r0 = r17
-            int r0 = (int) r0
-            r17 = r0
-            r0 = r17
-            r1 = r20
-            r1.mDistanceSumTodayInt = r0
-        L_0x0246:
-            r0 = r20
-            com.contec.phms.widget.BallProgressView r0 = r0.mBallProgressView
-            r17 = r0
-            r17.invalidate()
-            return
-        L_0x0250:
-            r0 = r20
-            java.util.List<com.contec.phms.db.PedometerHistoryDao> r0 = r0.mPedometerHistoryDaoList     // Catch:{ SQLException -> 0x0276 }
-            r17 = r0
-            r0 = r17
-            r1 = r16
-            java.lang.Object r2 = r0.get(r1)     // Catch:{ SQLException -> 0x0276 }
-            com.contec.phms.db.PedometerHistoryDao r2 = (com.contec.phms.db.PedometerHistoryDao) r2     // Catch:{ SQLException -> 0x0276 }
-            int r17 = r2.getmDistance()     // Catch:{ SQLException -> 0x0276 }
-            int r4 = r4 + r17
-            int r17 = r2.getmStep()     // Catch:{ SQLException -> 0x0276 }
-            int r10 = r10 + r17
-            int r17 = r2.getmSecond()     // Catch:{ SQLException -> 0x0276 }
-            int r11 = r11 + r17
-            int r16 = r16 + 1
-            goto L_0x00dd
-        L_0x0276:
-            r15 = move-exception
-            r15.printStackTrace()
-            goto L_0x00ed
-        L_0x027c:
-            java.lang.String r17 = com.contec.phms.util.Constants.Language
-            java.lang.String r18 = "1"
-            boolean r17 = r17.contains(r18)
-            if (r17 == 0) goto L_0x02e1
-            java.util.Locale r8 = java.util.Locale.getDefault()
-            java.lang.String r6 = r8.getLanguage()
-            java.lang.String r17 = "en"
-            r0 = r17
-            boolean r17 = r6.equals(r0)
-            if (r17 == 0) goto L_0x015c
-            java.util.Calendar r13 = java.util.Calendar.getInstance()
-            java.util.Date r17 = r13.getTime()
-            java.lang.String r3 = r17.toString()
-            java.lang.StringBuilder r17 = new java.lang.StringBuilder
-            r18 = 0
-            r19 = 10
-            r0 = r18
-            r1 = r19
-            java.lang.String r18 = r3.substring(r0, r1)
-            java.lang.String r18 = java.lang.String.valueOf(r18)
-            r17.<init>(r18)
-            java.lang.String r18 = " "
-            java.lang.StringBuilder r17 = r17.append(r18)
-            int r18 = r3.length()
-            int r18 = r18 + -4
-            int r19 = r3.length()
-            r0 = r18
-            r1 = r19
-            java.lang.String r18 = r3.substring(r0, r1)
-            java.lang.StringBuilder r17 = r17.append(r18)
-            java.lang.String r17 = r17.toString()
-            r0 = r17
-            r1 = r20
-            r1.mDateStr = r0
-            goto L_0x015c
-        L_0x02e1:
-            java.lang.String r17 = com.contec.phms.util.Constants.Language
-            if (r17 == 0) goto L_0x02ef
-            java.lang.String r17 = com.contec.phms.util.Constants.Language
-            java.lang.String r18 = ""
-            boolean r17 = r17.equals(r18)
-            if (r17 == 0) goto L_0x034a
-        L_0x02ef:
-            java.util.Locale r8 = java.util.Locale.getDefault()
-            java.lang.String r6 = r8.getLanguage()
-            java.lang.String r17 = "en"
-            r0 = r17
-            boolean r17 = r6.equals(r0)
-            if (r17 == 0) goto L_0x015c
-            java.util.Calendar r13 = java.util.Calendar.getInstance()
-            java.util.Date r17 = r13.getTime()
-            java.lang.String r3 = r17.toString()
-            java.lang.StringBuilder r17 = new java.lang.StringBuilder
-            r18 = 0
-            r19 = 10
-            r0 = r18
-            r1 = r19
-            java.lang.String r18 = r3.substring(r0, r1)
-            java.lang.String r18 = java.lang.String.valueOf(r18)
-            r17.<init>(r18)
-            java.lang.String r18 = " "
-            java.lang.StringBuilder r17 = r17.append(r18)
-            int r18 = r3.length()
-            int r18 = r18 + -4
-            int r19 = r3.length()
-            r0 = r18
-            r1 = r19
-            java.lang.String r18 = r3.substring(r0, r1)
-            java.lang.StringBuilder r17 = r17.append(r18)
-            java.lang.String r17 = r17.toString()
-            r0 = r17
-            r1 = r20
-            r1.mDateStr = r0
-            goto L_0x015c
-        L_0x034a:
-            java.lang.String r17 = com.contec.phms.util.Constants.Language
-            java.lang.String r18 = "zh"
-            boolean r17 = r17.equals(r18)
-            if (r17 == 0) goto L_0x015c
-            java.util.Locale r8 = java.util.Locale.getDefault()
-            java.lang.String r6 = r8.getLanguage()
-            java.lang.String r17 = "en"
-            r0 = r17
-            boolean r17 = r6.equals(r0)
-            if (r17 == 0) goto L_0x015c
-            java.text.SimpleDateFormat r5 = new java.text.SimpleDateFormat
-            java.lang.String r17 = "yyyy年MM月dd日"
-            r0 = r17
-            r5.<init>(r0)
-            long r17 = java.lang.System.currentTimeMillis()
-            java.lang.Long r17 = java.lang.Long.valueOf(r17)
-            r0 = r17
-            java.lang.String r17 = r5.format(r0)
-            r0 = r17
-            r1 = r20
-            r1.mDateStr = r0
-            java.lang.String r12 = r20.getweek()
-            r0 = r20
-            java.lang.String r0 = r0.mDateStr
-            r17 = r0
-            java.lang.StringBuilder r18 = new java.lang.StringBuilder
-            java.lang.String r17 = java.lang.String.valueOf(r17)
-            r0 = r18
-            r1 = r17
-            r0.<init>(r1)
-            r0 = r18
-            java.lang.StringBuilder r17 = r0.append(r12)
-            java.lang.String r17 = r17.toString()
-            r0 = r17
-            r1 = r20
-            r1.mDateStr = r0
-            goto L_0x015c
-        L_0x03ac:
-            r17 = 0
-            r0 = r17
-            r1 = r20
-            r1.mStepsSumInt = r0     // Catch:{ SQLException -> 0x03be }
-            r17 = 0
-            r0 = r17
-            r1 = r20
-            r1.mDistanceSumTodayInt = r0     // Catch:{ SQLException -> 0x03be }
-            goto L_0x0225
-        L_0x03be:
-            r14 = move-exception
-            r14.printStackTrace()
-            goto L_0x0225
-        */
-        throw new UnsupportedOperationException("Method not decompiled: com.contec.phms.fragment.Fragmentdevicelist.initData():void");
+    @SuppressLint({"SimpleDateFormat"})
+    private void initData() {
+        this.mUserID = App_phms.getInstance().mUserInfo.mUserID;
+        this.mUserName = App_phms.getInstance().mUserInfo.mUserName;
+        this.mStepTarget = this.mPedometerSharepreferance.getTarget();
+        //this.mBallProgressView.setmTargetSteps(this.mStepTarget);
+        //this.mpebometer_handler_steptarget_aim.setText(new StringBuilder(String.valueOf(this.mStepTarget)).toString());
+        SimpleDateFormat _formatter = new SimpleDateFormat("yyyy-MM-dd");
+        this.mDateStrSum = _formatter.format(Long.valueOf(System.currentTimeMillis()));
+        this.mDao = App_phms.getInstance().mHelper.getPedometerhistoryDao();
+        int _distance = 0;
+        int _step = 0;
+        int _timeSecond = 0;
+        try {
+            this.mPedometerHistoryDaoList = this.mDao.queryBuilder().where().eq("Date", this.mDateStrSum).and().eq("UserID", this.mUserID).query();
+            if (this.mPedometerHistoryDaoList.size() > 0) {
+                for (int i = 0; i < this.mPedometerHistoryDaoList.size(); i++) {
+                    PedometerHistoryDao _Dao = this.mPedometerHistoryDaoList.get(i);
+                    _distance += _Dao.getmDistance();
+                    _step += _Dao.getmStep();
+                    _timeSecond += _Dao.getmSecond();
+                }
+            }
+        } catch (SQLException e1) {
+            e1.printStackTrace();
+        }
+        SimpleDateFormat _formatter2 = new SimpleDateFormat("yyyy年MM月dd日 E");
+        this.mDateStr = _formatter2.format(Long.valueOf(System.currentTimeMillis()));
+        if (Constants.Language.equals("en")) {
+            Calendar cal = Calendar.getInstance();
+            String _date = cal.getTime().toString();
+            this.mDateStr = String.valueOf(_date.substring(0, 10)) + " " + _date.substring(_date.length() - 4, _date.length());
+        } else if (Constants.Language.contains("1")) {
+            Locale _locale = Locale.getDefault();
+            String _language = _locale.getLanguage();
+            if (_language.equals("en")) {
+                Calendar cal2 = Calendar.getInstance();
+                String _date2 = cal2.getTime().toString();
+                this.mDateStr = String.valueOf(_date2.substring(0, 10)) + " " + _date2.substring(_date2.length() - 4, _date2.length());
+            }
+        } else if (Constants.Language == null || Constants.Language.equals(bs.b)) {
+            Locale _locale2 = Locale.getDefault();
+            String _language2 = _locale2.getLanguage();
+            if (_language2.equals("en")) {
+                Calendar cal3 = Calendar.getInstance();
+                String _date3 = cal3.getTime().toString();
+                this.mDateStr = String.valueOf(_date3.substring(0, 10)) + " " + _date3.substring(_date3.length() - 4, _date3.length());
+            }
+        } else if (Constants.Language.equals("zh")) {
+            Locale _locale3 = Locale.getDefault();
+            String _language3 = _locale3.getLanguage();
+            if (_language3.equals("en")) {
+                SimpleDateFormat _formatter3 = new SimpleDateFormat("yyyy年MM月dd日");
+                this.mDateStr = _formatter3.format(Long.valueOf(System.currentTimeMillis()));
+                String _week = getweek();
+                this.mDateStr = String.valueOf(this.mDateStr) + _week;
+            }
+        }
+        CLog.e("PedometerService", "**********mUserName:" + this.mUserName + "     " + this.mUserID);
+        new SimpleDateFormat("HH:mm:ss");
+        this.mDistanceSumTodayInt = _distance;
+        this.mStepsSumInt = _step;
+        this.mTotalSeconds = _timeSecond;
+        try {
+            List<PedometerSumStepKm> _list = App_phms.getInstance().mHelper.getPedometerSumStepKmDao().queryBuilder().where().eq("Date", this.mDateStrSum).and().eq("UserID", this.mUserID).query();
+            CLog.e(TAG, "**********_listPedometerSumStepKm:" + _list);
+            if (_list == null || _list.size() <= 0) {
+                this.mStepsSumInt = 0;
+                this.mDistanceSumTodayInt = 0;
+            } else {
+                PedometerSumStepKm _pedo = _list.get(0);
+                this.mStepsSumInt = _pedo.getmSumStep();
+                this.mDistanceSumTodayInt = _pedo.getmSumDistance();
+                CLog.e(TAG, "**********_listPedometerSumStepKm:" + _pedo.getmCal());
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        if (this.mUnit != 1) {
+            this.mDistanceSumTodayInt = (int) (_distance * 3.2808f);
+        }
+        this.mBallProgressView.invalidate();
     }
 
     private String getweek() {
@@ -3067,7 +2751,7 @@ public class Fragmentdevicelist extends Fragment implements Runnable, View.OnCli
     }
 
     private void stopServer() {
-        CLog.i("jxx", "call 停止轮询服务类 method4");
+        CLog.i("jxx", "call `PollingService.stopService()` method4");
         PollingService.stopService(getActivity());
     }
 

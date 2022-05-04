@@ -93,7 +93,7 @@ public class ReceiveThread extends com.contec.phms.device.template.ReceiveThread
                 }
                 SendCommand.send(DeviceCommand.command_requestData(this._version));
                 this.mhandler.sendEmptyMessageDelayed(100001, 800);
-                writeToSDCard(String.valueOf(getcureentbytetime()) + "\t\t发送\t\t请求数据命令");
+                writeToSDCard(String.valueOf(getcureentbytetime()) + "\t\t\t\t请求数据命令");
                 CLog.i("WTReceiveThread", "对时成功,请求数据  版本是  " + this._version);
                 break;
             case 4:

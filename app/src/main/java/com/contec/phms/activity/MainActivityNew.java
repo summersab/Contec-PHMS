@@ -8,6 +8,8 @@ import android.os.Message;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentTransaction;
+
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -406,102 +408,53 @@ public class MainActivityNew extends FragmentActivity implements View.OnClickLis
         }
     }
 
-    /* JADX WARNING: Code restructure failed: missing block: B:24:0x0066, code lost:
-        if (r0 == false) goto L_0x0068;
+    /* JADX WARN: Code restructure failed: missing block: B:26:0x0066, code lost:
+        if (r0 == false) goto L27;
      */
-    /* Code decompiled incorrectly, please refer to instructions dump. */
-    public boolean onKeyDown(int r9, android.view.KeyEvent r10) {
-        /*
-            r8 = this;
-            r7 = 4
-            r6 = 0
-            if (r9 != r7) goto L_0x001d
-            int r4 = mfragmentcurrentindex
-            int r5 = r8.mcheckReportindex
-            if (r4 != r5) goto L_0x001e
-            if (r9 != r7) goto L_0x001d
-            int r4 = r8.mdevicelistindex
-            r8.clickbottomitem(r4)
-            android.widget.LinearLayout r4 = r8.mCollectionly
-            r8.setalllyblack_Visib(r4)
-            android.widget.LinearLayout r4 = r8.mCollectionly
-            r8.setalllyblack(r4)
-            com.contec.phms.util.Constants.REPORT = r6
-        L_0x001d:
-            return r6
-        L_0x001e:
-            int r4 = mfragmentcurrentindex
-            int r5 = r8.mfragmentSerialNumberindex
-            if (r4 != r5) goto L_0x002a
-            int r4 = r8.mFragmentDataSerchDeviceindex
-            r8.clickbottomitem(r4)
-            goto L_0x001d
-        L_0x002a:
-            int r4 = mfragmentcurrentindex
-            int r5 = r8.mFragmentDataSerchDeviceindex
-            if (r4 != r5) goto L_0x0044
-            com.contec.phms.manager.device.DeviceListItem r4 = com.contec.phms.manager.device.DeviceManager.mDeviceList
-            int r4 = r4.size()
-            if (r4 <= 0) goto L_0x003e
-            int r4 = r8.mFragmentManagerDevicesindex
-            r8.clickbottomitem(r4)
-            goto L_0x001d
-        L_0x003e:
-            int r4 = r8.mdevicelistindex
-            r8.clickbottomitem(r4)
-            goto L_0x001d
-        L_0x0044:
-            int r4 = mfragmentcurrentindex
-            int r5 = r8.mFragmentManagerDevicesindex
-            if (r4 != r5) goto L_0x0050
-            int r4 = r8.mdevicelistindex
-            r8.clickbottomitem(r4)
-            goto L_0x001d
-        L_0x0050:
-            r0 = 0
-            com.contec.phms.manager.device.DeviceListItem r4 = com.contec.phms.manager.device.DeviceManager.mDeviceList
-            java.util.List r4 = r4.getListDevice()
-            if (r4 == 0) goto L_0x0068
-            r1 = 0
-        L_0x005a:
-            com.contec.phms.manager.device.DeviceListItem r4 = com.contec.phms.manager.device.DeviceManager.mDeviceList
-            java.util.List r4 = r4.getListDevice()
-            int r4 = r4.size()
-            if (r1 < r4) goto L_0x007d
-            if (r0 != 0) goto L_0x001d
-        L_0x0068:
-            android.content.Intent r2 = new android.content.Intent
-            java.lang.String r4 = "android.intent.action.MAIN"
-            r2.<init>(r4)
-            r4 = Intent.FLAG_ACTIVITY_NEW_TASK(0x10000000, float:2.5243549E-29)
-            r2.setFlags(r4)
-            java.lang.String r4 = "android.intent.category.HOME"
-            r2.addCategory(r4)
-            r8.startActivity(r2)
-            goto L_0x001d
-        L_0x007d:
-            com.contec.phms.manager.device.DeviceListItem r4 = com.contec.phms.manager.device.DeviceManager.mDeviceList
-            com.contec.phms.manager.device.DeviceBeanList r4 = r4.getDevice(r1)
-            boolean r4 = r4.misShowDelBtn
-            if (r4 == 0) goto L_0x00a5
-            r0 = 1
-            com.contec.phms.manager.device.DeviceListItem r4 = com.contec.phms.manager.device.DeviceManager.mDeviceList
-            com.contec.phms.manager.device.DeviceBeanList r4 = r4.getDevice(r1)
-            r4.misShowDelBtn = r6
-            android.os.Message r3 = new android.os.Message
-            r3.<init>()
-            r4 = 520(0x208, float:7.29E-43)
-            r3.what = r4
-            r4 = 1
-            r3.arg2 = r4
-            com.contec.phms.App_phms r4 = com.contec.phms.App_phms.getInstance()
-            de.greenrobot.event.EventBusPostOnBackGround r4 = r4.mEventBusPostOnBackGround
-            r4.postInMainThread(r3)
-        L_0x00a5:
-            int r1 = r1 + 1
-            goto L_0x005a
-        */
-        throw new UnsupportedOperationException("Method not decompiled: com.contec.phms.activity.MainActivityNew.onKeyDown(int, android.view.KeyEvent):boolean");
+    @Override // android.support.v4.app.FragmentActivity, android.app.Activity, android.view.KeyEvent.Callback
+    /*
+        Code decompiled incorrectly, please refer to instructions dump.
+    */
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == 4) {
+            if (mfragmentcurrentindex == this.mcheckReportindex) {
+                if (keyCode == 4) {
+                    clickbottomitem(this.mdevicelistindex);
+                    setalllyblack_Visib(this.mCollectionly);
+                    setalllyblack(this.mCollectionly);
+                    Constants.REPORT = false;
+                }
+            } else if (mfragmentcurrentindex == this.mfragmentSerialNumberindex) {
+                clickbottomitem(this.mFragmentDataSerchDeviceindex);
+            } else if (mfragmentcurrentindex == this.mFragmentDataSerchDeviceindex) {
+                if (DeviceManager.mDeviceList.size() > 0) {
+                    clickbottomitem(this.mFragmentManagerDevicesindex);
+                } else {
+                    clickbottomitem(this.mdevicelistindex);
+                }
+            } else if (mfragmentcurrentindex == this.mFragmentManagerDevicesindex) {
+                clickbottomitem(this.mdevicelistindex);
+            } else {
+                boolean _isshowingDelDeveice = false;
+                if (DeviceManager.mDeviceList.getListDevice() != null) {
+                    for (int i = 0; i < DeviceManager.mDeviceList.getListDevice().size(); i++) {
+                        if (DeviceManager.mDeviceList.getDevice(i).misShowDelBtn) {
+                            _isshowingDelDeveice = true;
+                            DeviceManager.mDeviceList.getDevice(i).misShowDelBtn = false;
+                            Message msgs = new Message();
+                            msgs.what = Constants.Del_Device;
+                            msgs.arg2 = 1;
+                            App_phms.getInstance().mEventBusPostOnBackGround.postInMainThread(msgs);
+                        }
+                    }
+                }
+                Intent intent = new Intent("android.intent.action.MAIN");
+                intent.setFlags(268435456);
+                intent.addCategory("android.intent.category.HOME");
+                startActivity(intent);
+            }
+        }
+        return false;
     }
 
     private FragmentTransaction obtainFragmentTransaction(int index) {

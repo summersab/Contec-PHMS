@@ -1,6 +1,7 @@
 package com.contec.phms.device.cms50k;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
@@ -12,6 +13,7 @@ import com.contec.jar.cms50k.DevicePackManager;
 import com.contec.phms.App_phms;
 import com.contec.phms.R;
 import com.contec.phms.device.cms50k.update.Update50KUtils;
+import com.contec.phms.device.cms50k.update.Xml50KUpdateBean;
 import com.contec.phms.device.pm10.DeviceData;
 import com.contec.phms.device.template.DeviceService;
 import com.contec.phms.eventbus.EventFinish;
@@ -31,6 +33,7 @@ import com.contec.phms.widget.IsUpdate50kDialog;
 import com.contec.phms.widget.Update50kDialog;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 import u.aly.bs;
@@ -802,242 +805,67 @@ public class BluetoothLeDeviceService extends com.contec.phms.device.template.Bl
         }
     }
 
-    /* JADX DEBUG: Multi-variable search result rejected for TypeSearchVarInfo{r17v27, resolved type: byte} */
-    /* JADX DEBUG: Multi-variable search result rejected for TypeSearchVarInfo{r0v38, resolved type: byte} */
-    /* JADX WARNING: Multi-variable type inference failed */
-    /* Code decompiled incorrectly, please refer to instructions dump. */
-    private boolean ifUpdateCms50k(int r22) {
-        /*
-            r21 = this;
-            java.lang.StringBuilder r17 = new java.lang.StringBuilder
-            java.lang.String r18 = com.contec.phms.device.cms50k.update.Update50KUtils.fileUrl
-            java.lang.String r18 = java.lang.String.valueOf(r18)
-            r17.<init>(r18)
-            java.lang.String r18 = "update.bin"
-            java.lang.StringBuilder r17 = r17.append(r18)
-            java.lang.String r17 = r17.toString()
-            byte[] r17 = com.contec.phms.device.cms50k.update.Update50KUtils.readSDFile(r17)
-            r0 = r17
-            r1 = r21
-            r1.mUpdateDatas = r0
-            r9 = 0
-            android.content.SharedPreferences r17 = com.contec.phms.App_phms.preferences
-            java.lang.String r18 = "CMS50K_Server_Version"
-            r19 = 999(0x3e7, float:1.4E-42)
-            int r12 = r17.getInt(r18, r19)
-            r17 = 999(0x3e7, float:1.4E-42)
-            r0 = r17
-            if (r12 != r0) goto L_0x00b6
-            r0 = r21
-            byte[] r0 = r0.mUpdateDatas
-            r17 = r0
-            if (r17 == 0) goto L_0x0191
-            r17 = 16
-            r0 = r17
-            byte[] r11 = new byte[r0]
-            r0 = r21
-            byte[] r0 = r0.mUpdateDatas
-            r17 = r0
-            r18 = 0
-            r19 = 0
-            r20 = 16
-            r0 = r17
-            r1 = r18
-            r2 = r19
-            r3 = r20
-            java.lang.System.arraycopy(r0, r1, r11, r2, r3)
-            r17 = 7
-            byte r17 = r11[r17]
-            int r17 = r17 << 8
-            r18 = 6
-            byte r18 = r11[r18]
-            r0 = r18
-            r0 = r0 & 255(0xff, float:3.57E-43)
-            r18 = r0
-            r17 = r17 | r18
-            r18 = 65535(0xffff, float:9.1834E-41)
-            r4 = r17 & r18
-            java.lang.String r17 = "jxx"
-            java.lang.StringBuilder r18 = new java.lang.StringBuilder
-            java.lang.String r19 = "版本号："
-            r18.<init>(r19)
-            r0 = r18
-            java.lang.StringBuilder r18 = r0.append(r4)
-            java.lang.String r19 = "--"
-            java.lang.StringBuilder r18 = r18.append(r19)
-            r19 = 6
-            byte r19 = r11[r19]
-            java.lang.String r19 = java.lang.Integer.toHexString(r19)
-            java.lang.StringBuilder r18 = r18.append(r19)
-            java.lang.String r19 = " "
-            java.lang.StringBuilder r18 = r18.append(r19)
-            r19 = 7
-            byte r19 = r11[r19]
-            java.lang.String r19 = java.lang.Integer.toHexString(r19)
-            java.lang.StringBuilder r18 = r18.append(r19)
-            java.lang.String r18 = r18.toString()
-            android.util.Log.i(r17, r18)
-            android.content.SharedPreferences r17 = com.contec.phms.App_phms.preferences
-            android.content.SharedPreferences$Editor r6 = r17.edit()
-            java.lang.String r17 = "CMS50K_Server_Version"
-            r0 = r17
-            r6.putInt(r0, r4)
-            r6.commit()
-        L_0x00b6:
-            android.content.SharedPreferences r17 = com.contec.phms.App_phms.preferences
-            java.lang.String r18 = "CMS50K_Server_Version"
-            r19 = 999(0x3e7, float:1.4E-42)
-            int r12 = r17.getInt(r18, r19)
-            r17 = 999(0x3e7, float:1.4E-42)
-            r0 = r17
-            if (r12 == r0) goto L_0x0194
-            r0 = r22
-            if (r12 <= r0) goto L_0x0194
-            r9 = 1
-            r0 = r21
-            byte[] r0 = r0.mUpdateDatas
-            r17 = r0
-            if (r17 == 0) goto L_0x0197
-            r9 = 1
-            r0 = r21
-            byte[] r0 = r0.mUpdateDatas
-            r17 = r0
-            if (r17 == 0) goto L_0x018f
-            java.util.List r16 = com.contec.phms.device.cms50k.update.Update50KUtils.pullParseXmlFile()
-            if (r16 == 0) goto L_0x01c8
-            r13 = 0
-            android.content.SharedPreferences r17 = com.contec.phms.App_phms.preferences
-            java.lang.String r18 = "currentVersion"
-            r19 = 999(0x3e7, float:1.4E-42)
-            int r5 = r17.getInt(r18, r19)
-            r17 = 999(0x3e7, float:1.4E-42)
-            r0 = r17
-            if (r5 == r0) goto L_0x01c6
-            r8 = 0
-        L_0x00f4:
-            int r17 = r16.size()
-            r0 = r17
-            if (r8 < r0) goto L_0x019a
-        L_0x00fc:
-            r0 = r21
-            byte[] r0 = r0.mUpdateDatas
-            r17 = r0
-            r0 = r17
-            int r0 = r0.length
-            r17 = r0
-            r0 = r17
-            if (r0 != r13) goto L_0x01c4
-            r0 = r21
-            byte[] r0 = r0.mUpdateDatas
-            r17 = r0
-            r18 = 11
-            byte r17 = r17[r18]
-            r0 = r17
-            r0 = r0 & 255(0xff, float:3.57E-43)
-            r17 = r0
-            int r17 = r17 << 24
-            r0 = r21
-            byte[] r0 = r0.mUpdateDatas
-            r18 = r0
-            r19 = 10
-            byte r18 = r18[r19]
-            r0 = r18
-            r0 = r0 & 255(0xff, float:3.57E-43)
-            r18 = r0
-            int r18 = r18 << 16
-            r17 = r17 | r18
-            r0 = r21
-            byte[] r0 = r0.mUpdateDatas
-            r18 = r0
-            r19 = 9
-            byte r18 = r18[r19]
-            r0 = r18
-            r0 = r0 & 255(0xff, float:3.57E-43)
-            r18 = r0
-            int r18 = r18 << 8
-            r17 = r17 | r18
-            r0 = r21
-            byte[] r0 = r0.mUpdateDatas
-            r18 = r0
-            r19 = 8
-            byte r18 = r18[r19]
-            r0 = r18
-            r0 = r0 & 255(0xff, float:3.57E-43)
-            r18 = r0
-            r17 = r17 | r18
-            r18 = 16777215(0xffffff, float:2.3509886E-38)
-            r7 = r17 & r18
-            r0 = r21
-            byte[] r0 = r0.mUpdateDatas
-            r17 = r0
-            r0 = r17
-            int r0 = r0.length
-            r17 = r0
-            r0 = r17
-            if (r0 != r7) goto L_0x01c2
-            java.lang.String r17 = "jxx"
-            java.lang.String r18 = "相等======"
-            com.contec.phms.util.CLog.e(r17, r18)
-            r9 = 1
-            r0 = r21
-            byte[] r0 = r0.mUpdateDatas
-            r17 = r0
-            r0 = r21
-            r1 = r17
-            boolean r9 = r0.ifUpdateCms50k_JudgeDeviceType(r1)
-            r0 = r21
-            byte[] r0 = r0.mUpdateDatas
-            r17 = r0
-            r0 = r21
-            r1 = r17
-            boolean r9 = r0.ifUpdateCms50k_SumCheck(r1)
-        L_0x018f:
-            r10 = r9
-        L_0x0190:
-            return r10
-        L_0x0191:
-            r9 = 0
-            r10 = r9
-            goto L_0x0190
-        L_0x0194:
-            r9 = 0
-            r10 = r9
-            goto L_0x0190
-        L_0x0197:
-            r9 = 0
-            r10 = r9
-            goto L_0x0190
-        L_0x019a:
-            r0 = r16
-            java.lang.Object r15 = r0.get(r8)
-            com.contec.phms.device.cms50k.update.Xml50KUpdateBean r15 = (com.contec.phms.device.cms50k.update.Xml50KUpdateBean) r15
-            java.lang.String r14 = r15.version
-            java.lang.Integer r17 = java.lang.Integer.valueOf(r14)
-            int r17 = r17.intValue()
-            r0 = r17
-            if (r0 != r5) goto L_0x01be
-            java.lang.String r0 = r15.size
-            r17 = r0
-            java.lang.Integer r17 = java.lang.Integer.valueOf(r17)
-            int r13 = r17.intValue()
-            goto L_0x00fc
-        L_0x01be:
-            int r8 = r8 + 1
-            goto L_0x00f4
-        L_0x01c2:
-            r9 = 0
-            goto L_0x018f
-        L_0x01c4:
-            r9 = 0
-            goto L_0x018f
-        L_0x01c6:
-            r9 = 0
-            goto L_0x018f
-        L_0x01c8:
-            r9 = 0
-            goto L_0x018f
-        */
-        throw new UnsupportedOperationException("Method not decompiled: com.contec.phms.device.cms50k.BluetoothLeDeviceService.ifUpdateCms50k(int):boolean");
+    private boolean ifUpdateCms50k(int localVersion) {
+        this.mUpdateDatas = Update50KUtils.readSDFile(String.valueOf(Update50KUtils.fileUrl) + Update50KUtils.updateFilename);
+        if (App_phms.preferences.getInt("CMS50K_Server_Version", 999) == 999) {
+            if (this.mUpdateDatas == null) {
+                return false;
+            }
+            byte[] pack1 = new byte[16];
+            System.arraycopy(this.mUpdateDatas, 0, pack1, 0, 16);
+            int NewVersion = ((pack1[7] << 8) | (pack1[6] & 255)) & 65535;
+            Log.i("jxx", "版本号：" + NewVersion + "--" + Integer.toHexString(pack1[6]) + " " + Integer.toHexString(pack1[7]));
+            SharedPreferences.Editor editor2 = App_phms.preferences.edit();
+            editor2.putInt("CMS50K_Server_Version", NewVersion);
+            editor2.commit();
+        }
+        int serverVersion = App_phms.preferences.getInt("CMS50K_Server_Version", 999);
+        if (serverVersion == 999 || serverVersion <= localVersion) {
+            return false;
+        }
+        if (this.mUpdateDatas == null) {
+            return false;
+        }
+        boolean isCanUpdate = true;
+        if (this.mUpdateDatas != null) {
+            List<Xml50KUpdateBean> xmlBeanLists = Update50KUtils.pullParseXmlFile();
+            if (xmlBeanLists != null) {
+                int size = 0;
+                int currentVersion_xml = App_phms.preferences.getInt("currentVersion", 999);
+                if (currentVersion_xml != 999) {
+                    int i = 0;
+                    while (true) {
+                        if (i >= xmlBeanLists.size()) {
+                            break;
+                        }
+                        Xml50KUpdateBean xmlBean = xmlBeanLists.get(i);
+                        String version = xmlBean.version;
+                        if (Integer.valueOf(version).intValue() == currentVersion_xml) {
+                            size = Integer.valueOf(xmlBean.size).intValue();
+                            break;
+                        }
+                        i++;
+                    }
+                    if (this.mUpdateDatas.length == size) {
+                        int fileSize = (((this.mUpdateDatas[11] & 255) << 24) | ((this.mUpdateDatas[10] & 255) << 16) | ((this.mUpdateDatas[9] & 255) << 8) | (this.mUpdateDatas[8] & 255)) & 16777215;
+                        if (this.mUpdateDatas.length == fileSize) {
+                            CLog.e("jxx", "相等======");
+                            ifUpdateCms50k_JudgeDeviceType(this.mUpdateDatas);
+                            isCanUpdate = ifUpdateCms50k_SumCheck(this.mUpdateDatas);
+                        } else {
+                            isCanUpdate = false;
+                        }
+                    } else {
+                        isCanUpdate = false;
+                    }
+                } else {
+                    isCanUpdate = false;
+                }
+            } else {
+                isCanUpdate = false;
+            }
+        }
+        return isCanUpdate;
     }
 
     public void onEvent(EventFinish e) {
